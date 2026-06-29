@@ -168,7 +168,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
         <div className="space-y-4">
           <div>
             <Label>1. Client Impact</Label>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-slate-300 mb-2">
               How many clients were adversely affected?
             </p>
             <Select 
@@ -190,7 +190,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
 
           <div>
             <Label>2. Financial Impact</Label>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-slate-300 mb-2">
               Estimated or actual financial loss to clients or firm
             </p>
             <Select
@@ -212,7 +212,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
 
           <div>
             <Label>3. Systemic Weakness</Label>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-slate-300 mb-2">
               Does this indicate a gap in controls or processes?
             </p>
             <Select
@@ -233,7 +233,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
 
           <div>
             <Label>4. Intentional Misconduct</Label>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-slate-300 mb-2">
               Was the breach intentional or fraudulent?
             </p>
             <Select
@@ -254,7 +254,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
 
           <div>
             <Label>5. Likelihood of Recurrence</Label>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-slate-300 mb-2">
               Without remediation, could this happen again?
             </p>
             <Select
@@ -299,7 +299,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                     <span>Regulatory obligation triggered</span>
                   </div>
                 </div>
-                <div className="mt-4 p-3 bg-white rounded border border-blue-300">
+                <div className="mt-4 p-3 bg-[#0d121d] rounded border border-blue-300">
                   <div className="font-semibold text-blue-900 mb-1">Recommended Actions:</div>
                   <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
                     <li>Report to AUSTRAC within 30 days</li>
@@ -329,9 +329,9 @@ export function BreachModule({ onBack }: BreachModuleProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
-      <div className="bg-white border-b sticky top-0 z-10">
+      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -342,8 +342,8 @@ export function BreachModule({ onBack }: BreachModuleProps) {
               <div className="h-6 w-px bg-gray-300" />
               <AlertTriangle className="w-6 h-6 text-red-600" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Breach & Incident Management</h1>
-                <p className="text-sm text-gray-600">ASIC RG78, Privacy Act & ISO Incident Response</p>
+                <h1 className="text-2xl font-bold text-white">Breach & Incident Management</h1>
+                <p className="text-sm text-slate-300">ASIC RG78, Privacy Act & ISO Incident Response</p>
               </div>
             </div>
             <Button>
@@ -369,8 +369,8 @@ export function BreachModule({ onBack }: BreachModuleProps) {
             <div className="grid grid-cols-4 gap-4">
               <Card>
                 <CardContent className="p-6">
-                  <div className="text-sm text-gray-600">Open Incidents</div>
-                  <div className="text-3xl font-bold text-gray-900">3</div>
+                  <div className="text-sm text-slate-300">Open Incidents</div>
+                  <div className="text-3xl font-bold text-white">3</div>
                   <div className="text-xs text-amber-600 flex items-center gap-1 mt-1">
                     <TrendingUp className="w-3 h-3" />
                     2 reportable
@@ -379,20 +379,20 @@ export function BreachModule({ onBack }: BreachModuleProps) {
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <div className="text-sm text-gray-600">Under Investigation</div>
+                  <div className="text-sm text-slate-300">Under Investigation</div>
                   <div className="text-3xl font-bold text-blue-600">2</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <div className="text-sm text-gray-600">Closed (30d)</div>
+                  <div className="text-sm text-slate-300">Closed (30d)</div>
                   <div className="text-3xl font-bold text-green-600">5</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <div className="text-sm text-gray-600">Avg Resolution Time</div>
-                  <div className="text-3xl font-bold text-gray-900">18d</div>
+                  <div className="text-sm text-slate-300">Avg Resolution Time</div>
+                  <div className="text-3xl font-bold text-white">18d</div>
                 </CardContent>
               </Card>
             </div>
@@ -418,7 +418,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                         }`} />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="font-mono text-sm font-semibold text-gray-600">
+                            <span className="font-mono text-sm font-semibold text-slate-300">
                               {incident.id}
                             </span>
                             <Badge variant="outline">{incident.type}</Badge>
@@ -436,42 +436,42 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                               </Badge>
                             )}
                           </div>
-                          <h3 className="font-semibold text-lg text-gray-900 mb-3">
+                          <h3 className="font-semibold text-lg text-white mb-3">
                             {incident.description}
                           </h3>
                           <div className="grid grid-cols-5 gap-4 text-sm">
                             <div>
-                              <div className="text-gray-600">Date Identified</div>
+                              <div className="text-slate-300">Date Identified</div>
                               <div className="font-medium">
                                 {new Date(incident.dateIdentified).toLocaleDateString('en-AU')}
                               </div>
                             </div>
                             <div>
-                              <div className="text-gray-600">Impacted Clients</div>
+                              <div className="text-slate-300">Impacted Clients</div>
                               <div className="font-medium">{incident.impactedClients}</div>
                             </div>
                             <div>
-                              <div className="text-gray-600">Financial Impact</div>
+                              <div className="text-slate-300">Financial Impact</div>
                               <div className="font-medium">{incident.financialImpact}</div>
                             </div>
                             <div>
-                              <div className="text-gray-600">Status</div>
+                              <div className="text-slate-300">Status</div>
                               <Badge variant="outline">{incident.status}</Badge>
                             </div>
                             <div>
-                              <div className="text-gray-600">Assigned To</div>
+                              <div className="text-slate-300">Assigned To</div>
                               <div className="font-medium">{incident.assignedTo}</div>
                             </div>
                           </div>
                           {incident.reportable && (
-                            <div className="mt-4 p-3 bg-white rounded border flex items-center justify-between">
+                            <div className="mt-4 p-3 bg-[#0d121d] rounded border flex items-center justify-between">
                               <div className="flex items-center gap-3">
                                 <Clock className="w-5 h-5 text-red-600" />
                                 <div>
-                                  <div className="text-sm font-semibold text-gray-900">
+                                  <div className="text-sm font-semibold text-white">
                                     Report to {incident.reportingBody}
                                   </div>
-                                  <div className="text-xs text-gray-600">
+                                  <div className="text-xs text-slate-300">
                                     {incident.daysToReport} days remaining
                                   </div>
                                 </div>
@@ -505,7 +505,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                 <CardContent className="p-12 text-center">
                   <AlertCircle className="w-16 h-16 text-blue-600 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">Significance Test Engine</h3>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-slate-300 mb-6">
                     Answer 5 questions to determine if an incident is reportable to regulators
                   </p>
                   <Button onClick={() => setShowSignificanceTest(true)}>
@@ -546,7 +546,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                             <div className="grid grid-cols-2 gap-6">
                               <div>
                                 <div className="flex items-center justify-between mb-2">
-                                  <span className="text-sm font-medium text-gray-700">
+                                  <span className="text-sm font-medium text-slate-300">
                                     30-Day Reporting Clock
                                   </span>
                                   <span className={`text-sm font-bold ${
@@ -565,7 +565,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
 
                               <div>
                                 <div className="flex items-center justify-between mb-2">
-                                  <span className="text-sm font-medium text-gray-700">
+                                  <span className="text-sm font-medium text-slate-300">
                                     90-Day Investigation Clock
                                   </span>
                                   <span className="text-sm font-bold text-green-600">
@@ -627,7 +627,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                 <div className="space-y-6">
                   {timeline.map((entry, idx) => (
                     <div key={idx} className="flex items-start gap-4">
-                      <div className="w-32 flex-shrink-0 text-sm text-gray-600">
+                      <div className="w-32 flex-shrink-0 text-sm text-slate-300">
                         {entry.date}
                       </div>
                       <div className={`w-3 h-3 rounded-full flex-shrink-0 mt-1 ${
@@ -638,12 +638,12 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                       }`} />
                       <div className="flex-1 pb-6 border-b last:border-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-semibold text-gray-900">{entry.action}</span>
+                          <span className="font-semibold text-white">{entry.action}</span>
                           <Badge variant="outline" className="text-xs">
                             {entry.user}
                           </Badge>
                         </div>
-                        <p className="text-sm text-gray-700">{entry.description}</p>
+                        <p className="text-sm text-slate-300">{entry.description}</p>
                       </div>
                     </div>
                   ))}

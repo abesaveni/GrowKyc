@@ -215,7 +215,7 @@ export function NCCPResponsibleLendingModule() {
       case 'suitable': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
       case 'marginal': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'unsuitable': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -263,18 +263,18 @@ export function NCCPResponsibleLendingModule() {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-gray-600 dark:text-gray-400">Net Surplus After Buffers</div>
+              <div className="text-sm text-slate-300 dark:text-slate-400">Net Surplus After Buffers</div>
               <div className={`text-3xl font-bold ${assessment.servicing.surplusAfterBuffers > 0 ? 'text-green-600' : 'text-red-600'}`}>
                 ${assessment.servicing.surplusAfterBuffers.toLocaleString()}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">per month</div>
+              <div className="text-sm text-slate-300 dark:text-slate-400">per month</div>
             </div>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="flex border-b border-white/10 dark:border-gray-700">
             {[
               { id: 'consumer', label: 'Consumer Profile', icon: User },
               { id: 'verification', label: 'Verification Hub', icon: CheckCircle },
@@ -287,7 +287,7 @@ export function NCCPResponsibleLendingModule() {
                 className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors ${
                   activeTab === tab.id
                     ? 'bg-[#13B5EA] text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-slate-300 dark:text-slate-400 hover:bg-white/5 dark:hover:bg-gray-700'
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
@@ -301,14 +301,14 @@ export function NCCPResponsibleLendingModule() {
             {activeTab === 'consumer' && (
               <div className="space-y-6">
                 {/* Objectives */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('objectives')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <TrendingUp className="w-5 h-5 text-[#13B5EA]" />
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">Objectives</h3>
+                      <h3 className="text-lg font-bold text-white dark:text-white">Objectives</h3>
                     </div>
                     {expandedSections.objectives ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </button>
@@ -316,32 +316,32 @@ export function NCCPResponsibleLendingModule() {
                     <div className="p-6 space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Primary Purpose</div>
-                          <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                          <div className="text-sm text-slate-400 mb-1">Primary Purpose</div>
+                          <div className="text-lg font-semibold text-white dark:text-white">
                             {consumerProfile.objectives.primaryPurpose}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Loan Amount</div>
-                          <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                          <div className="text-sm text-slate-400 mb-1">Loan Amount</div>
+                          <div className="text-lg font-semibold text-white dark:text-white">
                             ${consumerProfile.objectives.loanAmount.toLocaleString()}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Loan Term</div>
-                          <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                          <div className="text-sm text-slate-400 mb-1">Loan Term</div>
+                          <div className="text-lg font-semibold text-white dark:text-white">
                             {consumerProfile.objectives.loanTerm} years
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Repayment Frequency</div>
-                          <div className="text-lg font-semibold text-gray-900 dark:text-white capitalize">
+                          <div className="text-sm text-slate-400 mb-1">Repayment Frequency</div>
+                          <div className="text-lg font-semibold text-white dark:text-white capitalize">
                             {consumerProfile.objectives.preferredRepayment}
                           </div>
                         </div>
                       </div>
                       <div>
-                        <div className="text-sm text-gray-500 mb-2">Consumer Goals</div>
+                        <div className="text-sm text-slate-400 mb-2">Consumer Goals</div>
                         <div className="flex flex-wrap gap-2">
                           {consumerProfile.objectives.goals.map((goal, i) => (
                             <span key={i} className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">
@@ -355,14 +355,14 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Financial Situation */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('financial')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <Briefcase className="w-5 h-5 text-[#13B5EA]" />
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">Financial Situation & Employment</h3>
+                      <h3 className="text-lg font-bold text-white dark:text-white">Financial Situation & Employment</h3>
                     </div>
                     {expandedSections.financial ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </button>
@@ -370,34 +370,34 @@ export function NCCPResponsibleLendingModule() {
                     <div className="p-6 space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Employment Status</div>
-                          <div className="text-base font-semibold text-gray-900 dark:text-white capitalize">
+                          <div className="text-sm text-slate-400 mb-1">Employment Status</div>
+                          <div className="text-base font-semibold text-white dark:text-white capitalize">
                             {consumerProfile.financialSituation.employmentStatus.replace('-', ' ')}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Occupation</div>
-                          <div className="text-base font-semibold text-gray-900 dark:text-white">
+                          <div className="text-sm text-slate-400 mb-1">Occupation</div>
+                          <div className="text-base font-semibold text-white dark:text-white">
                             {consumerProfile.financialSituation.occupation}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Employer</div>
-                          <div className="text-base font-semibold text-gray-900 dark:text-white">
+                          <div className="text-sm text-slate-400 mb-1">Employer</div>
+                          <div className="text-base font-semibold text-white dark:text-white">
                             {consumerProfile.financialSituation.employer}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Employment Duration</div>
-                          <div className="text-base font-semibold text-gray-900 dark:text-white">
+                          <div className="text-sm text-slate-400 mb-1">Employment Duration</div>
+                          <div className="text-base font-semibold text-white dark:text-white">
                             {Math.floor(consumerProfile.financialSituation.employmentDuration / 12)} years {consumerProfile.financialSituation.employmentDuration % 12} months
                           </div>
                         </div>
                       </div>
 
-                      <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <div className="pt-4 border-t border-white/10 dark:border-gray-700">
                         <div className="flex items-center justify-between mb-3">
-                          <h4 className="font-bold text-gray-900 dark:text-white">Gross Monthly Income</h4>
+                          <h4 className="font-bold text-white dark:text-white">Gross Monthly Income</h4>
                           {consumerProfile.financialSituation.grossIncome.verified && (
                             <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 rounded-full text-xs flex items-center gap-1">
                               <CheckCircle className="w-3 h-3" />
@@ -406,21 +406,21 @@ export function NCCPResponsibleLendingModule() {
                           )}
                         </div>
                         <div className="grid grid-cols-2 gap-3">
-                          <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                            <div className="text-xs text-gray-500">Salary</div>
-                            <div className="text-lg font-bold text-gray-900 dark:text-white">
+                          <div className="p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                            <div className="text-xs text-slate-400">Salary</div>
+                            <div className="text-lg font-bold text-white dark:text-white">
                               ${consumerProfile.financialSituation.grossIncome.salary.toLocaleString()}
                             </div>
                           </div>
-                          <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                            <div className="text-xs text-gray-500">Total Income</div>
-                            <div className="text-lg font-bold text-gray-900 dark:text-white">
+                          <div className="p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                            <div className="text-xs text-slate-400">Total Income</div>
+                            <div className="text-lg font-bold text-white dark:text-white">
                               ${consumerProfile.financialSituation.grossIncome.total.toLocaleString()}
                             </div>
                           </div>
                         </div>
                         {consumerProfile.financialSituation.grossIncome.verified && (
-                          <div className="mt-3 text-xs text-gray-600 dark:text-gray-400">
+                          <div className="mt-3 text-xs text-slate-300 dark:text-slate-400">
                             Verified by {consumerProfile.financialSituation.grossIncome.verifiedBy} on{' '}
                             {consumerProfile.financialSituation.grossIncome.verificationDate.toLocaleDateString()}
                             {' • Evidence: '}
@@ -435,34 +435,34 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Dependants */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('dependants')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <Users className="w-5 h-5 text-[#13B5EA]" />
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">Dependants</h3>
+                      <h3 className="text-lg font-bold text-white dark:text-white">Dependants</h3>
                     </div>
                     {expandedSections.dependants ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </button>
                   {expandedSections.dependants && (
                     <div className="p-6">
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg text-center">
-                          <div className="text-sm text-gray-500 mb-1">Adults</div>
-                          <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                        <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg text-center">
+                          <div className="text-sm text-slate-400 mb-1">Adults</div>
+                          <div className="text-2xl font-bold text-white dark:text-white">
                             {consumerProfile.dependants.adults}
                           </div>
                         </div>
-                        <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg text-center">
-                          <div className="text-sm text-gray-500 mb-1">Children</div>
-                          <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                        <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg text-center">
+                          <div className="text-sm text-slate-400 mb-1">Children</div>
+                          <div className="text-2xl font-bold text-white dark:text-white">
                             {consumerProfile.dependants.children}
                           </div>
                         </div>
                         <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
-                          <div className="text-sm text-gray-500 mb-1">Total</div>
+                          <div className="text-sm text-slate-400 mb-1">Total</div>
                           <div className="text-2xl font-bold text-blue-600">
                             {consumerProfile.dependants.totalDependants}
                           </div>
@@ -473,25 +473,25 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Existing Commitments */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('commitments')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <CreditCard className="w-5 h-5 text-[#13B5EA]" />
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">Existing Commitments</h3>
+                      <h3 className="text-lg font-bold text-white dark:text-white">Existing Commitments</h3>
                     </div>
                     {expandedSections.commitments ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </button>
                   {expandedSections.commitments && (
                     <div className="p-6 space-y-4">
                       <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Credit Cards</h4>
+                        <h4 className="font-semibold text-white dark:text-white mb-3">Credit Cards</h4>
                         {consumerProfile.existingCommitments.creditCards.map((card, i) => (
-                          <div key={i} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg mb-2">
+                          <div key={i} className="p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg mb-2">
                             <div className="flex items-center justify-between mb-2">
-                              <div className="font-semibold text-gray-900 dark:text-white">{card.issuer}</div>
+                              <div className="font-semibold text-white dark:text-white">{card.issuer}</div>
                               {card.verified && (
                                 <span className="text-green-600 text-xs flex items-center gap-1">
                                   <CheckCircle className="w-3 h-3" />
@@ -501,15 +501,15 @@ export function NCCPResponsibleLendingModule() {
                             </div>
                             <div className="grid grid-cols-3 gap-3 text-sm">
                               <div>
-                                <div className="text-gray-500">Limit</div>
+                                <div className="text-slate-400">Limit</div>
                                 <div className="font-semibold">${card.limit.toLocaleString()}</div>
                               </div>
                               <div>
-                                <div className="text-gray-500">Balance</div>
+                                <div className="text-slate-400">Balance</div>
                                 <div className="font-semibold">${card.balance.toLocaleString()}</div>
                               </div>
                               <div>
-                                <div className="text-gray-500">Min Payment</div>
+                                <div className="text-slate-400">Min Payment</div>
                                 <div className="font-semibold">${card.minPayment.toLocaleString()}/mo</div>
                               </div>
                             </div>
@@ -526,82 +526,82 @@ export function NCCPResponsibleLendingModule() {
             {activeTab === 'assessment' && (
               <div className="space-y-6">
                 {/* Income Summary */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Income</h3>
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                  <h3 className="text-lg font-bold text-white dark:text-white mb-4">Income</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Gross Monthly Income</div>
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Gross Monthly Income</div>
                       <div className="text-2xl font-bold text-green-600">${assessment.income.grossMonthly.toLocaleString()}</div>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Net Monthly Income</div>
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Net Monthly Income</div>
                       <div className="text-2xl font-bold text-blue-600">${assessment.income.netMonthly.toLocaleString()}</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Expenses Breakdown */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">Monthly Expenses</h3>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                    <h3 className="text-lg font-bold text-white dark:text-white">Monthly Expenses</h3>
+                    <span className="text-sm text-slate-300 dark:text-slate-400">
                       Method: {assessment.expenses.method.toUpperCase()}
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     {Object.entries(assessment.expenses).filter(([key]) => !['total', 'method'].includes(key)).map(([key, value]) => (
-                      <div key={key} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">{key}</span>
-                        <span className="text-sm font-bold text-gray-900 dark:text-white">${(value as number).toLocaleString()}</span>
+                      <div key={key} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                        <span className="text-sm font-medium text-slate-300 dark:text-gray-300 capitalize">{key}</span>
+                        <span className="text-sm font-bold text-white dark:text-white">${(value as number).toLocaleString()}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="pt-4 border-t border-white/10 dark:border-gray-700">
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-gray-900 dark:text-white">Total Expenses</span>
+                      <span className="text-lg font-bold text-white dark:text-white">Total Expenses</span>
                       <span className="text-2xl font-bold text-red-600">${assessment.expenses.total.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Servicing Calculation */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Servicing Calculation</h3>
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                  <h3 className="text-lg font-bold text-white dark:text-white mb-4">Servicing Calculation</h3>
                   
                   <div className="space-y-4">
-                    <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Proposed Loan Repayment</div>
-                      <div className="text-xl font-bold text-gray-900 dark:text-white">
+                    <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Proposed Loan Repayment</div>
+                      <div className="text-xl font-bold text-white dark:text-white">
                         ${assessment.proposedLoan.monthlyRepayment.toLocaleString()}/month
                       </div>
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-slate-400 mt-1">
                         ${assessment.proposedLoan.amount.toLocaleString()} @ {assessment.proposedLoan.rate}% over {assessment.proposedLoan.term} years
                       </div>
                     </div>
 
                     <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Buffer Applied</div>
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Buffer Applied</div>
                       <div className="text-xl font-bold text-blue-600">
                         +${assessment.buffers.bufferAmount.toLocaleString()}/month
                       </div>
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-slate-400 mt-1">
                         {assessment.buffers.interestRateBuffer}% rate buffer (assessed at {assessment.buffers.assessmentRate}%)
                       </div>
                     </div>
 
                     <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Monthly Commitments</div>
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Total Monthly Commitments</div>
                       <div className="text-2xl font-bold text-orange-600">
                         ${assessment.servicing.totalMonthlyCommitments.toLocaleString()}
                       </div>
                     </div>
 
                     <div className={`p-4 rounded-lg ${assessment.servicing.netSurplus > 0 ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Net Surplus (After Buffers)</div>
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Net Surplus (After Buffers)</div>
                       <div className={`text-3xl font-bold ${assessment.servicing.netSurplus > 0 ? 'text-green-600' : 'text-red-600'}`}>
                         ${assessment.servicing.surplusAfterBuffers.toLocaleString()}
                       </div>
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-slate-400 mt-1">
                         Servicing Ratio: {assessment.servicing.servicingRatio}%
                       </div>
                     </div>
@@ -640,9 +640,9 @@ export function NCCPResponsibleLendingModule() {
 
             {/* Verification Hub Tab */}
             {activeTab === 'verification' && (
-              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Verification Hub</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
+              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <h3 className="text-lg font-bold text-white dark:text-white mb-4">Verification Hub</h3>
+                <p className="text-slate-300 dark:text-slate-400 mb-4">
                   All income, expenses, and liability information linked to supporting evidence with verification status and audit trail.
                 </p>
                 <div className="space-y-3">
@@ -652,12 +652,12 @@ export function NCCPResponsibleLendingModule() {
                     { field: 'Credit Card - CommBank', status: 'verified', evidence: 'EV-2024-003', verifiedBy: 'System (Equifax)', date: '2024-03-20' },
                     { field: 'Residential Address', status: 'verified', evidence: 'EV-2024-004', verifiedBy: 'compliance@growkyc.com', date: '2024-03-20' }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         <div>
-                          <div className="font-semibold text-gray-900 dark:text-white">{item.field}</div>
-                          <div className="text-xs text-gray-500">
+                          <div className="font-semibold text-white dark:text-white">{item.field}</div>
+                          <div className="text-xs text-slate-400">
                             Verified by {item.verifiedBy} • {item.date}
                           </div>
                         </div>
@@ -679,20 +679,20 @@ export function NCCPResponsibleLendingModule() {
 
             {/* Disclosure Register Tab */}
             {activeTab === 'disclosure' && (
-              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">NCCP Disclosure Register</h3>
+              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <h3 className="text-lg font-bold text-white dark:text-white mb-4">NCCP Disclosure Register</h3>
                 <div className="space-y-3">
                   {[
                     { document: 'Credit Guide', issued: '2024-03-15', acknowledged: '2024-03-15', status: 'complete' },
                     { document: 'Credit Proposal Disclosure', issued: '2024-03-18', acknowledged: '2024-03-18', status: 'complete' },
                     { document: 'Pre-contractual Statement', issued: '2024-03-20', acknowledged: null, status: 'pending' }
                   ].map((doc, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
                         <FileText className="w-5 h-5 text-[#13B5EA]" />
                         <div>
-                          <div className="font-semibold text-gray-900 dark:text-white">{doc.document}</div>
-                          <div className="text-xs text-gray-500">
+                          <div className="font-semibold text-white dark:text-white">{doc.document}</div>
+                          <div className="text-xs text-slate-400">
                             Issued: {doc.issued} {doc.acknowledged && `• Acknowledged: ${doc.acknowledged}`}
                           </div>
                         </div>

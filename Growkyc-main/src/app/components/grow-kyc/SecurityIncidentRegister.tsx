@@ -149,7 +149,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -165,7 +165,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <p className="text-sm text-white/90">ISO 27001 Incident Management & Response</p>
             </div>
           </div>
-          <Button className="bg-white text-[#13B5EA] hover:bg-gray-100">
+          <Button className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/5">
             <Flag className="w-4 h-4 mr-2" />
             Report Incident
           </Button>
@@ -173,35 +173,35 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
+      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-7 gap-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-gray-900">{stats.total}</div>
-            <div className="text-xs text-gray-600 mt-1">Total Incidents</div>
+            <div className="text-3xl font-bold text-white">{stats.total}</div>
+            <div className="text-xs text-slate-300 mt-1">Total Incidents</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-600">{stats.open}</div>
-            <div className="text-xs text-gray-600 mt-1">Open</div>
+            <div className="text-xs text-slate-300 mt-1">Open</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-amber-600">{stats.investigating}</div>
-            <div className="text-xs text-gray-600 mt-1">Investigating</div>
+            <div className="text-xs text-slate-300 mt-1">Investigating</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-600">{stats.contained}</div>
-            <div className="text-xs text-gray-600 mt-1">Contained</div>
+            <div className="text-xs text-slate-300 mt-1">Contained</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-gray-600">{stats.closed}</div>
-            <div className="text-xs text-gray-600 mt-1">Closed</div>
+            <div className="text-3xl font-bold text-slate-300">{stats.closed}</div>
+            <div className="text-xs text-slate-300 mt-1">Closed</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-600">{stats.critical}</div>
-            <div className="text-xs text-gray-600 mt-1">Critical</div>
+            <div className="text-xs text-slate-300 mt-1">Critical</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{stats.regulatorNotifications}</div>
-            <div className="text-xs text-gray-600 mt-1">Regulator Notifications</div>
+            <div className="text-xs text-slate-300 mt-1">Regulator Notifications</div>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   className={`border-2 ${
                     incident.severity === 'Critical' ? 'border-red-300 bg-red-50' :
                     incident.severity === 'High' ? 'border-orange-300 bg-orange-50' :
-                    'border-gray-200'
+                    'border-white/10'
                   } hover:border-cyan-300 transition-colors`}
                 >
                   <CardContent className="p-6">
@@ -251,9 +251,9 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                         <div className="flex items-center gap-2 mb-2">
                           <AlertTriangle className="w-5 h-5 text-red-600" />
                           <div>
-                            <div className="font-bold text-gray-900">{incident.incidentId}</div>
-                            <div className="text-sm text-gray-700">{incident.type}</div>
-                            <div className="text-xs text-gray-600">{incident.dateDetected}</div>
+                            <div className="font-bold text-white">{incident.incidentId}</div>
+                            <div className="text-sm text-slate-300">{incident.type}</div>
+                            <div className="text-xs text-slate-300">{incident.dateDetected}</div>
                           </div>
                         </div>
                       </div>
@@ -274,17 +274,17 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                       <div className="md:col-span-3">
                         <div className="space-y-1 text-sm">
                           <div className="flex items-center gap-2">
-                            <Server className="w-4 h-4 text-gray-600" />
+                            <Server className="w-4 h-4 text-slate-300" />
                             <div>
-                              <div className="text-xs text-gray-600">Affected System</div>
-                              <div className="font-semibold text-gray-900">{incident.affectedSystem}</div>
+                              <div className="text-xs text-slate-300">Affected System</div>
+                              <div className="font-semibold text-white">{incident.affectedSystem}</div>
                             </div>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Database className="w-4 h-4 text-gray-600" />
+                            <Database className="w-4 h-4 text-slate-300" />
                             <div>
-                              <div className="text-xs text-gray-600">Data Classification</div>
-                              <div className="font-semibold text-gray-900">{incident.dataClassification}</div>
+                              <div className="text-xs text-slate-300">Data Classification</div>
+                              <div className="font-semibold text-white">{incident.dataClassification}</div>
                             </div>
                           </div>
                         </div>
@@ -294,8 +294,8 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                       <div className="md:col-span-2">
                         <div className="space-y-2 text-sm">
                           <div className="flex items-center gap-1">
-                            <User className="w-3 h-3 text-gray-600" />
-                            <span className="text-gray-700">{incident.investigationOwner}</span>
+                            <User className="w-3 h-3 text-slate-300" />
+                            <span className="text-slate-300">{incident.investigationOwner}</span>
                           </div>
                           {incident.recordsAffected > 0 && (
                             <Badge className="bg-red-600">
@@ -337,9 +337,9 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                     </div>
 
                     {/* Containment Action */}
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <div className="text-xs text-gray-600 mb-1">Containment Action:</div>
-                      <div className="text-sm text-gray-900">{incident.containmentAction}</div>
+                    <div className="mt-4 pt-4 border-t border-white/10">
+                      <div className="text-xs text-slate-300 mb-1">Containment Action:</div>
+                      <div className="text-sm text-white">{incident.containmentAction}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -365,27 +365,27 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   </h3>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
                     <div>
-                      <span className="text-gray-600">Incident ID: </span>
+                      <span className="text-slate-300">Incident ID: </span>
                       <span className="font-semibold">SEC-2024-002</span>
                     </div>
                     <div>
-                      <span className="text-gray-600">Type: </span>
+                      <span className="text-slate-300">Type: </span>
                       <span className="font-semibold">Data Breach</span>
                     </div>
                     <div>
-                      <span className="text-gray-600">Detected: </span>
+                      <span className="text-slate-300">Detected: </span>
                       <span className="font-semibold">2024-03-15 14:20:00</span>
                     </div>
                     <div>
-                      <span className="text-gray-600">Severity: </span>
+                      <span className="text-slate-300">Severity: </span>
                       <Badge className="bg-red-600">Critical</Badge>
                     </div>
                     <div>
-                      <span className="text-gray-600">Records Affected: </span>
+                      <span className="text-slate-300">Records Affected: </span>
                       <Badge className="bg-red-600">47 clients</Badge>
                     </div>
                     <div>
-                      <span className="text-gray-600">Investigation Owner: </span>
+                      <span className="text-slate-300">Investigation Owner: </span>
                       <span className="font-semibold">Sarah Chen</span>
                     </div>
                   </div>
@@ -591,11 +591,11 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <CardContent className="p-6">
                 <div className="space-y-4">
                   {incidents.filter(i => i.status === 'Closed').map((incident) => (
-                    <div key={incident.incidentId} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div key={incident.incidentId} className="p-4 bg-[#0a0e17] rounded-lg border border-white/10">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <div className="font-bold text-gray-900">{incident.incidentId} - {incident.type}</div>
-                          <div className="text-sm text-gray-600">Closed: {incident.closureDate}</div>
+                          <div className="font-bold text-white">{incident.incidentId} - {incident.type}</div>
+                          <div className="text-sm text-slate-300">Closed: {incident.closureDate}</div>
                         </div>
                         <Badge className={getSeverityColor(incident.severity)}>
                           {incident.severity}
@@ -603,17 +603,17 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                       </div>
                       
                       <div className="space-y-3 text-sm">
-                        <div className="p-3 bg-white rounded border border-gray-200">
-                          <div className="text-xs text-gray-600 mb-1">Root Cause:</div>
-                          <div className="text-gray-900">
+                        <div className="p-3 bg-[#0d121d] rounded border border-white/10">
+                          <div className="text-xs text-slate-300 mb-1">Root Cause:</div>
+                          <div className="text-white">
                             {incident.type === 'Phishing Attack' && 'Staff member clicked malicious link in spoofed email'}
                             {incident.type === 'System Misconfiguration' && 'Incorrect permission settings during system update'}
                           </div>
                         </div>
 
                         <div className="p-3 bg-green-50 rounded border border-green-200">
-                          <div className="text-xs text-gray-600 mb-1">Preventative Measures Implemented:</div>
-                          <ul className="text-gray-900 space-y-1">
+                          <div className="text-xs text-slate-300 mb-1">Preventative Measures Implemented:</div>
+                          <ul className="text-white space-y-1">
                             {incident.type === 'Phishing Attack' && (
                               <>
                                 <li>• Enhanced email filtering and anti-phishing tools</li>
@@ -650,8 +650,8 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* By Type */}
-                  <div className="p-4 bg-white rounded-lg border-2 border-indigo-200">
-                    <h3 className="font-bold text-gray-900 mb-4">Incidents by Type</h3>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                    <h3 className="font-bold text-white mb-4">Incidents by Type</h3>
                     <div className="space-y-2">
                       {[
                         { type: 'Data Breach', count: 1, color: 'bg-red-600' },
@@ -660,13 +660,13 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                         { type: 'Malware Detection', count: 1, color: 'bg-purple-600' },
                         { type: 'System Misconfiguration', count: 1, color: 'bg-blue-600' }
                       ].map((item, idx) => (
-                        <div key={idx} className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                          <span className="text-sm text-gray-700">{item.type}</span>
+                        <div key={idx} className="flex items-center justify-between p-2 bg-[#0a0e17] rounded">
+                          <span className="text-sm text-slate-300">{item.type}</span>
                           <div className="flex items-center gap-2">
                             <div className="w-20 bg-gray-200 rounded-full h-2">
                               <div className={`${item.color} h-2 rounded-full`} style={{ width: `${(item.count / stats.total) * 100}%` }} />
                             </div>
-                            <span className="text-sm font-bold text-gray-900 w-4">{item.count}</span>
+                            <span className="text-sm font-bold text-white w-4">{item.count}</span>
                           </div>
                         </div>
                       ))}
@@ -674,8 +674,8 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   </div>
 
                   {/* By Severity */}
-                  <div className="p-4 bg-white rounded-lg border-2 border-indigo-200">
-                    <h3 className="font-bold text-gray-900 mb-4">Incidents by Severity</h3>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                    <h3 className="font-bold text-white mb-4">Incidents by Severity</h3>
                     <div className="space-y-3">
                       {[
                         { severity: 'Critical', count: stats.critical, color: 'bg-red-600' },
@@ -685,24 +685,24 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center justify-between">
                           <Badge className={item.color}>{item.severity}</Badge>
-                          <span className="text-2xl font-bold text-gray-900">{item.count}</span>
+                          <span className="text-2xl font-bold text-white">{item.count}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Mean Time to Contain */}
-                  <div className="p-4 bg-white rounded-lg border-2 border-green-200">
-                    <h3 className="font-bold text-gray-900 mb-2">Mean Time to Contain</h3>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-green-200">
+                    <h3 className="font-bold text-white mb-2">Mean Time to Contain</h3>
                     <div className="text-4xl font-bold text-green-600">4.2 hrs</div>
-                    <p className="text-sm text-gray-600 mt-1">Average containment time</p>
+                    <p className="text-sm text-slate-300 mt-1">Average containment time</p>
                   </div>
 
                   {/* Mean Time to Resolve */}
-                  <div className="p-4 bg-white rounded-lg border-2 border-blue-200">
-                    <h3 className="font-bold text-gray-900 mb-2">Mean Time to Resolve</h3>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-blue-200">
+                    <h3 className="font-bold text-white mb-2">Mean Time to Resolve</h3>
                     <div className="text-4xl font-bold text-blue-600">2.3 days</div>
-                    <p className="text-sm text-gray-600 mt-1">Average resolution time</p>
+                    <p className="text-sm text-slate-300 mt-1">Average resolution time</p>
                   </div>
                 </div>
               </CardContent>

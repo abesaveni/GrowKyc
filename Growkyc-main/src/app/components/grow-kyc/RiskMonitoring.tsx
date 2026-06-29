@@ -23,7 +23,7 @@ export function RiskMonitoring({ onViewClient, onBack }: RiskMonitoringProps) {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <p className="text-gray-600">Real-time monitoring dashboard coming soon...</p>
+          <p className="text-slate-300">Real-time monitoring dashboard coming soon...</p>
         </CardContent>
       </Card>
     </div>

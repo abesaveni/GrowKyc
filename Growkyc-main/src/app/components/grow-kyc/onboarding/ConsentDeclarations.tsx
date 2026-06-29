@@ -56,7 +56,7 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
         </Card>
 
         <div className="space-y-4">
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
             <Checkbox
               id="consent1"
               checked={consents.informationCorrect}
@@ -65,14 +65,14 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent1" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-gray-900">I confirm the information provided is correct</span>
-              <p className="text-gray-600 mt-1">
+              <span className="font-semibold text-white">I confirm the information provided is correct</span>
+              <p className="text-slate-300 mt-1">
                 I declare that all information provided is true and accurate to the best of my knowledge.
               </p>
             </label>
           </div>
 
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
             <Checkbox
               id="consent2"
               checked={consents.identityVerification}
@@ -81,14 +81,14 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent2" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-gray-900">I consent to identity verification</span>
-              <p className="text-gray-600 mt-1">
+              <span className="font-semibold text-white">I consent to identity verification</span>
+              <p className="text-slate-300 mt-1">
                 I authorize verification of my identity using third-party verification services.
               </p>
             </label>
           </div>
 
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
             <Checkbox
               id="consent3"
               checked={consents.ongoingMonitoring}
@@ -97,14 +97,14 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent3" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-gray-900">I consent to ongoing monitoring</span>
-              <p className="text-gray-600 mt-1">
+              <span className="font-semibold text-white">I consent to ongoing monitoring</span>
+              <p className="text-slate-300 mt-1">
                 I understand my profile will be subject to ongoing compliance monitoring.
               </p>
             </label>
           </div>
 
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
             <Checkbox
               id="consent4"
               checked={consents.notifyChanges}
@@ -113,8 +113,8 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent4" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-gray-900">I will notify of material changes</span>
-              <p className="text-gray-600 mt-1">
+              <span className="font-semibold text-white">I will notify of material changes</span>
+              <p className="text-slate-300 mt-1">
                 I agree to notify any material changes to the information provided within 30 days.
               </p>
             </label>
@@ -125,13 +125,13 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
         <Card className="border-2">
           <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
-              <PenTool className="w-5 h-5 text-gray-700" />
+              <PenTool className="w-5 h-5 text-slate-300" />
               <CardTitle className="text-base">Digital Signature</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-slate-300">
                 Type your full name to sign *
               </label>
               <input

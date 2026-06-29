@@ -484,14 +484,14 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         ← Back to Dashboard
       </Button>
       
-      <div className="bg-white rounded-xl shadow-lg border-2 border-blue-100 p-8">
+      <div className="bg-[#0d121d] rounded-xl shadow-lg border-2 border-blue-100 p-8">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
             <User className="w-8 h-8 text-blue-600" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Review: {client.name}</h1>
-            <p className="text-gray-600">Detailed compliance review and AML/CTF assessment</p>
+            <h1 className="text-3xl font-bold text-white">Review: {client.name}</h1>
+            <p className="text-slate-300">Detailed compliance review and AML/CTF assessment</p>
           </div>
         </div>
         
@@ -519,8 +519,8 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         </div>
 
         <div className="space-y-6">
-          <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <div className="p-6 bg-[#0a0e17] rounded-lg border border-white/10">
+            <h3 className="font-bold text-white mb-4 flex items-center gap-2">
               <Shield className="w-5 h-5 text-blue-600" />
               Verification Checkpoints
             </h3>
@@ -572,10 +572,10 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                     : 'Standard CDD',
                   color: (client.riskScores?.overall >= 75 || client.amlData?.pepStatus !== 'Not PEP' || client.ownershipData?.complexStructure || client.amlData?.adverseMediaHits > 0)
                     ? 'text-red-600 font-bold'
-                    : 'text-gray-500'
+                    : 'text-slate-400'
                 }
               ].map((check, i) => (
-                <div key={i} className="flex items-center justify-between p-3 bg-white rounded border">
+                <div key={i} className="flex items-center justify-between p-3 bg-[#0d121d] rounded border">
                   <span className="text-sm font-medium">{check.label}</span>
                   <span className={`text-sm font-bold ${check.color}`}>{check.status}</span>
                 </div>
@@ -665,7 +665,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
       {/* ==================== PREMIUM REQUEST MORE INFO DIALOG ==================== */}
       {showInfoModal && (
         <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl border border-gray-100 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-[#0d121d] rounded-2xl shadow-2xl w-full max-w-2xl border border-white/10 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Header */}
             <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -688,7 +688,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
               
               {/* Category selector */}
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <label className="block text-sm font-bold text-white mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-3.5 bg-amber-500 rounded-full" />
                   Select Document Categories Required
                 </label>
@@ -705,7 +705,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                       className={`flex items-start gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${
                         selectedDocs[doc.id] 
                           ? 'bg-amber-50/70 border-amber-400 shadow-sm' 
-                          : 'bg-white border-gray-200 hover:bg-gray-50'
+                          : 'bg-[#0d121d] border-white/10 hover:bg-white/5'
                       }`}
                     >
                       <input 
@@ -715,8 +715,8 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                         className="mt-1 h-4 w-4 rounded border-gray-300 text-amber-600 focus:ring-amber-500"
                       />
                       <div>
-                        <div className="text-xs font-bold text-gray-900">{doc.label}</div>
-                        <div className="text-[10px] text-gray-500 mt-0.5">{doc.desc}</div>
+                        <div className="text-xs font-bold text-white">{doc.label}</div>
+                        <div className="text-[10px] text-slate-400 mt-0.5">{doc.desc}</div>
                       </div>
                     </label>
                   ))}
@@ -725,7 +725,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
 
               {/* Guidelines textarea */}
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-bold text-white mb-2 flex items-center gap-2">
                   <span className="w-1.5 h-3.5 bg-amber-500 rounded-full" />
                   Custom Compliance Guidelines & Instructions
                 </label>
@@ -734,14 +734,14 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                   value={customInstructions}
                   onChange={(e) => setCustomInstructions(e.target.value)}
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-xs text-gray-800 leading-relaxed font-mono"
+                  className="w-full px-4 py-3 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-xs text-white leading-relaxed font-mono"
                   placeholder="Explain exactly what the client needs to upload..."
                 />
               </div>
 
               {/* Urgency settings */}
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <label className="block text-sm font-bold text-white mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-3.5 bg-amber-500 rounded-full" />
                   Request Priority Urgency Level
                 </label>
@@ -756,7 +756,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                       className={`flex-1 flex items-center justify-center p-3 rounded-xl border-2 cursor-pointer text-xs font-bold transition-all ${
                         urgency === opt.level
                           ? `${opt.color} border-current shadow-md ring-1 ring-current`
-                          : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                          : 'bg-[#0d121d] border-white/10 text-slate-300 hover:bg-white/5'
                       }`}
                     >
                       <input 
@@ -781,7 +781,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
                 <Button 
                   type="button"
                   variant="outline"

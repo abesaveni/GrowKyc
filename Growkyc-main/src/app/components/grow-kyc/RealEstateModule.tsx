@@ -154,12 +154,12 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-gray-600 bg-gray-100 border-gray-300';
+      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-teal-600 via-green-600 to-emerald-600 text-white px-8 py-12">
         <Button
@@ -305,7 +305,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
 
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-xl font-bold text-gray-900">{txn.propertyAddress}</h3>
+                            <h3 className="text-xl font-bold text-white">{txn.propertyAddress}</h3>
                             <Badge className={getTransactionTypeColor(txn.transactionType)}>
                               {txn.transactionType}
                             </Badge>
@@ -323,30 +323,30 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                           </div>
 
                           <div className="grid grid-cols-2 gap-4 mb-4">
-                            <div className="p-3 bg-white rounded-lg border border-gray-200">
-                              <div className="text-xs text-gray-600 mb-1">Vendor</div>
-                              <div className="font-semibold text-gray-900">{txn.vendor}</div>
+                            <div className="p-3 bg-[#0d121d] rounded-lg border border-white/10">
+                              <div className="text-xs text-slate-300 mb-1">Vendor</div>
+                              <div className="font-semibold text-white">{txn.vendor}</div>
                             </div>
-                            <div className="p-3 bg-white rounded-lg border border-gray-200">
-                              <div className="text-xs text-gray-600 mb-1">Purchaser</div>
+                            <div className="p-3 bg-[#0d121d] rounded-lg border border-white/10">
+                              <div className="text-xs text-slate-300 mb-1">Purchaser</div>
                               <div className="flex items-center gap-2">
-                                <PurchaserIcon className="w-4 h-4 text-gray-600" />
-                                <span className="font-semibold text-gray-900">{txn.purchaser}</span>
+                                <PurchaserIcon className="w-4 h-4 text-slate-300" />
+                                <span className="font-semibold text-white">{txn.purchaser}</span>
                               </div>
                             </div>
                           </div>
 
                           <div className="grid grid-cols-4 gap-6 mb-4">
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Property Value</div>
-                              <div className="text-xl font-bold text-gray-900">
+                              <div className="text-sm text-slate-300 mb-1">Property Value</div>
+                              <div className="text-xl font-bold text-white">
                                 ${(txn.propertyValue / 1000000).toFixed(2)}M
                               </div>
                             </div>
 
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Deposit</div>
-                              <div className="font-semibold text-gray-900">
+                              <div className="text-sm text-slate-300 mb-1">Deposit</div>
+                              <div className="font-semibold text-white">
                                 ${txn.depositAmount.toLocaleString()}
                                 {txn.depositVerified ? (
                                   <CheckCircle className="w-4 h-4 text-green-600 inline ml-2" />
@@ -357,24 +357,24 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                             </div>
 
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Settlement Date</div>
+                              <div className="text-sm text-slate-300 mb-1">Settlement Date</div>
                               <div className="flex items-center gap-2">
-                                <Clock className="w-4 h-4 text-gray-600" />
-                                <span className="font-semibold text-gray-900">{txn.settlementDate}</span>
+                                <Clock className="w-4 h-4 text-slate-300" />
+                                <span className="font-semibold text-white">{txn.settlementDate}</span>
                               </div>
                             </div>
 
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Risk Level</div>
+                              <div className="text-sm text-slate-300 mb-1">Risk Level</div>
                               <Badge className={getRiskColor(txn.riskLevel)}>
                                 {txn.riskLevel}
                               </Badge>
                             </div>
                           </div>
 
-                          <div className="p-4 bg-white rounded-lg border border-gray-200 mb-4">
-                            <div className="text-sm text-gray-600 mb-1">Source of Funds</div>
-                            <div className="font-semibold text-gray-900">{txn.sourceOfFunds}</div>
+                          <div className="p-4 bg-[#0d121d] rounded-lg border border-white/10 mb-4">
+                            <div className="text-sm text-slate-300 mb-1">Source of Funds</div>
+                            <div className="font-semibold text-white">{txn.sourceOfFunds}</div>
                           </div>
 
                           {/* KYC & Settlement Status */}
@@ -385,7 +385,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                                 : 'border-amber-300 bg-amber-100'
                             }`}>
                               <div className="flex items-center justify-between">
-                                <span className="text-sm font-semibold text-gray-700">KYC Status</span>
+                                <span className="text-sm font-semibold text-slate-300">KYC Status</span>
                                 <Badge className={getKycStatusColor(txn.kycStatus)}>
                                   {txn.kycStatus}
                                 </Badge>
@@ -398,7 +398,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                                 : 'border-red-300 bg-red-100'
                             }`}>
                               <div className="flex items-center justify-between">
-                                <span className="text-sm font-semibold text-gray-700">Settlement Ready</span>
+                                <span className="text-sm font-semibold text-slate-300">Settlement Ready</span>
                                 {txn.settlementReady ? (
                                   <CheckCircle className="w-5 h-5 text-green-600" />
                                 ) : (
@@ -456,14 +456,14 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {transactions.filter(t => t.offshoreFlag).map((txn) => (
-                    <div key={txn.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-red-200">
+                    <div key={txn.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <Globe className="w-6 h-6 text-red-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{txn.propertyAddress}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-bold text-white">{txn.propertyAddress}</div>
+                          <div className="text-sm text-slate-300">
                             Purchaser: {txn.purchaser} • {txn.firbRequired ? 'FIRB approval required' : 'Standard process'}
                           </div>
                         </div>
@@ -492,8 +492,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">FIRB Required When:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">FIRB Required When:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <AlertCircle className="w-4 h-4 text-red-600" />
                         Foreign person or entity purchaser
@@ -514,8 +514,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Required Documentation:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Required Documentation:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         FIRB application reference number
@@ -546,8 +546,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="p-4 bg-white rounded-lg border border-amber-200">
-                    <h4 className="font-bold text-gray-900 mb-2">High-Risk Jurisdictions:</h4>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border border-amber-200">
+                    <h4 className="font-bold text-white mb-2">High-Risk Jurisdictions:</h4>
                     <div className="flex flex-wrap gap-2">
                       {['Russia', 'North Korea', 'Iran', 'Myanmar', 'Syria', 'Venezuela'].map((country, idx) => (
                         <Badge key={idx} className="bg-red-600 text-white">
@@ -557,9 +557,9 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-white rounded-lg border border-amber-200">
-                    <h4 className="font-bold text-gray-900 mb-2">Enhanced Screening Required:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                  <div className="p-4 bg-[#0d121d] rounded-lg border border-amber-200">
+                    <h4 className="font-bold text-white mb-2">Enhanced Screening Required:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Sanctions list screening (OFAC, EU, UN, AU)
@@ -602,7 +602,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                       key={txn.id}
                       className={`flex items-center justify-between p-4 rounded-lg border-2 ${
                         txn.settlementReady
-                          ? 'bg-white border-green-200'
+                          ? 'bg-[#0d121d] border-green-200'
                           : 'bg-red-50 border-red-200'
                       }`}
                     >
@@ -617,8 +617,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                           )}
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{txn.propertyAddress}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-bold text-white">{txn.propertyAddress}</div>
+                          <div className="text-sm text-slate-300">
                             Settlement: {txn.settlementDate} • 
                             {txn.settlementReady ? ' Ready to proceed' : ' Blocked by KYC'}
                           </div>
@@ -657,8 +657,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Pre-Settlement Checklist:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Pre-Settlement Checklist:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Vendor KYC complete
@@ -687,8 +687,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Agent Authority Documents:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Agent Authority Documents:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Power of Attorney (if acting on behalf)
@@ -728,9 +728,9 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     { name: 'InfoTrack', status: 'Disconnected', transactions: 0 },
                     { name: 'Sympli', status: 'Disconnected', transactions: 0 }
                   ].map((platform, idx) => (
-                    <div key={idx} className="p-4 bg-white rounded-lg border border-indigo-200">
-                      <div className="font-bold text-gray-900 mb-2">{platform.name}</div>
-                      <div className="text-sm text-gray-600 mb-3">
+                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-indigo-200">
+                      <div className="font-bold text-white mb-2">{platform.name}</div>
+                      <div className="text-sm text-slate-300 mb-3">
                         {platform.status === 'Connected' ? `${platform.transactions} transactions synced` : 'Not connected'}
                       </div>
                       <Button

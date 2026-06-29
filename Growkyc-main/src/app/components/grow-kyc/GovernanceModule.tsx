@@ -205,9 +205,9 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
-      <div className="bg-white border-b sticky top-0 z-10">
+      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -218,8 +218,8 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
               <div className="h-6 w-px bg-gray-300" />
               <Shield className="w-6 h-6 text-blue-600" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Governance</h1>
-                <p className="text-sm text-gray-600">AML Program Control & Board Oversight</p>
+                <h1 className="text-2xl font-bold text-white">Governance</h1>
+                <p className="text-sm text-slate-300">AML Program Control & Board Oversight</p>
               </div>
             </div>
           </div>
@@ -251,8 +251,8 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                 <div className="grid grid-cols-3 gap-6">
                   <Card>
                     <CardContent className="p-6">
-                      <div className="text-sm text-gray-600 mb-2">Program Version</div>
-                      <div className="text-3xl font-bold text-gray-900 mb-1">
+                      <div className="text-sm text-slate-300 mb-2">Program Version</div>
+                      <div className="text-3xl font-bold text-white mb-1">
                         v{amlProgram.version}
                       </div>
                       <Badge className="bg-green-500">Current</Badge>
@@ -261,15 +261,15 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
 
                   <Card>
                     <CardContent className="p-6">
-                      <div className="text-sm text-gray-600 mb-2">Last Approved</div>
-                      <div className="text-lg font-semibold text-gray-900 mb-1">
+                      <div className="text-sm text-slate-300 mb-2">Last Approved</div>
+                      <div className="text-lg font-semibold text-white mb-1">
                         {new Date(amlProgram.lastApproved).toLocaleDateString('en-AU', {
                           day: 'numeric',
                           month: 'long',
                           year: 'numeric'
                         })}
                       </div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-slate-300">
                         by {amlProgram.approvedBy}
                       </div>
                     </CardContent>
@@ -277,8 +277,8 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
 
                   <Card>
                     <CardContent className="p-6">
-                      <div className="text-sm text-gray-600 mb-2">Next Review Due</div>
-                      <div className="text-lg font-semibold text-gray-900 mb-1">
+                      <div className="text-sm text-slate-300 mb-2">Next Review Due</div>
+                      <div className="text-lg font-semibold text-white mb-1">
                         {new Date(amlProgram.nextReviewDue).toLocaleDateString('en-AU', {
                           day: 'numeric',
                           month: 'long',
@@ -323,10 +323,10 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                   {changeLog.map((change, idx) => (
                     <div key={idx} className="flex items-start gap-4 pb-4 border-b last:border-0">
                       <div className="w-24 flex-shrink-0">
-                        <div className="text-sm font-semibold text-gray-900">
+                        <div className="text-sm font-semibold text-white">
                           v{change.version}
                         </div>
-                        <div className="text-xs text-gray-600">
+                        <div className="text-xs text-slate-300">
                           {new Date(change.date).toLocaleDateString('en-AU', {
                             day: 'numeric',
                             month: 'short',
@@ -335,7 +335,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                         </div>
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm text-gray-900 mb-1">{change.changes}</p>
+                        <p className="text-sm text-white mb-1">{change.changes}</p>
                         <div className="flex items-center gap-2">
                           <Badge variant="outline" className="text-xs">
                             {change.approver}
@@ -371,7 +371,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                         <FileText className="w-8 h-8 text-blue-600 flex-shrink-0" />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <h3 className="font-semibold text-lg text-gray-900">
+                            <h3 className="font-semibold text-lg text-white">
                               {policy.name}
                             </h3>
                             <Badge variant="outline">v{policy.version}</Badge>
@@ -383,27 +383,27 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                           </div>
                           <div className="grid grid-cols-4 gap-4 text-sm">
                             <div>
-                              <div className="text-gray-600">Effective Date</div>
+                              <div className="text-slate-300">Effective Date</div>
                               <div className="font-medium">
                                 {new Date(policy.effectiveDate).toLocaleDateString('en-AU')}
                               </div>
                             </div>
                             <div>
-                              <div className="text-gray-600">Next Review</div>
+                              <div className="text-slate-300">Next Review</div>
                               <div className="font-medium">
                                 {new Date(policy.nextReview).toLocaleDateString('en-AU')}
                               </div>
                             </div>
                             <div>
-                              <div className="text-gray-600">Owner</div>
+                              <div className="text-slate-300">Owner</div>
                               <div className="font-medium">{policy.owner}</div>
                             </div>
                             <div>
-                              <div className="text-gray-600">Linked Training</div>
+                              <div className="text-slate-300">Linked Training</div>
                               <div className="font-medium text-blue-600">{policy.linkedTraining}</div>
                             </div>
                           </div>
-                          <div className="mt-3 flex items-center gap-2 text-xs text-gray-600">
+                          <div className="mt-3 flex items-center gap-2 text-xs text-slate-300">
                             <History className="w-3 h-3" />
                             {policy.revisions} revisions
                           </div>
@@ -453,35 +453,35 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-gray-50 border-b">
+                    <thead className="bg-[#0a0e17] border-b">
                       <tr>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Policy</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Version</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Approved By</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Approval Date</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Minutes Ref</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Attachment</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Actions</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Policy</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Version</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Approved By</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Approval Date</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Minutes Ref</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Attachment</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y">
                       {boardApprovals.map((approval, idx) => (
-                        <tr key={idx} className="hover:bg-gray-50">
-                          <td className="p-4 text-sm font-medium text-gray-900">
+                        <tr key={idx} className="hover:bg-white/5">
+                          <td className="p-4 text-sm font-medium text-white">
                             {approval.policy}
                           </td>
                           <td className="p-4">
                             <Badge variant="outline">v{approval.version}</Badge>
                           </td>
-                          <td className="p-4 text-sm text-gray-900">{approval.approvedBy}</td>
-                          <td className="p-4 text-sm text-gray-900">
+                          <td className="p-4 text-sm text-white">{approval.approvedBy}</td>
+                          <td className="p-4 text-sm text-white">
                             {new Date(approval.approvalDate).toLocaleDateString('en-AU', {
                               day: 'numeric',
                               month: 'short',
                               year: 'numeric'
                             })}
                           </td>
-                          <td className="p-4 text-sm font-mono text-gray-600">
+                          <td className="p-4 text-sm font-mono text-slate-300">
                             {approval.minutesRef}
                           </td>
                           <td className="p-4">
@@ -537,7 +537,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
-                              <h3 className="font-semibold text-lg text-gray-900">
+                              <h3 className="font-semibold text-lg text-white">
                                 {item.obligation}
                               </h3>
                               <Badge variant="outline">{item.frequency}</Badge>
@@ -550,19 +550,19 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                             </div>
                             <div className="grid grid-cols-4 gap-4 text-sm">
                               <div>
-                                <div className="text-gray-600">Last Completed</div>
+                                <div className="text-slate-300">Last Completed</div>
                                 <div className="font-medium">
                                   {new Date(item.lastCompleted).toLocaleDateString('en-AU')}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-gray-600">Next Due</div>
+                                <div className="text-slate-300">Next Due</div>
                                 <div className="font-medium">
                                   {new Date(item.nextDue).toLocaleDateString('en-AU')}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-gray-600">Days Remaining</div>
+                                <div className="text-slate-300">Days Remaining</div>
                                 <div className={`font-bold text-lg ${
                                   item.daysRemaining < 90 ? 'text-amber-600' :
                                   item.daysRemaining < 180 ? 'text-blue-600' :
@@ -572,7 +572,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                                 </div>
                               </div>
                               <div>
-                                <div className="text-gray-600">Owner</div>
+                                <div className="text-slate-300">Owner</div>
                                 <div className="font-medium">{item.owner}</div>
                               </div>
                             </div>

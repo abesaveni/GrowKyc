@@ -148,8 +148,8 @@ export function PartnerDashboard({
   }, [clients.length]);
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="space-y-6 bg-white min-h-screen px-4 md:px-8 pb-8">
+    <div className="bg-[#0d121d] min-h-screen">
+      <div className="space-y-6 bg-[#0d121d] min-h-screen px-4 md:px-8 pb-8">
         {/* Executive Welcome */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6 md:p-8 text-white mt-4 md:mt-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
@@ -290,14 +290,14 @@ export function PartnerDashboard({
             <CardContent>
               <div className="space-y-3">
                 {partnerApprovalsData.map((approval, index) => (
-                  <div key={index} className="p-3 bg-gray-50 rounded-lg border">
+                  <div key={index} className="p-3 bg-[#0a0e17] rounded-lg border">
                     <div className="flex items-start justify-between mb-1">
                       <div className="font-semibold text-sm">{approval.item}</div>
                       <Badge variant={approval.priority === 'High' ? 'destructive' : 'default'} className="text-xs">
                         {approval.priority}
                       </Badge>
                     </div>
-                    <div className="text-xs text-gray-600 mb-2">{approval.type}</div>
+                    <div className="text-xs text-slate-300 mb-2">{approval.type}</div>
                     <div className="flex gap-2">
                       <Button size="sm" variant="default" className="flex-1 h-7" onClick={() => {
                         setApprovalModalOpen(true);
@@ -345,9 +345,9 @@ export function PartnerDashboard({
             <CardContent>
               <div className="space-y-3">
                 {strategicInsightsData.map((item, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                  <div key={index} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg">
                     <item.icon className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
-                    <p className="text-sm text-gray-900">{item.insight}</p>
+                    <p className="text-sm text-white">{item.insight}</p>
                   </div>
                 ))}
               </div>
@@ -359,11 +359,11 @@ export function PartnerDashboard({
       {/* Approval Modal */}
       {approvalModalOpen && selectedApproval && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full">
-            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+          <div className="bg-[#0d121d] rounded-xl shadow-2xl max-w-2xl w-full">
+            <div className="p-6 border-b border-white/10 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-gray-900">Review & Approve</h2>
-                <p className="text-sm text-gray-600 mt-1">{selectedApproval.item}</p>
+                <h2 className="text-xl font-bold text-white">Review & Approve</h2>
+                <p className="text-sm text-slate-300 mt-1">{selectedApproval.item}</p>
               </div>
               <Button size="sm" variant="ghost" onClick={() => {
                 setApprovalModalOpen(false);
@@ -374,14 +374,14 @@ export function PartnerDashboard({
             </div>
 
             <div className="p-6 space-y-4">
-              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="bg-[#0a0e17] rounded-lg p-4 border border-white/10">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Type</p>
+                    <p className="text-xs text-slate-300 mb-1">Type</p>
                     <p className="font-semibold">{selectedApproval.type}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Priority</p>
+                    <p className="text-xs text-slate-300 mb-1">Priority</p>
                     <Badge variant={selectedApproval.priority === 'High' ? 'destructive' : 'default'}>
                       {selectedApproval.priority}
                     </Badge>
@@ -390,7 +390,7 @@ export function PartnerDashboard({
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Approval Comments <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -400,7 +400,7 @@ export function PartnerDashboard({
                   onChange={(e) => setApprovalComment(e.target.value)}
                   placeholder="Provide details of your approval decision..."
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   Comments will be recorded in the audit trail
                 </p>
               </div>
@@ -420,7 +420,7 @@ export function PartnerDashboard({
               </div>
             </div>
 
-            <div className="p-6 border-t border-gray-200 flex items-center justify-between">
+            <div className="p-6 border-t border-white/10 flex items-center justify-between">
               <Button
                 variant="outline"
                 onClick={() => {

@@ -47,8 +47,8 @@ export function IdentityBot({ onBack }: IdentityBotProps) {
 // Screen 1: Identity Control Centre
 function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode) => void; onBack?: () => void }) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
+    <div className="min-h-screen bg-[#0a0e17]">
+      <div className="bg-[#0d121d] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -64,8 +64,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                   <Scan className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">AI Identity Verification Bot</h1>
-                  <p className="text-gray-600">Document OCR • Biometric matching • Liveness detection</p>
+                  <h1 className="text-3xl font-bold text-white">AI Identity Verification Bot</h1>
+                  <p className="text-slate-300">Document OCR • Biometric matching • Liveness detection</p>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 <Clock className="w-5 h-5 text-blue-600" />
                 <Badge className="bg-blue-100 text-blue-700">23</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Pending Verifications</p>
+              <p className="text-sm font-medium text-white">Pending Verifications</p>
             </CardContent>
           </Card>
 
@@ -103,7 +103,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 <CheckCircle className="w-5 h-5 text-green-600" />
                 <Badge className="bg-green-100 text-green-700">187</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Completed Today</p>
+              <p className="text-sm font-medium text-white">Completed Today</p>
             </CardContent>
           </Card>
 
@@ -113,7 +113,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 <XCircle className="w-5 h-5 text-red-600" />
                 <Badge className="bg-red-100 text-red-700">8</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Failed</p>
+              <p className="text-sm font-medium text-white">Failed</p>
             </CardContent>
           </Card>
 
@@ -123,7 +123,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 <Eye className="w-5 h-5 text-amber-600" />
                 <Badge className="bg-amber-100 text-amber-700">14</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Manual Reviews</p>
+              <p className="text-sm font-medium text-white">Manual Reviews</p>
             </CardContent>
           </Card>
 
@@ -133,7 +133,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 <AlertTriangle className="w-5 h-5 text-purple-600" />
                 <Badge className="bg-purple-100 text-purple-700">3</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Duplicate Alerts</p>
+              <p className="text-sm font-medium text-white">Duplicate Alerts</p>
             </CardContent>
           </Card>
         </div>
@@ -151,12 +151,12 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50 border-b">
+                  <thead className="bg-[#0a0e17] border-b">
                     <tr>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Name</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Document</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Status</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Match %</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Document</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Status</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Match %</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -166,9 +166,9 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                       { name: 'Sofia Rodriguez', doc: 'Passport', status: 'Review Required', match: 72 },
                       { name: 'Michael Brown', doc: 'Driver Licence', status: 'Verified', match: 96 },
                     ].map((item, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50 cursor-pointer">
-                        <td className="px-4 py-3 font-medium text-gray-900">{item.name}</td>
-                        <td className="px-4 py-3 text-xs text-gray-600">{item.doc}</td>
+                      <tr key={idx} className="hover:bg-white/5 cursor-pointer">
+                        <td className="px-4 py-3 font-medium text-white">{item.name}</td>
+                        <td className="px-4 py-3 text-xs text-slate-300">{item.doc}</td>
                         <td className="px-4 py-3">
                           <Badge className={
                             item.status === 'Verified' ? 'bg-green-100 text-green-700' :
@@ -184,7 +184,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                               {item.match}%
                             </span>
                           ) : (
-                            <span className="text-xs text-gray-500">Pending</span>
+                            <span className="text-xs text-slate-400">Pending</span>
                           )}
                         </td>
                       </tr>
@@ -192,7 +192,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-gray-50">
+              <div className="p-4 border-t bg-[#0a0e17]">
                 <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-verification')}>
                   View All Verifications <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -211,12 +211,12 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50 border-b">
+                  <thead className="bg-[#0a0e17] border-b">
                     <tr>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Name</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Reason</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Attempts</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Action</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Reason</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Attempts</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Action</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -226,10 +226,10 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                       { name: 'Robert Taylor', reason: 'Low Face Match', attempts: 1 },
                       { name: 'Anna Kowalski', reason: 'Suspicious Document', attempts: 3 },
                     ].map((item, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50 cursor-pointer">
-                        <td className="px-4 py-3 font-medium text-gray-900">{item.name}</td>
+                      <tr key={idx} className="hover:bg-white/5 cursor-pointer">
+                        <td className="px-4 py-3 font-medium text-white">{item.name}</td>
                         <td className="px-4 py-3 text-xs text-red-700">{item.reason}</td>
-                        <td className="px-4 py-3 text-xs text-gray-600">{item.attempts}</td>
+                        <td className="px-4 py-3 text-xs text-slate-300">{item.attempts}</td>
                         <td className="px-4 py-3">
                           <Button size="sm" variant="outline" className="text-xs">
                             Review
@@ -240,7 +240,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-gray-50">
+              <div className="p-4 border-t bg-[#0a0e17]">
                 <Button variant="ghost" className="w-full text-red-700 hover:bg-red-50">
                   View All Failed <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -256,9 +256,9 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <CreditCard className="w-8 h-8 text-blue-600" />
               </div>
-              <p className="text-xs text-gray-600 mb-1">Document Types</p>
-              <p className="text-2xl font-bold text-gray-900 mb-2">3</p>
-              <p className="text-xs text-gray-500">Passport, Licence, ID</p>
+              <p className="text-xs text-slate-300 mb-1">Document Types</p>
+              <p className="text-2xl font-bold text-white mb-2">3</p>
+              <p className="text-xs text-slate-400">Passport, Licence, ID</p>
             </CardContent>
           </Card>
 
@@ -267,9 +267,9 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
-              <p className="text-xs text-gray-600 mb-1">Success Rate</p>
+              <p className="text-xs text-slate-300 mb-1">Success Rate</p>
               <p className="text-2xl font-bold text-green-600 mb-2">94.2%</p>
-              <p className="text-xs text-gray-500">Last 30 days</p>
+              <p className="text-xs text-slate-400">Last 30 days</p>
             </CardContent>
           </Card>
 
@@ -278,9 +278,9 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Scan className="w-8 h-8 text-purple-600" />
               </div>
-              <p className="text-xs text-gray-600 mb-1">Avg Match Score</p>
+              <p className="text-xs text-slate-300 mb-1">Avg Match Score</p>
               <p className="text-2xl font-bold text-purple-600 mb-2">96.7%</p>
-              <p className="text-xs text-gray-500">Biometric accuracy</p>
+              <p className="text-xs text-slate-400">Biometric accuracy</p>
             </CardContent>
           </Card>
 
@@ -289,9 +289,9 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Clock className="w-8 h-8 text-amber-600" />
               </div>
-              <p className="text-xs text-gray-600 mb-1">Avg Processing</p>
+              <p className="text-xs text-slate-300 mb-1">Avg Processing</p>
               <p className="text-2xl font-bold text-amber-600 mb-2">8.4s</p>
-              <p className="text-xs text-gray-500">Per verification</p>
+              <p className="text-xs text-slate-400">Per verification</p>
             </CardContent>
           </Card>
         </div>
@@ -323,8 +323,8 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
+    <div className="min-h-screen bg-[#0a0e17]">
+      <div className="bg-[#0d121d] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -336,8 +336,8 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
               <Scan className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Identity Verification Flow</h1>
-              <p className="text-gray-600">Document capture • Biometric matching • Real-time validation</p>
+              <h1 className="text-2xl font-bold text-white">Identity Verification Flow</h1>
+              <p className="text-slate-300">Document capture • Biometric matching • Real-time validation</p>
             </div>
           </div>
 
@@ -352,12 +352,12 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                  step >= s.num ? 'bg-blue-600 text-white' : 'bg-gray-200 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-blue-600' : 'text-gray-500'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-blue-600' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -402,7 +402,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                           className="sr-only"
                         />
                         <Icon className="w-12 h-12 text-blue-600" />
-                        <span className="font-medium text-gray-900">{doc.label}</span>
+                        <span className="font-medium text-white">{doc.label}</span>
                       </label>
                     );
                   })}
@@ -410,16 +410,16 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
               </div>
 
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-400 cursor-pointer transition-colors">
-                <Upload className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-lg font-medium text-gray-900 mb-2">Upload Document Image</p>
-                <p className="text-sm text-gray-600 mb-4">
+                <Upload className="w-16 h-16 text-slate-400 mx-auto mb-4" />
+                <p className="text-lg font-medium text-white mb-2">Upload Document Image</p>
+                <p className="text-sm text-slate-300 mb-4">
                   Drag and drop or click to browse
                 </p>
                 <Button className="bg-blue-600 hover:bg-blue-700">
                   <Upload className="w-4 h-4 mr-2" />
                   Choose File
                 </Button>
-                <p className="text-xs text-gray-500 mt-4">
+                <p className="text-xs text-slate-400 mt-4">
                   Supported: JPG, PNG, PDF • Max size: 10MB
                 </p>
               </div>
@@ -528,7 +528,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 <div className="space-y-4 max-w-md mx-auto">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-700">OCR Extraction</span>
+                      <span className="text-sm text-slate-300">OCR Extraction</span>
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <Progress value={100} className="h-2" />
@@ -536,7 +536,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
 
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-700">Document Validation</span>
+                      <span className="text-sm text-slate-300">Document Validation</span>
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <Progress value={100} className="h-2" />
@@ -544,7 +544,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
 
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-700">Biometric Face Match</span>
+                      <span className="text-sm text-slate-300">Biometric Face Match</span>
                       <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
                     </div>
                     <Progress value={75} className="h-2" />
@@ -552,8 +552,8 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
 
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-700">Liveness Verification</span>
-                      <Clock className="w-5 h-5 text-gray-400" />
+                      <span className="text-sm text-slate-300">Liveness Verification</span>
+                      <Clock className="w-5 h-5 text-slate-400" />
                     </div>
                     <Progress value={40} className="h-2" />
                   </div>
@@ -599,44 +599,44 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="font-semibold text-gray-900">Biometric Face Match</p>
+                      <p className="font-semibold text-white">Biometric Face Match</p>
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <p className="text-3xl font-bold text-green-600">98%</p>
-                    <p className="text-xs text-gray-600 mt-1">Very High Confidence</p>
+                    <p className="text-xs text-slate-300 mt-1">Very High Confidence</p>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="font-semibold text-gray-900">Document Validity</p>
+                      <p className="font-semibold text-white">Document Validity</p>
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <p className="text-lg font-bold text-green-600">VALID</p>
-                    <p className="text-xs text-gray-600 mt-1">Authentic document detected</p>
+                    <p className="text-xs text-slate-300 mt-1">Authentic document detected</p>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="font-semibold text-gray-900">Expiry Status</p>
+                      <p className="font-semibold text-white">Expiry Status</p>
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <p className="text-lg font-bold text-green-600">CURRENT</p>
-                    <p className="text-xs text-gray-600 mt-1">Expires: 2028-06-15</p>
+                    <p className="text-xs text-slate-300 mt-1">Expires: 2028-06-15</p>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="font-semibold text-gray-900">Liveness Check</p>
+                      <p className="font-semibold text-white">Liveness Check</p>
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <p className="text-lg font-bold text-green-600">PASSED</p>
-                    <p className="text-xs text-gray-600 mt-1">Live capture confirmed</p>
+                    <p className="text-xs text-slate-300 mt-1">Live capture confirmed</p>
                   </CardContent>
                 </Card>
               </div>
@@ -645,20 +645,20 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 <h4 className="font-semibold text-blue-900 mb-3">Extracted Data</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="text-gray-600">Full Name</p>
-                    <p className="font-semibold text-gray-900">Emma Louise Wilson</p>
+                    <p className="text-slate-300">Full Name</p>
+                    <p className="font-semibold text-white">Emma Louise Wilson</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Date of Birth</p>
-                    <p className="font-semibold text-gray-900">1990-03-15</p>
+                    <p className="text-slate-300">Date of Birth</p>
+                    <p className="font-semibold text-white">1990-03-15</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Document Number</p>
-                    <p className="font-semibold text-gray-900">N2847563</p>
+                    <p className="text-slate-300">Document Number</p>
+                    <p className="font-semibold text-white">N2847563</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Nationality</p>
-                    <p className="font-semibold text-gray-900">Australian</p>
+                    <p className="text-slate-300">Nationality</p>
+                    <p className="font-semibold text-white">Australian</p>
                   </div>
                 </div>
               </div>
@@ -683,26 +683,26 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 <CheckCircle className="w-12 h-12 text-white" />
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Identity Verification Complete</h2>
-              <p className="text-gray-600 mb-8">Emma Louise Wilson - VERIFIED</p>
+              <h2 className="text-3xl font-bold text-white mb-2">Identity Verification Complete</h2>
+              <p className="text-slate-300 mb-8">Emma Louise Wilson - VERIFIED</p>
 
               <div className="max-w-2xl mx-auto space-y-4 mb-8">
                 <div className="grid md:grid-cols-2 gap-4 text-left">
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Verification Status</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Verification Status</p>
                     <p className="font-semibold text-green-600">APPROVED</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Face Match Score</p>
-                    <p className="font-semibold text-gray-900">98%</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Face Match Score</p>
+                    <p className="font-semibold text-white">98%</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Verification Date</p>
-                    <p className="font-semibold text-gray-900">{new Date().toLocaleDateString('en-AU')}</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Verification Date</p>
+                    <p className="font-semibold text-white">{new Date().toLocaleDateString('en-AU')}</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Document Type</p>
-                    <p className="font-semibold text-gray-900">Passport</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Document Type</p>
+                    <p className="font-semibold text-white">Passport</p>
                   </div>
                 </div>
               </div>

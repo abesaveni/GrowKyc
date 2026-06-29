@@ -22,7 +22,7 @@ export function EvidenceVault({ onBack }: EvidenceVaultProps) {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <p className="text-gray-600">Immutable evidence repository coming soon...</p>
+          <p className="text-slate-300">Immutable evidence repository coming soon...</p>
         </CardContent>
       </Card>
     </div>

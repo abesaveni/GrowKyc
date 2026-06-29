@@ -145,12 +145,12 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-gray-600 bg-gray-100 border-gray-300';
+      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white px-8 py-12">
         <Button
@@ -278,7 +278,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
 
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-2xl font-bold text-gray-900">{trust.name}</h3>
+                          <h3 className="text-2xl font-bold text-white">{trust.name}</h3>
                           <Badge className={getTrustTypeColor(trust.type)}>
                             {trust.type}
                           </Badge>
@@ -294,57 +294,57 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                         </div>
 
                         {trust.abn && (
-                          <div className="text-sm text-gray-600 mb-4">ABN: {trust.abn}</div>
+                          <div className="text-sm text-slate-300 mb-4">ABN: {trust.abn}</div>
                         )}
 
                         <div className="grid grid-cols-3 gap-6 mb-4">
                           <div>
-                            <div className="text-sm text-gray-600 mb-1">Trustee</div>
+                            <div className="text-sm text-slate-300 mb-1">Trustee</div>
                             <div className="flex items-center gap-2">
                               {trust.trusteeType === 'corporate' ? (
-                                <Building2 className="w-4 h-4 text-gray-600" />
+                                <Building2 className="w-4 h-4 text-slate-300" />
                               ) : (
-                                <User className="w-4 h-4 text-gray-600" />
+                                <User className="w-4 h-4 text-slate-300" />
                               )}
-                              <span className="font-semibold text-gray-900">{trust.trustee}</span>
+                              <span className="font-semibold text-white">{trust.trustee}</span>
                             </div>
                           </div>
 
                           {trust.appointor && (
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Appointor</div>
+                              <div className="text-sm text-slate-300 mb-1">Appointor</div>
                               <div className="flex items-center gap-2">
                                 <Crown className="w-4 h-4 text-purple-600" />
-                                <span className="font-semibold text-gray-900">{trust.appointor}</span>
+                                <span className="font-semibold text-white">{trust.appointor}</span>
                               </div>
                             </div>
                           )}
 
                           <div>
-                            <div className="text-sm text-gray-600 mb-1">Beneficiaries</div>
+                            <div className="text-sm text-slate-300 mb-1">Beneficiaries</div>
                             <div className="flex items-center gap-2">
                               <Users className="w-4 h-4 text-blue-600" />
-                              <span className="font-semibold text-gray-900">{trust.beneficiaries} identified</span>
+                              <span className="font-semibold text-white">{trust.beneficiaries} identified</span>
                             </div>
                           </div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-4">
-                          <div className="p-3 bg-gray-50 rounded-lg">
-                            <div className="text-xs text-gray-600 mb-1">Risk Level</div>
+                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                            <div className="text-xs text-slate-300 mb-1">Risk Level</div>
                             <Badge className={getRiskColor(trust.riskLevel)}>
                               {trust.riskLevel}
                             </Badge>
                           </div>
 
-                          <div className="p-3 bg-gray-50 rounded-lg">
-                            <div className="text-xs text-gray-600 mb-1">Last Review</div>
-                            <div className="font-semibold text-gray-900">{trust.lastReview}</div>
+                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                            <div className="text-xs text-slate-300 mb-1">Last Review</div>
+                            <div className="font-semibold text-white">{trust.lastReview}</div>
                           </div>
 
-                          <div className="p-3 bg-gray-50 rounded-lg">
-                            <div className="text-xs text-gray-600 mb-1">Control Changes</div>
-                            <div className="font-semibold text-gray-900">
+                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                            <div className="text-xs text-slate-300 mb-1">Control Changes</div>
+                            <div className="font-semibold text-white">
                               {trust.controllerChanges === 0 ? 'None' : trust.controllerChanges}
                             </div>
                           </div>
@@ -396,11 +396,11 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="p-6 bg-white rounded-xl border-2 border-purple-200">
-                    <h4 className="font-bold text-gray-900 mb-4">Automatically Extracted Fields:</h4>
+                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-purple-200">
+                    <h4 className="font-bold text-white mb-4">Automatically Extracted Fields:</h4>
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-2 text-sm text-slate-300">
                           <li className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-green-600" />
                             Trustee name and type
@@ -420,7 +420,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                         </ul>
                       </div>
                       <div>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-2 text-sm text-slate-300">
                           <li className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-green-600" />
                             Powers of appointor
@@ -454,14 +454,14 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {trusts.map((trust) => (
-                    <div key={trust.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border border-white/10">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                           <FileCheck className="w-6 h-6 text-purple-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{trust.name}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-bold text-white">{trust.name}</div>
+                          <div className="text-sm text-slate-300">
                             {trust.trusteeType === 'corporate' ? 'Board resolution + Director ID' : 'Trustee ID + Deed'}
                           </div>
                         </div>
@@ -498,26 +498,26 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                 <CardDescription>Visual graph of appointor → trustee → beneficiaries</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="p-6 bg-white rounded-xl border border-indigo-200">
-                  <p className="text-gray-700 mb-4">
+                <div className="p-6 bg-[#0d121d] rounded-xl border border-indigo-200">
+                  <p className="text-slate-300 mb-4">
                     Structured role fields ensure trust relationships are never stored as free text.
                   </p>
                   <div className="grid grid-cols-4 gap-4">
                     <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
                       <div className="text-xs font-bold text-purple-600 mb-1">APPOINTOR</div>
-                      <div className="text-sm text-gray-900">Can remove/appoint trustee</div>
+                      <div className="text-sm text-white">Can remove/appoint trustee</div>
                     </div>
                     <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
                       <div className="text-xs font-bold text-blue-600 mb-1">TRUSTEE</div>
-                      <div className="text-sm text-gray-900">Legal owner, manages trust</div>
+                      <div className="text-sm text-white">Legal owner, manages trust</div>
                     </div>
                     <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
                       <div className="text-xs font-bold text-green-600 mb-1">BENEFICIARIES</div>
-                      <div className="text-sm text-gray-900">Receive distributions</div>
+                      <div className="text-sm text-white">Receive distributions</div>
                     </div>
                     <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
                       <div className="text-xs font-bold text-amber-600 mb-1">GUARDIAN</div>
-                      <div className="text-sm text-gray-900">Protects beneficiaries</div>
+                      <div className="text-sm text-white">Protects beneficiaries</div>
                     </div>
                   </div>
                 </div>
@@ -540,14 +540,14 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {trusts.filter(t => t.controllerChanges > 0).map((trust) => (
-                    <div key={trust.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-red-200">
+                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <AlertTriangle className="w-6 h-6 text-red-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{trust.name}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-bold text-white">{trust.name}</div>
+                          <div className="text-sm text-slate-300">
                             {trust.controllerChanges} control change{trust.controllerChanges > 1 ? 's' : ''} detected
                           </div>
                         </div>
@@ -576,8 +576,8 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Trigger Events:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Trigger Events:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <AlertCircle className="w-4 h-4 text-amber-600" />
                         Appointor change
@@ -602,8 +602,8 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Re-verification Actions:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Re-verification Actions:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Verify new appointor/trustee identity

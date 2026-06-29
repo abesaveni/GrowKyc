@@ -142,12 +142,12 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-gray-600 bg-gray-100 border-gray-300';
+      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 text-white px-8 py-12">
         <Button
@@ -266,7 +266,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                     ? 'border-red-200 bg-red-50'
                     : !matter.fileOpened && matter.kycStatus !== 'complete'
                     ? 'border-amber-200 bg-amber-50'
-                    : 'border-gray-200'
+                    : 'border-white/10'
                 }`}
               >
                 <CardContent className="p-6">
@@ -290,7 +290,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
 
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-2xl font-bold text-gray-900">{matter.clientName}</h3>
+                          <h3 className="text-2xl font-bold text-white">{matter.clientName}</h3>
                           <Badge className={getMatterTypeColor(matter.matterType)}>
                             {matter.matterType}
                           </Badge>
@@ -313,39 +313,39 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
 
                         <div className="grid grid-cols-4 gap-6 mb-4">
                           <div>
-                            <div className="text-sm text-gray-600 mb-1">Matter Value</div>
-                            <div className="text-xl font-bold text-gray-900">
+                            <div className="text-sm text-slate-300 mb-1">Matter Value</div>
+                            <div className="text-xl font-bold text-white">
                               ${(matter.matterValue / 1000000).toFixed(2)}M
                             </div>
                           </div>
 
                           <div>
-                            <div className="text-sm text-gray-600 mb-1">Jurisdiction</div>
+                            <div className="text-sm text-slate-300 mb-1">Jurisdiction</div>
                             <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4 text-gray-600" />
-                              <span className="font-semibold text-gray-900">{matter.jurisdiction}</span>
+                              <MapPin className="w-4 h-4 text-slate-300" />
+                              <span className="font-semibold text-white">{matter.jurisdiction}</span>
                             </div>
                           </div>
 
                           <div>
-                            <div className="text-sm text-gray-600 mb-1">Counterparties</div>
+                            <div className="text-sm text-slate-300 mb-1">Counterparties</div>
                             <div className="flex items-center gap-2">
                               <Users className="w-4 h-4 text-blue-600" />
-                              <span className="font-semibold text-gray-900">{matter.counterparties}</span>
+                              <span className="font-semibold text-white">{matter.counterparties}</span>
                             </div>
                           </div>
 
                           <div>
-                            <div className="text-sm text-gray-600 mb-1">Risk Level</div>
+                            <div className="text-sm text-slate-300 mb-1">Risk Level</div>
                             <Badge className={getRiskColor(matter.riskLevel)}>
                               {matter.riskLevel}
                             </Badge>
                           </div>
                         </div>
 
-                        <div className="p-4 bg-white rounded-lg border border-gray-200 mb-4">
-                          <div className="text-sm text-gray-600 mb-1">Source of Funds</div>
-                          <div className="font-semibold text-gray-900">{matter.sourceOfFunds}</div>
+                        <div className="p-4 bg-[#0d121d] rounded-lg border border-white/10 mb-4">
+                          <div className="text-sm text-slate-300 mb-1">Source of Funds</div>
+                          <div className="font-semibold text-white">{matter.sourceOfFunds}</div>
                         </div>
 
                         {matter.unusualTransactions > 0 && (
@@ -406,14 +406,14 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {matters.filter(m => !m.fileOpened && m.kycStatus !== 'complete').map((matter) => (
-                    <div key={matter.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-red-200">
+                    <div key={matter.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <AlertCircle className="w-6 h-6 text-red-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{matter.clientName}</div>
-                          <div className="text-sm text-gray-600">{matter.matterType} • {matter.jurisdiction}</div>
+                          <div className="font-bold text-white">{matter.clientName}</div>
+                          <div className="text-sm text-slate-300">{matter.matterType} • {matter.jurisdiction}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -443,14 +443,14 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {matters.filter(m => m.compliancePartnerReview).map((matter) => (
-                    <div key={matter.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-purple-200">
+                    <div key={matter.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-purple-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                           <Crown className="w-6 h-6 text-purple-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{matter.clientName}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-bold text-white">{matter.clientName}</div>
+                          <div className="text-sm text-slate-300">
                             {matter.matterType} • Risk: {matter.riskLevel}
                           </div>
                         </div>
@@ -479,8 +479,8 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Property Matters:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Property Matters:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Proof of deposit (bank statement)
@@ -497,8 +497,8 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Corporate Matters:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Corporate Matters:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Source of acquisition funds
@@ -515,8 +515,8 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Trust/Estate Matters:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Trust/Estate Matters:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Trust deed or will
@@ -533,8 +533,8 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Litigation Matters:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Litigation Matters:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Funding arrangement (if applicable)
@@ -569,14 +569,14 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {matters.filter(m => m.unusualTransactions > 0).map((matter) => (
-                    <div key={matter.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-amber-200">
+                    <div key={matter.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-amber-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
                           <AlertTriangle className="w-6 h-6 text-amber-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{matter.clientName}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-bold text-white">{matter.clientName}</div>
+                          <div className="text-sm text-slate-300">
                             {matter.unusualTransactions} unusual transaction{matter.unusualTransactions > 1 ? 's' : ''}
                           </div>
                         </div>
@@ -605,8 +605,8 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Trigger Events:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Trigger Events:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <AlertCircle className="w-4 h-4 text-amber-600" />
                         Large deposits ({'>'} $100K)
@@ -631,8 +631,8 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Automated Actions:</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Automated Actions:</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         Flag for compliance partner review
@@ -673,9 +673,9 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                     { name: 'ActionStep', status: 'Disconnected', matters: 0 },
                     { name: 'Clio', status: 'Disconnected', matters: 0 }
                   ].map((system, idx) => (
-                    <div key={idx} className="p-4 bg-white rounded-lg border border-indigo-200">
-                      <div className="font-bold text-gray-900 mb-2">{system.name}</div>
-                      <div className="text-sm text-gray-600 mb-3">
+                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-indigo-200">
+                      <div className="font-bold text-white mb-2">{system.name}</div>
+                      <div className="text-sm text-slate-300 mb-3">
                         {system.status === 'Connected' ? `${system.matters} matters synced` : 'Not connected'}
                       </div>
                       <Button

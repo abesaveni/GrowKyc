@@ -78,11 +78,11 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 space-y-6">
+    <div className="min-h-screen bg-[#0a0e17] p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Enterprise Upgrade Hub</h1>
-          <p className="text-gray-600 mt-1">All pending enterprise modules are now implemented and operational.</p>
+          <h1 className="text-3xl font-bold text-white">Enterprise Upgrade Hub</h1>
+          <p className="text-slate-300 mt-1">All pending enterprise modules are now implemented and operational.</p>
         </div>
         <div className="flex items-center gap-3">
           <Badge className="bg-green-600 text-base px-3 py-1">5/5 Modules Complete</Badge>
@@ -104,15 +104,15 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               className={`text-left p-4 rounded-xl border transition-all ${
                 activeTab === module.key
                   ? 'border-[#13B5EA] bg-[#13B5EA]/10 shadow-sm'
-                  : 'border-gray-200 bg-white hover:border-gray-300'
+                  : 'border-white/10 bg-[#0d121d] hover:border-gray-300'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <Icon className="w-5 h-5 text-[#0E7C9E]" />
                 <CheckCircle className="w-4 h-4 text-green-600" />
               </div>
-              <div className="text-sm font-semibold text-gray-900">{module.label}</div>
-              <div className="text-xs text-gray-600 mt-1">{module.score}% complete</div>
+              <div className="text-sm font-semibold text-white">{module.label}</div>
+              <div className="text-xs text-slate-300 mt-1">{module.score}% complete</div>
             </button>
           );
         })}
@@ -132,12 +132,12 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               {dataAccessRequests.map((request) => (
                 <div key={request.id} className="p-4 border rounded-lg flex items-center justify-between">
                   <div>
-                    <div className="font-semibold text-gray-900">{request.id} - {request.customer}</div>
-                    <div className="text-sm text-gray-600 mt-1">{request.requestType.toUpperCase()} request</div>
+                    <div className="font-semibold text-white">{request.id} - {request.customer}</div>
+                    <div className="text-sm text-slate-300 mt-1">{request.requestType.toUpperCase()} request</div>
                   </div>
                   <div className="text-right">
                     {statusBadge(request.status)}
-                    <div className="text-xs text-gray-500 mt-2">Due in {request.dueInDays} days</div>
+                    <div className="text-xs text-slate-400 mt-2">Due in {request.dueInDays} days</div>
                   </div>
                 </div>
               ))}
@@ -149,7 +149,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardHeader>
                 <CardTitle className="text-lg">Data Breach Workflow</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-gray-700">
+              <CardContent className="space-y-2 text-sm text-slate-300">
                 <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />Detection and triage</div>
                 <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />OAIC notification timer</div>
                 <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />Customer impact tracking</div>
@@ -189,7 +189,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle>Board Risk Index</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-5xl font-bold text-gray-900">82</div>
+              <div className="text-5xl font-bold text-white">82</div>
               <div className="text-sm text-amber-600 mt-2 flex items-center gap-1">
                 <AlertTriangle className="w-4 h-4" />
                 Elevated, within tolerance band
@@ -202,7 +202,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle>Open Critical Items</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-5xl font-bold text-gray-900">7</div>
+              <div className="text-5xl font-bold text-white">7</div>
               <div className="text-sm text-red-600 mt-2">2 require board decision this week</div>
             </CardContent>
           </Card>
@@ -212,7 +212,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle>Remediation Velocity</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-5xl font-bold text-gray-900">+18%</div>
+              <div className="text-5xl font-bold text-white">+18%</div>
               <div className="text-sm text-green-600 mt-2 flex items-center gap-1">
                 <TrendingUp className="w-4 h-4" />
                 Month-over-month improvement
@@ -284,8 +284,8 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
                 <div key={finding.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-semibold text-gray-900">{finding.id} - {finding.area}</div>
-                      <div className="text-sm text-gray-600 mt-1">Owner: {finding.owner} • Due: {finding.dueDate}</div>
+                      <div className="font-semibold text-white">{finding.id} - {finding.area}</div>
+                      <div className="text-sm text-slate-300 mt-1">Owner: {finding.owner} • Due: {finding.dueDate}</div>
                     </div>
                     <div className="flex items-center gap-2">
                       <Badge className={finding.severity === 'high' ? 'bg-red-600' : finding.severity === 'medium' ? 'bg-amber-600' : 'bg-gray-600'}>
@@ -336,12 +336,12 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               ].map((row) => (
                 <div key={row.role} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="font-semibold text-gray-900">{row.role}</div>
+                    <div className="font-semibold text-white">{row.role}</div>
                     <Badge className={row.overdue > 0 ? 'bg-amber-600' : 'bg-green-600'}>
                       {row.overdue > 0 ? `${row.overdue} overdue` : 'On track'}
                     </Badge>
                   </div>
-                  <div className="text-sm text-gray-600">{row.completed}/{row.assigned} completed</div>
+                  <div className="text-sm text-slate-300">{row.completed}/{row.assigned} completed</div>
                 </div>
               ))}
             </CardContent>
@@ -356,16 +356,16 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="p-3 border rounded-lg">
-                <div className="font-semibold text-gray-900">Q1 AML Attestation</div>
-                <div className="text-sm text-gray-600 mt-1">Due: 2026-04-07</div>
+                <div className="font-semibold text-white">Q1 AML Attestation</div>
+                <div className="text-sm text-slate-300 mt-1">Due: 2026-04-07</div>
                 <Button className="w-full mt-3" size="sm">
                   <Signature className="w-4 h-4 mr-2" />
                   Sign Attestation
                 </Button>
               </div>
               <div className="p-3 border rounded-lg">
-                <div className="font-semibold text-gray-900">Privacy Controls Acknowledgement</div>
-                <div className="text-sm text-gray-600 mt-1">Due: 2026-04-15</div>
+                <div className="font-semibold text-white">Privacy Controls Acknowledgement</div>
+                <div className="text-sm text-slate-300 mt-1">Due: 2026-04-15</div>
                 <Button className="w-full mt-3" size="sm" variant="outline">Open Form</Button>
               </div>
             </CardContent>
@@ -380,7 +380,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle className="text-base">Verification Cost / Case</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-gray-900">$38.20</div>
+              <div className="text-4xl font-bold text-white">$38.20</div>
               <div className="text-sm text-green-600 mt-2">-9% vs last quarter</div>
             </CardContent>
           </Card>
@@ -390,7 +390,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle className="text-base">Cycle Time</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-gray-900">2.7d</div>
+              <div className="text-4xl font-bold text-white">2.7d</div>
               <div className="text-sm text-green-600 mt-2">-0.6 days improvement</div>
             </CardContent>
           </Card>
@@ -400,7 +400,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle className="text-base">Analyst Capacity</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-gray-900">84%</div>
+              <div className="text-4xl font-bold text-white">84%</div>
               <div className="text-sm text-amber-600 mt-2">Near optimal workload</div>
             </CardContent>
           </Card>
@@ -410,7 +410,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               <CardTitle className="text-base">Automation Coverage</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-gray-900">71%</div>
+              <div className="text-4xl font-bold text-white">71%</div>
               <div className="text-sm text-blue-600 mt-2">+12% since rollout</div>
             </CardContent>
           </Card>
@@ -422,17 +422,17 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-3 gap-4">
-                <div className="p-4 rounded-lg bg-gray-50 border">
-                  <div className="text-sm text-gray-600">SLA on-time</div>
-                  <div className="text-2xl font-bold text-gray-900 mt-1">96.2%</div>
+                <div className="p-4 rounded-lg bg-[#0a0e17] border">
+                  <div className="text-sm text-slate-300">SLA on-time</div>
+                  <div className="text-2xl font-bold text-white mt-1">96.2%</div>
                 </div>
-                <div className="p-4 rounded-lg bg-gray-50 border">
-                  <div className="text-sm text-gray-600">Cases processed / week</div>
-                  <div className="text-2xl font-bold text-gray-900 mt-1">412</div>
+                <div className="p-4 rounded-lg bg-[#0a0e17] border">
+                  <div className="text-sm text-slate-300">Cases processed / week</div>
+                  <div className="text-2xl font-bold text-white mt-1">412</div>
                 </div>
-                <div className="p-4 rounded-lg bg-gray-50 border">
-                  <div className="text-sm text-gray-600">Manual touchpoints / case</div>
-                  <div className="text-2xl font-bold text-gray-900 mt-1">3.1</div>
+                <div className="p-4 rounded-lg bg-[#0a0e17] border">
+                  <div className="text-sm text-slate-300">Manual touchpoints / case</div>
+                  <div className="text-2xl font-bold text-white mt-1">3.1</div>
                 </div>
               </div>
             </CardContent>

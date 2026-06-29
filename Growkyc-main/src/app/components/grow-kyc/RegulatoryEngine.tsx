@@ -289,7 +289,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -306,7 +306,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                 <p className="text-sm text-white/90">Multi-Jurisdiction Rule Orchestration</p>
               </div>
             </div>
-            <Badge className="bg-white text-purple-600 text-sm px-3 py-1">
+            <Badge className="bg-[#0d121d] text-purple-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               Global Intelligence Active
             </Badge>
@@ -365,18 +365,18 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                   className={`border-2 ${
                     jur.status === 'active' 
                       ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' 
-                      : 'border-gray-300 bg-gray-50'
+                      : 'border-gray-300 bg-[#0a0e17]'
                   }`}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-6 flex-1">
-                        <div className="w-24 h-24 bg-white rounded-lg shadow-sm flex items-center justify-center border-2 border-gray-200">
-                          <span className="text-3xl font-bold text-gray-700">{jur.code}</span>
+                        <div className="w-24 h-24 bg-[#0d121d] rounded-lg shadow-sm flex items-center justify-center border-2 border-white/10">
+                          <span className="text-3xl font-bold text-slate-300">{jur.code}</span>
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-3">
-                            <h3 className="text-xl font-bold text-gray-900">{jur.name}</h3>
+                            <h3 className="text-xl font-bold text-white">{jur.name}</h3>
                             <Badge variant="outline" className="text-xs">
                               {jur.regulator}
                             </Badge>
@@ -392,29 +392,29 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
 
                           <div className="grid grid-cols-4 gap-6 mb-4">
                             <div>
-                              <div className="text-sm text-gray-600">Rule Set Version</div>
-                              <div className="font-semibold text-gray-900">v{jur.ruleSetVersion}</div>
+                              <div className="text-sm text-slate-300">Rule Set Version</div>
+                              <div className="font-semibold text-white">v{jur.ruleSetVersion}</div>
                             </div>
                             <div>
-                              <div className="text-sm text-gray-600">Last Updated</div>
-                              <div className="font-semibold text-gray-900">
+                              <div className="text-sm text-slate-300">Last Updated</div>
+                              <div className="font-semibold text-white">
                                 {new Date(jur.lastUpdated).toLocaleDateString('en-AU')}
                               </div>
                             </div>
                             <div>
-                              <div className="text-sm text-gray-600">Active Rules</div>
-                              <div className="font-semibold text-gray-900">{jur.activeRules}</div>
+                              <div className="text-sm text-slate-300">Active Rules</div>
+                              <div className="font-semibold text-white">{jur.activeRules}</div>
                             </div>
                             <div>
-                              <div className="text-sm text-gray-600">Clients Affected</div>
-                              <div className="font-semibold text-gray-900">
+                              <div className="text-sm text-slate-300">Clients Affected</div>
+                              <div className="font-semibold text-white">
                                 {jur.clientsAffected.toLocaleString()}
                               </div>
                             </div>
                           </div>
 
                           <div className="mb-3">
-                            <div className="text-sm text-gray-600 mb-2">Linked Policies:</div>
+                            <div className="text-sm text-slate-300 mb-2">Linked Policies:</div>
                             <div className="flex gap-2 flex-wrap">
                               {jur.policies.map((policy, idx) => (
                                 <Badge key={idx} variant="outline" className="text-xs">
@@ -459,8 +459,8 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
           <TabsContent value="rules" className="space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">Active Rules</h3>
-                <p className="text-sm text-gray-600">Drag-and-drop logic builder with version control</p>
+                <h3 className="text-lg font-semibold text-white">Active Rules</h3>
+                <p className="text-sm text-slate-300">Drag-and-drop logic builder with version control</p>
               </div>
               <Button>
                 <Plus className="w-4 h-4 mr-2" />
@@ -475,7 +475,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="font-mono text-sm font-semibold text-gray-600">
+                          <span className="font-mono text-sm font-semibold text-slate-300">
                             {rule.id}
                           </span>
                           <Badge className="bg-purple-600">{rule.jurisdiction}</Badge>
@@ -486,7 +486,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                           <Badge variant="outline">v{rule.version}</Badge>
                         </div>
 
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">{rule.name}</h3>
+                        <h3 className="text-lg font-semibold text-white mb-4">{rule.name}</h3>
 
                         {/* Visual Rule Logic */}
                         <div className="space-y-4">
@@ -499,10 +499,10 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                             <div className="space-y-2">
                               {rule.logic.conditions.map((condition, idx) => (
                                 <div key={idx} className="flex items-center gap-2 text-sm">
-                                  <Badge variant="outline" className="bg-white">
+                                  <Badge variant="outline" className="bg-[#0d121d]">
                                     {condition.field}
                                   </Badge>
-                                  <span className="text-gray-600 font-mono">{condition.operator}</span>
+                                  <span className="text-slate-300 font-mono">{condition.operator}</span>
                                   <Badge className="bg-blue-600">{condition.value}</Badge>
                                   {idx < rule.logic.conditions.length - 1 && (
                                     <span className="text-blue-900 font-semibold">AND</span>
@@ -523,22 +523,22 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                                 <div key={idx} className="flex items-center gap-2 text-sm">
                                   <Badge className="bg-green-600">{action.type}</Badge>
                                   {(action as any).subtype && (
-                                    <span className="text-gray-700">→ {(action as any).subtype}</span>
+                                    <span className="text-slate-300">→ {(action as any).subtype}</span>
                                   )}
                                   {(action as any).frequency && (
-                                    <span className="text-gray-700">→ {(action as any).frequency}</span>
+                                    <span className="text-slate-300">→ {(action as any).frequency}</span>
                                   )}
                                   {(action as any).role && (
-                                    <span className="text-gray-700">→ {(action as any).role}</span>
+                                    <span className="text-slate-300">→ {(action as any).role}</span>
                                   )}
                                   {(action as any).severity && (
                                     <Badge className="bg-red-500">{(action as any).severity}</Badge>
                                   )}
                                   {(action as any).recipient && (
-                                    <span className="text-gray-700">→ {(action as any).recipient}</span>
+                                    <span className="text-slate-300">→ {(action as any).recipient}</span>
                                   )}
                                   {(action as any).list && (
-                                    <span className="text-gray-700">→ {(action as any).list}</span>
+                                    <span className="text-slate-300">→ {(action as any).list}</span>
                                   )}
                                 </div>
                               ))}
@@ -547,7 +547,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                         </div>
 
                         <div className="mt-4 flex items-center gap-4 text-sm">
-                          <div className="flex items-center gap-2 text-gray-600">
+                          <div className="flex items-center gap-2 text-slate-300">
                             <Clock className="w-4 h-4" />
                             Last modified: {new Date(rule.lastModified).toLocaleDateString('en-AU')}
                           </div>
@@ -611,27 +611,27 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-gray-50 border-b-2">
+                    <thead className="bg-[#0a0e17] border-b-2">
                       <tr>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Rec #</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">FATF Recommendation</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Internal Control</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Status</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Evidence</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Owner</th>
-                        <th className="text-left p-4 text-sm font-semibold text-gray-900">Last Review</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Rec #</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">FATF Recommendation</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Internal Control</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Status</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Evidence</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Owner</th>
+                        <th className="text-left p-4 text-sm font-semibold text-white">Last Review</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y">
                       {fatfRecommendations.map((item) => (
-                        <tr key={item.id} className="hover:bg-gray-50">
+                        <tr key={item.id} className="hover:bg-white/5">
                           <td className="p-4">
                             <Badge variant="outline">{item.id}</Badge>
                           </td>
-                          <td className="p-4 text-sm text-gray-900 max-w-md">
+                          <td className="p-4 text-sm text-white max-w-md">
                             {item.recommendation}
                           </td>
-                          <td className="p-4 text-sm font-medium text-gray-900">
+                          <td className="p-4 text-sm font-medium text-white">
                             {item.internalControl}
                           </td>
                           <td className="p-4">
@@ -653,8 +653,8 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                               {item.evidence}
                             </Button>
                           </td>
-                          <td className="p-4 text-sm text-gray-700">{item.owner}</td>
-                          <td className="p-4 text-sm text-gray-600">
+                          <td className="p-4 text-sm text-slate-300">{item.owner}</td>
+                          <td className="p-4 text-sm text-slate-300">
                             {new Date(item.lastReview).toLocaleDateString('en-AU')}
                           </td>
                         </tr>
@@ -716,7 +716,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                         }`}>
                           {category.category}
                         </Badge>
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-slate-300">
                           {category.obligations.length} obligations mapped
                         </div>
                       </div>
@@ -727,11 +727,11 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                             <CardContent className="p-4">
                               <div className="flex items-center justify-between">
                                 <div className="flex-1">
-                                  <div className="font-semibold text-gray-900 mb-1">
+                                  <div className="font-semibold text-white mb-1">
                                     {obligation.name}
                                   </div>
                                   <div className="flex items-center gap-2">
-                                    <span className="text-sm text-gray-600">→</span>
+                                    <span className="text-sm text-slate-300">→</span>
                                     <span className="text-sm text-blue-600 font-medium">
                                       {obligation.control}
                                     </span>

@@ -146,16 +146,16 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-gray-600">Status:</span>
+              <span className="text-slate-300">Status:</span>
               <Badge className="bg-green-500">{asicData.status}</Badge>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Type:</span>
-              <span className="font-medium text-gray-900">{asicData.type}</span>
+              <span className="text-slate-300">Type:</span>
+              <span className="font-medium text-white">{asicData.type}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Registered:</span>
-              <span className="font-medium text-gray-900">{asicData.registeredDate}</span>
+              <span className="text-slate-300">Registered:</span>
+              <span className="font-medium text-white">{asicData.registeredDate}</span>
             </div>
           </CardContent>
         </Card>
@@ -382,8 +382,8 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
           <CardContent className="p-4 flex items-center gap-3">
             <Sparkles className="w-8 h-8 text-blue-600 flex-shrink-0" />
             <div className="flex-1">
-              <p className="font-semibold text-gray-900">You're doing great!</p>
-              <p className="text-sm text-gray-700">This is just the first step. We'll guide you through everything.</p>
+              <p className="font-semibold text-white">You're doing great!</p>
+              <p className="text-sm text-slate-300">This is just the first step. We'll guide you through everything.</p>
             </div>
           </CardContent>
         </Card>

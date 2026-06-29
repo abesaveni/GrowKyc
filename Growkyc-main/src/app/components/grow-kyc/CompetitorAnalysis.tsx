@@ -295,7 +295,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
 
   if (selectedComp) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#0d121d]">
         {/* Header */}
         <div className={`bg-gradient-to-r ${selectedComp.color} text-white px-8 py-12`}>
           <Button
@@ -358,7 +358,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                   {selectedComp.strengths.map((strength, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">{strength}</span>
+                      <span className="text-slate-300">{strength}</span>
                     </li>
                   ))}
                 </ul>
@@ -377,7 +377,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                   {selectedComp.weaknesses.map((weakness, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <X className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">{weakness}</span>
+                      <span className="text-slate-300">{weakness}</span>
                     </li>
                   ))}
                 </ul>
@@ -409,9 +409,9 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
             <CardContent>
               <ul className="space-y-3">
                 {selectedComp.howToBeat.map((strategy, idx) => (
-                  <li key={idx} className="flex items-start gap-3 p-3 bg-white rounded-lg border border-green-200">
+                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#0d121d] rounded-lg border border-green-200">
                     <Flame className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-900 font-medium">{strategy}</span>
+                    <span className="text-white font-medium">{strategy}</span>
                   </li>
                 ))}
               </ul>
@@ -423,7 +423,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white px-8 py-12">
         <Button
@@ -465,7 +465,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 return (
                   <div
                     key={idx}
-                    className={`flex items-start gap-4 p-5 bg-white rounded-xl border-2 ${
+                    className={`flex items-start gap-4 p-5 bg-[#0d121d] rounded-xl border-2 ${
                       gap.severity === 'critical'
                         ? 'border-red-300'
                         : gap.severity === 'high'
@@ -494,7 +494,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-bold text-gray-900">{gap.gap}</h3>
+                        <h3 className="font-bold text-white">{gap.gap}</h3>
                         <Badge
                           className={
                             gap.severity === 'critical'
@@ -507,7 +507,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                           {gap.severity}
                         </Badge>
                       </div>
-                      <p className="text-sm text-gray-700">{gap.description}</p>
+                      <p className="text-sm text-slate-300">{gap.description}</p>
                     </div>
                   </div>
                 );
@@ -517,7 +517,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
         </Card>
 
         {/* Competitor Cards */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Major Competitors</h2>
+        <h2 className="text-3xl font-bold text-white mb-6">Major Competitors</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {competitors.map((comp) => (
             <Card
@@ -530,8 +530,8 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                   <div className="flex items-center gap-4">
                     <div className="text-5xl">{comp.logo}</div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">{comp.name}</h3>
-                      <p className="text-sm text-gray-600">Market Share: {comp.marketShare}</p>
+                      <h3 className="text-2xl font-bold text-white">{comp.name}</h3>
+                      <p className="text-sm text-slate-300">Market Share: {comp.marketShare}</p>
                     </div>
                   </div>
                   <Button variant="outline" size="sm">
@@ -585,8 +585,8 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 </thead>
                 <tbody>
                   {competitiveMatrix.map((row, idx) => (
-                    <tr key={idx} className="border-b border-gray-200 hover:bg-gray-50">
-                      <td className="py-3 px-4 font-medium text-gray-900">{row.feature}</td>
+                    <tr key={idx} className="border-b border-white/10 hover:bg-white/5">
+                      <td className="py-3 px-4 font-medium text-white">{row.feature}</td>
                       <td className="text-center py-3 px-2">
                         {row.identitycheck ? (
                           <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
@@ -653,22 +653,22 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
               {winningStrategy.map((strat, idx) => {
                 const StratIcon = strat.icon;
                 return (
-                  <div key={idx} className="p-5 bg-white rounded-xl border-2 border-indigo-200 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="p-5 bg-[#0d121d] rounded-xl border-2 border-indigo-200 hover:shadow-lg transition-shadow">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <StratIcon className="w-6 h-6 text-indigo-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-gray-900 mb-2">{strat.title}</h3>
-                        <p className="text-sm text-gray-700 mb-3">{strat.strategy}</p>
+                        <h3 className="font-bold text-white mb-2">{strat.title}</h3>
+                        <p className="text-sm text-slate-300 mb-3">{strat.strategy}</p>
                         <div className="flex items-center gap-4 text-xs">
                           <div className="flex items-center gap-1">
                             <Clock className="w-3 h-3 text-blue-600" />
-                            <span className="text-gray-600">{strat.timeline}</span>
+                            <span className="text-slate-300">{strat.timeline}</span>
                           </div>
                           <div className="flex items-center gap-1">
                             <DollarSign className="w-3 h-3 text-green-600" />
-                            <span className="text-gray-600">{strat.investment}</span>
+                            <span className="text-slate-300">{strat.investment}</span>
                           </div>
                         </div>
                       </div>

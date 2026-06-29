@@ -187,8 +187,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Security & Access',
       icon: Lock,
-      color: 'text-gray-700',
-      bgColor: 'bg-gray-50',
+      color: 'text-slate-300',
+      bgColor: 'bg-[#0a0e17]',
       features: [
         { name: 'Role-Based Access Control', icon: Shield },
         { name: 'MFA Ready', icon: Lock },
@@ -233,10 +233,10 @@ export function EnterpriseFeaturesSummary() {
           <Award className="w-5 h-5 text-white" />
           <span className="text-white font-semibold">Enterprise-Grade KYC Platform</span>
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-3">
+        <h1 className="text-4xl font-bold text-white mb-3">
           Grow KYC™ Operating System
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-slate-300 max-w-3xl mx-auto">
           The world's most comprehensive regulatory compliance and KYC platform, 
           powering financial institutions, accounting firms, and professional services globally.
         </p>
@@ -250,8 +250,8 @@ export function EnterpriseFeaturesSummary() {
             <Card key={index} className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-4">
                 <Icon className={`w-8 h-8 ${stat.color} mx-auto mb-2`} />
-                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                <p className="text-xs text-gray-600 mt-1">{stat.label}</p>
+                <p className="text-2xl font-bold text-white">{stat.value}</p>
+                <p className="text-xs text-slate-300 mt-1">{stat.label}</p>
               </CardContent>
             </Card>
           );
@@ -266,10 +266,10 @@ export function EnterpriseFeaturesSummary() {
             <Card key={index} className="hover:shadow-xl transition-shadow">
               <CardHeader className={`${category.bgColor} border-b`}>
                 <CardTitle className="flex items-center gap-3">
-                  <div className={`p-2 bg-white rounded-lg ${category.color}`}>
+                  <div className={`p-2 bg-[#0d121d] rounded-lg ${category.color}`}>
                     <CategoryIcon className="w-6 h-6" />
                   </div>
-                  <span className="text-gray-900">{category.title}</span>
+                  <span className="text-white">{category.title}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
@@ -277,7 +277,7 @@ export function EnterpriseFeaturesSummary() {
                   {category.features.map((feature, fIndex) => {
                     const FeatureIcon = feature.icon;
                     return (
-                      <li key={fIndex} className="flex items-center gap-3 text-gray-700">
+                      <li key={fIndex} className="flex items-center gap-3 text-slate-300">
                         <FeatureIcon className={`w-4 h-4 ${category.color} flex-shrink-0`} />
                         <span className="text-sm">{feature.name}</span>
                       </li>

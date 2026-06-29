@@ -56,22 +56,22 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         {/* Summary Card */}
         <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
           <CardContent className="p-6">
-            <h3 className="font-bold text-gray-900 text-lg mb-4">{entity.data.name}</h3>
+            <h3 className="font-bold text-white text-lg mb-4">{entity.data.name}</h3>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-gray-600">Entity Type:</span>
-                <p className="font-semibold text-gray-900 capitalize">{entity.type.replace('_', ' ')}</p>
+                <span className="text-slate-300">Entity Type:</span>
+                <p className="font-semibold text-white capitalize">{entity.type.replace('_', ' ')}</p>
               </div>
               <div>
-                <span className="text-gray-600">People:</span>
-                <p className="font-semibold text-gray-900">{entity.data.people?.length || 0} individuals</p>
+                <span className="text-slate-300">People:</span>
+                <p className="font-semibold text-white">{entity.data.people?.length || 0} individuals</p>
               </div>
               <div>
-                <span className="text-gray-600">Industry:</span>
-                <p className="font-semibold text-gray-900 capitalize">{entity.data.industry || 'N/A'}</p>
+                <span className="text-slate-300">Industry:</span>
+                <p className="font-semibold text-white capitalize">{entity.data.industry || 'N/A'}</p>
               </div>
               <div>
-                <span className="text-gray-600">Risk Level:</span>
+                <span className="text-slate-300">Risk Level:</span>
                 <Badge className={
                   entity.riskLevel === 'high' ? 'bg-red-500' :
                   entity.riskLevel === 'medium' ? 'bg-amber-500' :
@@ -128,8 +128,8 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         {/* What Happens Next */}
         <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
-            <h4 className="font-semibold text-gray-900 mb-3">What happens next?</h4>
-            <div className="space-y-2 text-sm text-gray-700">
+            <h4 className="font-semibold text-white mb-3">What happens next?</h4>
+            <div className="space-y-2 text-sm text-slate-300">
               <div className="flex items-start gap-2">
                 <div className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs flex-shrink-0">1</div>
                 <p>We'll run automated compliance checks (sanctions, PEP, adverse media)</p>

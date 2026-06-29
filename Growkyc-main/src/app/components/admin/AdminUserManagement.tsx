@@ -286,25 +286,25 @@ export function AdminUserManagement() {
       {/* Create User modal */}
       {showCreate && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={() => !creating && setShowCreate(false)}>
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 space-y-4" onClick={e => e.stopPropagation()}>
-            <h2 className="text-lg font-semibold text-gray-900">Create User</h2>
+          <div className="bg-[#0d121d] border border-white/10 rounded-lg shadow-2xl w-full max-w-md p-6 space-y-4" onClick={e => e.stopPropagation()}>
+            <h2 className="text-lg font-semibold text-white">Create User</h2>
             <div className="space-y-3">
               <div>
-                <label className="text-sm text-gray-700">Full name</label>
+                <label className="text-sm text-slate-300">Full name</label>
                 <Input value={createForm.name} onChange={e => setCreateForm(f => ({ ...f, name: e.target.value }))} placeholder="Jane Smith" />
               </div>
               <div>
-                <label className="text-sm text-gray-700">Email</label>
+                <label className="text-sm text-slate-300">Email</label>
                 <Input type="email" value={createForm.email} onChange={e => setCreateForm(f => ({ ...f, email: e.target.value }))} placeholder="jane@firm.com" />
               </div>
               <div>
-                <label className="text-sm text-gray-700">Temporary password</label>
+                <label className="text-sm text-slate-300">Temporary password</label>
                 <Input type="password" value={createForm.password} onChange={e => setCreateForm(f => ({ ...f, password: e.target.value }))} placeholder="Min 12 chars, 1 special" />
               </div>
               <div>
-                <label className="text-sm text-gray-700">Role</label>
+                <label className="text-sm text-slate-300">Role</label>
                 <select
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                  className="w-full border border-white/10 bg-[#0a0e17] text-white rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
                   value={createForm.role}
                   onChange={e => setCreateForm(f => ({ ...f, role: e.target.value }))}
                 >
@@ -330,9 +330,9 @@ export function AdminUserManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Users</p>
-                <p className="text-3xl font-semibold text-gray-900">{users.length}</p>
-                <p className="text-xs text-gray-500 mt-1">All platform users</p>
+                <p className="text-sm text-slate-400 mb-1">Total Users</p>
+                <p className="text-3xl font-semibold text-white">{users.length}</p>
+                <p className="text-xs text-slate-500 mt-1">All platform users</p>
               </div>
               <div className="p-3 bg-blue-50 rounded-lg">
                 <Users className="w-6 h-6 text-blue-600" />
@@ -345,9 +345,9 @@ export function AdminUserManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Active Users</p>
-                <p className="text-3xl font-semibold text-gray-900">{activeUsers}</p>
-                <p className="text-xs text-gray-500 mt-1">Currently active</p>
+                <p className="text-sm text-slate-400 mb-1">Active Users</p>
+                <p className="text-3xl font-semibold text-white">{activeUsers}</p>
+                <p className="text-xs text-slate-500 mt-1">Currently active</p>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
                 <UserCheck className="w-6 h-6 text-green-600" />
@@ -360,9 +360,9 @@ export function AdminUserManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Pending KYC</p>
-                <p className="text-3xl font-semibold text-gray-900">{pendingKYC}</p>
-                <p className="text-xs text-gray-500 mt-1">Awaiting review</p>
+                <p className="text-sm text-slate-400 mb-1">Pending KYC</p>
+                <p className="text-3xl font-semibold text-white">{pendingKYC}</p>
+                <p className="text-xs text-slate-500 mt-1">Awaiting review</p>
               </div>
               <div className="p-3 bg-amber-50 rounded-lg">
                 <Shield className="w-6 h-6 text-amber-600" />
@@ -375,9 +375,9 @@ export function AdminUserManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Suspended</p>
-                <p className="text-3xl font-semibold text-gray-900">{suspendedUsers}</p>
-                <p className="text-xs text-gray-500 mt-1">Access restricted</p>
+                <p className="text-sm text-slate-400 mb-1">Suspended</p>
+                <p className="text-3xl font-semibold text-white">{suspendedUsers}</p>
+                <p className="text-xs text-slate-500 mt-1">Access restricted</p>
               </div>
               <div className="p-3 bg-red-50 rounded-lg">
                 <UserX className="w-6 h-6 text-red-600" />
@@ -407,7 +407,7 @@ export function AdminUserManagement() {
               <select
                 value={roleFilter}
                 onChange={(e) => setRoleFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-white/10 bg-[#0d121d] text-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
               >
                 <option value="all">All Roles</option>
                 {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
@@ -416,7 +416,7 @@ export function AdminUserManagement() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-white/10 bg-[#0d121d] text-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -443,7 +443,7 @@ export function AdminUserManagement() {
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-              <span className="ml-3 text-gray-500">Loading users...</span>
+              <span className="ml-3 text-slate-500">Loading users...</span>
             </div>
           ) : filteredUsers.length === 0 ? (
             <EmptyState
@@ -472,29 +472,29 @@ export function AdminUserManagement() {
                 </TableHeader>
                 <TableBody>
                   {filteredUsers.map((user) => (
-                    <TableRow key={user.id} className="hover:bg-gray-50">
+                    <TableRow key={user.id} className="hover:bg-white/5">
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold">
                             {user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900">{user.name}</p>
-                            <p className="text-xs text-gray-500">ID: {user.id}</p>
+                            <p className="font-medium text-white">{user.name}</p>
+                            <p className="text-xs text-slate-500">ID: {user.id}</p>
                           </div>
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center gap-1">
                           <Mail className="w-3 h-3 text-gray-400" />
-                          <span className="text-sm text-gray-700">{user.email}</span>
+                          <span className="text-sm text-slate-300">{user.email}</span>
                         </div>
                       </TableCell>
                       <TableCell>
                         <select
                           value={user.role}
                           onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                          className="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                          className="px-2 py-1 border border-white/10 bg-[#0d121d] text-slate-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {/* Ensure the user's current role is selectable even if
@@ -507,7 +507,7 @@ export function AdminUserManagement() {
                       </TableCell>
                       <TableCell>{getStatusBadge(user.status)}</TableCell>
                       <TableCell>{getKYCBadge(user.kycStatus)}</TableCell>
-                      <TableCell className="text-sm text-gray-600">
+                      <TableCell className="text-sm text-slate-400">
                         {format(user.joinedDate, 'dd MMM yyyy')}
                       </TableCell>
                       <TableCell className="text-right">

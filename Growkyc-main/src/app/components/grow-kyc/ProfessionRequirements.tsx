@@ -629,7 +629,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
     }
   };
 
-  if (!data) return <div className="p-8 text-center text-gray-500">Loading requirements...</div>;
+  if (!data) return <div className="p-8 text-center text-slate-400">Loading requirements...</div>;
 
   const Icon = ICON_COMPONENTS[data.iconName] || Shield;
 
@@ -771,7 +771,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
       case 'pending':
         return <XCircle className="w-5 h-5 text-red-600 cursor-pointer" />;
       default:
-        return <AlertTriangle className="w-5 h-5 text-gray-400 cursor-pointer" />;
+        return <AlertTriangle className="w-5 h-5 text-slate-400 cursor-pointer" />;
     }
   };
 
@@ -789,7 +789,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
   };
 
   return (
-    <div className="min-h-screen bg-white pb-12">
+    <div className="min-h-screen bg-[#0d121d] pb-12">
       {/* Header */}
       <div className={`bg-gradient-to-r ${data.color} text-white px-8 py-8 shadow-md`}>
         <div className="flex items-center justify-between mb-6">
@@ -855,10 +855,10 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
         {data.sections.map((section, sectionIndex) => {
           const SectionIcon = ICON_COMPONENTS[section.iconName] || Shield;
           return (
-            <Card key={sectionIndex} className="border border-gray-200 shadow-lg rounded-2xl overflow-hidden">
-              <CardHeader className="bg-gray-50/70 border-b border-gray-100 py-6">
+            <Card key={sectionIndex} className="border border-white/10 shadow-lg rounded-2xl overflow-hidden">
+              <CardHeader className="bg-gray-50/70 border-b border-white/10 py-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <CardTitle className="flex items-center gap-3.5 text-2xl font-black text-gray-900">
+                  <CardTitle className="flex items-center gap-3.5 text-2xl font-black text-white">
                     <div className="w-12 h-12 bg-[#13B5EA]/10 rounded-xl flex items-center justify-center">
                       <SectionIcon className="w-6 h-6 text-[#13B5EA]" />
                     </div>
@@ -873,7 +873,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                     Add Requirement
                   </Button>
                 </div>
-                <CardDescription className="text-sm text-gray-600 mt-2 font-medium">
+                <CardDescription className="text-sm text-slate-300 mt-2 font-medium">
                   {section.items.filter(i => i.status === 'completed').length} of {section.items.length} requirements completed
                 </CardDescription>
               </CardHeader>
@@ -882,18 +882,18 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                 {/* Form to add a new requirement */}
                 {showAddForm === sectionIndex && (
                   <Card className="border-2 border-dashed border-[#13B5EA] bg-cyan-50/20 p-5 rounded-xl space-y-4 mb-4 animate-in fade-in duration-200">
-                    <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                      <h4 className="font-bold text-gray-900 flex items-center gap-1.5">
+                    <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                      <h4 className="font-bold text-white flex items-center gap-1.5">
                         <Plus className="w-4 h-4 text-[#13B5EA]" /> Add New Requirement
                       </h4>
-                      <Button variant="ghost" size="sm" className="p-1 h-auto text-gray-500 hover:text-gray-900" onClick={() => setShowAddForm(null)}>
+                      <Button variant="ghost" size="sm" className="p-1 h-auto text-slate-400 hover:text-white" onClick={() => setShowAddForm(null)}>
                         <X className="w-4 h-4" />
                       </Button>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <label className="text-xs font-bold text-gray-700 uppercase">Requirement Title *</label>
+                        <label className="text-xs font-bold text-slate-300 uppercase">Requirement Title *</label>
                         <input 
                           type="text" 
                           placeholder="e.g. Annual Compliance Audit Review" 
@@ -903,7 +903,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-xs font-bold text-gray-700 uppercase">Legal / Program Reference</label>
+                        <label className="text-xs font-bold text-slate-300 uppercase">Legal / Program Reference</label>
                         <input 
                           type="text" 
                           placeholder="e.g. AML/CTF Rules Rule 8.6" 
@@ -913,7 +913,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-xs font-bold text-gray-700 uppercase">Frequency</label>
+                        <label className="text-xs font-bold text-slate-300 uppercase">Frequency</label>
                         <input 
                           type="text" 
                           placeholder="e.g. Annual, Ongoing" 
@@ -923,11 +923,11 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-xs font-bold text-gray-700 uppercase">Status</label>
+                        <label className="text-xs font-bold text-slate-300 uppercase">Status</label>
                         <select 
                           value={newStatus} 
                           onChange={(e) => setNewStatus(e.target.value as any)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] bg-white"
+                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] bg-[#0d121d]"
                         >
                           <option value="pending">Pending</option>
                           <option value="in-progress">In Progress</option>
@@ -935,7 +935,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                         </select>
                       </div>
                       <div className="space-y-1 md:col-span-2">
-                        <label className="text-xs font-bold text-gray-700 uppercase">Description</label>
+                        <label className="text-xs font-bold text-slate-300 uppercase">Description</label>
                         <textarea 
                           placeholder="Provide details about what this obligation requires and how to fulfill it..." 
                           value={newDesc} 
@@ -946,7 +946,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                       </div>
                     </div>
 
-                    <div className="flex justify-end gap-2 pt-2 border-t border-gray-100">
+                    <div className="flex justify-end gap-2 pt-2 border-t border-white/10">
                       <Button variant="outline" size="sm" onClick={() => setShowAddForm(null)}>Cancel</Button>
                       <Button size="sm" className="bg-[#13B5EA] hover:bg-[#0E7C9E] text-white" onClick={() => handleAddRequirement(sectionIndex)}>
                         Add Obligation
@@ -956,13 +956,13 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                 )}
 
                 {section.items.length === 0 ? (
-                  <div className="p-8 text-center text-gray-500 border border-dashed rounded-xl bg-gray-50/50">
+                  <div className="p-8 text-center text-slate-400 border border-dashed rounded-xl bg-gray-50/50">
                     No requirements defined in this section.
                   </div>
                 ) : (
                   <div className="space-y-4">
                     {section.items.map((item, itemIndex) => (
-                      <Card key={item.id} className="border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group">
+                      <Card key={item.id} className="border border-white/10 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group">
                         <div className="border-l-4 border-l-[#13B5EA] p-4 sm:p-5 flex flex-col md:flex-row items-start justify-between gap-4">
                           <div className="flex-1 space-y-2.5">
                             <div className="flex flex-wrap items-center gap-3">
@@ -975,7 +975,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                                 {getStatusIcon(item.status)}
                               </div>
                               
-                              <h4 className="font-bold text-lg text-gray-900">{item.requirement}</h4>
+                              <h4 className="font-bold text-lg text-white">{item.requirement}</h4>
                               
                               <div 
                                 onClick={() => handleToggleStatus(item.id)}
@@ -984,37 +984,37 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                                 {getStatusBadge(item.status)}
                               </div>
                               
-                              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider hidden group-hover:inline animate-pulse">
+                              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider hidden group-hover:inline animate-pulse">
                                 Click status/badge to cycle status
                               </span>
                             </div>
 
-                            <p className="text-sm text-gray-700 leading-relaxed font-medium">{item.description}</p>
+                            <p className="text-sm text-slate-300 leading-relaxed font-medium">{item.description}</p>
                             
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs md:text-sm">
                               <div className="flex items-center gap-2">
                                 <Scale className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
-                                <span className="font-semibold text-gray-600">Legal Reference:</span>
-                                <span className="text-gray-900 font-bold">{item.legalRef}</span>
+                                <span className="font-semibold text-slate-300">Legal Reference:</span>
+                                <span className="text-white font-bold">{item.legalRef}</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <Calendar className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
-                                <span className="font-semibold text-gray-600">Frequency:</span>
-                                <span className="text-gray-900 font-medium">{item.frequency}</span>
+                                <span className="font-semibold text-slate-300">Frequency:</span>
+                                <span className="text-white font-medium">{item.frequency}</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                                <span className="font-semibold text-gray-600">Last Completed:</span>
-                                <span className="text-gray-900 font-medium">{item.lastCompleted || 'N/A'}</span>
+                                <span className="font-semibold text-slate-300">Last Completed:</span>
+                                <span className="text-white font-medium">{item.lastCompleted || 'N/A'}</span>
                               </div>
                             </div>
 
                             {/* Documents Vault section */}
-                            <div className="bg-gray-50/50 rounded-xl p-3 border border-gray-100 space-y-2 mt-4">
+                            <div className="bg-gray-50/50 rounded-xl p-3 border border-white/10 space-y-2 mt-4">
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                   <FileText className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
-                                  <span className="text-xs sm:text-sm font-bold text-gray-800">Obligation Documents ({item.documents.length})</span>
+                                  <span className="text-xs sm:text-sm font-bold text-white">Obligation Documents ({item.documents.length})</span>
                                 </div>
                                 
                                 {docInputReqId === item.id ? (
@@ -1030,7 +1030,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                                     <Button size="sm" className="h-6 px-2 bg-green-600 hover:bg-green-700 text-white text-[10px]" onClick={() => handleAddDocument(item.id)}>
                                       Add
                                     </Button>
-                                    <Button variant="ghost" size="sm" className="h-6 p-1 text-gray-500 hover:text-gray-900" onClick={() => setDocInputReqId(null)}>
+                                    <Button variant="ghost" size="sm" className="h-6 p-1 text-slate-400 hover:text-white" onClick={() => setDocInputReqId(null)}>
                                       <X className="w-3.5 h-3.5" />
                                     </Button>
                                   </div>
@@ -1047,18 +1047,18 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                               </div>
 
                               {item.documents.length === 0 ? (
-                                <p className="text-xs text-gray-500 italic ml-6">No documentation attached. Click "Add Document" to upload compliance evidence.</p>
+                                <p className="text-xs text-slate-400 italic ml-6">No documentation attached. Click "Add Document" to upload compliance evidence.</p>
                               ) : (
                                 <ul className="ml-6 space-y-1.5">
                                   {item.documents.map((doc, docIndex) => (
-                                    <li key={docIndex} className="text-xs text-gray-700 flex items-center justify-between group/doc py-0.5 hover:bg-gray-100/50 px-2 rounded">
+                                    <li key={docIndex} className="text-xs text-slate-300 flex items-center justify-between group/doc py-0.5 hover:bg-gray-100/50 px-2 rounded">
                                       <span className="flex items-center gap-2 truncate">
                                         <div className="w-1.5 h-1.5 bg-[#13B5EA] rounded-full flex-shrink-0"></div>
                                         <span className="truncate">{doc}</span>
                                       </span>
                                       <button 
                                         onClick={() => handleDeleteDocument(item.id, docIndex)}
-                                        className="text-gray-400 hover:text-red-600 opacity-0 group-hover/doc:opacity-100 transition-opacity ml-2"
+                                        className="text-slate-400 hover:text-red-600 opacity-0 group-hover/doc:opacity-100 transition-opacity ml-2"
                                         title="Delete Document"
                                       >
                                         <Trash2 className="w-3.5 h-3.5" />
@@ -1074,7 +1074,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                             <Button 
                               variant="ghost" 
                               size="sm" 
-                              className="text-gray-400 hover:text-red-600 hover:bg-red-50 p-2 rounded-lg"
+                              className="text-slate-400 hover:text-red-600 hover:bg-red-50 p-2 rounded-lg"
                               onClick={() => handleDeleteRequirement(item.id)}
                               title="Delete requirement"
                             >
@@ -1093,43 +1093,43 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
 
         {/* Summary Card */}
         <Card className="border-2 border-[#13B5EA] bg-gradient-to-br from-[#13B5EA]/5 to-white shadow-xl rounded-2xl overflow-hidden">
-          <CardHeader className="py-6 border-b border-gray-100">
-            <CardTitle className="flex items-center gap-3.5 text-2xl font-black text-gray-900">
+          <CardHeader className="py-6 border-b border-white/10">
+            <CardTitle className="flex items-center gap-3.5 text-2xl font-black text-white">
               <Icon className="w-7 h-7 text-[#13B5EA]" />
               Compliance Overview & Audit Ready Status
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl p-5 border border-green-100 shadow-sm">
+              <div className="bg-[#0d121d] rounded-xl p-5 border border-green-100 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <CheckCircle className="w-6 h-6 text-green-600" />
-                  <span className="text-sm font-semibold text-gray-600">Completed Obligations</span>
+                  <span className="text-sm font-semibold text-slate-300">Completed Obligations</span>
                 </div>
                 <div className="text-4xl font-black text-green-600">{completedRequirements}</div>
-                <div className="text-xs text-gray-500 mt-1 font-medium">
+                <div className="text-xs text-slate-400 mt-1 font-medium">
                   {totalRequirements > 0 ? ((completedRequirements / totalRequirements) * 100).toFixed(1) : 0}% of total
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-5 border border-amber-100 shadow-sm">
+              <div className="bg-[#0d121d] rounded-xl p-5 border border-amber-100 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="w-6 h-6 text-amber-600" />
-                  <span className="text-sm font-semibold text-gray-600">In Progress</span>
+                  <span className="text-sm font-semibold text-slate-300">In Progress</span>
                 </div>
                 <div className="text-4xl font-black text-amber-600">{inProgressRequirements}</div>
-                <div className="text-xs text-gray-500 mt-1 font-medium">
+                <div className="text-xs text-slate-400 mt-1 font-medium">
                   {totalRequirements > 0 ? ((inProgressRequirements / totalRequirements) * 100).toFixed(1) : 0}% of total
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-5 border border-red-100 shadow-sm">
+              <div className="bg-[#0d121d] rounded-xl p-5 border border-red-100 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <XCircle className="w-6 h-6 text-red-600" />
-                  <span className="text-sm font-semibold text-gray-600">Pending Actions</span>
+                  <span className="text-sm font-semibold text-slate-300">Pending Actions</span>
                 </div>
                 <div className="text-4xl font-black text-red-600">{pendingRequirements}</div>
-                <div className="text-xs text-gray-500 mt-1 font-medium">
+                <div className="text-xs text-slate-400 mt-1 font-medium">
                   {totalRequirements > 0 ? ((pendingRequirements / totalRequirements) * 100).toFixed(1) : 0}% of total
                 </div>
               </div>
@@ -1139,9 +1139,9 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
               <div className="flex items-start gap-3">
                 <Shield className="w-5 h-5 text-[#13B5EA] mt-0.5 flex-shrink-0 animate-bounce" />
                 <div>
-                  <p className="font-bold text-gray-900 mb-1">Dynamic Regulatory Health Monitor</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    You are currently maintaining a <span className="font-bold text-gray-900">{completionRate}%</span> compliance readiness rate across all <span className="font-bold">{data.title}</span> checklists.
+                  <p className="font-bold text-white mb-1">Dynamic Regulatory Health Monitor</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    You are currently maintaining a <span className="font-bold text-white">{completionRate}%</span> compliance readiness rate across all <span className="font-bold">{data.title}</span> checklists.
                     {inProgressRequirements > 0 && ` There are ${inProgressRequirements} items currently in progress.`}
                     {pendingRequirements > 0 ? ` WARNING: ${pendingRequirements} items are outstanding and require immediate action.` : ' All items are up to date and audit ready.'}
                   </p>

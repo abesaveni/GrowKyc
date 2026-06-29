@@ -60,7 +60,7 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
         <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-900">Verification Progress</span>
+              <span className="text-sm font-medium text-white">Verification Progress</span>
               <span className="text-sm font-bold text-blue-600">{verifiedCount} / {people.length}</span>
             </div>
             <Progress value={(verifiedCount / people.length) * 100} />
@@ -93,8 +93,8 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
                       )}
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">{person.name}</h3>
-                      <p className="text-sm text-gray-600">{person.role}</p>
+                      <h3 className="font-bold text-white">{person.name}</h3>
+                      <p className="text-sm text-slate-300">{person.role}</p>
                     </div>
                   </div>
                   <Badge className={
@@ -114,19 +114,19 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
                       <Card className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardContent className="p-4 text-center" onClick={() => handleVerify(person.id)}>
                           <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                          <p className="text-xs font-medium text-gray-900">Driver License</p>
+                          <p className="text-xs font-medium text-white">Driver License</p>
                         </CardContent>
                       </Card>
                       <Card className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardContent className="p-4 text-center" onClick={() => handleVerify(person.id)}>
                           <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                          <p className="text-xs font-medium text-gray-900">Passport</p>
+                          <p className="text-xs font-medium text-white">Passport</p>
                         </CardContent>
                       </Card>
                       <Card className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardContent className="p-4 text-center" onClick={() => handleVerify(person.id)}>
                           <Upload className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                          <p className="text-xs font-medium text-gray-900">Upload File</p>
+                          <p className="text-xs font-medium text-white">Upload File</p>
                         </CardContent>
                       </Card>
                     </div>
@@ -136,7 +136,7 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
                 {status === 'reviewing' && (
                   <div className="text-center py-4">
                     <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2 animate-spin" />
-                    <p className="text-sm text-gray-700">Verifying document...</p>
+                    <p className="text-sm text-slate-300">Verifying document...</p>
                   </div>
                 )}
 

@@ -89,10 +89,10 @@ export function AuditDashboard({ onViewClient }: AuditDashboardProps) {
           <div className="space-y-3">
             {['AUSTRAC Compliance Pack', 'ACL Credit Files', 'AFSL Incident Records', 'Privacy Breach Logs'].map(
               (item, idx) => (
-                <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                <div key={idx} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border">
                   <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-gray-600" />
-                    <span className="font-semibold text-gray-900">{item}</span>
+                    <FileText className="w-5 h-5 text-slate-300" />
+                    <span className="font-semibold text-white">{item}</span>
                   </div>
                   <Button size="sm" variant="outline">
                     <Download className="w-4 h-4 mr-2" />

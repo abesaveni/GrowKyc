@@ -363,7 +363,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
     if (field.type === 'select') {
       return (
         <div key={field.name} className="mb-4">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-300 mb-2">
             {field.label}
             {field.required && <span className="text-red-500 ml-1">*</span>}
           </label>
@@ -384,7 +384,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
     if (field.type === 'textarea') {
       return (
         <div key={field.name} className="mb-4">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-300 mb-2">
             {field.label}
             {field.required && <span className="text-red-500 ml-1">*</span>}
           </label>
@@ -400,7 +400,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
 
     return (
       <div key={field.name} className="mb-4">
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-slate-300 mb-2">
           {field.label}
           {field.required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -413,7 +413,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           placeholder={field.placeholder}
         />
         {field.maxLength && (
-          <p className="text-xs text-gray-500 mt-1">Max {field.maxLength} characters</p>
+          <p className="text-xs text-slate-400 mt-1">Max {field.maxLength} characters</p>
         )}
       </div>
     );
@@ -465,7 +465,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
         </CardHeader>
         <CardContent>
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
-            <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <Upload className="w-12 h-12 text-slate-400 mx-auto mb-4" />
             <input
               type="file"
               accept="image/*,.pdf"
@@ -483,7 +483,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
               <div className="mt-4 flex items-center justify-center gap-2 text-green-600">
                 <CheckCircle className="w-5 h-5" />
                 <span className="font-semibold">{uploadedFile.name}</span>
-                <span className="text-sm text-gray-600">({(uploadedFile.size / 1024).toFixed(1)} KB)</span>
+                <span className="text-sm text-slate-300">({(uploadedFile.size / 1024).toFixed(1)} KB)</span>
               </div>
             )}
           </div>
@@ -512,8 +512,8 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
         <CardContent>
           <div className="space-y-2">
             {docConfig.verificationChecks.map((check, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm font-medium text-gray-700">{check}</span>
+              <div key={idx} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+                <span className="text-sm font-medium text-slate-300">{check}</span>
                 {verificationResults.documentIntegrity ? (
                   <Badge className="bg-green-500">
                     <CheckCircle className="w-3 h-3 mr-1" />
@@ -536,7 +536,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           {isProcessing && (
             <div className="mt-4 text-center">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-              <p className="text-sm text-gray-600 mt-2">Running verification checks...</p>
+              <p className="text-sm text-slate-300 mt-2">Running verification checks...</p>
             </div>
           )}
 
@@ -549,20 +549,20 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <span className="text-gray-600">Confidence Score:</span>
+                    <span className="text-slate-300">Confidence Score:</span>
                     <span className="font-bold text-green-900 ml-2">{verificationResults.confidenceScore}%</span>
                   </div>
                   <div>
-                    <span className="text-gray-600">Document Hash:</span>
-                    <span className="font-mono text-xs text-gray-700 ml-2">{verificationResults.documentHash}</span>
+                    <span className="text-slate-300">Document Hash:</span>
+                    <span className="font-mono text-xs text-slate-300 ml-2">{verificationResults.documentHash}</span>
                   </div>
                   <div>
-                    <span className="text-gray-600">Verified By:</span>
-                    <span className="font-semibold text-gray-900 ml-2">{verificationResults.verifierName}</span>
+                    <span className="text-slate-300">Verified By:</span>
+                    <span className="font-semibold text-white ml-2">{verificationResults.verifierName}</span>
                   </div>
                   <div>
-                    <span className="text-gray-600">Verification Date:</span>
-                    <span className="text-gray-700 ml-2">{new Date(verificationResults.verificationDate).toLocaleString()}</span>
+                    <span className="text-slate-300">Verification Date:</span>
+                    <span className="text-slate-300 ml-2">{new Date(verificationResults.verificationDate).toLocaleString()}</span>
                   </div>
                 </div>
               </CardContent>

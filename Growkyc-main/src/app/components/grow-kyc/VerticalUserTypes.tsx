@@ -300,7 +300,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
   if (selectedVert) {
     const VertIcon = selectedVert.icon;
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#0d121d]">
         {/* Header */}
         <div className={`bg-gradient-to-r ${selectedVert.color} text-white px-8 py-12`}>
           <Button
@@ -393,9 +393,9 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
             <CardContent>
               <ul className="space-y-2">
                 {selectedVert.keyNeeds.map((need, idx) => (
-                  <li key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-900">{need}</span>
+                    <span className="text-white">{need}</span>
                   </li>
                 ))}
               </ul>
@@ -413,9 +413,9 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
             <CardContent>
               <div className="grid grid-cols-2 gap-3">
                 {selectedVert.integrations.map((integration, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-3 bg-white rounded-lg border border-indigo-200">
+                  <div key={idx} className="flex items-center gap-2 p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
                     <Zap className="w-4 h-4 text-indigo-600" />
-                    <span className="font-medium text-gray-900">{integration}</span>
+                    <span className="font-medium text-white">{integration}</span>
                   </div>
                 ))}
               </div>
@@ -436,9 +436,9 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
             <CardContent>
               <div className="space-y-3">
                 {selectedVert.winningFeatures.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-xl border-2 border-green-200">
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#0d121d] rounded-xl border-2 border-green-200">
                     <Rocket className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg font-semibold text-gray-900">{feature}</span>
+                    <span className="text-lg font-semibold text-white">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -450,7 +450,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white px-8 py-12">
         <Button
@@ -525,11 +525,11 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
         <div className="flex items-center gap-6 mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl">
           <div className="flex items-center gap-2">
             <Badge className="bg-green-600 text-white">Built</Badge>
-            <span className="text-sm text-gray-700">= Currently operational (1 vertical)</span>
+            <span className="text-sm text-slate-300">= Currently operational (1 vertical)</span>
           </div>
           <div className="flex items-center gap-2">
             <Badge className="bg-amber-600 text-white">Planned</Badge>
-            <span className="text-sm text-gray-700">= Not yet built (6 verticals)</span>
+            <span className="text-sm text-slate-300">= Not yet built (6 verticals)</span>
           </div>
         </div>
 
@@ -551,34 +551,34 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-3xl font-bold text-gray-900">{vertical.name}</h3>
+                          <h3 className="text-3xl font-bold text-white">{vertical.name}</h3>
                           <Badge className={vertical.status === 'Built' ? 'bg-green-600 text-white' : 'bg-amber-600 text-white'}>
                             {vertical.status}
                           </Badge>
                         </div>
-                        <p className="text-gray-700 mb-4 text-lg">{vertical.mainUseCase}</p>
+                        <p className="text-slate-300 mb-4 text-lg">{vertical.mainUseCase}</p>
                         
                         <div className="grid grid-cols-3 gap-4 mb-4">
-                          <div className="p-3 bg-gray-50 rounded-lg">
+                          <div className="p-3 bg-[#0a0e17] rounded-lg">
                             <div className="flex items-center gap-2 mb-1">
-                              <Globe className="w-4 h-4 text-gray-600" />
-                              <span className="text-xs font-semibold text-gray-600">MARKET SIZE</span>
+                              <Globe className="w-4 h-4 text-slate-300" />
+                              <span className="text-xs font-semibold text-slate-300">MARKET SIZE</span>
                             </div>
-                            <p className="text-sm font-medium text-gray-900">{vertical.marketSize.split(',')[0]}</p>
+                            <p className="text-sm font-medium text-white">{vertical.marketSize.split(',')[0]}</p>
                           </div>
-                          <div className="p-3 bg-gray-50 rounded-lg">
+                          <div className="p-3 bg-[#0a0e17] rounded-lg">
                             <div className="flex items-center gap-2 mb-1">
-                              <DollarSign className="w-4 h-4 text-gray-600" />
-                              <span className="text-xs font-semibold text-gray-600">PRICING</span>
+                              <DollarSign className="w-4 h-4 text-slate-300" />
+                              <span className="text-xs font-semibold text-slate-300">PRICING</span>
                             </div>
-                            <p className="text-sm font-medium text-gray-900">{vertical.pricing}</p>
+                            <p className="text-sm font-medium text-white">{vertical.pricing}</p>
                           </div>
-                          <div className="p-3 bg-gray-50 rounded-lg">
+                          <div className="p-3 bg-[#0a0e17] rounded-lg">
                             <div className="flex items-center gap-2 mb-1">
-                              <Target className="w-4 h-4 text-gray-600" />
-                              <span className="text-xs font-semibold text-gray-600">ARR POTENTIAL</span>
+                              <Target className="w-4 h-4 text-slate-300" />
+                              <span className="text-xs font-semibold text-slate-300">ARR POTENTIAL</span>
                             </div>
-                            <p className="text-sm font-medium text-gray-900">{vertical.arrPotential}</p>
+                            <p className="text-sm font-medium text-white">{vertical.arrPotential}</p>
                           </div>
                         </div>
 
@@ -606,17 +606,17 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
           <CardContent>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h4 className="font-bold text-gray-900 mb-4 text-lg">Single Vertical (Accountants Only)</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-white mb-4 text-lg">Single Vertical (Accountants Only)</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li>• Market: 40,000 firms</li>
                   <li>• Penetration: 5% (2,000 firms)</li>
                   <li>• ARPU: $5,000/year</li>
-                  <li className="font-bold text-gray-900">• Total ARR: $10M</li>
+                  <li className="font-bold text-white">• Total ARR: $10M</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-4 text-lg">Multi-Vertical (7 Industries)</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-white mb-4 text-lg">Multi-Vertical (7 Industries)</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li>• Market: 114,500+ firms across 7 verticals</li>
                   <li>• Penetration: 5.7% (6,500 firms)</li>
                   <li>• Average ARPU: $6,200/year</li>
@@ -653,12 +653,12 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-6">
-              <div className="p-6 bg-white rounded-xl border-2 border-blue-200">
-                <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-blue-200">
+                <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-600" />
                   Shared Core Engine (All Verticals)
                 </h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li>• Identity Verification</li>
                   <li>• KYB and Beneficial Ownership</li>
                   <li>• Sanctions, PEP, Adverse Media</li>
@@ -670,12 +670,12 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
                 </ul>
               </div>
 
-              <div className="p-6 bg-white rounded-xl border-2 border-purple-200">
-                <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-purple-200">
+                <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                   <FileText className="w-5 h-5 text-purple-600" />
                   Vertical-Specific Overlays
                 </h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li>• Custom intake forms</li>
                   <li>• Industry risk rules</li>
                   <li>• Required evidence checklists</li>

@@ -367,7 +367,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
   ];
 
   const categories = [
-    { id: 'all', name: 'All Initiatives', icon: Target, color: 'text-gray-600' },
+    { id: 'all', name: 'All Initiatives', icon: Target, color: 'text-slate-300' },
     { id: 'AI/ML', name: 'AI & Machine Learning', icon: Brain, color: 'text-purple-600' },
     { id: 'Security', name: 'Security & Compliance', icon: Shield, color: 'text-red-600' },
     { id: 'Infrastructure', name: 'Infrastructure', icon: Cloud, color: 'text-blue-600' },
@@ -389,8 +389,8 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       case 'completed': return 'bg-green-100 text-green-800 border-green-300';
       case 'in-progress': return 'bg-blue-100 text-blue-800 border-blue-300';
       case 'planned': return 'bg-purple-100 text-purple-800 border-purple-300';
-      case 'future': return 'bg-gray-100 text-gray-800 border-gray-300';
-      default: return 'bg-gray-100 text-gray-600 border-gray-300';
+      case 'future': return 'bg-[#0a0e17] text-white border-gray-300';
+      default: return 'bg-[#0a0e17] text-slate-300 border-gray-300';
     }
   };
 
@@ -409,7 +409,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
     : phases;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-8 py-12">
         <div className="flex items-center justify-between mb-6">
@@ -473,8 +473,8 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       <div className="px-8 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Development Phases</h2>
-            <p className="text-gray-600">Track progress across our 4-phase roadmap to market dominance</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Development Phases</h2>
+            <p className="text-slate-300">Track progress across our 4-phase roadmap to market dominance</p>
           </div>
           <Button
             variant={selectedPhase === null ? 'default' : 'outline'}
@@ -495,7 +495,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                 className={`cursor-pointer transition-all hover:shadow-xl border-2 ${
                   selectedPhase === phase.phase
                     ? 'ring-4 ring-indigo-200 border-indigo-400'
-                    : 'border-gray-200 hover:border-indigo-300'
+                    : 'border-white/10 hover:border-indigo-300'
                 }`}
                 onClick={() => setSelectedPhase(selectedPhase === phase.phase ? null : phase.phase)}
               >
@@ -510,18 +510,18 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                        phase.status === 'planned' ? 'Planned' : 'Future'}
                     </Badge>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">Phase {phase.phase}</h3>
-                  <p className="text-lg font-semibold text-gray-700 mb-1">{phase.name}</p>
-                  <p className="text-sm text-gray-600 mb-4">{phase.timeline}</p>
+                  <h3 className="text-xl font-bold text-white mb-1">Phase {phase.phase}</h3>
+                  <p className="text-lg font-semibold text-slate-300 mb-1">{phase.name}</p>
+                  <p className="text-sm text-slate-300 mb-4">{phase.timeline}</p>
                   <div className="mb-3">
                     <div className="flex items-center justify-between mb-1 text-sm">
-                      <span className="text-gray-600">Progress</span>
-                      <span className="font-semibold text-gray-900">{phase.completion}%</span>
+                      <span className="text-slate-300">Progress</span>
+                      <span className="font-semibold text-white">{phase.completion}%</span>
                     </div>
                     <Progress value={phase.completion} className="h-2" />
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Investment</span>
+                    <span className="text-slate-300">Investment</span>
                     <span className="font-bold text-indigo-600">{phase.investment}</span>
                   </div>
                 </CardContent>
@@ -565,10 +565,10 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                     <PhaseIcon className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900">
+                    <h3 className="text-2xl font-bold text-white">
                       Phase {phase.phase}: {phase.name}
                     </h3>
-                    <p className="text-gray-600">{phase.timeline} • {phase.investment} • {filteredInitiatives.length} initiatives</p>
+                    <p className="text-slate-300">{phase.timeline} • {phase.investment} • {filteredInitiatives.length} initiatives</p>
                   </div>
                   <Badge className={`${getStatusColor(phase.status)} text-base px-4 py-1`}>
                     {phase.completion}% Complete
@@ -582,21 +582,21 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-2">
-                              <h4 className="text-xl font-bold text-gray-900">{initiative.title}</h4>
+                              <h4 className="text-xl font-bold text-white">{initiative.title}</h4>
                               <Badge className={getPriorityColor(initiative.priority)}>
                                 {initiative.priority}
                               </Badge>
-                              <Badge variant="outline" className="text-gray-700">
+                              <Badge variant="outline" className="text-slate-300">
                                 {initiative.category}
                               </Badge>
                             </div>
-                            <p className="text-gray-700 mb-3">{initiative.description}</p>
+                            <p className="text-slate-300 mb-3">{initiative.description}</p>
                             
                             {/* KPIs */}
                             <div className="flex items-center gap-4 mb-4">
                               <div className="flex items-center gap-2">
                                 <Target className="w-4 h-4 text-indigo-600" />
-                                <span className="text-sm font-medium text-gray-600">KPIs:</span>
+                                <span className="text-sm font-medium text-slate-300">KPIs:</span>
                               </div>
                               <div className="flex flex-wrap gap-2">
                                 {initiative.kpis.map((kpi, kpiIdx) => (
@@ -611,13 +611,13 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                             <div className="flex items-center gap-6 text-sm">
                               <div className="flex items-center gap-2">
                                 <Zap className="w-4 h-4 text-amber-600" />
-                                <span className="text-gray-600">Impact:</span>
-                                <span className="font-semibold text-gray-900">{initiative.impact}</span>
+                                <span className="text-slate-300">Impact:</span>
+                                <span className="font-semibold text-white">{initiative.impact}</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <Clock className="w-4 h-4 text-blue-600" />
-                                <span className="text-gray-600">Effort:</span>
-                                <span className="font-semibold text-gray-900">{initiative.effort}</span>
+                                <span className="text-slate-300">Effort:</span>
+                                <span className="font-semibold text-white">{initiative.effort}</span>
                               </div>
                             </div>
                           </div>
@@ -648,13 +648,13 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                                     initiative.progress === 100 ? 'text-green-600' :
                                     initiative.progress > 50 ? 'text-blue-600' :
                                     initiative.progress > 0 ? 'text-purple-600' :
-                                    'text-gray-400'
+                                    'text-slate-400'
                                   }
                                   strokeLinecap="round"
                                 />
                               </svg>
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-2xl font-bold text-gray-900">{initiative.progress}%</span>
+                                <span className="text-2xl font-bold text-white">{initiative.progress}%</span>
                               </div>
                             </div>
                             {initiative.progress === 100 && (
@@ -667,7 +667,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                         </div>
 
                         {/* Progress Bar */}
-                        <div className="mt-4 pt-4 border-t border-gray-200">
+                        <div className="mt-4 pt-4 border-t border-white/10">
                           <Progress value={initiative.progress} className="h-2" />
                         </div>
                       </CardContent>
@@ -702,13 +702,13 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
               ].map((win, idx) => {
                 const WinIcon = win.icon;
                 return (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-lg border-2 border-green-200 hover:shadow-md transition-shadow">
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#0d121d] rounded-lg border-2 border-green-200 hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <WinIcon className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 mb-1">{win.title}</h4>
-                      <p className="text-sm text-gray-600">{win.description}</p>
+                      <h4 className="font-bold text-white mb-1">{win.title}</h4>
+                      <p className="text-sm text-slate-300">{win.description}</p>
                     </div>
                   </div>
                 );
@@ -739,15 +739,15 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                     $1.5M ARR achieved
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     Mobile apps launched (iOS/Android)
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     99.5% uptime SLA
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     NPS score {">"} 50
                   </li>
                 </ul>
@@ -756,23 +756,23 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                 <div className="text-purple-600 font-semibold mb-4 text-lg">12 Months (Mar 2027)</div>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     300 paying customers
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     $5M ARR milestone
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     SOC 2 Type II certified
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     10+ strategic integrations
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     Marketplace with 20+ apps
                   </li>
                 </ul>
@@ -781,23 +781,23 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                 <div className="text-pink-600 font-semibold mb-4 text-lg">18 Months (Sep 2027)</div>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     600 paying customers
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     $10M ARR achieved
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     Profitable (positive EBITDA)
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     Top 3 in APAC market share
                   </li>
                   <li className="flex items-center gap-2">
-                    <Circle className="w-4 h-4 text-gray-400" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     Series A ($15M+) OR bootstrapped
                   </li>
                 </ul>
@@ -859,13 +859,13 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
               ].map((advantage, idx) => {
                 const AdvantageIcon = advantage.icon;
                 return (
-                  <div key={idx} className="flex items-start gap-4 p-5 bg-white rounded-xl border-2 border-amber-200 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="flex items-start gap-4 p-5 bg-[#0d121d] rounded-xl border-2 border-amber-200 hover:shadow-lg transition-shadow">
                     <div className={`w-12 h-12 ${advantage.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
                       <AdvantageIcon className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 mb-2">{advantage.title}</h4>
-                      <p className="text-sm text-gray-700">{advantage.description}</p>
+                      <h4 className="font-bold text-white mb-2">{advantage.title}</h4>
+                      <p className="text-sm text-slate-300">{advantage.description}</p>
                     </div>
                   </div>
                 );

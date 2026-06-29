@@ -35,7 +35,7 @@ export function FinancialProfile({ entity, onComplete }: FinancialProfileProps) 
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-600 mb-4">This section is optional for basic compliance.</p>
+        <p className="text-slate-300 mb-4">This section is optional for basic compliance.</p>
         <Button onClick={() => onComplete({ skipped: false })}>
           Skip for Now
           <CheckCircle className="w-5 h-5 ml-2" />

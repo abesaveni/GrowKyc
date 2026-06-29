@@ -250,7 +250,7 @@ export function ArchitectureViewer({ onBack }: ArchitectureViewerProps) {
                   <div className={`w-12 h-12 ${colors.bg} rounded-lg flex items-center justify-center mx-auto mb-3`}>
                     <Icon className={`w-6 h-6 ${colors.text}`} />
                   </div>
-                  <div className={`text-xs font-medium mb-1 ${isSelected ? 'text-white' : 'text-gray-400'}`}>
+                  <div className={`text-xs font-medium mb-1 ${isSelected ? 'text-white' : 'text-slate-400'}`}>
                     Layer {layer.id}
                   </div>
                   <h3 className={`text-sm font-bold ${isSelected ? 'text-white' : 'text-gray-300'}`}>
@@ -347,7 +347,7 @@ export function ArchitectureViewer({ onBack }: ArchitectureViewerProps) {
                         <Icon className={`w-10 h-10 ${colors.text}`} />
                       </div>
                       <div className="text-center">
-                        <div className="text-xs text-gray-400 mb-1">Layer {layer.id}</div>
+                        <div className="text-xs text-slate-400 mb-1">Layer {layer.id}</div>
                         <div className="text-sm font-bold text-white max-w-[100px]">
                           {layer.name.replace(' Layer', '')}
                         </div>

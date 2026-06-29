@@ -19,16 +19,16 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
         variant="ghost"
         size="sm"
         onClick={items[0]?.onClick}
-        className="h-7 px-2 text-gray-600 hover:text-gray-900"
+        className="h-7 px-2 text-slate-300 hover:text-white"
       >
         <Home className="w-4 h-4" />
       </Button>
       
       {items.map((item, index) => (
         <div key={index} className="flex items-center">
-          <ChevronRight className="w-4 h-4 text-gray-400" />
+          <ChevronRight className="w-4 h-4 text-slate-400" />
           {item.active || index === items.length - 1 ? (
-            <span className="px-2 py-1 font-semibold text-gray-900">
+            <span className="px-2 py-1 font-semibold text-white">
               {item.label}
             </span>
           ) : (
@@ -36,7 +36,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
               variant="ghost"
               size="sm"
               onClick={item.onClick}
-              className="h-7 px-2 text-gray-600 hover:text-gray-900"
+              className="h-7 px-2 text-slate-300 hover:text-white"
             >
               {item.label}
             </Button>

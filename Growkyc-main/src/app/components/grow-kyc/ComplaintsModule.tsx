@@ -199,9 +199,9 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
       case 'On Track': return 'text-green-600';
       case 'At Risk': return 'text-amber-600';
       case 'Overdue': return 'text-red-600';
-      case 'Completed': return 'text-gray-600';
+      case 'Completed': return 'text-slate-300';
       case 'Pending Acknowledgment': return 'text-blue-600';
-      default: return 'text-gray-600';
+      default: return 'text-slate-300';
     }
   };
 
@@ -217,7 +217,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -233,7 +233,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
               <p className="text-sm text-white/90">ASIC RG271 Complaints Handling</p>
             </div>
           </div>
-          <Button className="bg-white text-[#13B5EA] hover:bg-gray-100">
+          <Button className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/5">
             <Flag className="w-4 h-4 mr-2" />
             Lodge Complaint
           </Button>
@@ -241,39 +241,39 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
       </div>
 
       {/* SLA Dashboard */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
+      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-8 gap-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-gray-900">{stats.total}</div>
-            <div className="text-xs text-gray-600 mt-1">Total</div>
+            <div className="text-3xl font-bold text-white">{stats.total}</div>
+            <div className="text-xs text-slate-300 mt-1">Total</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-600">{stats.new}</div>
-            <div className="text-xs text-gray-600 mt-1">New</div>
+            <div className="text-xs text-slate-300 mt-1">New</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-cyan-600">{stats.acknowledged}</div>
-            <div className="text-xs text-gray-600 mt-1">Acknowledged</div>
+            <div className="text-xs text-slate-300 mt-1">Acknowledged</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-amber-600">{stats.investigating}</div>
-            <div className="text-xs text-gray-600 mt-1">Investigating</div>
+            <div className="text-xs text-slate-300 mt-1">Investigating</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600">{stats.resolved}</div>
-            <div className="text-xs text-gray-600 mt-1">Resolved</div>
+            <div className="text-xs text-slate-300 mt-1">Resolved</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-600">{stats.overdue}</div>
-            <div className="text-xs text-gray-600 mt-1">Overdue</div>
+            <div className="text-xs text-slate-300 mt-1">Overdue</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-orange-600">{stats.urgent}</div>
-            <div className="text-xs text-gray-600 mt-1">Urgent</div>
+            <div className="text-xs text-slate-300 mt-1">Urgent</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{stats.hardship}</div>
-            <div className="text-xs text-gray-600 mt-1">Hardship</div>
+            <div className="text-xs text-slate-300 mt-1">Hardship</div>
           </div>
         </div>
       </div>
@@ -313,7 +313,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                   className={`border-2 ${
                     complaint.urgentFlag ? 'border-red-300 bg-red-50' :
                     complaint.hardshipFlag ? 'border-purple-300 bg-purple-50' :
-                    'border-gray-200'
+                    'border-white/10'
                   } hover:border-cyan-300 transition-colors`}
                 >
                   <CardContent className="p-6">
@@ -323,9 +323,9 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                         <div className="flex items-center gap-2 mb-2">
                           <MessageSquare className="w-5 h-5 text-cyan-600" />
                           <div>
-                            <div className="font-bold text-gray-900">{complaint.complaintId}</div>
-                            <div className="text-sm text-gray-700">{complaint.complainantName}</div>
-                            <div className="text-xs text-gray-600">{complaint.dateReceived}</div>
+                            <div className="font-bold text-white">{complaint.complaintId}</div>
+                            <div className="text-sm text-slate-300">{complaint.complainantName}</div>
+                            <div className="text-xs text-slate-300">{complaint.dateReceived}</div>
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-1">
@@ -348,16 +348,16 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                       <div className="md:col-span-2">
                         <div className="space-y-1 text-sm">
                           <div>
-                            <div className="text-xs text-gray-600">Category</div>
-                            <div className="font-semibold text-gray-900">{complaint.category}</div>
+                            <div className="text-xs text-slate-300">Category</div>
+                            <div className="font-semibold text-white">{complaint.category}</div>
                           </div>
                           <div>
-                            <div className="text-xs text-gray-600">Channel</div>
+                            <div className="text-xs text-slate-300">Channel</div>
                             <div className="flex items-center gap-1">
                               {complaint.channel === 'Email' && <Mail className="w-3 h-3" />}
                               {complaint.channel === 'Phone' && <Phone className="w-3 h-3" />}
                               {complaint.channel === 'Portal' && <Globe className="w-3 h-3" />}
-                              <span className="font-semibold text-gray-900">{complaint.channel}</span>
+                              <span className="font-semibold text-white">{complaint.channel}</span>
                             </div>
                           </div>
                         </div>
@@ -370,8 +370,8 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                         </Badge>
                         {complaint.assignedTo && (
                           <div className="mt-2 flex items-center gap-1 text-sm">
-                            <User className="w-3 h-3 text-gray-600" />
-                            <span className="text-gray-700">{complaint.assignedTo}</span>
+                            <User className="w-3 h-3 text-slate-300" />
+                            <span className="text-slate-300">{complaint.assignedTo}</span>
                           </div>
                         )}
                       </div>
@@ -382,7 +382,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                           {!complaint.acknowledgmentDate && (
                             <div className="text-sm">
                               <div className="flex items-center justify-between mb-1">
-                                <span className="text-xs text-gray-600">24hr Acknowledgment</span>
+                                <span className="text-xs text-slate-300">24hr Acknowledgment</span>
                                 <Badge className="bg-red-600 text-xs">PENDING</Badge>
                               </div>
                               <Progress value={30} className="h-2" />
@@ -390,7 +390,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                           )}
                           <div className="text-sm">
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs text-gray-600">30-Day Resolution</span>
+                              <span className="text-xs text-slate-300">30-Day Resolution</span>
                               <span className={`text-xs font-semibold ${getSLAColor(complaint.slaStatus)}`}>
                                 {complaint.daysRemaining} days
                               </span>
@@ -400,7 +400,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                               className="h-2" 
                             />
                           </div>
-                          <div className="text-xs text-gray-600">
+                          <div className="text-xs text-slate-300">
                             Due: {complaint.dueDate.split(' ')[0]}
                           </div>
                         </div>
@@ -410,10 +410,10 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                       <div className="md:col-span-2">
                         {complaint.outcome ? (
                           <div className="text-sm">
-                            <div className="text-xs text-gray-600 mb-1">Outcome</div>
+                            <div className="text-xs text-slate-300 mb-1">Outcome</div>
                             <div className="font-semibold text-green-700">{complaint.outcome}</div>
                             {complaint.resolutionDate && (
-                              <div className="text-xs text-gray-600 mt-1">
+                              <div className="text-xs text-slate-300 mt-1">
                                 Resolved: {complaint.resolutionDate}
                               </div>
                             )}
@@ -433,18 +433,18 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
 
                     {/* Related Info */}
                     {(complaint.relatedClient || complaint.relatedLoan) && (
-                      <div className="mt-4 pt-4 border-t border-gray-200">
+                      <div className="mt-4 pt-4 border-t border-white/10">
                         <div className="grid md:grid-cols-2 gap-4 text-sm">
                           {complaint.relatedClient && (
                             <div>
-                              <span className="text-gray-600">Related Client: </span>
-                              <span className="font-semibold text-gray-900">{complaint.relatedClient}</span>
+                              <span className="text-slate-300">Related Client: </span>
+                              <span className="font-semibold text-white">{complaint.relatedClient}</span>
                             </div>
                           )}
                           {complaint.relatedLoan && (
                             <div>
-                              <span className="text-gray-600">Related Loan: </span>
-                              <span className="font-semibold text-gray-900">{complaint.relatedLoan}</span>
+                              <span className="text-slate-300">Related Loan: </span>
+                              <span className="font-semibold text-white">{complaint.relatedLoan}</span>
                             </div>
                           )}
                         </div>
@@ -474,15 +474,15 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                   </h3>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
                     <div>
-                      <span className="text-gray-600">Name: </span>
+                      <span className="text-slate-300">Name: </span>
                       <span className="font-semibold">Sarah Mitchell</span>
                     </div>
                     <div>
-                      <span className="text-gray-600">Email: </span>
+                      <span className="text-slate-300">Email: </span>
                       <span className="font-semibold">sarah.mitchell@email.com</span>
                     </div>
                     <div>
-                      <span className="text-gray-600">Phone: </span>
+                      <span className="text-slate-300">Phone: </span>
                       <span className="font-semibold">0412 345 678</span>
                     </div>
                   </div>
@@ -606,14 +606,14 @@ Client states they were not asked about existing commitments and expenses were u
                         All complaints must be acknowledged within 24 hours of receipt (RG271.53)
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="p-3 bg-white rounded border border-blue-300">
-                          <div className="text-xs text-gray-600">Acknowledged in 24hrs</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-blue-300">
+                          <div className="text-xs text-slate-300">Acknowledged in 24hrs</div>
                           <div className="text-2xl font-bold text-green-600">
                             {complaints.filter(c => c.acknowledgmentDate).length}
                           </div>
                         </div>
-                        <div className="p-3 bg-white rounded border border-red-300">
-                          <div className="text-xs text-gray-600">Pending Acknowledgment</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-red-300">
+                          <div className="text-xs text-slate-300">Pending Acknowledgment</div>
                           <div className="text-2xl font-bold text-red-600">
                             {complaints.filter(c => !c.acknowledgmentDate).length}
                           </div>
@@ -627,20 +627,20 @@ Client states they were not asked about existing commitments and expenses were u
                         Complaints must be resolved within 30 calendar days (RG271.60)
                       </p>
                       <div className="grid md:grid-cols-3 gap-4">
-                        <div className="p-3 bg-white rounded border border-green-300">
-                          <div className="text-xs text-gray-600">On Track</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-green-300">
+                          <div className="text-xs text-slate-300">On Track</div>
                           <div className="text-2xl font-bold text-green-600">
                             {complaints.filter(c => c.slaStatus === 'On Track').length}
                           </div>
                         </div>
-                        <div className="p-3 bg-white rounded border border-amber-300">
-                          <div className="text-xs text-gray-600">At Risk</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-amber-300">
+                          <div className="text-xs text-slate-300">At Risk</div>
                           <div className="text-2xl font-bold text-amber-600">
                             {complaints.filter(c => c.slaStatus === 'At Risk').length}
                           </div>
                         </div>
-                        <div className="p-3 bg-white rounded border border-red-300">
-                          <div className="text-xs text-gray-600">Overdue</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-red-300">
+                          <div className="text-xs text-slate-300">Overdue</div>
                           <div className="text-2xl font-bold text-red-600">
                             {complaints.filter(c => c.daysRemaining < 0).length}
                           </div>
@@ -654,14 +654,14 @@ Client states they were not asked about existing commitments and expenses were u
                         Urgent complaints (hardship, vulnerable customers) require priority handling
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="p-3 bg-white rounded border border-purple-300">
-                          <div className="text-xs text-gray-600">Urgent Complaints</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-purple-300">
+                          <div className="text-xs text-slate-300">Urgent Complaints</div>
                           <div className="text-2xl font-bold text-orange-600">
                             {stats.urgent}
                           </div>
                         </div>
-                        <div className="p-3 bg-white rounded border border-purple-300">
-                          <div className="text-xs text-gray-600">Hardship Cases</div>
+                        <div className="p-3 bg-[#0d121d] rounded border border-purple-300">
+                          <div className="text-xs text-slate-300">Hardship Cases</div>
                           <div className="text-2xl font-bold text-purple-600">
                             {stats.hardship}
                           </div>
@@ -685,12 +685,12 @@ Client states they were not asked about existing commitments and expenses were u
                 </CardHeader>
                 <CardContent className="p-6">
                   {complaints.filter(c => c.daysRemaining < 5 && c.status !== 'Resolved').length === 0 ? (
-                    <div className="text-center py-8 text-gray-600">
+                    <div className="text-center py-8 text-slate-300">
                       <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
                       <p>No overdue complaints - all on track! ✓</p>
                     </div>
                   ) : (
-                    <div className="text-center py-8 text-gray-600">
+                    <div className="text-center py-8 text-slate-300">
                       <p>All complaints are on track</p>
                     </div>
                   )}
@@ -716,25 +716,25 @@ Client states they were not asked about existing commitments and expenses were u
                         <div className="flex items-center gap-2">
                           <CheckCircle className="w-5 h-5 text-green-600" />
                           <div>
-                            <div className="font-bold text-gray-900">{complaint.complaintId}</div>
-                            <div className="text-sm text-gray-700">{complaint.complainantName}</div>
+                            <div className="font-bold text-white">{complaint.complaintId}</div>
+                            <div className="text-sm text-slate-300">{complaint.complainantName}</div>
                           </div>
                         </div>
                         <Badge className="bg-green-600">Resolved</Badge>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4 text-sm mb-3">
                         <div>
-                          <span className="text-gray-600">Category: </span>
+                          <span className="text-slate-300">Category: </span>
                           <span className="font-semibold">{complaint.category}</span>
                         </div>
                         <div>
-                          <span className="text-gray-600">Resolution Date: </span>
+                          <span className="text-slate-300">Resolution Date: </span>
                           <span className="font-semibold">{complaint.resolutionDate}</span>
                         </div>
                       </div>
-                      <div className="p-3 bg-white rounded border border-green-300">
-                        <div className="text-xs text-gray-600 mb-1">Outcome:</div>
-                        <div className="font-semibold text-gray-900">{complaint.outcome}</div>
+                      <div className="p-3 bg-[#0d121d] rounded border border-green-300">
+                        <div className="text-xs text-slate-300 mb-1">Outcome:</div>
+                        <div className="font-semibold text-white">{complaint.outcome}</div>
                       </div>
                     </div>
                   ))}
@@ -755,8 +755,8 @@ Client states they were not asked about existing commitments and expenses were u
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* By Category */}
-                  <div className="p-4 bg-white rounded-lg border-2 border-indigo-200">
-                    <h3 className="font-bold text-gray-900 mb-4">Complaints by Category</h3>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                    <h3 className="font-bold text-white mb-4">Complaints by Category</h3>
                     <div className="space-y-2">
                       {[
                         { category: 'Responsible Lending', count: 1, color: 'bg-red-600' },
@@ -767,12 +767,12 @@ Client states they were not asked about existing commitments and expenses were u
                         { category: 'Hardship', count: 1, color: 'bg-orange-600' }
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center justify-between">
-                          <span className="text-sm text-gray-700">{item.category}</span>
+                          <span className="text-sm text-slate-300">{item.category}</span>
                           <div className="flex items-center gap-2">
                             <div className="w-24 bg-gray-200 rounded-full h-2">
                               <div className={`${item.color} h-2 rounded-full`} style={{ width: `${(item.count / stats.total) * 100}%` }} />
                             </div>
-                            <span className="text-sm font-bold text-gray-900 w-6">{item.count}</span>
+                            <span className="text-sm font-bold text-white w-6">{item.count}</span>
                           </div>
                         </div>
                       ))}
@@ -780,8 +780,8 @@ Client states they were not asked about existing commitments and expenses were u
                   </div>
 
                   {/* By Channel */}
-                  <div className="p-4 bg-white rounded-lg border-2 border-indigo-200">
-                    <h3 className="font-bold text-gray-900 mb-4">Complaints by Channel</h3>
+                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                    <h3 className="font-bold text-white mb-4">Complaints by Channel</h3>
                     <div className="space-y-2">
                       {[
                         { channel: 'Email', count: 3, icon: Mail },
@@ -791,12 +791,12 @@ Client states they were not asked about existing commitments and expenses were u
                       ].map((item, idx) => {
                         const Icon = item.icon;
                         return (
-                          <div key={idx} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                          <div key={idx} className="flex items-center justify-between p-2 bg-[#0a0e17] rounded">
                             <div className="flex items-center gap-2">
-                              <Icon className="w-4 h-4 text-gray-600" />
-                              <span className="text-sm text-gray-700">{item.channel}</span>
+                              <Icon className="w-4 h-4 text-slate-300" />
+                              <span className="text-sm text-slate-300">{item.channel}</span>
                             </div>
-                            <span className="text-sm font-bold text-gray-900">{item.count}</span>
+                            <span className="text-sm font-bold text-white">{item.count}</span>
                           </div>
                         );
                       })}

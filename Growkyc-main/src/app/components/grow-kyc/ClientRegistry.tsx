@@ -192,8 +192,8 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
     'Active - High Risk': 'bg-orange-100 text-orange-700 border-orange-300',
     'Restricted': 'bg-yellow-100 text-yellow-700 border-yellow-300',
     'Suspended': 'bg-red-100 text-red-700 border-red-300',
-    'Offboarding': 'bg-gray-100 text-gray-700 border-gray-300',
-    'Closed': 'bg-gray-100 text-gray-700 border-gray-300'
+    'Offboarding': 'bg-[#0a0e17] text-slate-300 border-gray-300',
+    'Closed': 'bg-[#0a0e17] text-slate-300 border-gray-300'
   };
 
   const filteredClients = clients.filter((client) => {
@@ -254,8 +254,8 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
       <div>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Client Registry</h1>
-            <p className="text-gray-600 mt-1">Complete client database with KYC and risk status</p>
+            <h1 className="text-3xl font-bold text-white">Client Registry</h1>
+            <p className="text-slate-300 mt-1">Complete client database with KYC and risk status</p>
           </div>
           <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => setShowAddClientModal(true)}>
             <Plus className="w-4 h-4 mr-2" />
@@ -270,8 +270,8 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Clients</p>
-                <p className="text-3xl font-bold text-gray-900 mt-1">{stats.total}</p>
+                <p className="text-sm text-slate-300">Total Clients</p>
+                <p className="text-3xl font-bold text-white mt-1">{stats.total}</p>
               </div>
               <Users className="w-8 h-8 text-blue-600" />
             </div>
@@ -332,9 +332,9 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Search</label>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Search by name or ABN..."
@@ -346,7 +346,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Client Type</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Client Type</label>
               <select
                 value={clientType}
                 onChange={(e) => setClientType(e.target.value as ClientType)}
@@ -361,7 +361,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Risk Tier</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Risk Tier</label>
               <select
                 value={riskFilter}
                 onChange={(e) => setRiskFilter(e.target.value as RiskTier)}
@@ -395,7 +395,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               return (
                 <div
                   key={client.id}
-                  className="p-4 bg-gray-50 border-2 border-gray-200 rounded-lg hover:shadow-lg transition-all cursor-pointer hover:border-blue-400"
+                  className="p-4 bg-[#0a0e17] border-2 border-white/10 rounded-lg hover:shadow-lg transition-all cursor-pointer hover:border-blue-400"
                   onClick={() => onViewClient(client.id)}
                 >
                   <div className="flex items-start justify-between">
@@ -410,7 +410,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
 
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-bold text-gray-900">{client.name}</h3>
+                          <h3 className="font-bold text-white">{client.name}</h3>
                           <span className={`px-2 py-1 rounded text-xs font-bold ${riskConfig.color}`}>
                             {riskConfig.label} Risk
                           </span>
@@ -423,7 +423,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-6 text-sm text-gray-600">
+                        <div className="flex items-center gap-6 text-sm text-slate-300">
                           <span className="capitalize">{client.type}</span>
                           {client.abn && <span>ABN: {client.abn}</span>}
                           {client.dob && <span>DOB: {client.dob}</span>}
@@ -449,12 +449,12 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
       {/* Add Client Modal */}
       {showAddClientModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white">
-              <h2 className="text-xl font-bold text-gray-900">Add New Client</h2>
+          <div className="bg-[#0d121d] rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#0d121d]">
+              <h2 className="text-xl font-bold text-white">Add New Client</h2>
               <button
                 onClick={() => setShowAddClientModal(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-slate-400 hover:text-slate-300"
               >
                 <XCircle className="w-5 h-5" />
               </button>
@@ -463,7 +463,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
             <form onSubmit={handleCreateClient} className="p-6 space-y-6">
               {/* Client Type Selection */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Client Type <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -482,7 +482,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               {/* Basic Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     Full Name / Entity Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -495,7 +495,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     ABN / ACN (if applicable)
                   </label>
                   <input
@@ -510,7 +510,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               {/* Contact Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -523,7 +523,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     Phone <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -538,7 +538,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
 
               {/* Address */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Address <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -572,7 +572,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
 
               {/* Risk Assessment */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Initial Risk Tier <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -585,14 +585,14 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                   <option value="high">High Risk</option>
                   <option value="critical">Critical Risk</option>
                 </select>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   Risk tier determines CDD frequency and monitoring requirements
                 </p>
               </div>
 
               {/* Source of Wealth */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Source of Wealth / Funds <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -640,7 +640,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 </Button>
               </div>
 
-              <div className="text-xs text-gray-500 text-center pt-2">
+              <div className="text-xs text-slate-400 text-center pt-2">
                 Client will be added to registry with status "Pending Verification"
               </div>
             </form>

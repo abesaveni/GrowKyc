@@ -484,7 +484,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
       case 'high': return 'bg-orange-100 text-orange-700 border-orange-300 dark:bg-orange-900 dark:text-orange-300';
       case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
       case 'low': return 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-900 dark:text-blue-300';
-      default: return 'bg-gray-100 text-gray-700 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0a0e17] text-slate-300 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -539,7 +539,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
             </div>
             <p className="text-red-100">Advanced fraud detection rules, AI models, and automated case creation</p>
           </div>
-          <Button disabled={isReadOnly} onClick={() => saveAllSettings()} className="bg-white text-red-600 hover:bg-red-50 font-bold shadow-md">
+          <Button disabled={isReadOnly} onClick={() => saveAllSettings()} className="bg-[#0d121d] text-red-600 hover:bg-red-50 font-bold shadow-md">
             <Save className="w-5 h-5 mr-2" />
             Save All Settings
           </Button>
@@ -567,8 +567,8 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-        <div className="flex border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="flex border-b border-white/10 dark:border-gray-700">
           {[
             { id: 'rules', label: 'Fraud Rules', icon: Shield },
             { id: 'ai-models', label: 'AI Models', icon: Brain },
@@ -581,7 +581,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
               className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors ${
                 activeTab === tab.id
                   ? 'bg-red-600 text-white border-b-2 border-red-700'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                  : 'text-slate-300 dark:text-slate-400 hover:bg-white/5 dark:hover:bg-gray-700'
               }`}
             >
               <tab.icon className="w-5 h-5" />
@@ -596,13 +596,13 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
             <div className="space-y-6">
               {/* Category Filter */}
               <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Filter by Category:</span>
+                <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Filter by Category:</span>
                 {categories.map(cat => {
                   const Icon = getCategoryIcon(cat.id);
                   return (
                     <button
                       key={cat.id}
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#0a0e17] dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                     >
                       <Icon className="w-4 h-4" />
                       <span className="text-sm font-semibold">{cat.label}</span>
@@ -620,29 +620,29 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                     <div
                       key={rule.id}
                       className={`border-2 rounded-lg p-5 ${
-                        rule.enabled ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-900 opacity-60'
+                        rule.enabled ? 'bg-[#0d121d] dark:bg-gray-800' : 'bg-[#0a0e17] dark:bg-gray-900 opacity-60'
                       } ${getSeverityColor(rule.severity)} border-l-4`}
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-start gap-4 flex-1">
-                          <Icon className="w-6 h-6 text-gray-600 dark:text-gray-400 mt-1" />
+                          <Icon className="w-6 h-6 text-slate-300 dark:text-slate-400 mt-1" />
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-2">
-                              <h4 className="text-lg font-bold text-gray-900 dark:text-white">{rule.name}</h4>
+                              <h4 className="text-lg font-bold text-white dark:text-white">{rule.name}</h4>
                               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${getSeverityColor(rule.severity)}`}>
                                 {rule.severity}
                               </span>
-                              <span className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-semibold uppercase">
+                              <span className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-slate-300 dark:text-gray-300 rounded-full text-xs font-semibold uppercase">
                                 {rule.category}
                               </span>
                             </div>
 
                             {/* Conditions */}
                             <div className="mb-3">
-                              <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Trigger Conditions:</div>
+                              <div className="text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">Trigger Conditions:</div>
                               <ul className="space-y-1">
                                 {(rule.conditions || []).map((condition, i) => (
-                                  <li key={i} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
+                                  <li key={i} className="text-sm text-slate-300 dark:text-slate-400 flex items-start gap-2">
                                     <AlertTriangle className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
                                     {condition}
                                   </li>
@@ -652,7 +652,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
 
                             {/* Actions */}
                             <div>
-                              <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Actions:</div>
+                              <div className="text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">Actions:</div>
                               <div className="flex flex-wrap gap-2">
                                 {(rule.actions || []).map((action, i) => (
                                   <span
@@ -676,7 +676,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                               onChange={() => toggleRule(rule.id)}
                               className="w-5 h-5 text-red-600 rounded"
                             />
-                            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                            <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">
                               {rule.enabled ? 'Enabled' : 'Disabled'}
                             </span>
                           </label>
@@ -689,7 +689,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                               onChange={() => toggleAutoCase(rule.id)}
                               className="w-5 h-5 text-orange-600 rounded"
                             />
-                            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Auto Case</span>
+                            <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Auto Case</span>
                           </label>
 
                           <Button disabled={isReadOnly} size="sm" variant="outline">
@@ -720,26 +720,26 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                       <div className="flex items-center gap-3">
                         <Brain className="w-8 h-8 text-purple-600" />
                         <div>
-                          <h4 className="text-lg font-bold text-gray-900 dark:text-white">{model.name}</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{model.type}</p>
+                          <h4 className="text-lg font-bold text-white dark:text-white">{model.name}</h4>
+                          <p className="text-sm text-slate-300 dark:text-slate-400">{model.type}</p>
                         </div>
                       </div>
                       <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                         model.status === 'active' 
                           ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                          : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+                          : 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300'
                       }`}>
                         {model.status.toUpperCase()}
                       </span>
                     </div>
 
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">{model.description}</p>
+                    <p className="text-sm text-slate-300 dark:text-gray-300 mb-4">{model.description}</p>
 
                     <div className="space-y-3">
                       <div>
                         <div className="flex items-center justify-between text-sm mb-1">
-                          <span className="text-gray-600 dark:text-gray-400">Accuracy</span>
-                          <span className="font-bold text-gray-900 dark:text-white">{model.accuracy}%</span>
+                          <span className="text-slate-300 dark:text-slate-400">Accuracy</span>
+                          <span className="font-bold text-white dark:text-white">{model.accuracy}%</span>
                         </div>
                         <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
                           <div
@@ -750,8 +750,8 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                       </div>
 
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">Last Trained:</span>
-                        <span className="font-semibold text-gray-900 dark:text-white">{model.lastTrained}</span>
+                        <span className="text-slate-300 dark:text-slate-400">Last Trained:</span>
+                        <span className="font-semibold text-white dark:text-white">{model.lastTrained}</span>
                       </div>
                     </div>
 
@@ -778,8 +778,8 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                 <div className="flex items-start gap-3">
                   <Zap className="w-6 h-6 text-blue-600 mt-1" />
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-1">Automated Case Creation Rules</h4>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <h4 className="font-bold text-white dark:text-white mb-1">Automated Case Creation Rules</h4>
+                    <p className="text-sm text-slate-300 dark:text-gray-300">
                       Define conditions that automatically create fraud investigation cases. Cases are assigned based on priority and team availability.
                     </p>
                   </div>
@@ -789,12 +789,12 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
               {caseTriggers.map((trigger: CaseTrigger) => (
                 <div
                   key={trigger.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500"
+                  className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-white">{trigger.name}</h4>
+                        <h4 className="text-lg font-bold text-white dark:text-white">{trigger.name}</h4>
                         <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                           trigger.priority === 'Critical'
                             ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
@@ -806,16 +806,16 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
 
                       <div className="grid grid-cols-3 gap-4 mt-4">
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Conditions</div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">{trigger.conditions}</div>
+                          <div className="text-sm text-slate-400 mb-1">Conditions</div>
+                          <div className="text-sm font-semibold text-white dark:text-white">{trigger.conditions}</div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Assign To</div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">{trigger.assignTo}</div>
+                          <div className="text-sm text-slate-400 mb-1">Assign To</div>
+                          <div className="text-sm font-semibold text-white dark:text-white">{trigger.assignTo}</div>
                         </div>
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">SLA</div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">{trigger.sla}</div>
+                          <div className="text-sm text-slate-400 mb-1">SLA</div>
+                          <div className="text-sm font-semibold text-white dark:text-white">{trigger.sla}</div>
                         </div>
                       </div>
                     </div>
@@ -829,7 +829,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                           onChange={() => toggleCaseTrigger(trigger.id)}
                           className="w-5 h-5 text-orange-600 rounded"
                         />
-                        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Enabled</span>
+                        <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Enabled</span>
                       </label>
                       <Button disabled={isReadOnly} size="sm" variant="outline">
                         <Settings className="w-4 h-4" />
@@ -849,11 +849,11 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
           {/* Notifications Tab */}
           {activeTab === 'notifications' && (
             <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                <h4 className="font-bold text-gray-900 dark:text-white mb-4">Notification Settings</h4>
+              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <h4 className="font-bold text-white dark:text-white mb-4">Notification Settings</h4>
                 <div className="space-y-4">
                   {notificationSettings.map((notification: NotificationSetting, i: number) => (
-                    <label key={i} className="flex items-center gap-3 cursor-pointer p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg">
+                    <label key={i} className="flex items-center gap-3 cursor-pointer p-3 hover:bg-white/5 dark:hover:bg-gray-700 rounded-lg">
                       <input
                         disabled={isReadOnly}
                         type="checkbox"
@@ -861,7 +861,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                         onChange={() => toggleNotification(notification.id)}
                         className="w-5 h-5 text-red-600 rounded"
                       />
-                      <span className="text-gray-900 dark:text-white">{notification.label}</span>
+                      <span className="text-white dark:text-white">{notification.label}</span>
                     </label>
                   ))}
                 </div>

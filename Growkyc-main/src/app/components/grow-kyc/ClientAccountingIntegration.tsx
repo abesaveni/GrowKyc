@@ -227,7 +227,7 @@ export function ClientAccountingIntegration({
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Select Accounting Platform</h3>
+                <h3 className="font-semibold text-white mb-4">Select Accounting Platform</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {platforms.map((platform) => (
                     <Card 
@@ -237,11 +237,11 @@ export function ClientAccountingIntegration({
                     >
                       <CardContent className="p-6">
                         <div className="text-center">
-                          <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center text-4xl mx-auto mb-3">
+                          <div className="w-16 h-16 bg-[#0a0e17] rounded-lg flex items-center justify-center text-4xl mx-auto mb-3">
                             {platform.icon}
                           </div>
-                          <h3 className="font-bold text-gray-900 mb-1">{platform.name}</h3>
-                          <p className="text-sm text-gray-600 mb-3">{platform.description}</p>
+                          <h3 className="font-bold text-white mb-1">{platform.name}</h3>
+                          <p className="text-sm text-slate-300 mb-3">{platform.description}</p>
                           <Badge variant="outline" className="text-xs">
                             {platform.requiresOAuth ? 'OAuth 2.0' : 'API Key'}
                           </Badge>
@@ -267,10 +267,10 @@ export function ClientAccountingIntegration({
               </Button>
 
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                <h3 className="text-lg font-bold text-white mb-2">
                   Connect to {platforms.find(p => p.id === selectedPlatform)?.name}
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   Enter the client's accounting software credentials
                 </p>
               </div>
@@ -385,10 +385,10 @@ export function ClientAccountingIntegration({
           {step === 'accounts' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                <h3 className="text-lg font-bold text-white mb-2">
                   Select Bank Accounts to Monitor
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   Found {availableAccounts.length} accounts. Select which accounts to monitor for suspicious transactions.
                 </p>
               </div>
@@ -411,7 +411,7 @@ export function ClientAccountingIntegration({
                     <Card 
                       key={account.id} 
                       className={`border-2 transition-all ${
-                        isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+                        isSelected ? 'border-blue-500 bg-blue-50' : 'border-white/10'
                       }`}
                     >
                       <CardContent className="p-4">
@@ -422,12 +422,12 @@ export function ClientAccountingIntegration({
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
-                                <h4 className="font-semibold text-gray-900">{account.accountName}</h4>
+                                <h4 className="font-semibold text-white">{account.accountName}</h4>
                                 <Badge variant="outline" className="text-xs">
                                   {account.accountType}
                                 </Badge>
                               </div>
-                              <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600 mb-2">
+                              <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-slate-300 mb-2">
                                 <div>
                                   <span className="text-xs">Bank:</span> {account.bankName}
                                 </div>
@@ -443,8 +443,8 @@ export function ClientAccountingIntegration({
                               </div>
                               <div className="flex items-center gap-4 text-sm">
                                 <div className="flex items-center gap-1">
-                                  <Database className="w-3 h-3 text-gray-500" />
-                                  <span className="text-gray-600">{account.transactionCount} transactions</span>
+                                  <Database className="w-3 h-3 text-slate-400" />
+                                  <span className="text-slate-300">{account.transactionCount} transactions</span>
                                 </div>
                                 {account.suspicious > 0 && (
                                   <div className="flex items-center gap-1">
@@ -501,7 +501,7 @@ export function ClientAccountingIntegration({
           )}
         </CardContent>
 
-        <div className="border-t p-4 bg-gray-50 flex justify-end gap-2">
+        <div className="border-t p-4 bg-[#0a0e17] flex justify-end gap-2">
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>

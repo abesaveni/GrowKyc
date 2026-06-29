@@ -289,7 +289,7 @@ export function HeadOfComplianceDashboard({
   const navCase = onNavigateToCaseControl || onNavigateToCases;
 
   return (
-    <div className="space-y-6 md:space-y-8 bg-white min-h-screen px-4 md:px-8 pb-8">
+    <div className="space-y-6 md:space-y-8 bg-[#0d121d] min-h-screen px-4 md:px-8 pb-8">
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-6 md:p-12 text-white shadow-lg mt-4 md:mt-8">
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 text-center sm:text-left">
           <div className="text-5xl md:text-6xl">{userAvatar}</div>
@@ -352,11 +352,11 @@ export function HeadOfComplianceDashboard({
         >
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-gray-900">{stats.urgentActions}</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">{stats.urgentActions}</div>
               <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
             </div>
             <div>
-              <div className="text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wide">Urgent Actions</div>
+              <div className="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wide">Urgent Actions</div>
               <p className="text-[9px] md:text-[10px] text-red-600 font-black mt-2">
                 {metrics.slaBreaches > 0 ? `${metrics.slaBreaches} SLA BREACH` : 'NONE OVERDUE'}
               </p>
@@ -366,23 +366,23 @@ export function HeadOfComplianceDashboard({
         <Card className="border-l-4 border-l-amber-500 shadow-sm hover:shadow-md transition-all h-36 md:h-40 flex flex-col">
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-gray-900">{stats.pendingReviews}</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">{stats.pendingReviews}</div>
               <Clock className="w-6 h-6 md:w-8 md:h-8 text-amber-500" />
             </div>
             <div>
-              <div className="text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wide">Pending Approvals</div>
-              <p className="text-[9px] md:text-[10px] text-gray-500 font-black mt-2">{dueThisWeek} DUE THIS WEEK</p>
+              <div className="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wide">Pending Approvals</div>
+              <p className="text-[9px] md:text-[10px] text-slate-400 font-black mt-2">{dueThisWeek} DUE THIS WEEK</p>
             </div>
           </CardContent>
         </Card>
         <Card className="border-l-4 border-l-green-500 shadow-sm hover:shadow-md transition-all h-36 md:h-40 flex flex-col">
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-gray-900">{stats.completedToday}</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">{stats.completedToday}</div>
               <CheckCircle className="w-6 h-6 md:w-8 md:h-8 text-green-500" />
             </div>
             <div>
-              <div className="text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wide">Completed Today</div>
+              <div className="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wide">Completed Today</div>
               <p className="text-[9px] md:text-[10px] text-green-600 font-black mt-2">{stats.complianceRate} COMPLIANCE</p>
             </div>
           </CardContent>
@@ -390,12 +390,12 @@ export function HeadOfComplianceDashboard({
         <Card className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-all h-36 md:h-40 flex flex-col">
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-gray-900">{stats.teamPerformance}</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">{stats.teamPerformance}</div>
               <Users className="w-6 h-6 md:w-8 md:h-8 text-blue-500" />
             </div>
             <div>
-              <div className="text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wide">Team Performance</div>
-              <p className="text-[9px] md:text-[10px] text-gray-500 font-black mt-2">TEAM AVG SCORE</p>
+              <div className="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wide">Team Performance</div>
+              <p className="text-[9px] md:text-[10px] text-slate-400 font-black mt-2">TEAM AVG SCORE</p>
             </div>
           </CardContent>
         </Card>
@@ -437,9 +437,9 @@ export function HeadOfComplianceDashboard({
                 { label: 'Monitoring Alerts', value: metrics.monitoringAlerts },
                 { label: 'SLA At Risk', value: metrics.slaBreaches },
               ].map((item) => (
-                <div key={item.label} className="p-4 rounded-lg bg-white border border-red-100 text-center">
+                <div key={item.label} className="p-4 rounded-lg bg-[#0d121d] border border-red-100 text-center">
                   <p className="text-2xl font-bold text-red-900">{item.value}</p>
-                  <p className="text-xs font-semibold text-gray-600 mt-1">{item.label}</p>
+                  <p className="text-xs font-semibold text-slate-300 mt-1">{item.label}</p>
                 </div>
               ))}
             </div>
@@ -486,7 +486,7 @@ export function HeadOfComplianceDashboard({
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-bold text-gray-900">{clock.type}</span>
+                  <span className="text-sm font-bold text-white">{clock.type}</span>
                   <Badge
                     className={
                       clock.status === 'red'
@@ -499,7 +499,7 @@ export function HeadOfComplianceDashboard({
                     {clock.daysRemaining}d
                   </Badge>
                 </div>
-                <p className="text-xs text-gray-600">{clock.description}</p>
+                <p className="text-xs text-slate-300">{clock.description}</p>
               </div>
             ))}
             <Button variant="outline" className="w-full border-red-200 text-red-800 hover:bg-red-50" onClick={onNavigateToAUSTRAC}>
@@ -554,7 +554,7 @@ export function HeadOfComplianceDashboard({
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
                     <div>
                       <div className="font-semibold text-sm">{item.value}</div>
-                      <div className="text-xs text-gray-600">{item.name}</div>
+                      <div className="text-xs text-slate-300">{item.name}</div>
                     </div>
                   </div>
                 ))}
@@ -581,13 +581,13 @@ export function HeadOfComplianceDashboard({
         </CardHeader>
         <CardContent>
           {clientsToWatch.length === 0 ? (
-            <p className="text-sm text-gray-600 py-6 text-center">No high-priority clients — onboard clients or raise cases to populate this list.</p>
+            <p className="text-sm text-slate-300 py-6 text-center">No high-priority clients — onboard clients or raise cases to populate this list.</p>
           ) : (
             <div className="space-y-3">
               {clientsToWatch.map((client, index) => (
                 <div
                   key={index}
-                  className={`p-4 bg-white rounded-lg border-2 ${
+                  className={`p-4 bg-[#0d121d] rounded-lg border-2 ${
                     client.urgency === 'critical' ? 'border-red-300' : 'border-orange-300'
                   } hover:shadow-md transition-shadow`}
                 >
@@ -598,11 +598,11 @@ export function HeadOfComplianceDashboard({
                       </div>
                       <div>
                         <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <span className="font-bold text-gray-900">{client.name}</span>
+                          <span className="font-bold text-white">{client.name}</span>
                           <Badge className={client.urgency === 'critical' ? 'bg-red-600' : 'bg-orange-600'}>{client.riskLevel}</Badge>
                         </div>
-                        <p className="text-sm text-gray-700">{client.reason}</p>
-                        <p className="text-xs text-gray-500 mt-1">Open {client.daysOpen} days • Assigned to {client.assignee}</p>
+                        <p className="text-sm text-slate-300">{client.reason}</p>
+                        <p className="text-xs text-slate-400 mt-1">Open {client.daysOpen} days • Assigned to {client.assignee}</p>
                       </div>
                     </div>
                     <Button
@@ -638,19 +638,19 @@ export function HeadOfComplianceDashboard({
           </CardHeader>
           <CardContent>
             {priorityActions.length === 0 ? (
-              <p className="text-sm text-gray-500 py-4 text-center">No priority actions right now.</p>
+              <p className="text-sm text-slate-400 py-4 text-center">No priority actions right now.</p>
             ) : (
               <div className="space-y-3">
                 {priorityActions.map((item, index) => (
                   <div
                     key={index}
                     className={`flex items-center justify-between p-3 rounded-lg border ${
-                      item.urgent ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'
+                      item.urgent ? 'bg-red-50 border-red-200' : 'bg-[#0a0e17] border-white/10'
                     }`}
                   >
                     <div>
                       <div className="font-semibold text-sm">{item.client}</div>
-                      <div className="text-xs text-gray-600">{item.action}</div>
+                      <div className="text-xs text-slate-300">{item.action}</div>
                     </div>
                     <Badge variant={item.risk === 'High' || item.risk === 'Critical' ? 'destructive' : 'default'} className="text-xs">
                       {item.risk}
@@ -675,14 +675,14 @@ export function HeadOfComplianceDashboard({
             <div className="space-y-4">
               {recentActivity.map((activity, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 ${activity.color}`}>
+                  <div className={`w-8 h-8 rounded-full bg-[#0a0e17] flex items-center justify-center flex-shrink-0 ${activity.color}`}>
                     <activity.icon className="w-4 h-4" />
                   </div>
                   <div>
                     <p className="text-sm">
                       <span className="font-semibold">{activity.user}</span> {activity.action}
                     </p>
-                    <p className="text-xs text-gray-500">{activity.time}</p>
+                    <p className="text-xs text-slate-400">{activity.time}</p>
                   </div>
                 </div>
               ))}

@@ -277,11 +277,11 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
         <div className="flex items-center gap-4 text-sm">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-green-500 rounded" />
-            <span className="text-gray-700">Beneficial Owner (≥25%)</span>
+            <span className="text-slate-300">Beneficial Owner (≥25%)</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-gray-200 rounded border-2 border-gray-400" />
-            <span className="text-gray-700">Other Roles</span>
+            <span className="text-slate-300">Other Roles</span>
           </div>
         </div>
 
@@ -298,17 +298,17 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
                       {person.isBeneficialOwner ? (
                         <Crown className="w-5 h-5 text-white" />
                       ) : (
-                        <User className="w-5 h-5 text-gray-600" />
+                        <User className="w-5 h-5 text-slate-300" />
                       )}
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-gray-900">{person.name}</span>
+                        <span className="font-semibold text-white">{person.name}</span>
                         {person.isBeneficialOwner && (
                           <Badge className="bg-green-500">Beneficial Owner</Badge>
                         )}
                       </div>
-                      <div className="text-sm text-gray-600 flex items-center gap-3 mt-1">
+                      <div className="text-sm text-slate-300 flex items-center gap-3 mt-1">
                         <span>{person.role}</span>
                         {person.ownership > 0 && (
                           <>
@@ -392,7 +392,7 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
                     value={newPerson.ownership}
                     onChange={(e) => setNewPerson({ ...newPerson, ownership: parseInt(e.target.value) || 0 })}
                   />
-                  <span className="text-gray-600">%</span>
+                  <span className="text-slate-300">%</span>
                 </div>
                 {newPerson.ownership >= 25 && (
                   <Card className="bg-green-50 border-green-200">

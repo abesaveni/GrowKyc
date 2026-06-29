@@ -327,7 +327,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
       case 'connected':
         return <Badge className="bg-green-600"><CheckCircle className="w-3 h-3 mr-1" />Connected</Badge>;
       case 'disconnected':
-        return <Badge variant="outline" className="text-gray-600">Not Connected</Badge>;
+        return <Badge variant="outline" className="text-slate-300">Not Connected</Badge>;
       case 'error':
         return <Badge className="bg-red-600"><AlertTriangle className="w-3 h-3 mr-1" />Error</Badge>;
     }
@@ -351,7 +351,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
               </Badge>
             </div>
             <div className="text-3xl font-bold">{connectedIntegrations.length}</div>
-            <div className="text-sm text-gray-600">Connected Platforms</div>
+            <div className="text-sm text-slate-300">Connected Platforms</div>
           </CardContent>
         </Card>
 
@@ -361,7 +361,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
               <Database className="w-8 h-8 text-green-600" />
             </div>
             <div className="text-3xl font-bold">{totalAccounts}</div>
-            <div className="text-sm text-gray-600">Bank Accounts</div>
+            <div className="text-sm text-slate-300">Bank Accounts</div>
           </CardContent>
         </Card>
 
@@ -371,7 +371,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
               <Activity className="w-8 h-8 text-purple-600" />
             </div>
             <div className="text-3xl font-bold">{totalTransactions}</div>
-            <div className="text-sm text-gray-600">Transactions Available</div>
+            <div className="text-sm text-slate-300">Transactions Available</div>
           </CardContent>
         </Card>
 
@@ -381,7 +381,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
               <Shield className="w-8 h-8 text-orange-600" />
             </div>
             <div className="text-3xl font-bold">{activeMonitoring}</div>
-            <div className="text-sm text-gray-600">Active Monitoring</div>
+            <div className="text-sm text-slate-300">Active Monitoring</div>
           </CardContent>
         </Card>
       </div>
@@ -400,29 +400,29 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4 flex-1">
-                    <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center text-3xl">
+                    <div className="w-16 h-16 bg-[#0a0e17] rounded-lg flex items-center justify-center text-3xl">
                       {integration.logo}
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-gray-900">{integration.name}</h3>
+                        <h3 className="text-xl font-bold text-white">{integration.name}</h3>
                         {getStatusBadge(integration.status)}
                       </div>
-                      <p className="text-sm text-gray-600 mb-3">{integration.description}</p>
+                      <p className="text-sm text-slate-300 mb-3">{integration.description}</p>
                       
                       {integration.status === 'connected' && (
                         <div className="grid grid-cols-3 gap-4 mt-4">
                           <div>
-                            <p className="text-xs text-gray-600">Connected Accounts</p>
-                            <p className="text-lg font-bold text-gray-900">{integration.connectedAccounts}</p>
+                            <p className="text-xs text-slate-300">Connected Accounts</p>
+                            <p className="text-lg font-bold text-white">{integration.connectedAccounts}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-600">Last Sync</p>
-                            <p className="text-sm font-medium text-gray-900">{integration.lastSync}</p>
+                            <p className="text-xs text-slate-300">Last Sync</p>
+                            <p className="text-sm font-medium text-white">{integration.lastSync}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-600">Transactions This Month</p>
-                            <p className="text-lg font-bold text-gray-900">{integration.transactionsThisMonth}</p>
+                            <p className="text-xs text-slate-300">Transactions This Month</p>
+                            <p className="text-lg font-bold text-white">{integration.transactionsThisMonth}</p>
                           </div>
                         </div>
                       )}
@@ -497,19 +497,19 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold text-gray-900">{account.accountName}</h4>
+                          <h4 className="font-semibold text-white">{account.accountName}</h4>
                           <Badge variant="outline" className="text-xs">
                             {account.integration.toUpperCase()}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-4 text-sm text-slate-300">
                           <span>{account.accountNumber}</span>
                           <span>•</span>
                           <span>{account.accountType}</span>
                           <span>•</span>
                           <span className="font-medium">${account.balance.toLocaleString()} {account.currency}</span>
                         </div>
-                        <div className="flex items-center gap-4 text-xs text-gray-500 mt-1">
+                        <div className="flex items-center gap-4 text-xs text-slate-400 mt-1">
                           <span className="flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             Last sync: {account.lastSync}

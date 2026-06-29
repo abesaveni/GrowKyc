@@ -306,7 +306,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-6">
         <div className="flex items-center justify-between mb-4">
@@ -324,7 +324,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
               </p>
             </div>
           </div>
-          <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
+          <Button className="bg-[#0d121d] text-indigo-600 hover:bg-indigo-50">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </Button>
@@ -385,7 +385,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                     </div>
                     <div className="text-right">
                       <div className="text-3xl font-bold text-indigo-600">{categoryCompletion}%</div>
-                      <div className="text-xs text-gray-500">Completion</div>
+                      <div className="text-xs text-slate-400">Completion</div>
                     </div>
                   </div>
                 </CardHeader>
@@ -407,7 +407,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                           
                           <div className="flex-1">
                             <div className="flex items-center justify-between mb-2">
-                              <h4 className="font-bold text-gray-900">{item.requirement}</h4>
+                              <h4 className="font-bold text-white">{item.requirement}</h4>
                               {item.priority && item.priority !== 'N/A' && (
                                 <Badge className={
                                   item.priority === 'HIGH' ? 'bg-red-600' :
@@ -422,18 +422,18 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                             {item.existing && (
                               <div className="mb-2">
                                 <span className="text-xs font-semibold text-green-700">✅ Existing: </span>
-                                <span className="text-xs text-gray-700">{item.existing}</span>
+                                <span className="text-xs text-slate-300">{item.existing}</span>
                               </div>
                             )}
                             
                             {item.gap && item.gap !== 'None' && (
                               <div className="mb-2">
                                 <span className="text-xs font-semibold text-red-700">❌ Gap: </span>
-                                <span className="text-xs text-gray-700">{item.gap}</span>
+                                <span className="text-xs text-slate-300">{item.gap}</span>
                               </div>
                             )}
                             
-                            <div className="mt-2 p-2 bg-white/80 rounded border border-gray-200">
+                            <div className="mt-2 p-2 bg-white/80 rounded border border-white/10">
                               <span className="text-xs font-semibold text-indigo-700">📦 Component: </span>
                               <code className="text-xs text-indigo-900 font-mono">{item.component}</code>
                             </div>

@@ -676,13 +676,13 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
   
   if (!industry) {
     return (
-      <div className="min-h-screen bg-white p-8">
+      <div className="min-h-screen bg-[#0d121d] p-8">
         <Button onClick={onBack} variant="outline">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
         <div className="text-center mt-12">
-          <p className="text-gray-600">Industry not found</p>
+          <p className="text-slate-300">Industry not found</p>
         </div>
       </div>
     );
@@ -691,9 +691,9 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
   const IndustryIcon = industry.icon;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
-      <div className="border-b border-gray-200 bg-gray-50">
+      <div className="border-b border-white/10 bg-[#0a0e17]">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -705,12 +705,12 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
               <IndustryIcon className="w-10 h-10 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">{industryId}</h1>
-              <p className="text-xl text-gray-600">{industry.tagline}</p>
+              <h1 className="text-4xl font-bold text-white mb-2">{industryId}</h1>
+              <p className="text-xl text-slate-300">{industry.tagline}</p>
             </div>
           </div>
 
-          <p className="text-lg text-gray-700 max-w-4xl">{industry.description}</p>
+          <p className="text-lg text-slate-300 max-w-4xl">{industry.description}</p>
         </div>
       </div>
 
@@ -718,7 +718,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Pain Points & Solutions */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">We Solve Your Biggest Pain Points</h2>
+          <h2 className="text-3xl font-bold text-white mb-8">We Solve Your Biggest Pain Points</h2>
           <div className="space-y-6">
             {industry.painPoints.map((pain, idx) => (
               <Card key={idx} className="border-2 hover:border-[#13B5EA] transition-colors">
@@ -728,8 +728,8 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
                       <AlertCircle className="w-6 h-6 text-red-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{pain.title}</h3>
-                      <p className="text-gray-600">{pain.problem}</p>
+                      <h3 className="text-xl font-bold text-white mb-2">{pain.title}</h3>
+                      <p className="text-slate-300">{pain.problem}</p>
                     </div>
                   </div>
                   
@@ -739,7 +739,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         <span className="font-semibold text-green-900">Our Solution</span>
                       </div>
-                      <p className="text-gray-700 mb-3">{pain.solution}</p>
+                      <p className="text-slate-300 mb-3">{pain.solution}</p>
                       <Badge className="bg-green-600 text-white">
                         <TrendingUp className="w-3 h-3 mr-1" />
                         {pain.impact}
@@ -754,7 +754,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
 
         {/* Key Features */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Built Specifically for {industryId}</h2>
+          <h2 className="text-3xl font-bold text-white mb-8">Built Specifically for {industryId}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {industry.keyFeatures.map((feature, idx) => {
               const FeatureIcon = feature.icon;
@@ -766,8 +766,8 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
                         <FeatureIcon className={`w-6 h-6 text-${industry.color}-600`} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                        <p className="text-gray-600 mb-3">{feature.description}</p>
+                        <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                        <p className="text-slate-300 mb-3">{feature.description}</p>
                         <Badge className="bg-blue-100 text-blue-700 border-blue-300">
                           {feature.benefit}
                         </Badge>
@@ -782,13 +782,13 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
 
         {/* Modules */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Specialized Modules for {industryId}</h2>
+          <h2 className="text-3xl font-bold text-white mb-8">Specialized Modules for {industryId}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {industry.specificModules.map((module, idx) => (
-              <Card key={idx} className="bg-gray-50 hover:bg-gray-100 transition-colors">
+              <Card key={idx} className="bg-[#0a0e17] hover:bg-white/5 transition-colors">
                 <CardContent className="p-4 text-center">
                   <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-2" />
-                  <p className="text-xs font-medium text-gray-900">{module}</p>
+                  <p className="text-xs font-medium text-white">{module}</p>
                 </CardContent>
               </Card>
             ))}
@@ -808,23 +808,23 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
                 <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">{industry.roi.timesSaved}</div>
-                <div className="text-sm text-gray-600">Time Saved</div>
+                <div className="text-3xl font-bold text-white mb-1">{industry.roi.timesSaved}</div>
+                <div className="text-sm text-slate-300">Time Saved</div>
               </div>
               <div className="text-center">
                 <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">{industry.roi.costSavings}</div>
-                <div className="text-sm text-gray-600">Cost Savings</div>
+                <div className="text-3xl font-bold text-white mb-1">{industry.roi.costSavings}</div>
+                <div className="text-sm text-slate-300">Cost Savings</div>
               </div>
               <div className="text-center">
                 <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">{industry.roi.clientCapacity}</div>
-                <div className="text-sm text-gray-600">Capacity Increase</div>
+                <div className="text-3xl font-bold text-white mb-1">{industry.roi.clientCapacity}</div>
+                <div className="text-sm text-slate-300">Capacity Increase</div>
               </div>
               <div className="text-center">
                 <Shield className="w-8 h-8 text-amber-600 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">{industry.roi.riskReduction}</div>
-                <div className="text-sm text-gray-600">Risk Reduction</div>
+                <div className="text-3xl font-bold text-white mb-1">{industry.roi.riskReduction}</div>
+                <div className="text-sm text-slate-300">Risk Reduction</div>
               </div>
             </div>
           </CardContent>
@@ -836,11 +836,11 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
             <div className="flex items-start gap-6">
               <div className="text-6xl text-[#13B5EA]">"</div>
               <div className="flex-1">
-                <p className="text-xl text-gray-900 mb-6 italic">{industry.testimonial.quote}</p>
+                <p className="text-xl text-white mb-6 italic">{industry.testimonial.quote}</p>
                 <div>
-                  <p className="font-bold text-gray-900">{industry.testimonial.author}</p>
-                  <p className="text-gray-600">{industry.testimonial.role}</p>
-                  <p className="text-sm text-gray-500">{industry.testimonial.firm}</p>
+                  <p className="font-bold text-white">{industry.testimonial.author}</p>
+                  <p className="text-slate-300">{industry.testimonial.role}</p>
+                  <p className="text-sm text-slate-400">{industry.testimonial.firm}</p>
                 </div>
               </div>
             </div>
@@ -861,7 +861,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
               {industry.compliance.map((comp, idx) => (
                 <div key={idx} className="flex items-center gap-2 p-3 bg-green-50 rounded border border-green-200">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-sm font-medium text-gray-900">{comp}</span>
+                  <span className="text-sm font-medium text-white">{comp}</span>
                 </div>
               ))}
             </div>
@@ -878,7 +878,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
             <div className="flex items-center justify-center gap-4">
               <Button 
                 size="lg"
-                className="bg-white text-[#13B5EA] hover:bg-white/90"
+                className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/90"
                 onClick={onBack}
               >
                 Explore Other Industries

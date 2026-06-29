@@ -98,7 +98,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
   if (!isAuthorized) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <div className="min-h-screen bg-[#0a0e17] flex items-center justify-center p-6">
         <Card className="max-w-md w-full shadow-2xl border-2 border-amber-200">
           <CardHeader className="bg-amber-50 text-amber-900 pb-4">
             <div className="flex items-center gap-3">
@@ -110,10 +110,10 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             </div>
           </CardHeader>
           <CardContent className="pt-6 space-y-4">
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               This settings panel contains critical system integrations, rule configurations, and role access controls that are restricted.
             </p>
-            <div className="p-3 bg-gray-100 rounded-lg text-xs font-semibold text-gray-700">
+            <div className="p-3 bg-[#0a0e17] rounded-lg text-xs font-semibold text-slate-300">
               Authorized roles: Head of Compliance, Managing Partner, Risk Partner.
             </div>
             <div className="flex justify-end gap-3">
@@ -128,9 +128,9 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
+      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack}>
@@ -140,8 +140,8 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             <div className="h-6 w-px bg-gray-300" />
             <Settings className="w-8 h-8 text-purple-600" />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">System Settings</h1>
-              <p className="text-sm text-gray-600">Partner-level administration and configuration</p>
+              <h1 className="text-2xl font-bold text-white">System Settings</h1>
+              <p className="text-sm text-slate-300">Partner-level administration and configuration</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -231,7 +231,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <Badge variant="default" className="bg-green-600">Active</Badge>
                   </div>
                   <div className="text-3xl font-bold">4</div>
-                  <div className="text-sm text-gray-600">Monitoring Rules</div>
+                  <div className="text-sm text-slate-300">Monitoring Rules</div>
                 </CardContent>
               </Card>
               <Card>
@@ -241,7 +241,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <Badge variant="default" className="bg-red-600">High</Badge>
                   </div>
                   <div className="text-3xl font-bold">2</div>
-                  <div className="text-sm text-gray-600">High Priority Rules</div>
+                  <div className="text-sm text-slate-300">High Priority Rules</div>
                 </CardContent>
               </Card>
               <Card>
@@ -250,7 +250,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <BarChart3 className="w-8 h-8 text-amber-600" />
                   </div>
                   <div className="text-3xl font-bold">28</div>
-                  <div className="text-sm text-gray-600">Triggers (30d)</div>
+                  <div className="text-sm text-slate-300">Triggers (30d)</div>
                 </CardContent>
               </Card>
               <Card>
@@ -259,7 +259,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <CheckCircle className="w-8 h-8 text-blue-600" />
                   </div>
                   <div className="text-3xl font-bold">100%</div>
-                  <div className="text-sm text-gray-600">Rules Active</div>
+                  <div className="text-sm text-slate-300">Rules Active</div>
                 </CardContent>
               </Card>
             </div>
@@ -285,7 +285,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-lg font-semibold text-gray-900">Structuring Detection</h3>
+                          <h3 className="text-lg font-semibold text-white">Structuring Detection</h3>
                           <Badge className="bg-red-600">HIGH PRIORITY</Badge>
                           <Badge className="bg-green-500">
                             <Play className="w-3 h-3 mr-1" />
@@ -293,7 +293,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-gray-600 mb-4">Multiple transactions just below $10,000 threshold</p>
+                        <p className="text-sm text-slate-300 mb-4">Multiple transactions just below $10,000 threshold</p>
 
                         <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
                           <div className="text-sm font-semibold text-blue-900 mb-2">
@@ -318,7 +318,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
                             <AlertTriangle className="w-4 h-4 text-amber-600" />
-                            <span className="text-gray-600">Triggered:</span>
+                            <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">8 times (30d)</span>
                           </div>
                         </div>
@@ -348,7 +348,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-lg font-semibold text-gray-900">Rapid Cash Movement</h3>
+                          <h3 className="text-lg font-semibold text-white">Rapid Cash Movement</h3>
                           <Badge className="bg-amber-600">MEDIUM PRIORITY</Badge>
                           <Badge className="bg-green-500">
                             <Play className="w-3 h-3 mr-1" />
@@ -356,7 +356,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-gray-600 mb-4">Funds in and out within short timeframe</p>
+                        <p className="text-sm text-slate-300 mb-4">Funds in and out within short timeframe</p>
 
                         <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
                           <div className="text-sm font-semibold text-blue-900 mb-2">
@@ -381,7 +381,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
                             <AlertTriangle className="w-4 h-4 text-amber-600" />
-                            <span className="text-gray-600">Triggered:</span>
+                            <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">3 times (30d)</span>
                           </div>
                         </div>
@@ -411,7 +411,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-lg font-semibold text-gray-900">Cross-Border Spike</h3>
+                          <h3 className="text-lg font-semibold text-white">Cross-Border Spike</h3>
                           <Badge className="bg-red-600">HIGH PRIORITY</Badge>
                           <Badge className="bg-green-500">
                             <Play className="w-3 h-3 mr-1" />
@@ -419,7 +419,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-gray-600 mb-4">Unusual international transaction volume</p>
+                        <p className="text-sm text-slate-300 mb-4">Unusual international transaction volume</p>
 
                         <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
                           <div className="text-sm font-semibold text-blue-900 mb-2">
@@ -444,7 +444,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
                             <AlertTriangle className="w-4 h-4 text-amber-600" />
-                            <span className="text-gray-600">Triggered:</span>
+                            <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">12 times (30d)</span>
                           </div>
                         </div>
@@ -474,7 +474,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-lg font-semibold text-gray-900">Unusual Transaction Size</h3>
+                          <h3 className="text-lg font-semibold text-white">Unusual Transaction Size</h3>
                           <Badge className="bg-amber-600">MEDIUM PRIORITY</Badge>
                           <Badge className="bg-green-500">
                             <Play className="w-3 h-3 mr-1" />
@@ -482,7 +482,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-gray-600 mb-4">Transaction significantly larger than historical average</p>
+                        <p className="text-sm text-slate-300 mb-4">Transaction significantly larger than historical average</p>
 
                         <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
                           <div className="text-sm font-semibold text-blue-900 mb-2">
@@ -507,7 +507,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
                             <AlertTriangle className="w-4 h-4 text-amber-600" />
-                            <span className="text-gray-600">Triggered:</span>
+                            <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">5 times (30d)</span>
                           </div>
                         </div>
@@ -572,28 +572,28 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardContent className="p-6">
                   <Users className="w-8 h-8 text-blue-600 mb-2" />
                   <div className="text-3xl font-bold">24</div>
-                  <div className="text-sm text-gray-600">Total Users</div>
+                  <div className="text-sm text-slate-300">Total Users</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <CheckCircle className="w-8 h-8 text-green-600 mb-2" />
                   <div className="text-3xl font-bold">22</div>
-                  <div className="text-sm text-gray-600">Active Users</div>
+                  <div className="text-sm text-slate-300">Active Users</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <Crown className="w-8 h-8 text-purple-600 mb-2" />
                   <div className="text-3xl font-bold">3</div>
-                  <div className="text-sm text-gray-600">Partners</div>
+                  <div className="text-sm text-slate-300">Partners</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <Clock className="w-8 h-8 text-amber-600 mb-2" />
                   <div className="text-3xl font-bold">2</div>
-                  <div className="text-sm text-gray-600">Pending Invites</div>
+                  <div className="text-sm text-slate-300">Pending Invites</div>
                 </CardContent>
               </Card>
             </div>
@@ -616,7 +616,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 {/* Search and Filter */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex-1 relative">
-                    <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
                     <Input placeholder="Search users..." className="pl-10" />
                   </div>
                   <Select defaultValue="all">
@@ -655,7 +655,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { name: 'Amanda Foster', email: 'amanda.foster@growfinancial.com', role: 'Analyst', avatar: '👩‍💼', status: 'active', lastActive: '2 hours ago', permissions: 'Standard' },
                     { name: 'James Wilson', email: 'james.wilson@growfinancial.com', role: 'Compliance Officer', avatar: '👨‍💼', status: 'inactive', lastActive: '2 days ago', permissions: 'Full Access' }
                   ].map((user, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border hover:bg-gray-100 transition-colors">
+                    <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border hover:bg-white/5 transition-colors">
                       <div className="flex items-center gap-4 flex-1">
                         <div className="text-3xl">{user.avatar}</div>
                         <div className="flex-1">
@@ -671,8 +671,8 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                               </Badge>
                             )}
                           </div>
-                          <div className="text-sm text-gray-600">{user.email}</div>
-                          <div className="text-xs text-gray-500 mt-1">
+                          <div className="text-sm text-slate-300">{user.email}</div>
+                          <div className="text-xs text-slate-400 mt-1">
                             {user.role} • {user.permissions} • Last active: {user.lastActive}
                           </div>
                         </div>
@@ -723,7 +723,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         { permission: 'Export Data', partner: true, officer: true, analyst: true, auditor: true },
                         { permission: 'Manage Billing', partner: true, officer: false, analyst: false, auditor: false }
                       ].map((row, index) => (
-                        <tr key={index} className="border-b hover:bg-gray-50">
+                        <tr key={index} className="border-b hover:bg-white/5">
                           <td className="py-3 px-4">{row.permission}</td>
                           <td className="py-3 px-4 text-center">
                             {row.partner ? <CheckCircle className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
@@ -754,28 +754,28 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardContent className="p-6">
                   <Shield className="w-8 h-8 text-green-600 mb-2" />
                   <div className="text-3xl font-bold">Secure</div>
-                  <div className="text-sm text-gray-600">Security Status</div>
+                  <div className="text-sm text-slate-300">Security Status</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <Lock className="w-8 h-8 text-blue-600 mb-2" />
                   <div className="text-3xl font-bold">24</div>
-                  <div className="text-sm text-gray-600">Active Sessions</div>
+                  <div className="text-sm text-slate-300">Active Sessions</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <Key className="w-8 h-8 text-purple-600 mb-2" />
                   <div className="text-3xl font-bold">12</div>
-                  <div className="text-sm text-gray-600">API Keys</div>
+                  <div className="text-sm text-slate-300">API Keys</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <Eye className="w-8 h-8 text-amber-600 mb-2" />
                   <div className="text-3xl font-bold">1.2K</div>
-                  <div className="text-sm text-gray-600">Audit Events Today</div>
+                  <div className="text-sm text-slate-300">Audit Events Today</div>
                 </CardContent>
               </Card>
             </div>
@@ -787,31 +787,31 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardDescription>Configure authentication methods and security policies</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Two-Factor Authentication (2FA)</div>
-                    <div className="text-sm text-gray-600">Require 2FA for all users</div>
+                    <div className="text-sm text-slate-300">Require 2FA for all users</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Single Sign-On (SSO)</div>
-                    <div className="text-sm text-gray-600">Enable SSO via Azure AD or Okta</div>
+                    <div className="text-sm text-slate-300">Enable SSO via Azure AD or Okta</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">IP Whitelist</div>
-                    <div className="text-sm text-gray-600">Restrict access to specific IP addresses</div>
+                    <div className="text-sm text-slate-300">Restrict access to specific IP addresses</div>
                   </div>
                   <Switch />
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Session Timeout</div>
-                    <div className="text-sm text-gray-600">Auto-logout after inactivity</div>
+                    <div className="text-sm text-slate-300">Auto-logout after inactivity</div>
                   </div>
                   <Select defaultValue="30">
                     <SelectTrigger className="w-32">
@@ -901,16 +901,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { event: 'Password changed', user: 'emma.williams@growfinancial.com', ip: '203.45.12.69', time: '2 hours ago', status: 'success' },
                     { event: '2FA enabled', user: 'david.thompson@growfinancial.com', ip: '203.45.12.70', time: '3 hours ago', status: 'success' }
                   ].map((log, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg text-sm">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg text-sm">
                       <div className="flex items-center gap-3 flex-1">
                         <div className={`w-2 h-2 rounded-full ${log.status === 'success' ? 'bg-green-500' : 'bg-red-500'}`} />
                         <span className="font-semibold">{log.event}</span>
-                        <span className="text-gray-600">•</span>
-                        <span className="text-gray-600">{log.user}</span>
-                        <span className="text-gray-600">•</span>
-                        <span className="text-gray-600">IP: {log.ip}</span>
+                        <span className="text-slate-300">•</span>
+                        <span className="text-slate-300">{log.user}</span>
+                        <span className="text-slate-300">•</span>
+                        <span className="text-slate-300">IP: {log.ip}</span>
                       </div>
-                      <span className="text-gray-500 text-xs">{log.time}</span>
+                      <span className="text-slate-400 text-xs">{log.time}</span>
                     </div>
                   ))}
                 </div>
@@ -937,11 +937,11 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                   { category: 'Weekly Reports', email: true, push: false, sms: false, description: 'Weekly compliance summary reports' },
                   { category: 'Integration Status', email: false, push: false, sms: false, description: 'Integration health and connectivity alerts' }
                 ].map((notification, index) => (
-                  <div key={index} className="p-4 bg-gray-50 rounded-lg">
+                  <div key={index} className="p-4 bg-[#0a0e17] rounded-lg">
                     <div className="flex items-start justify-between mb-3">
                       <div>
                         <div className="font-semibold mb-1">{notification.category}</div>
-                        <div className="text-sm text-gray-600">{notification.description}</div>
+                        <div className="text-sm text-slate-300">{notification.description}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-6">
@@ -970,37 +970,37 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardDescription>Configure where notifications are sent</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <Mail className="w-5 h-5 text-blue-600" />
                       <div>
                         <div className="font-semibold">Email</div>
-                        <div className="text-sm text-gray-600">compliance@growfinancial.com</div>
+                        <div className="text-sm text-slate-300">compliance@growfinancial.com</div>
                       </div>
                     </div>
                     <Badge variant="default" className="bg-green-600">Verified</Badge>
                   </div>
                 </div>
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <Bell className="w-5 h-5 text-purple-600" />
                       <div>
                         <div className="font-semibold">Slack</div>
-                        <div className="text-sm text-gray-600">#compliance-alerts</div>
+                        <div className="text-sm text-slate-300">#compliance-alerts</div>
                       </div>
                     </div>
                     <Badge variant="default" className="bg-green-600">Connected</Badge>
                   </div>
                 </div>
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <Phone className="w-5 h-5 text-green-600" />
                       <div>
                         <div className="font-semibold">SMS</div>
-                        <div className="text-sm text-gray-600">+61 4XX XXX XXX</div>
+                        <div className="text-sm text-slate-300">+61 4XX XXX XXX</div>
                       </div>
                     </div>
                     <Button size="sm" variant="outline">Configure</Button>
@@ -1105,7 +1105,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         <Upload className="w-4 h-4 mr-2" />
                         Upload New Logo
                       </Button>
-                      <p className="text-xs text-gray-600">PNG or JPG, max 2MB</p>
+                      <p className="text-xs text-slate-300">PNG or JPG, max 2MB</p>
                     </div>
                   </div>
                 </div>
@@ -1153,10 +1153,10 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardDescription>Manage data retention and privacy settings</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Data Retention Period</div>
-                    <div className="text-sm text-gray-600">How long to retain compliance records</div>
+                    <div className="text-sm text-slate-300">How long to retain compliance records</div>
                   </div>
                   <Select defaultValue="7years">
                     <SelectTrigger className="w-40">
@@ -1170,17 +1170,17 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Data Encryption at Rest</div>
-                    <div className="text-sm text-gray-600">AES-256 encryption for stored data</div>
+                    <div className="text-sm text-slate-300">AES-256 encryption for stored data</div>
                   </div>
                   <Badge variant="default" className="bg-green-600">Enabled</Badge>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">GDPR Compliance Mode</div>
-                    <div className="text-sm text-gray-600">Enhanced privacy controls for EU clients</div>
+                    <div className="text-sm text-slate-300">Enhanced privacy controls for EU clients</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
@@ -1217,7 +1217,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { name: 'Staging API Key', key: 'gk_stag_xxxxxxxxxxxxxxxxxxx', created: '2 months ago', lastUsed: '1 hour ago', calls: '450K' },
                     { name: 'Development API Key', key: 'gk_dev_xxxxxxxxxxxxxxxxxxx', created: '1 week ago', lastUsed: '5 hours ago', calls: '12K' }
                   ].map((apiKey, index) => (
-                    <div key={index} className="p-4 bg-gray-50 rounded-lg border">
+                    <div key={index} className="p-4 bg-[#0a0e17] rounded-lg border">
                       <div className="flex items-center justify-between mb-2">
                         <div className="font-semibold">{apiKey.name}</div>
                         <div className="flex items-center gap-2">
@@ -1232,10 +1232,10 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           </Button>
                         </div>
                       </div>
-                      <div className="font-mono text-sm bg-white p-2 rounded border mb-2">
+                      <div className="font-mono text-sm bg-[#0d121d] p-2 rounded border mb-2">
                         {showApiKey ? apiKey.key : '••••••••••••••••••••'}
                       </div>
-                      <div className="flex items-center gap-4 text-xs text-gray-600">
+                      <div className="flex items-center gap-4 text-xs text-slate-300">
                         <span>Created: {apiKey.created}</span>
                         <span>•</span>
                         <span>Last used: {apiKey.lastUsed}</span>
@@ -1268,13 +1268,13 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { url: 'https://api.yourapp.com/webhooks/kyc', events: ['case.created', 'case.updated', 'risk.flagged'], status: 'active', success: 99.8 },
                     { url: 'https://staging.yourapp.com/webhooks/compliance', events: ['document.approved', 'client.verified'], status: 'active', success: 98.5 }
                   ].map((webhook, index) => (
-                    <div key={index} className="p-4 bg-gray-50 rounded-lg border">
+                    <div key={index} className="p-4 bg-[#0a0e17] rounded-lg border">
                       <div className="flex items-center justify-between mb-2">
                         <div>
                           <div className="font-mono text-sm font-semibold mb-1">{webhook.url}</div>
                           <div className="flex items-center gap-2">
                             <Badge variant="default" className="bg-green-600 text-xs">Active</Badge>
-                            <span className="text-xs text-gray-600">{webhook.success}% success rate</span>
+                            <span className="text-xs text-slate-300">{webhook.success}% success rate</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
@@ -1358,11 +1358,11 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               <CardContent className="space-y-6">
                 {/* One-Time Verification Fee */}
                 <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-cyan-600" />
                     One-Time Verification Fee
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     Client-facing fee for initial KYC verification (includes all base checks)
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -1371,7 +1371,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         Verification Fee Amount
                       </Label>
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-gray-600">$</span>
+                        <span className="text-2xl font-bold text-slate-300">$</span>
                         <Input
                           id="verification-fee"
                           type="number"
@@ -1380,9 +1380,9 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         />
                       </div>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-cyan-200">
-                      <p className="text-xs text-gray-600 mb-2">This fee includes:</p>
-                      <ul className="text-xs text-gray-700 space-y-1">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-cyan-200">
+                      <p className="text-xs text-slate-300 mb-2">This fee includes:</p>
+                      <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
                           <Check className="w-3 h-3 text-green-600" />
                           Identity verification (Equifax)
@@ -1406,25 +1406,25 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                 {/* Individual Search Costs */}
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <Search className="w-5 h-5 text-purple-600" />
                     Individual Search Costs
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     Internal costs for each external integration check (for tracking purposes)
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Equifax */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">Equifax Identity Check</p>
-                          <p className="text-xs text-gray-600">Identity, fraud, credit signals</p>
+                          <p className="font-semibold text-white">Equifax Identity Check</p>
+                          <p className="text-xs text-slate-300">Identity, fraud, credit signals</p>
                         </div>
                         <Shield className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="8.50"
@@ -1434,16 +1434,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* Illion */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">Illion Business Check</p>
-                          <p className="text-xs text-gray-600">Credit, insolvency, court data</p>
+                          <p className="font-semibold text-white">Illion Business Check</p>
+                          <p className="text-xs text-slate-300">Credit, insolvency, court data</p>
                         </div>
                         <Building2 className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="12.00"
@@ -1453,16 +1453,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* ComplyAdvantage */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">ComplyAdvantage AML</p>
-                          <p className="text-xs text-gray-600">Sanctions, PEP, adverse media</p>
+                          <p className="font-semibold text-white">ComplyAdvantage AML</p>
+                          <p className="text-xs text-slate-300">Sanctions, PEP, adverse media</p>
                         </div>
                         <AlertTriangle className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="6.50"
@@ -1472,16 +1472,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* ASIC */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">ASIC Company Extract</p>
-                          <p className="text-xs text-gray-600">Entity records, directors, shares</p>
+                          <p className="font-semibold text-white">ASIC Company Extract</p>
+                          <p className="text-xs text-slate-300">Entity records, directors, shares</p>
                         </div>
                         <FileText className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="15.00"
@@ -1491,16 +1491,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* InfoTrack KYC */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">InfoTrack ID Verification</p>
-                          <p className="text-xs text-gray-600">Document verification</p>
+                          <p className="font-semibold text-white">InfoTrack ID Verification</p>
+                          <p className="text-xs text-slate-300">Document verification</p>
                         </div>
                         <Eye className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="4.50"
@@ -1510,16 +1510,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* LexisNexis (Optional) */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">LexisNexis Legal Check</p>
-                          <p className="text-xs text-gray-600">Court records, litigation</p>
+                          <p className="font-semibold text-white">LexisNexis Legal Check</p>
+                          <p className="text-xs text-slate-300">Court records, litigation</p>
                         </div>
                         <Database className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="18.00"
@@ -1529,7 +1529,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
                   </div>
 
-                  <div className="mt-4 bg-white rounded-lg p-4 border border-purple-300">
+                  <div className="mt-4 bg-[#0d121d] rounded-lg p-4 border border-purple-300">
                     <div className="flex items-start gap-2">
                       <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                       <div>
@@ -1544,11 +1544,11 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                 {/* Ongoing Monitoring Fee */}
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <Activity className="w-5 h-5 text-green-600" />
                     Ongoing Monitoring Subscription
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     Monthly fee for continuous AML monitoring of client and associated parties
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -1557,22 +1557,22 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         Monthly Monitoring Fee
                       </Label>
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-gray-600">$</span>
+                        <span className="text-2xl font-bold text-slate-300">$</span>
                         <Input
                           id="monitoring-fee"
                           type="number"
                           defaultValue="15.00"
                           className="text-lg font-semibold border-2 border-green-300 focus:border-green-500"
                         />
-                        <span className="text-sm text-gray-600 whitespace-nowrap">/ month</span>
+                        <span className="text-sm text-slate-300 whitespace-nowrap">/ month</span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">
+                      <p className="text-xs text-slate-300 mt-2">
                         Billed monthly per client entity
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-green-200">
-                      <p className="text-xs text-gray-600 mb-2">Monthly monitoring includes:</p>
-                      <ul className="text-xs text-gray-700 space-y-1">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-green-200">
+                      <p className="text-xs text-slate-300 mb-2">Monthly monitoring includes:</p>
+                      <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
                           <Check className="w-3 h-3 text-green-600" />
                           Real-time sanctions screening
@@ -1603,30 +1603,30 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                   {/* Monitoring Tiers */}
                   <div className="mt-4 grid md:grid-cols-3 gap-3">
-                    <div className="bg-white rounded-lg p-4 border-2 border-green-300">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-green-300">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-blue-600">Standard</Badge>
                         <span className="font-bold text-lg">$15</span>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Monthly checks, standard alerts
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border-2 border-amber-400">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-amber-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-amber-600">Enhanced</Badge>
                         <span className="font-bold text-lg">$35</span>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Weekly checks, priority alerts
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border-2 border-purple-400">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-purple-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-purple-600">Premium</Badge>
                         <span className="font-bold text-lg">$75</span>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Real-time monitoring, instant alerts
                       </p>
                     </div>
@@ -1635,20 +1635,20 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                 {/* Pricing Summary */}
                 <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <BarChart3 className="w-5 h-5 text-indigo-600" />
                     Pricing Summary
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-3">Revenue Model</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-3">Revenue Model</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Initial Verification</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Initial Verification</span>
                           <span className="font-bold text-indigo-600">$49.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Monthly Monitoring (Standard)</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Monthly Monitoring (Standard)</span>
                           <span className="font-bold text-indigo-600">$15.00</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-indigo-100 rounded-lg border-2 border-indigo-300">
@@ -1658,15 +1658,15 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                       </div>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-3">Cost Structure</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-3">Cost Structure</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Total External Checks</span>
-                          <span className="font-bold text-gray-900">~$46.50</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Total External Checks</span>
+                          <span className="font-bold text-white">~$46.50</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Monitoring Cost (est.)</span>
-                          <span className="font-bold text-gray-900">~$5.00/mo</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Monitoring Cost (est.)</span>
+                          <span className="font-bold text-white">~$5.00/mo</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-green-100 rounded-lg border-2 border-green-300">
                           <span className="text-sm font-semibold text-green-900">12-Month Margin</span>
@@ -1692,7 +1692,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold text-purple-600">$2,499</div>
-                    <div className="text-sm text-gray-600">per month</div>
+                    <div className="text-sm text-slate-300">per month</div>
                   </div>
                 </div>
               </CardHeader>
@@ -1700,15 +1700,15 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg">
                     <div className="text-2xl font-bold">Unlimited</div>
-                    <div className="text-sm text-gray-600">Users</div>
+                    <div className="text-sm text-slate-300">Users</div>
                   </div>
                   <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg">
                     <div className="text-2xl font-bold">5M</div>
-                    <div className="text-sm text-gray-600">API Calls/month</div>
+                    <div className="text-sm text-slate-300">API Calls/month</div>
                   </div>
                   <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg">
                     <div className="text-2xl font-bold">24/7</div>
-                    <div className="text-sm text-gray-600">Priority Support</div>
+                    <div className="text-sm text-slate-300">Priority Support</div>
                   </div>
                 </div>
                 <Button variant="outline" className="w-full">
@@ -1727,21 +1727,21 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-semibold">API Calls</span>
-                    <span className="text-sm text-gray-600">1.2M / 5M</span>
+                    <span className="text-sm text-slate-300">1.2M / 5M</span>
                   </div>
                   <Progress value={24} />
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-semibold">Active Users</span>
-                    <span className="text-sm text-gray-600">24 / Unlimited</span>
+                    <span className="text-sm text-slate-300">24 / Unlimited</span>
                   </div>
                   <Progress value={10} />
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-semibold">Storage Used</span>
-                    <span className="text-sm text-gray-600">245 GB / 1 TB</span>
+                    <span className="text-sm text-slate-300">245 GB / 1 TB</span>
                   </div>
                   <Progress value={24} />
                 </div>
@@ -1791,12 +1791,12 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { date: 'Jan 1, 2026', amount: '$2,499.00', status: 'paid', invoice: 'INV-2026-01' },
                     { date: 'Dec 1, 2025', amount: '$2,499.00', status: 'paid', invoice: 'INV-2025-12' }
                   ].map((bill, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
                       <div className="flex items-center gap-4">
-                        <FileText className="w-5 h-5 text-gray-400" />
+                        <FileText className="w-5 h-5 text-slate-400" />
                         <div>
                           <div className="font-semibold">{bill.invoice}</div>
-                          <div className="text-sm text-gray-600">{bill.date}</div>
+                          <div className="text-sm text-slate-300">{bill.date}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-4">

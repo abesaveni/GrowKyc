@@ -112,7 +112,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
       case 'active': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
       case 'suspended': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
       case 'pending': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      default: return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -122,7 +122,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
       case 'medium': return 'text-yellow-600 dark:text-yellow-400';
       case 'high': return 'text-orange-600 dark:text-orange-400';
       case 'critical': return 'text-red-600 dark:text-red-400';
-      default: return 'text-gray-600 dark:text-gray-400';
+      default: return 'text-slate-300 dark:text-slate-400';
     }
   };
 
@@ -172,15 +172,15 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
             </div>
             <div className="text-right">
               <div className="flex gap-2">
-                <Button variant="outline" className="bg-white text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50">
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Refresh All
                 </Button>
-                <Button variant="outline" className="bg-white text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50">
                   <Download className="w-4 h-4 mr-2" />
                   Export Profile
                 </Button>
-                <Button variant="outline" className="bg-white text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50">
                   <Edit className="w-4 h-4 mr-2" />
                   Edit
                 </Button>
@@ -192,8 +192,8 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
       <div className="max-w-7xl mx-auto p-6">
         {/* Tab Navigation */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-6 overflow-hidden">
-          <div className="flex overflow-x-auto border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg mb-6 overflow-hidden">
+          <div className="flex overflow-x-auto border-b border-white/10 dark:border-gray-700">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -201,7 +201,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                 className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-[#13B5EA] text-white border-b-2 border-[#0E7C9E]'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-slate-300 dark:text-slate-400 hover:bg-white/5 dark:hover:bg-gray-700'
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
@@ -218,89 +218,89 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
             <div className="space-y-6">
               {/* Quick Stats */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-sm text-gray-500">KYC Status</div>
+                    <div className="text-sm text-slate-400">KYC Status</div>
                     <Shield className="w-8 h-8 text-green-600" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white capitalize">{client.kycStatus}</div>
-                  <div className="text-xs text-gray-500 mt-1">Last verified {client.lastReviewDate}</div>
+                  <div className="text-2xl font-bold text-white dark:text-white capitalize">{client.kycStatus}</div>
+                  <div className="text-xs text-slate-400 mt-1">Last verified {client.lastReviewDate}</div>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-sm text-gray-500">Risk Score</div>
+                    <div className="text-sm text-slate-400">Risk Score</div>
                     <TrendingUp className="w-8 h-8 text-blue-600" />
                   </div>
                   <div className={`text-2xl font-bold capitalize ${getRiskColor(client.riskTier)}`}>
                     {client.riskScore}/100
                   </div>
-                  <div className="text-xs text-gray-500 mt-1 capitalize">{client.riskTier} Risk</div>
+                  <div className="text-xs text-slate-400 mt-1 capitalize">{client.riskTier} Risk</div>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-sm text-gray-500">Active Alerts</div>
+                    <div className="text-sm text-slate-400">Active Alerts</div>
                     <Bell className="w-8 h-8 text-purple-600" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <div className="text-2xl font-bold text-white dark:text-white">
                     {Object.values(client.modules).reduce((sum, m) => sum + m.alerts, 0)}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">All clear</div>
+                  <div className="text-xs text-slate-400 mt-1">All clear</div>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
+                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-sm text-gray-500">Next Review</div>
+                    <div className="text-sm text-slate-400">Next Review</div>
                     <Clock className="w-8 h-8 text-orange-600" />
                   </div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
+                  <div className="text-lg font-bold text-white dark:text-white">
                     {new Date(client.nextReviewDue).toLocaleDateString()}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-slate-400 mt-1">
                     {Math.ceil((new Date(client.nextReviewDue).getTime() - Date.now()) / (1000 * 60 * 60 * 24))} days
                   </div>
                 </div>
               </div>
 
               {/* Client Information */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Client Information</h3>
+              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 className="text-lg font-bold text-white dark:text-white mb-4">Client Information</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">Full Name</div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">{client.name}</div>
+                    <div className="text-sm text-slate-400 mb-1">Full Name</div>
+                    <div className="text-base font-semibold text-white dark:text-white">{client.name}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">Date of Birth</div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">{client.dateOfBirth}</div>
+                    <div className="text-sm text-slate-400 mb-1">Date of Birth</div>
+                    <div className="text-base font-semibold text-white dark:text-white">{client.dateOfBirth}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">Email</div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">{client.email}</div>
+                    <div className="text-sm text-slate-400 mb-1">Email</div>
+                    <div className="text-base font-semibold text-white dark:text-white">{client.email}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">Phone</div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">{client.phone}</div>
+                    <div className="text-sm text-slate-400 mb-1">Phone</div>
+                    <div className="text-base font-semibold text-white dark:text-white">{client.phone}</div>
                   </div>
                   <div className="col-span-2">
-                    <div className="text-sm text-gray-500 mb-1">Address</div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">{client.address}</div>
+                    <div className="text-sm text-slate-400 mb-1">Address</div>
+                    <div className="text-base font-semibold text-white dark:text-white">{client.address}</div>
                   </div>
                 </div>
               </div>
 
               {/* Module Status */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Module Status</h3>
+              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 className="text-lg font-bold text-white dark:text-white mb-4">Module Status</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {Object.entries(client.modules).map(([key, module]) => (
-                    <div key={key} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                    <div key={key} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                       <div>
-                        <div className="font-semibold text-gray-900 dark:text-white capitalize">
+                        <div className="font-semibold text-white dark:text-white capitalize">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-slate-400">
                           Last updated: {module.lastUpdated.toLocaleDateString()}
                         </div>
                       </div>
@@ -326,8 +326,8 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
               </div>
 
               {/* Recent Activity */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Recent Activity</h3>
+              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 className="text-lg font-bold text-white dark:text-white mb-4">Recent Activity</h3>
                 <div className="space-y-3">
                   {[
                     { date: '2024-03-22 08:00', action: 'Monitoring alert check', user: 'System', status: 'success' },
@@ -335,15 +335,15 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                     { date: '2024-03-20 10:30', action: 'AML screening completed', user: 'compliance@growkyc.com', status: 'success' },
                     { date: '2024-03-20 09:15', action: 'Credit report pulled', user: 'System', status: 'success' }
                   ].map((activity, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
                         <Activity className="w-5 h-5 text-[#13B5EA]" />
                         <div>
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">{activity.action}</div>
-                          <div className="text-xs text-gray-500">By: {activity.user}</div>
+                          <div className="text-sm font-semibold text-white dark:text-white">{activity.action}</div>
+                          <div className="text-xs text-slate-400">By: {activity.user}</div>
                         </div>
                       </div>
-                      <div className="text-xs text-gray-500">{activity.date}</div>
+                      <div className="text-xs text-slate-400">{activity.date}</div>
                     </div>
                   ))}
                 </div>
@@ -353,9 +353,9 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* Identity Tab - Link to existing Equifax module */}
           {activeTab === 'identity' && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Identity Verification Module</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h3 className="text-lg font-bold text-white dark:text-white mb-4">Identity Verification Module</h3>
+              <p className="text-slate-300 dark:text-slate-400 mb-4">
                 Complete identity verification powered by Equifax, including fraud detection, biometrics, and document authenticity checks.
               </p>
               <Button onClick={() => alert('Navigate to EquifaxIdentityFraudModule')}>
@@ -367,9 +367,9 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* AML / Risk Tab - Link to existing modules */}
           {activeTab === 'aml-risk' && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">AML Screening & Risk Assessment</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h3 className="text-lg font-bold text-white dark:text-white mb-4">AML Screening & Risk Assessment</h3>
+              <p className="text-slate-300 dark:text-slate-400 mb-4">
                 Comprehensive AML/CTF screening including PEP, sanctions, watchlists, and risk scoring.
               </p>
               <div className="flex gap-3">
@@ -387,9 +387,9 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* Related Parties Tab */}
           {activeTab === 'related-parties' && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Related Parties & Associations</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h3 className="text-lg font-bold text-white dark:text-white mb-4">Related Parties & Associations</h3>
+              <p className="text-slate-300 dark:text-slate-400 mb-6">
                 View and manage related individuals, entities, and business associations for this client.
               </p>
               
@@ -399,14 +399,14 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                   { name: 'John Mitchell', type: 'Individual', relationship: 'Spouse', status: 'Active', verified: true },
                   { name: 'Mitchell Consulting Pty Ltd', type: 'Company', relationship: 'Director', status: 'Active', verified: true }
                 ].map((party, i) => (
-                  <div key={i} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <div key={i} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg border border-white/10 dark:border-gray-700">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-[#13B5EA] text-white flex items-center justify-center font-semibold">
                         {party.name.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{party.name}</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <div className="font-semibold text-white dark:text-white">{party.name}</div>
+                        <div className="text-sm text-slate-300 dark:text-slate-400">
                           {party.type} • {party.relationship}
                         </div>
                       </div>
@@ -448,11 +448,11 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* Placeholder for other tabs */}
           {!['overview', 'identity', 'aml-risk', 'related-parties', 'fraud-detection', 'run-checks'].includes(activeTab) && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 capitalize">
+            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h3 className="text-lg font-bold text-white dark:text-white mb-4 capitalize">
                 {activeTab.replace('-', ' / ')} Module
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-slate-300 dark:text-slate-400">
                 This module integrates existing functionality for {activeTab.replace('-', ' / ')}.
               </p>
             </div>

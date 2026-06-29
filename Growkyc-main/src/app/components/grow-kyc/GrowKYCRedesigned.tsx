@@ -244,7 +244,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Top Navigation Bar - Modern & Clean */}
-      <div className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+      <div className="bg-[#0d121d] border-b border-white/10 shadow-sm sticky top-0 z-50">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo & Branding */}
@@ -254,8 +254,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Grow KYC</h1>
-                  <p className="text-xs text-gray-500">Compliance Made Simple</p>
+                  <h1 className="text-xl font-bold text-white">Grow KYC</h1>
+                  <p className="text-xs text-slate-400">Compliance Made Simple</p>
                 </div>
               </div>
 
@@ -277,7 +277,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                       className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                         isActive
                           ? 'bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white shadow-lg scale-105'
-                          : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                          : 'text-slate-300 hover:bg-white/5 hover:text-white'
                       }`}
                     >
                       <NavIcon className="w-4 h-4" />
@@ -292,7 +292,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
             <div className="flex items-center gap-3">
               {/* Global Search with Keyboard Shortcut */}
               <div className="relative" id="search">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   id="global-search"
                   type="text"
@@ -301,7 +301,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10 pr-16 py-2 w-64 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
                 />
-                <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded border border-gray-300">
+                <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-1 text-xs bg-[#0a0e17] text-slate-300 rounded border border-gray-300">
                   ⌘K
                 </kbd>
               </div>
@@ -336,17 +336,17 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                             <button
                               key={action.id}
                               onClick={() => handleQuickAction(action.id)}
-                              className="w-full text-left p-4 hover:bg-gray-50 transition-colors border-b last:border-b-0"
+                              className="w-full text-left p-4 hover:bg-white/5 transition-colors border-b last:border-b-0"
                             >
                               <div className="flex items-center gap-3">
                                 <div className={`w-10 h-10 ${action.color} rounded-lg flex items-center justify-center`}>
                                   <ActionIcon className="w-5 h-5 text-white" />
                                 </div>
                                 <div className="flex-1">
-                                  <div className="font-semibold text-gray-900 text-sm">{action.label}</div>
-                                  <div className="text-xs text-gray-500">{action.description}</div>
+                                  <div className="font-semibold text-white text-sm">{action.label}</div>
+                                  <div className="text-xs text-slate-400">{action.description}</div>
                                 </div>
-                                <ChevronRight className="w-4 h-4 text-gray-400" />
+                                <ChevronRight className="w-4 h-4 text-slate-400" />
                               </div>
                             </button>
                           );
@@ -362,7 +362,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowTour(true)}
-                className="text-gray-600 hover:text-gray-900"
+                className="text-slate-300 hover:text-white"
                 title="Take a tour"
               >
                 <HelpCircle className="w-5 h-5" />
@@ -372,7 +372,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-gray-600 hover:text-gray-900 relative"
+                className="text-slate-300 hover:text-white relative"
               >
                 <Bell className="w-5 h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -383,7 +383,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                 variant="ghost"
                 size="icon"
                 onClick={() => setCurrentView('settings')}
-                className="text-gray-600 hover:text-gray-900"
+                className="text-slate-300 hover:text-white"
               >
                 <Settings className="w-5 h-5" />
               </Button>
@@ -406,7 +406,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                   </div>
                   <Button
                     onClick={() => setCurrentView('onboarding')}
-                    className="bg-white text-[#13B5EA] hover:bg-white/90 shadow-lg"
+                    className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/90 shadow-lg"
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Add New Client
@@ -425,8 +425,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     </div>
                     <TrendingUp className="w-5 h-5 text-green-500" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stats.totalClients.toLocaleString()}</div>
-                  <div className="text-sm text-gray-600">Total Clients</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stats.totalClients.toLocaleString()}</div>
+                  <div className="text-sm text-slate-300">Total Clients</div>
                   <div className="text-xs text-green-600 mt-2">↑ 12% this month</div>
                 </CardContent>
               </Card>
@@ -439,8 +439,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     </div>
                     <AlertTriangle className="w-5 h-5 text-amber-500" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stats.pendingVerification}</div>
-                  <div className="text-sm text-gray-600">Pending</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stats.pendingVerification}</div>
+                  <div className="text-sm text-slate-300">Pending</div>
                   <div className="text-xs text-amber-600 mt-2">Needs review</div>
                 </CardContent>
               </Card>
@@ -453,8 +453,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     </div>
                     <CheckCircle className="w-5 h-5 text-green-500" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stats.activeMonitoring.toLocaleString()}</div>
-                  <div className="text-sm text-gray-600">Active Monitoring</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stats.activeMonitoring.toLocaleString()}</div>
+                  <div className="text-sm text-slate-300">Active Monitoring</div>
                   <div className="text-xs text-green-600 mt-2">All clear</div>
                 </CardContent>
               </Card>
@@ -467,8 +467,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     </div>
                     <XCircle className="w-5 h-5 text-red-500" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stats.flaggedCases}</div>
-                  <div className="text-sm text-gray-600">Flagged Cases</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stats.flaggedCases}</div>
+                  <div className="text-sm text-slate-300">Flagged Cases</div>
                   <div className="text-xs text-red-600 mt-2">Requires action</div>
                 </CardContent>
               </Card>
@@ -481,8 +481,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     </div>
                     <Sparkles className="w-5 h-5 text-purple-500" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stats.completedToday}</div>
-                  <div className="text-sm text-gray-600">Completed Today</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stats.completedToday}</div>
+                  <div className="text-sm text-slate-300">Completed Today</div>
                   <div className="text-xs text-purple-600 mt-2">Great progress!</div>
                 </CardContent>
               </Card>
@@ -495,8 +495,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     </div>
                     <TrendingUp className="w-5 h-5 text-green-500" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stats.avgProcessingTime}</div>
-                  <div className="text-sm text-gray-600">Avg Processing</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stats.avgProcessingTime}</div>
+                  <div className="text-sm text-slate-300">Avg Processing</div>
                   <div className="text-xs text-green-600 mt-2">↓ 15% faster</div>
                 </CardContent>
               </Card>
@@ -523,7 +523,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                       {pendingTasks.map((task) => (
                         <div
                           key={task.id}
-                          className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer border-2 border-transparent hover:border-[#13B5EA]"
+                          className="p-4 bg-[#0a0e17] rounded-xl hover:bg-white/5 transition-colors cursor-pointer border-2 border-transparent hover:border-[#13B5EA]"
                         >
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
@@ -537,8 +537,8 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                                 </Badge>
                                 <Badge variant="outline">{task.type}</Badge>
                               </div>
-                              <h4 className="font-semibold text-gray-900 mb-1">{task.title}</h4>
-                              <div className="flex items-center gap-4 text-xs text-gray-600">
+                              <h4 className="font-semibold text-white mb-1">{task.title}</h4>
+                              <div className="flex items-center gap-4 text-xs text-slate-300">
                                 <span className="flex items-center gap-1">
                                   <Users className="w-3 h-3" />
                                   {task.client}
@@ -586,9 +586,9 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                           {activity.status === 'alert' && <Shield className="w-4 h-4 text-red-600" />}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900">{activity.client}</p>
-                          <p className="text-xs text-gray-600">{activity.action}</p>
-                          <p className="text-xs text-gray-400 mt-1">{activity.time}</p>
+                          <p className="text-sm font-medium text-white">{activity.client}</p>
+                          <p className="text-xs text-slate-300">{activity.action}</p>
+                          <p className="text-xs text-slate-400 mt-1">{activity.time}</p>
                         </div>
                       </div>
                     ))}
@@ -603,13 +603,13 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
         {currentView !== 'dashboard' && (
           <div className="flex items-center justify-center h-96">
             <div className="text-center">
-              <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Sparkles className="w-12 h-12 text-gray-400" />
+              <div className="w-24 h-24 bg-[#0a0e17] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="w-12 h-12 text-slate-400" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-white mb-2">
                 {currentView.charAt(0).toUpperCase() + currentView.slice(1)} View
               </h3>
-              <p className="text-gray-600">This view is being redesigned with an amazing UX!</p>
+              <p className="text-slate-300">This view is being redesigned with an amazing UX!</p>
             </div>
           </div>
         )}
@@ -634,7 +634,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-6">{tourSteps[tourStep].description}</p>
+              <p className="text-slate-300 mb-6">{tourSteps[tourStep].description}</p>
               
               <div className="flex items-center gap-2 mb-4">
                 {tourSteps.map((_, idx) => (
@@ -716,13 +716,13 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                   { keys: ['⌘', 'S'], description: 'Save current work' },
                   { keys: ['⌘', 'F'], description: 'Filter current view' }
                 ].map((shortcut, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-sm text-gray-700">{shortcut.description}</span>
+                  <div key={idx} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+                    <span className="text-sm text-slate-300">{shortcut.description}</span>
                     <div className="flex gap-1">
                       {shortcut.keys.map((key, keyIdx) => (
                         <kbd
                           key={keyIdx}
-                          className="px-3 py-1 text-sm bg-white text-gray-700 rounded border-2 border-gray-300 font-mono"
+                          className="px-3 py-1 text-sm bg-[#0d121d] text-slate-300 rounded border-2 border-gray-300 font-mono"
                         >
                           {key}
                         </kbd>

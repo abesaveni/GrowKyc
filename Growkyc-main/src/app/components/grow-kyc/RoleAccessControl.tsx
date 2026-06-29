@@ -275,11 +275,11 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <Shield className="w-7 h-7 text-purple-600" />
             Role & Access Control Framework
           </h2>
-          <p className="text-sm text-gray-600 mt-1">ISO 27001 & SOC 2 Compliant • Bank-Grade Segregation of Duties</p>
+          <p className="text-sm text-slate-300 mt-1">ISO 27001 & SOC 2 Compliant • Bank-Grade Segregation of Duties</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge variant="default" className="bg-green-600">
@@ -313,7 +313,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             ].map((principle, index) => (
               <div key={index} className="flex items-center gap-2 text-sm">
                 <principle.icon className={`w-4 h-4 ${principle.color}`} />
-                <span className="font-medium text-gray-700">{principle.text}</span>
+                <span className="font-medium text-slate-300">{principle.text}</span>
               </div>
             ))}
           </div>
@@ -381,35 +381,35 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <CardContent className="p-6">
                 <Users className="w-8 h-8 text-blue-600 mb-2" />
                 <div className="text-3xl font-bold">489</div>
-                <div className="text-sm text-gray-600">Total Users</div>
+                <div className="text-sm text-slate-300">Total Users</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <Layers className="w-8 h-8 text-purple-600 mb-2" />
                 <div className="text-3xl font-bold">5</div>
-                <div className="text-sm text-gray-600">Access Tiers</div>
+                <div className="text-sm text-slate-300">Access Tiers</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <CheckCheck className="w-8 h-8 text-green-600 mb-2" />
                 <div className="text-3xl font-bold">9</div>
-                <div className="text-sm text-gray-600">Pending Dual Control</div>
+                <div className="text-sm text-slate-300">Pending Dual Control</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <ShieldCheck className="w-8 h-8 text-amber-600 mb-2" />
                 <div className="text-3xl font-bold">98.5%</div>
-                <div className="text-sm text-gray-600">MFA Compliance</div>
+                <div className="text-sm text-slate-300">MFA Compliance</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <AlertTriangle className="w-8 h-8 text-red-600 mb-2" />
                 <div className="text-3xl font-bold">2</div>
-                <div className="text-sm text-gray-600">Access Anomalies</div>
+                <div className="text-sm text-slate-300">Access Anomalies</div>
               </CardContent>
             </Card>
           </div>
@@ -449,23 +449,23 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   <CardContent>
                     <div className="space-y-3">
                       <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div className="p-3 bg-gray-50 rounded-lg">
-                          <div className="text-xs text-gray-600 mb-1">Scope</div>
+                        <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="text-xs text-slate-300 mb-1">Scope</div>
                           <div className="font-semibold text-sm">{tier.scope}</div>
                         </div>
-                        <div className="p-3 bg-gray-50 rounded-lg">
-                          <div className="text-xs text-gray-600 mb-1">Total Roles</div>
+                        <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="text-xs text-slate-300 mb-1">Total Roles</div>
                           <div className="font-semibold text-sm">{tier.roles.length} role types</div>
                         </div>
                       </div>
                       <div className="space-y-2">
                         {tier.roles.map((role) => (
-                          <div key={role.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                          <div key={role.id} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
                             <div className="flex items-center gap-3">
-                              <UserCheck className="w-5 h-5 text-gray-400" />
+                              <UserCheck className="w-5 h-5 text-slate-400" />
                               <div>
                                 <div className="font-semibold text-sm">{role.name}</div>
-                                <div className="text-xs text-gray-600">{role.count} active users</div>
+                                <div className="text-xs text-slate-300">{role.count} active users</div>
                               </div>
                             </div>
                             <Button size="sm" variant="outline">
@@ -490,7 +490,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             <CardContent>
               <div className="space-y-3">
                 {specialRoles.map((role) => (
-                  <div key={role.id} className="flex items-start justify-between p-4 bg-gray-50 rounded-lg border">
+                  <div key={role.id} className="flex items-start justify-between p-4 bg-[#0a0e17] rounded-lg border">
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
                         <role.icon className="w-5 h-5 text-purple-600" />
@@ -503,7 +503,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                           </Badge>
                           <Badge variant="secondary">{role.count} active</Badge>
                         </div>
-                        <div className="text-sm text-gray-600 mb-2">
+                        <div className="text-sm text-slate-300 mb-2">
                           <div><strong>Access:</strong> {role.access}</div>
                           <div><strong>Restrictions:</strong> {role.restrictions}</div>
                         </div>
@@ -577,13 +577,13 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   { rule: 'Compliance cannot modify their own audit trails', tiers: [2], type: 'Audit integrity', status: 'active' },
                   { rule: 'Two Tier 2+ users required for sanctions override', tiers: [2], type: 'Dual control', status: 'active' }
                 ].map((rule, index) => (
-                  <div key={index} className="flex items-start justify-between p-4 bg-gray-50 rounded-lg border-l-4 border-l-purple-500">
+                  <div key={index} className="flex items-start justify-between p-4 bg-[#0a0e17] rounded-lg border-l-4 border-l-purple-500">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <GitBranch className="w-4 h-4 text-purple-600" />
                         <span className="font-semibold text-sm">{rule.rule}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-xs text-gray-600">
+                      <div className="flex items-center gap-3 text-xs text-slate-300">
                         <Badge variant="secondary" className="text-xs">{rule.type}</Badge>
                         <span>Applies to: Tier {rule.tiers.join(', ')}</span>
                       </div>
@@ -611,20 +611,20 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b-2 bg-gray-50">
+                  <tr className="border-b-2 bg-[#0a0e17]">
                     <th className="text-left py-3 px-4 font-semibold">Action</th>
                     <th className="text-left py-3 px-4 font-semibold">Category</th>
-                    <th className="text-center py-3 px-4 font-semibold">Tier 0<br/><span className="text-xs font-normal text-gray-600">Client</span></th>
-                    <th className="text-center py-3 px-4 font-semibold">Tier 1<br/><span className="text-xs font-normal text-gray-600">Operational</span></th>
-                    <th className="text-center py-3 px-4 font-semibold">Tier 2<br/><span className="text-xs font-normal text-gray-600">Compliance</span></th>
-                    <th className="text-center py-3 px-4 font-semibold">Tier 3<br/><span className="text-xs font-normal text-gray-600">Executive</span></th>
-                    <th className="text-center py-3 px-4 font-semibold">Tier 4<br/><span className="text-xs font-normal text-gray-600">System</span></th>
+                    <th className="text-center py-3 px-4 font-semibold">Tier 0<br/><span className="text-xs font-normal text-slate-300">Client</span></th>
+                    <th className="text-center py-3 px-4 font-semibold">Tier 1<br/><span className="text-xs font-normal text-slate-300">Operational</span></th>
+                    <th className="text-center py-3 px-4 font-semibold">Tier 2<br/><span className="text-xs font-normal text-slate-300">Compliance</span></th>
+                    <th className="text-center py-3 px-4 font-semibold">Tier 3<br/><span className="text-xs font-normal text-slate-300">Executive</span></th>
+                    <th className="text-center py-3 px-4 font-semibold">Tier 4<br/><span className="text-xs font-normal text-slate-300">System</span></th>
                     <th className="text-center py-3 px-4 font-semibold">Dual Control</th>
                   </tr>
                 </thead>
                 <tbody>
                   {permissionMatrix.map((permission, index) => (
-                    <tr key={index} className="border-b hover:bg-gray-50">
+                    <tr key={index} className="border-b hover:bg-white/5">
                       <td className="py-3 px-4 font-medium">{permission.action}</td>
                       <td className="py-3 px-4">
                         <Badge variant="secondary" className="text-xs">{permission.category}</Badge>
@@ -651,7 +651,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                             Required
                           </Badge>
                         ) : (
-                          <span className="text-gray-400 text-xs">—</span>
+                          <span className="text-slate-400 text-xs">—</span>
                         )}
                       </td>
                     </tr>
@@ -664,7 +664,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <div className="flex items-start gap-3">
                 <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div className="text-sm text-amber-900">
-                  <strong>Legend:</strong> Green checkmark indicates permission granted. Dual Control actions require approval from two authorized users from the specified tiers. Actions marked with <X className="w-4 h-4 inline text-gray-400" /> are denied for that tier.
+                  <strong>Legend:</strong> Green checkmark indicates permission granted. Dual Control actions require approval from two authorized users from the specified tiers. Actions marked with <X className="w-4 h-4 inline text-slate-400" /> are denied for that tier.
                 </div>
               </div>
             </div>
@@ -681,7 +681,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                 <CheckCheck className="w-6 h-6 text-amber-600 flex-shrink-0" />
                 <div>
                   <h3 className="font-bold text-lg mb-2">Bank-Grade Dual Control</h3>
-                  <p className="text-sm text-gray-700 mb-3">
+                  <p className="text-sm text-slate-300 mb-3">
                     Critical actions require approval from two authorized users to prevent fraud, errors, and ensure regulatory compliance. 
                     Both approvers must be from designated tiers and cannot approve their own requests.
                   </p>
@@ -704,7 +704,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             <CardContent>
               <div className="space-y-3">
                 {dualControlActions.map((action, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border-l-4 border-l-amber-500">
+                  <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border-l-4 border-l-amber-500">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <CheckCheck className="w-5 h-5 text-amber-600" />
@@ -715,19 +715,19 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                       </div>
                       <div className="grid grid-cols-4 gap-4 text-sm">
                         <div>
-                          <span className="text-gray-600">Category:</span>
+                          <span className="text-slate-300">Category:</span>
                           <Badge variant="secondary" className="ml-2 text-xs">{action.category}</Badge>
                         </div>
                         <div>
-                          <span className="text-gray-600">Required Approvers:</span>
+                          <span className="text-slate-300">Required Approvers:</span>
                           <span className="ml-2 font-semibold">{action.requiredApprovers}</span>
                         </div>
                         <div>
-                          <span className="text-gray-600">Authorized Tiers:</span>
+                          <span className="text-slate-300">Authorized Tiers:</span>
                           <span className="ml-2 font-semibold">Tier {action.requiresTiers.join(', ')}</span>
                         </div>
                         <div>
-                          <span className="text-gray-600">Status:</span>
+                          <span className="text-slate-300">Status:</span>
                           <Badge variant="default" className="ml-2 bg-green-600 text-xs">{action.status}</Badge>
                         </div>
                       </div>
@@ -759,30 +759,30 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-mono text-sm text-gray-500">{request.id}</span>
+                          <span className="font-mono text-sm text-slate-400">{request.id}</span>
                           <Badge variant={request.urgency === 'high' ? 'destructive' : 'default'}>{request.urgency}</Badge>
                         </div>
                         <div className="font-semibold text-lg mb-1">{request.action}</div>
-                        <div className="text-sm text-gray-600">Client: {request.client}</div>
+                        <div className="text-sm text-slate-300">Client: {request.client}</div>
                       </div>
-                      <div className="text-right text-xs text-gray-500">
+                      <div className="text-right text-xs text-slate-400">
                         {request.timestamp}
                       </div>
                     </div>
                     <div className="flex items-center gap-6 mb-3 text-sm">
                       <div className="flex items-center gap-2">
-                        <UserCheck className="w-4 h-4 text-gray-400" />
-                        <span className="text-gray-600">Requester:</span>
+                        <UserCheck className="w-4 h-4 text-slate-400" />
+                        <span className="text-slate-300">Requester:</span>
                         <span className="font-semibold">{request.requester}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600" />
-                        <span className="text-gray-600">1st Approver:</span>
+                        <span className="text-slate-300">1st Approver:</span>
                         <span className="font-semibold">{request.approver1}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-amber-600" />
-                        <span className="text-gray-600">Awaiting 2nd approval</span>
+                        <span className="text-slate-300">Awaiting 2nd approval</span>
                       </div>
                     </div>
                     <div className="flex gap-2">
@@ -815,7 +815,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <CardContent className="p-6">
                 <CheckCircle className="w-8 h-8 text-green-600 mb-2" />
                 <div className="text-2xl font-bold">{governanceMetrics.mfaCompliance}%</div>
-                <div className="text-sm text-gray-600">MFA Compliance</div>
+                <div className="text-sm text-slate-300">MFA Compliance</div>
                 <Progress value={governanceMetrics.mfaCompliance} className="mt-2" />
               </CardContent>
             </Card>
@@ -823,7 +823,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <CardContent className="p-6">
                 <Clock className="w-8 h-8 text-amber-600 mb-2" />
                 <div className="text-2xl font-bold">{governanceMetrics.roleRecertificationDue}</div>
-                <div className="text-sm text-gray-600">Recertifications Due</div>
+                <div className="text-sm text-slate-300">Recertifications Due</div>
                 <Button size="sm" variant="outline" className="mt-2 w-full">Review Now</Button>
               </CardContent>
             </Card>
@@ -831,7 +831,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <CardContent className="p-6">
                 <AlertTriangle className="w-8 h-8 text-red-600 mb-2" />
                 <div className="text-2xl font-bold">{governanceMetrics.anomalousAccess}</div>
-                <div className="text-sm text-gray-600">Access Anomalies</div>
+                <div className="text-sm text-slate-300">Access Anomalies</div>
                 <Button size="sm" variant="outline" className="mt-2 w-full">Investigate</Button>
               </CardContent>
             </Card>
@@ -839,7 +839,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <CardContent className="p-6">
                 <UserX className="w-8 h-8 text-blue-600 mb-2" />
                 <div className="text-2xl font-bold">{governanceMetrics.inactiveAccounts}</div>
-                <div className="text-sm text-gray-600">Inactive Accounts</div>
+                <div className="text-sm text-slate-300">Inactive Accounts</div>
                 <Button size="sm" variant="outline" className="mt-2 w-full">Disable</Button>
               </CardContent>
             </Card>
@@ -861,7 +861,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                     </div>
                     <Badge variant="default" className="bg-green-600">Completed</Badge>
                   </div>
-                  <div className="text-sm text-gray-600">Completed {governanceMetrics.lastAccessReview} • 100% roles reviewed</div>
+                  <div className="text-sm text-slate-300">Completed {governanceMetrics.lastAccessReview} • 100% roles reviewed</div>
                 </div>
 
                 <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
@@ -872,21 +872,21 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                     </div>
                     <Badge variant="secondary">{governanceMetrics.nextReview}</Badge>
                   </div>
-                  <div className="text-sm text-gray-600">Scheduled for Q2 2026 • All Tier 2+ roles</div>
+                  <div className="text-sm text-slate-300">Scheduled for Q2 2026 • All Tier 2+ roles</div>
                   <Progress value={18} className="mt-2" />
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="text-sm text-gray-600 mb-1">Access Review</div>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <div className="text-sm text-slate-300 mb-1">Access Review</div>
                     <div className="font-semibold">Quarterly</div>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="text-sm text-gray-600 mb-1">Role Recertification</div>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <div className="text-sm text-slate-300 mb-1">Role Recertification</div>
                     <div className="font-semibold">Quarterly</div>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="text-sm text-gray-600 mb-1">Independent Audit</div>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <div className="text-sm text-slate-300 mb-1">Independent Audit</div>
                     <div className="font-semibold">Annual</div>
                   </div>
                 </div>
@@ -910,12 +910,12 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   { control: 'Login Attempt Monitoring', status: 'enabled', compliance: 100, icon: ShieldAlert },
                   { control: 'Password Complexity', status: 'enabled', compliance: 100, icon: Lock }
                 ].map((control, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                     <div className="flex items-center gap-3">
                       <control.icon className="w-5 h-5 text-purple-600" />
                       <div>
                         <div className="font-semibold text-sm">{control.control}</div>
-                        <div className="text-xs text-gray-600">{control.compliance}% compliance</div>
+                        <div className="text-xs text-slate-300">{control.compliance}% compliance</div>
                       </div>
                     </div>
                     <Badge variant="default" className="bg-green-600">
@@ -944,7 +944,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   <div key={tier.level} className={`p-4 rounded-lg border-2 ${tier.color}`}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center font-bold">
+                        <div className="w-8 h-8 rounded-full bg-[#0d121d] flex items-center justify-center font-bold">
                           {tier.level}
                         </div>
                         <span className="font-bold">{tier.name}</span>
@@ -977,28 +977,28 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               <CardContent className="p-6">
                 <Activity className="w-8 h-8 text-blue-600 mb-2" />
                 <div className="text-3xl font-bold">12.5K</div>
-                <div className="text-sm text-gray-600">Events Today</div>
+                <div className="text-sm text-slate-300">Events Today</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <ShieldAlert className="w-8 h-8 text-amber-600 mb-2" />
                 <div className="text-3xl font-bold">24</div>
-                <div className="text-sm text-gray-600">Privileged Actions</div>
+                <div className="text-sm text-slate-300">Privileged Actions</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <AlertTriangle className="w-8 h-8 text-red-600 mb-2" />
                 <div className="text-3xl font-bold">18</div>
-                <div className="text-sm text-gray-600">Failed Login Attempts</div>
+                <div className="text-sm text-slate-300">Failed Login Attempts</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <CheckCheck className="w-8 h-8 text-green-600 mb-2" />
                 <div className="text-3xl font-bold">156</div>
-                <div className="text-sm text-gray-600">Dual Control Approvals</div>
+                <div className="text-sm text-slate-300">Dual Control Approvals</div>
               </CardContent>
             </Card>
           </div>
@@ -1039,7 +1039,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                     log.severity === 'high' ? 'bg-red-50 border-l-red-500' :
                     log.severity === 'warning' ? 'bg-amber-50 border-l-amber-500' :
                     log.severity === 'medium' ? 'bg-blue-50 border-l-blue-500' :
-                    'bg-gray-50 border-l-gray-300'
+                    'bg-[#0a0e17] border-l-gray-300'
                   }`}>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
@@ -1049,7 +1049,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                         )}
                       </div>
                       <div className="font-semibold text-sm mb-1">{log.action}</div>
-                      <div className="text-xs text-gray-600 flex items-center gap-3">
+                      <div className="text-xs text-slate-300 flex items-center gap-3">
                         <span>User: {log.user}</span>
                         <span>•</span>
                         <span>IP: {log.ip}</span>
@@ -1090,7 +1090,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                     <Progress value={control.coverage} className="mb-2" />
                     <div className="flex items-center justify-between text-xs">
                       <Badge variant="default" className="bg-green-600">{control.status}</Badge>
-                      <span className="text-gray-600">{control.coverage}% coverage</span>
+                      <span className="text-slate-300">{control.coverage}% coverage</span>
                     </div>
                   </div>
                 ))}

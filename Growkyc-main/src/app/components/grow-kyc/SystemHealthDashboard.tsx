@@ -200,18 +200,18 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">System Health Dashboard</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-3xl font-bold text-white">System Health Dashboard</h1>
+            <p className="text-slate-300 mt-1">
               Real-time monitoring of Grow KYC platform components and integrations
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-slate-300">
               <Clock className="w-4 h-4" />
               Last updated: {lastUpdated.toLocaleTimeString()}
             </div>
-            <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-              <RefreshCw className="w-5 h-5 text-gray-600" />
+            <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
+              <RefreshCw className="w-5 h-5 text-slate-300" />
             </button>
           </div>
         </div>
@@ -249,11 +249,11 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
             <Card key={index}>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-sm text-gray-600">{metric.label}</p>
+                  <p className="text-sm text-slate-300">{metric.label}</p>
                   <Icon className={`w-5 h-5 ${isPositive ? 'text-[#3DD598]' : 'text-red-600'}`} />
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
+                  <p className="text-2xl font-bold text-white">{metric.value}</p>
                   <span className={`text-sm font-semibold ${isPositive ? 'text-[#3DD598]' : 'text-red-600'}`}>
                     {metric.change}
                   </span>
@@ -277,12 +277,12 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
             {systemComponents.map((component, index) => {
               const Icon = component.icon;
               return (
-                <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex items-center gap-3">
                     <Icon className={`w-5 h-5 ${component.color}`} />
                     <div>
-                      <p className="font-semibold text-gray-900">{component.name}</p>
-                      <div className="flex items-center gap-4 mt-1 text-sm text-gray-600">
+                      <p className="font-semibold text-white">{component.name}</p>
+                      <div className="flex items-center gap-4 mt-1 text-sm text-slate-300">
                         <span>Uptime: {component.uptime}</span>
                         <span>Response: {component.responseTime}</span>
                       </div>
@@ -309,13 +309,13 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
             {integrationStatus.map((integration, index) => {
               const Icon = integration.icon;
               return (
-                <div key={index} className="p-4 bg-gray-50 rounded-lg">
+                <div key={index} className="p-4 bg-[#0a0e17] rounded-lg">
                   <div className="flex items-center justify-between mb-3">
                     <Icon className="w-5 h-5 text-[#13B5EA]" />
                     {getStatusBadge(integration.status)}
                   </div>
-                  <p className="font-semibold text-gray-900 mb-2">{integration.name}</p>
-                  <div className="space-y-1 text-xs text-gray-600">
+                  <p className="font-semibold text-white mb-2">{integration.name}</p>
+                  <div className="space-y-1 text-xs text-slate-300">
                     <p>Last sync: {integration.lastSync}</p>
                     <p>Requests: {integration.requests}/day</p>
                   </div>
@@ -324,7 +324,7 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
             })}
           </div>
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-slate-300">
               + 40 more integrations active
               <button className="ml-2 text-[#13B5EA] hover:underline font-semibold">
                 View All
@@ -350,10 +350,10 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
                 <div key={index}>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <Icon className="w-4 h-4 text-gray-600" />
-                      <span className="text-sm font-semibold text-gray-900">{resource.name}</span>
+                      <Icon className="w-4 h-4 text-slate-300" />
+                      <span className="text-sm font-semibold text-white">{resource.name}</span>
                     </div>
-                    <span className="text-sm font-bold text-gray-900">
+                    <span className="text-sm font-bold text-white">
                       {resource.value}{resource.unit}
                     </span>
                   </div>

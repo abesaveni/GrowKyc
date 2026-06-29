@@ -25,8 +25,8 @@ export function IntegrationCenter({ onBack }: IntegrationCenterProps) {
       </Button>
 
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Integration Center</h1>
-        <p className="text-gray-600 mt-1">Regulatory data providers and verification services</p>
+        <h1 className="text-3xl font-bold text-white">Integration Center</h1>
+        <p className="text-slate-300 mt-1">Regulatory data providers and verification services</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -42,13 +42,13 @@ export function IntegrationCenter({ onBack }: IntegrationCenterProps) {
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">{integration.name}</h3>
-                  <p className="text-sm text-gray-600">{integration.purpose}</p>
+                  <h3 className="font-bold text-white mb-1">{integration.name}</h3>
+                  <p className="text-sm text-slate-300">{integration.purpose}</p>
                 </div>
                 {integration.status === 'connected' ? (
                   <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 ) : (
-                  <XCircle className="w-6 h-6 text-gray-400 flex-shrink-0" />
+                  <XCircle className="w-6 h-6 text-slate-400 flex-shrink-0" />
                 )}
               </div>
               {integration.critical && (

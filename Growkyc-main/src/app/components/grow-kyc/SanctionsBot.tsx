@@ -50,8 +50,8 @@ export function SanctionsBot({ onBack }: SanctionsBotProps) {
 // Screen 1: Sanctions Control Centre
 function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode) => void; onBack?: () => void }) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
+    <div className="min-h-screen bg-[#0a0e17]">
+      <div className="bg-[#0d121d] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -67,8 +67,8 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                   <Ban className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">Global Sanctions Screening Bot</h1>
-                  <p className="text-gray-600">Real-time sanctions list monitoring - Non-negotiable compliance gate</p>
+                  <h1 className="text-3xl font-bold text-white">Global Sanctions Screening Bot</h1>
+                  <p className="text-slate-300">Real-time sanctions list monitoring - Non-negotiable compliance gate</p>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 <Clock className="w-5 h-5 text-blue-600" />
                 <Badge className="bg-blue-100 text-blue-700">47</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Pending Screenings</p>
+              <p className="text-sm font-medium text-white">Pending Screenings</p>
             </CardContent>
           </Card>
 
@@ -106,7 +106,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 <Eye className="w-5 h-5 text-amber-600" />
                 <Badge className="bg-amber-100 text-amber-700">12</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Possible Matches</p>
+              <p className="text-sm font-medium text-white">Possible Matches</p>
             </CardContent>
           </Card>
 
@@ -126,7 +126,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 <AlertOctagon className="w-5 h-5 text-orange-600" />
                 <Badge className="bg-orange-100 text-orange-700">5</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Escalations</p>
+              <p className="text-sm font-medium text-white">Escalations</p>
             </CardContent>
           </Card>
 
@@ -136,17 +136,17 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 <Bell className="w-5 h-5 text-purple-600" />
                 <Badge className="bg-purple-100 text-purple-700">8</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Monitoring Alerts</p>
+              <p className="text-sm font-medium text-white">Monitoring Alerts</p>
             </CardContent>
           </Card>
 
           <Card className="border-2 hover:border-gray-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <XCircle className="w-5 h-5 text-gray-600" />
-                <Badge className="bg-gray-100 text-gray-700">1</Badge>
+                <XCircle className="w-5 h-5 text-slate-300" />
+                <Badge className="bg-[#0a0e17] text-slate-300">1</Badge>
               </div>
-              <p className="text-sm font-medium text-gray-900">Failed Screenings</p>
+              <p className="text-sm font-medium text-white">Failed Screenings</p>
             </CardContent>
           </Card>
         </div>
@@ -167,19 +167,19 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                   <strong>Vladimir Petrov</strong> - CONFIRMED MATCH on OFAC SDN List. Automatic relationship block enforced.
                 </p>
                 <div className="grid md:grid-cols-4 gap-3">
-                  <div className="bg-white p-3 rounded border border-red-300">
+                  <div className="bg-[#0d121d] p-3 rounded border border-red-300">
                     <p className="text-xs text-red-700">Matched List</p>
                     <p className="font-bold text-red-900">OFAC SDN</p>
                   </div>
-                  <div className="bg-white p-3 rounded border border-red-300">
+                  <div className="bg-[#0d121d] p-3 rounded border border-red-300">
                     <p className="text-xs text-red-700">Match Type</p>
                     <p className="font-bold text-red-900">Exact Name + DOB</p>
                   </div>
-                  <div className="bg-white p-3 rounded border border-red-300">
+                  <div className="bg-[#0d121d] p-3 rounded border border-red-300">
                     <p className="text-xs text-red-700">Confidence</p>
                     <p className="font-bold text-red-900">98% - Very High</p>
                   </div>
-                  <div className="bg-white p-3 rounded border border-red-300">
+                  <div className="bg-[#0d121d] p-3 rounded border border-red-300">
                     <p className="text-xs text-red-700">Status</p>
                     <p className="font-bold text-red-900">AUTO BLOCKED</p>
                   </div>
@@ -202,12 +202,12 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50 border-b">
+                  <thead className="bg-[#0a0e17] border-b">
                     <tr>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Name</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Type</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Country</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Status</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Type</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Country</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Status</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -217,16 +217,16 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                       { name: 'Ahmed Hassan', type: 'Person', country: 'UAE', status: 'Review Required', priority: 'High' },
                       { name: 'Global Shipping Co', type: 'Entity', country: 'Singapore', status: 'Queued', priority: 'Normal' },
                     ].map((item, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50 cursor-pointer">
-                        <td className="px-4 py-3 font-medium text-gray-900">{item.name}</td>
-                        <td className="px-4 py-3 text-xs text-gray-600">{item.type}</td>
-                        <td className="px-4 py-3 text-xs text-gray-600">{item.country}</td>
+                      <tr key={idx} className="hover:bg-white/5 cursor-pointer">
+                        <td className="px-4 py-3 font-medium text-white">{item.name}</td>
+                        <td className="px-4 py-3 text-xs text-slate-300">{item.type}</td>
+                        <td className="px-4 py-3 text-xs text-slate-300">{item.country}</td>
                         <td className="px-4 py-3">
                           <Badge className={
                             item.status === 'Cleared' ? 'bg-green-100 text-green-700' :
                             item.status === 'Screening' ? 'bg-blue-100 text-blue-700' :
                             item.status === 'Review Required' ? 'bg-amber-100 text-amber-700' :
-                            'bg-gray-100 text-gray-700'
+                            'bg-[#0a0e17] text-slate-300'
                           }>
                             {item.status}
                           </Badge>
@@ -236,7 +236,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-gray-50">
+              <div className="p-4 border-t bg-[#0a0e17]">
                 <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-screening')}>
                   View All Screenings <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -255,12 +255,12 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50 border-b">
+                  <thead className="bg-[#0a0e17] border-b">
                     <tr>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Name</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Last Screened</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Alert</th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700">Severity</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Last Screened</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Alert</th>
+                      <th className="px-4 py-3 text-left font-medium text-slate-300">Severity</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -270,16 +270,16 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                       { name: 'Maria Garcia', lastScreened: '3 days ago', alert: 'Possible EU match', severity: 'Medium' },
                       { name: 'Eastern Trading Co', lastScreened: '1 day ago', alert: 'Name similarity alert', severity: 'Low' },
                     ].map((item, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50 cursor-pointer">
-                        <td className="px-4 py-3 font-medium text-gray-900">{item.name}</td>
-                        <td className="px-4 py-3 text-xs text-gray-600">{item.lastScreened}</td>
-                        <td className="px-4 py-3 text-xs text-gray-700">{item.alert}</td>
+                      <tr key={idx} className="hover:bg-white/5 cursor-pointer">
+                        <td className="px-4 py-3 font-medium text-white">{item.name}</td>
+                        <td className="px-4 py-3 text-xs text-slate-300">{item.lastScreened}</td>
+                        <td className="px-4 py-3 text-xs text-slate-300">{item.alert}</td>
                         <td className="px-4 py-3">
                           <Badge className={
                             item.severity === 'Critical' ? 'bg-red-600 text-white' :
                             item.severity === 'High' ? 'bg-orange-100 text-orange-700' :
                             item.severity === 'Medium' ? 'bg-amber-100 text-amber-700' :
-                            'bg-gray-100 text-gray-700'
+                            'bg-[#0a0e17] text-slate-300'
                           }>
                             {item.severity}
                           </Badge>
@@ -289,7 +289,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-gray-50">
+              <div className="p-4 border-t bg-[#0a0e17]">
                 <Button variant="ghost" className="w-full text-purple-700 hover:bg-purple-50">
                   View All Alerts <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -320,9 +320,9 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                     <CheckCircle className="w-4 h-4 text-green-600" />
                     <Badge className="bg-green-100 text-green-700 text-xs">{source.status}</Badge>
                   </div>
-                  <p className="font-semibold text-gray-900 text-sm mb-1">{source.name}</p>
-                  <p className="text-xs text-gray-600">Updated: {source.lastUpdate}</p>
-                  <p className="text-xs text-gray-600">{source.records} records</p>
+                  <p className="font-semibold text-white text-sm mb-1">{source.name}</p>
+                  <p className="text-xs text-slate-300">Updated: {source.lastUpdate}</p>
+                  <p className="text-xs text-slate-300">{source.records} records</p>
                 </div>
               ))}
             </div>
@@ -369,8 +369,8 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
+    <div className="min-h-screen bg-[#0a0e17]">
+      <div className="bg-[#0d121d] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -382,8 +382,8 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
               <Ban className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Sanctions Screening Wizard</h1>
-              <p className="text-gray-600">Real-time screening against global sanctions lists</p>
+              <h1 className="text-2xl font-bold text-white">Sanctions Screening Wizard</h1>
+              <p className="text-slate-300">Real-time screening against global sanctions lists</p>
             </div>
           </div>
 
@@ -399,12 +399,12 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-600'
+                  step >= s.num ? 'bg-red-600 text-white' : 'bg-gray-200 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-red-600' : 'text-gray-500'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-red-600' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -543,8 +543,8 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     className="w-5 h-5 text-red-600 mt-0.5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-gray-900">Standard Screening (Recommended)</p>
-                    <p className="text-sm text-gray-600 mt-1">DFAT, UN, OFAC, UK HMT, EU lists with exact matching</p>
+                    <p className="font-semibold text-white">Standard Screening (Recommended)</p>
+                    <p className="text-sm text-slate-300 mt-1">DFAT, UN, OFAC, UK HMT, EU lists with exact matching</p>
                   </div>
                 </label>
 
@@ -556,14 +556,14 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     className="w-5 h-5 text-red-600 mt-0.5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-gray-900">Expanded Global Screening</p>
-                    <p className="text-sm text-gray-600 mt-1">All major lists plus regional sanctions databases</p>
+                    <p className="font-semibold text-white">Expanded Global Screening</p>
+                    <p className="text-sm text-slate-300 mt-1">All major lists plus regional sanctions databases</p>
                   </div>
                 </label>
               </div>
 
               <div className="pt-4 border-t space-y-3">
-                <p className="font-semibold text-gray-900">Additional Options</p>
+                <p className="font-semibold text-white">Additional Options</p>
                 
                 <label className="flex items-center gap-2">
                   <input
@@ -572,7 +572,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     onChange={(e) => setSearchConfig({ ...searchConfig, fuzzyMatching: e.target.checked })}
                     className="w-4 h-4 text-red-600 rounded"
                   />
-                  <span className="text-sm text-gray-700">Include fuzzy matching (name variations)</span>
+                  <span className="text-sm text-slate-300">Include fuzzy matching (name variations)</span>
                 </label>
 
                 <label className="flex items-center gap-2">
@@ -582,7 +582,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     onChange={(e) => setSearchConfig({ ...searchConfig, transliteration: e.target.checked })}
                     className="w-4 h-4 text-red-600 rounded"
                   />
-                  <span className="text-sm text-gray-700">Include transliteration (non-Latin scripts)</span>
+                  <span className="text-sm text-slate-300">Include transliteration (non-Latin scripts)</span>
                 </label>
 
                 {subjectType === 'entity' && (
@@ -593,7 +593,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                       onChange={(e) => setSearchConfig({ ...searchConfig, vesselSearch: e.target.checked })}
                       className="w-4 h-4 text-red-600 rounded"
                     />
-                    <span className="text-sm text-gray-700">Include vessel search (if applicable)</span>
+                    <span className="text-sm text-slate-300">Include vessel search (if applicable)</span>
                   </label>
                 )}
               </div>
@@ -629,7 +629,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
               </div>
 
               <div>
-                <p className="font-semibold text-gray-900 mb-3">Sanctions Lists Being Checked (5)</p>
+                <p className="font-semibold text-white mb-3">Sanctions Lists Being Checked (5)</p>
                 <div className="grid md:grid-cols-2 gap-2">
                   {[
                     'DFAT Consolidated List (Australia)',
@@ -638,16 +638,16 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     'UK HMT Sanctions List',
                     'EU Consolidated Sanctions List'
                   ].map((list, idx) => (
-                    <div key={idx} className="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs">
+                    <div key={idx} className="flex items-center gap-2 p-2 bg-[#0a0e17] rounded text-xs">
                       <CheckCircle className="w-3 h-3 text-green-600" />
-                      <span className="text-gray-700">{list}</span>
+                      <span className="text-slate-300">{list}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <p className="font-semibold text-gray-900 mb-3">Name Variants & Aliases</p>
+                <p className="font-semibold text-white mb-3">Name Variants & Aliases</p>
                 <div className="flex flex-wrap gap-2">
                   {['Sarah Johnson', 'Sarah M. Johnson', 'S. Johnson', 'S.M. Johnson', 'Johnson, Sarah'].map((variant, idx) => (
                     <Badge key={idx} className="bg-purple-100 text-purple-700">{variant}</Badge>
@@ -670,10 +670,10 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
                 <div>
-                  <p className="text-sm font-medium text-gray-700">Expected Runtime</p>
-                  <p className="text-xs text-gray-600">Real-time screening across 5 major lists</p>
+                  <p className="text-sm font-medium text-slate-300">Expected Runtime</p>
+                  <p className="text-xs text-slate-300">Real-time screening across 5 major lists</p>
                 </div>
                 <p className="text-2xl font-bold text-red-600">~3 seconds</p>
               </div>
@@ -726,8 +726,8 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     { list: 'UK HMT', matches: 0 },
                     { list: 'EU', matches: 0 }
                   ].map((result, idx) => (
-                    <div key={idx} className="bg-white p-3 rounded border border-green-200">
-                      <p className="text-xs text-gray-600">{result.list}</p>
+                    <div key={idx} className="bg-[#0d121d] p-3 rounded border border-green-200">
+                      <p className="text-xs text-slate-300">{result.list}</p>
                       <p className="text-2xl font-bold text-green-600">{result.matches}</p>
                       <Badge className="bg-green-100 text-green-700 text-xs mt-1">Clear</Badge>
                     </div>
@@ -767,17 +767,17 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                   <label className="flex items-start gap-3 p-3 border-2 border-green-400 bg-green-50 rounded-lg">
                     <input type="radio" name="decision" defaultChecked className="w-4 h-4 text-green-600 mt-0.5" />
                     <div>
-                      <p className="font-medium text-gray-900">Confirm - No Match (Clear)</p>
+                      <p className="font-medium text-white">Confirm - No Match (Clear)</p>
                       <Badge className="mt-1 bg-green-600 text-white text-xs">Recommended</Badge>
                     </div>
                   </label>
                   <label className="flex items-start gap-3 p-3 border-2 border-gray-300 rounded-lg">
                     <input type="radio" name="decision" className="w-4 h-4 text-red-600 mt-0.5" />
-                    <p className="font-medium text-gray-900">Mark as False Positive</p>
+                    <p className="font-medium text-white">Mark as False Positive</p>
                   </label>
                   <label className="flex items-start gap-3 p-3 border-2 border-gray-300 rounded-lg">
                     <input type="radio" name="decision" className="w-4 h-4 text-red-600 mt-0.5" />
-                    <p className="font-medium text-gray-900">Escalate for Review</p>
+                    <p className="font-medium text-white">Escalate for Review</p>
                   </label>
                 </div>
               </div>
@@ -802,26 +802,26 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                 <CheckCircle className="w-12 h-12 text-white" />
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Sanctions Screening Complete</h2>
-              <p className="text-gray-600 mb-8">{subjectType === 'person' ? formData.fullName : formData.entityName} - CLEARED</p>
+              <h2 className="text-3xl font-bold text-white mb-2">Sanctions Screening Complete</h2>
+              <p className="text-slate-300 mb-8">{subjectType === 'person' ? formData.fullName : formData.entityName} - CLEARED</p>
 
               <div className="max-w-2xl mx-auto space-y-4 mb-8">
                 <div className="grid md:grid-cols-2 gap-4 text-left">
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Final Result</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Final Result</p>
                     <p className="font-semibold text-green-600">NO SANCTIONS MATCH</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Lists Checked</p>
-                    <p className="font-semibold text-gray-900">5 Major Lists</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Lists Checked</p>
+                    <p className="font-semibold text-white">5 Major Lists</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Screening Date</p>
-                    <p className="font-semibold text-gray-900">{new Date().toLocaleDateString('en-AU')}</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Screening Date</p>
+                    <p className="font-semibold text-white">{new Date().toLocaleDateString('en-AU')}</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-xs text-gray-600">Reviewer</p>
-                    <p className="font-semibold text-gray-900">Current User</p>
+                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                    <p className="text-xs text-slate-300">Reviewer</p>
+                    <p className="font-semibold text-white">Current User</p>
                   </div>
                 </div>
 

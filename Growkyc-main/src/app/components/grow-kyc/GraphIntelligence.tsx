@@ -194,7 +194,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -211,7 +211,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                 <p className="text-sm text-white/90">Ownership Network & Risk Cluster Analytics</p>
               </div>
             </div>
-            <Badge className="bg-white text-indigo-600 text-sm px-3 py-1">
+            <Badge className="bg-[#0d121d] text-indigo-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               AI Network Scanning Active
             </Badge>
@@ -343,8 +343,8 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                   </div>
 
                   {/* Legend */}
-                  <div className="absolute bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 border-2 border-indigo-200">
-                    <div className="text-xs font-semibold text-gray-900 mb-2">Legend</div>
+                  <div className="absolute bottom-4 right-4 bg-[#0d121d] rounded-lg shadow-lg p-4 border-2 border-indigo-200">
+                    <div className="text-xs font-semibold text-white mb-2">Legend</div>
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center gap-2">
                         <div className="w-4 h-4 bg-red-500 rounded-full"></div>
@@ -417,7 +417,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="font-mono text-sm font-semibold text-gray-600">
+                          <span className="font-mono text-sm font-semibold text-slate-300">
                             {cluster.id}
                           </span>
                           <Badge className={
@@ -427,26 +427,26 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                           </Badge>
                         </div>
 
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                        <h3 className="text-lg font-semibold text-white mb-4">
                           {cluster.name}
                         </h3>
 
                         <div className="mb-4">
-                          <div className="text-sm font-semibold text-gray-700 mb-2">
+                          <div className="text-sm font-semibold text-slate-300 mb-2">
                             Risk Factors:
                           </div>
                           <div className="space-y-2">
                             {cluster.reasons.map((reason, idx) => (
                               <div key={idx} className="flex items-start gap-2">
                                 <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
-                                <span className="text-sm text-gray-800">{reason}</span>
+                                <span className="text-sm text-white">{reason}</span>
                               </div>
                             ))}
                           </div>
                         </div>
 
                         <div>
-                          <div className="text-sm font-semibold text-gray-700 mb-2">
+                          <div className="text-sm font-semibold text-slate-300 mb-2">
                             Cluster Members ({cluster.entities}):
                           </div>
                           <div className="flex gap-2 flex-wrap">
@@ -529,7 +529,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
 
                             <div className="space-y-2 mb-3">
                               <div className="text-sm">
-                                <span className="font-semibold text-gray-700">Entities:</span>
+                                <span className="font-semibold text-slate-300">Entities:</span>
                                 <div className="flex gap-2 flex-wrap mt-1">
                                   {signal.entities.map((entity, idx) => (
                                     <Badge key={idx} variant="outline">{entity}</Badge>
@@ -539,29 +539,29 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
 
                               {signal.address && (
                                 <div className="flex items-center gap-2 text-sm">
-                                  <MapPin className="w-4 h-4 text-gray-500" />
-                                  <span className="text-gray-700">{signal.address}</span>
+                                  <MapPin className="w-4 h-4 text-slate-400" />
+                                  <span className="text-slate-300">{signal.address}</span>
                                 </div>
                               )}
 
                               {signal.phone && (
                                 <div className="flex items-center gap-2 text-sm">
-                                  <Phone className="w-4 h-4 text-gray-500" />
-                                  <span className="text-gray-700">{signal.phone}</span>
+                                  <Phone className="w-4 h-4 text-slate-400" />
+                                  <span className="text-slate-300">{signal.phone}</span>
                                 </div>
                               )}
 
                               {signal.director && (
                                 <div className="flex items-center gap-2 text-sm">
-                                  <Users className="w-4 h-4 text-gray-500" />
-                                  <span className="text-gray-700">Director: {signal.director}</span>
+                                  <Users className="w-4 h-4 text-slate-400" />
+                                  <span className="text-slate-300">Director: {signal.director}</span>
                                 </div>
                               )}
 
                               {signal.ip && (
                                 <div className="flex items-center gap-2 text-sm">
-                                  <Globe className="w-4 h-4 text-gray-500" />
-                                  <span className="text-gray-700 font-mono">{signal.ip}</span>
+                                  <Globe className="w-4 h-4 text-slate-400" />
+                                  <span className="text-slate-300 font-mono">{signal.ip}</span>
                                 </div>
                               )}
 
@@ -573,7 +573,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                               )}
                             </div>
 
-                            <div className="text-xs text-gray-600">
+                            <div className="text-xs text-slate-300">
                               Flagged: {new Date(signal.flagDate).toLocaleDateString('en-AU')}
                             </div>
                           </div>
@@ -632,7 +632,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                 <div className="space-y-6">
                   {ownershipHistory.map((event, idx) => (
                     <div key={idx} className="flex items-start gap-4">
-                      <div className="w-32 flex-shrink-0 text-sm text-gray-600">
+                      <div className="w-32 flex-shrink-0 text-sm text-slate-300">
                         {new Date(event.date).toLocaleDateString('en-AU', {
                           day: 'numeric',
                           month: 'short',
@@ -649,18 +649,18 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                             {event.type.toUpperCase()}
                           </Badge>
                         </div>
-                        <div className="font-semibold text-gray-900 mb-2">{event.change}</div>
+                        <div className="font-semibold text-white mb-2">{event.change}</div>
                         {event.from && (
-                          <div className="text-sm text-gray-700 mb-1">
-                            <span className="text-gray-600">From:</span> {event.from}
+                          <div className="text-sm text-slate-300 mb-1">
+                            <span className="text-slate-300">From:</span> {event.from}
                           </div>
                         )}
                         {event.to && (
-                          <div className="text-sm text-gray-700 mb-1">
-                            <span className="text-gray-600">To:</span> {event.to}
+                          <div className="text-sm text-slate-300 mb-1">
+                            <span className="text-slate-300">To:</span> {event.to}
                           </div>
                         )}
-                        <div className="text-xs text-gray-600 mt-2">
+                        <div className="text-xs text-slate-300 mt-2">
                           Evidence: {event.evidence}
                         </div>
                       </div>

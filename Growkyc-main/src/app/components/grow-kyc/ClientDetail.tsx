@@ -129,7 +129,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-[#0a0e17] p-8">
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[
@@ -151,7 +151,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                 <Building2 className="w-10 h-10 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">{client.name}</h1>
+                <h1 className="text-3xl font-bold text-white mb-2">{client.name}</h1>
                 <div className="flex items-center gap-3 mb-3">
                   <Badge className="bg-red-600 text-white text-sm font-bold">
                     Critical Risk • Score {client.riskScore}
@@ -163,17 +163,17 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                     🚨 AML Alert Active
                   </Badge>
                 </div>
-                <div className="grid grid-cols-3 gap-6 text-sm text-gray-700">
+                <div className="grid grid-cols-3 gap-6 text-sm text-slate-300">
                   <div className="flex items-center gap-2">
-                    <Building2 className="w-4 h-4 text-gray-500" />
+                    <Building2 className="w-4 h-4 text-slate-400" />
                     <span><strong>ABN:</strong> {client.abn}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-gray-500" />
+                    <FileText className="w-4 h-4 text-slate-400" />
                     <span><strong>ACN:</strong> {client.acn}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-gray-500" />
+                    <Calendar className="w-4 h-4 text-slate-400" />
                     <span><strong>Onboarded:</strong> {client.onboardedDate}</span>
                   </div>
                 </div>
@@ -206,54 +206,54 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
               <TrendingUp className="w-5 h-5 text-red-600" />
             </div>
             <p className="text-3xl font-bold text-red-600">{client.riskScore}</p>
-            <p className="text-xs text-gray-600 font-medium">Risk Score</p>
+            <p className="text-xs text-slate-300 font-medium">Risk Score</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-l-orange-500">
           <CardContent className="p-4">
             <Clock className="w-8 h-8 text-orange-600 mb-2" />
-            <p className="text-lg font-bold text-gray-900">{client.nextReviewDue}</p>
-            <p className="text-xs text-gray-600 font-medium">Review Due</p>
+            <p className="text-lg font-bold text-white">{client.nextReviewDue}</p>
+            <p className="text-xs text-slate-300 font-medium">Review Due</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-l-blue-500">
           <CardContent className="p-4">
             <DollarSign className="w-8 h-8 text-blue-600 mb-2" />
-            <p className="text-lg font-bold text-gray-900">{client.aum}</p>
-            <p className="text-xs text-gray-600 font-medium">AUM</p>
+            <p className="text-lg font-bold text-white">{client.aum}</p>
+            <p className="text-xs text-slate-300 font-medium">AUM</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-l-purple-500">
           <CardContent className="p-4">
             <Activity className="w-8 h-8 text-purple-600 mb-2" />
-            <p className="text-lg font-bold text-gray-900">{client.monthlyTransactionVolume}</p>
-            <p className="text-xs text-gray-600 font-medium">Monthly Volume</p>
+            <p className="text-lg font-bold text-white">{client.monthlyTransactionVolume}</p>
+            <p className="text-xs text-slate-300 font-medium">Monthly Volume</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-l-green-500">
           <CardContent className="p-4">
             <CheckCircle className="w-8 h-8 text-green-600 mb-2" />
-            <p className="text-lg font-bold text-gray-900">3/5</p>
-            <p className="text-xs text-gray-600 font-medium">Checks Passed</p>
+            <p className="text-lg font-bold text-white">3/5</p>
+            <p className="text-xs text-slate-300 font-medium">Checks Passed</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-l-amber-500">
           <CardContent className="p-4">
             <AlertTriangle className="w-8 h-8 text-amber-600 mb-2" />
-            <p className="text-lg font-bold text-gray-900">2</p>
-            <p className="text-xs text-gray-600 font-medium">Active Alerts</p>
+            <p className="text-lg font-bold text-white">2</p>
+            <p className="text-xs text-slate-300 font-medium">Active Alerts</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Tab Navigation */}
       <div className="mb-6">
-        <div className="border-b border-gray-200">
+        <div className="border-b border-white/10">
           <div className="flex gap-6">
             {[
               { id: 'overview', label: 'Overview', icon: Eye },
@@ -267,7 +267,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                 className={`flex items-center gap-2 px-4 py-3 border-b-2 font-medium transition-colors ${
                   selectedTab === tab.id
                     ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                    : 'border-transparent text-slate-300 hover:text-white hover:border-gray-300'
                 }`}
               >
                 <tab.icon className="w-4 h-4" />
@@ -288,30 +288,30 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-gray-500" />
+                <MapPin className="w-5 h-5 text-slate-400" />
                 <div>
-                  <p className="text-xs text-gray-600">Registered Address</p>
+                  <p className="text-xs text-slate-300">Registered Address</p>
                   <p className="font-medium">{client.registeredAddress}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-gray-500" />
+                <Phone className="w-5 h-5 text-slate-400" />
                 <div>
-                  <p className="text-xs text-gray-600">Business Phone</p>
+                  <p className="text-xs text-slate-300">Business Phone</p>
                   <p className="font-medium">{client.businessPhone}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-gray-500" />
+                <Mail className="w-5 h-5 text-slate-400" />
                 <div>
-                  <p className="text-xs text-gray-600">Business Email</p>
+                  <p className="text-xs text-slate-300">Business Email</p>
                   <p className="font-medium">{client.businessEmail}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Building2 className="w-5 h-5 text-gray-500" />
+                <Building2 className="w-5 h-5 text-slate-400" />
                 <div>
-                  <p className="text-xs text-gray-600">Industry</p>
+                  <p className="text-xs text-slate-300">Industry</p>
                   <p className="font-medium">{client.industry}</p>
                 </div>
               </div>
@@ -331,7 +331,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
             </CardHeader>
             <CardContent className="space-y-3">
               {complianceChecks.slice(0, 4).map(check => (
-                <div key={check.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={check.id} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                       check.status === 'passed' ? 'bg-green-100' :
@@ -346,7 +346,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                     </div>
                     <div>
                       <p className="font-medium text-sm">{check.name}</p>
-                      <p className="text-xs text-gray-600">{check.provider}</p>
+                      <p className="text-xs text-slate-300">{check.provider}</p>
                     </div>
                   </div>
                   <div className="text-right">
@@ -359,7 +359,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                        check.status === 'alert' ? 'Alert' :
                        'Pending'}
                     </Badge>
-                    <p className="text-xs text-gray-500 mt-1">Score: {check.score}</p>
+                    <p className="text-xs text-slate-400 mt-1">Score: {check.score}</p>
                   </div>
                 </div>
               ))}
@@ -380,12 +380,12 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                   { action: 'Compliance review scheduled', time: '5 days ago', type: 'info', icon: Calendar, color: 'text-purple-600' }
                 ].map((activity, index) => (
                   <div key={index} className="flex items-center gap-3 pb-3 border-b last:border-b-0">
-                    <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center ${activity.color}`}>
+                    <div className={`w-8 h-8 rounded-full bg-[#0a0e17] flex items-center justify-center ${activity.color}`}>
                       <activity.icon className="w-4 h-4" />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-sm">{activity.action}</p>
-                      <p className="text-xs text-gray-500">{activity.time}</p>
+                      <p className="text-xs text-slate-400">{activity.time}</p>
                     </div>
                   </div>
                 ))}
@@ -399,7 +399,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
         <Card>
           <CardContent className="p-12 text-center">
             <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-600">Document management coming soon...</p>
+            <p className="text-slate-300">Document management coming soon...</p>
           </CardContent>
         </Card>
       )}
@@ -408,7 +408,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
         <Card>
           <CardContent className="p-12 text-center">
             <Activity className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-600">Transaction history coming soon...</p>
+            <p className="text-slate-300">Transaction history coming soon...</p>
           </CardContent>
         </Card>
       )}
@@ -417,7 +417,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
         <Card>
           <CardContent className="p-12 text-center">
             <Shield className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-600">Compliance details coming soon...</p>
+            <p className="text-slate-300">Compliance details coming soon...</p>
           </CardContent>
         </Card>
       )}

@@ -234,7 +234,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white px-8 py-12">
         <Button
@@ -309,8 +309,8 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">All Modules: COMPLETE ✅</h2>
-              <p className="text-gray-600">9 modules across 7 industries • Full multi-vertical compliance OS</p>
+              <h2 className="text-3xl font-bold text-white mb-2">All Modules: COMPLETE ✅</h2>
+              <p className="text-slate-300">9 modules across 7 industries • Full multi-vertical compliance OS</p>
             </div>
             <Badge className="bg-green-600 text-white text-lg px-4 py-2">
               <CheckCircle className="w-4 h-4 mr-2" />
@@ -335,7 +335,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-gray-900">{module.name}</h3>
+                            <h3 className="text-2xl font-bold text-white">{module.name}</h3>
                             <Badge className="bg-green-600 text-white">
                               {module.phase}
                             </Badge>
@@ -344,11 +344,11 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
                               Built
                             </Badge>
                           </div>
-                          <p className="text-gray-700 mb-4 text-lg">{module.description}</p>
+                          <p className="text-slate-300 mb-4 text-lg">{module.description}</p>
                           
                           <div className="grid grid-cols-3 gap-3 mb-4">
                             {module.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                              <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
                                 <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
                                 <span>{feature}</span>
                               </div>
@@ -358,8 +358,8 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
                               <TrendingUp className="w-4 h-4 text-green-600" />
-                              <span className="text-sm text-gray-600">{module.stats.label}:</span>
-                              <span className="font-bold text-gray-900">{module.stats.value}</span>
+                              <span className="text-sm text-slate-300">{module.stats.label}:</span>
+                              <span className="font-bold text-white">{module.stats.value}</span>
                             </div>
                           </div>
                         </div>
@@ -382,8 +382,8 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
         <div>
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Phase 3 & 4: Planned Modules 🚧</h2>
-              <p className="text-gray-600">Additional verticals for multi-industry expansion</p>
+              <h2 className="text-3xl font-bold text-white mb-2">Phase 3 & 4: Planned Modules 🚧</h2>
+              <p className="text-slate-300">Additional verticals for multi-industry expansion</p>
             </div>
             <Badge className="bg-amber-600 text-white text-lg px-4 py-2">
               <AlertCircle className="w-4 h-4 mr-2" />
@@ -397,7 +397,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
               return (
                 <Card
                   key={module.id}
-                  className="border-2 border-gray-200 opacity-75 hover:opacity-100 transition-opacity"
+                  className="border-2 border-white/10 opacity-75 hover:opacity-100 transition-opacity"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
@@ -406,14 +406,14 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-xl font-bold text-gray-900">{module.name}</h3>
+                          <h3 className="text-xl font-bold text-white">{module.name}</h3>
                           <Badge variant="outline">{module.phase}</Badge>
                         </div>
-                        <p className="text-gray-600 mb-3">{module.description}</p>
+                        <p className="text-slate-300 mb-3">{module.description}</p>
                         
                         <div className="space-y-1 mb-3">
                           {module.features.slice(0, 3).map((feature, idx) => (
-                            <div key={idx} className="flex items-center gap-2 text-xs text-gray-600">
+                            <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
                               <AlertCircle className="w-3 h-3 text-amber-600 flex-shrink-0" />
                               <span>{feature}</span>
                             </div>
@@ -445,22 +445,22 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
               <div className="flex items-center gap-4">
                 <div className="w-32 font-bold text-indigo-600">Phase 1</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
-                <div className="w-40 text-sm text-gray-600">Complete (Accountants)</div>
+                <div className="w-40 text-sm text-slate-300">Complete (Accountants)</div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-32 font-bold text-purple-600">Phase 2</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
-                <div className="w-40 text-sm text-gray-600">Complete (Credit)</div>
+                <div className="w-40 text-sm text-slate-300">Complete (Credit)</div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-32 font-bold text-pink-600">Phase 3</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
-                <div className="w-40 text-sm text-gray-600">Complete (AFSL + Funds)</div>
+                <div className="w-40 text-sm text-slate-300">Complete (AFSL + Funds)</div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-32 font-bold text-red-600">Phase 4</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
-                <div className="w-40 text-sm text-gray-600">Complete (Legal + RE + Trustees)</div>
+                <div className="w-40 text-sm text-slate-300">Complete (Legal + RE + Trustees)</div>
               </div>
             </div>
           </CardContent>

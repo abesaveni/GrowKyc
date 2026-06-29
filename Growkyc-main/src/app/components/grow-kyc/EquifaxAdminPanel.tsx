@@ -234,7 +234,7 @@ export function EquifaxAdminPanel() {
       case 'operational': return 'text-green-600 dark:text-green-400';
       case 'degraded': return 'text-yellow-600 dark:text-yellow-400';
       case 'down': return 'text-red-600 dark:text-red-400';
-      default: return 'text-gray-600 dark:text-gray-400';
+      default: return 'text-slate-300 dark:text-slate-400';
     }
   };
 
@@ -243,7 +243,7 @@ export function EquifaxAdminPanel() {
       case 'operational': return 'bg-green-100 dark:bg-green-900/20';
       case 'degraded': return 'bg-yellow-100 dark:bg-yellow-900/20';
       case 'down': return 'bg-red-100 dark:bg-red-900/20';
-      default: return 'bg-gray-100 dark:bg-gray-900/20';
+      default: return 'bg-[#0a0e17] dark:bg-gray-900/20';
     }
   };
 
@@ -253,7 +253,7 @@ export function EquifaxAdminPanel() {
       case 'medium': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'high': return 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300';
       case 'critical': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-300';
+      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-900 dark:text-gray-300';
     }
   };
 
@@ -289,54 +289,54 @@ export function EquifaxAdminPanel() {
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Overview Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm text-gray-500">Services Online</div>
+              <div className="text-sm text-slate-400">Services Online</div>
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {apiStatuses.filter(s => s.status === 'operational').length}/{apiStatuses.length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">100% Uptime</div>
+            <div className="text-xs text-slate-400 mt-1">100% Uptime</div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm text-gray-500">API Calls Today</div>
+              <div className="text-sm text-slate-400">API Calls Today</div>
               <Activity className="w-8 h-8 text-blue-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {totalCallsToday.toLocaleString()}
             </div>
-            <div className="text-xs text-gray-500 mt-1">{totalCallsMonth.toLocaleString()} this month</div>
+            <div className="text-xs text-slate-400 mt-1">{totalCallsMonth.toLocaleString()} this month</div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm text-gray-500">Cost Today</div>
+              <div className="text-sm text-slate-400">Cost Today</div>
               <DollarSign className="w-8 h-8 text-purple-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               ${totalCostToday.toFixed(2)}
             </div>
-            <div className="text-xs text-gray-500 mt-1">${totalCostMonth.toFixed(2)} this month</div>
+            <div className="text-xs text-slate-400 mt-1">${totalCostMonth.toFixed(2)} this month</div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm text-gray-500">Avg Response</div>
+              <div className="text-sm text-slate-400">Avg Response</div>
               <Zap className="w-8 h-8 text-orange-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {Math.round(usageMetrics.reduce((sum, m) => sum + m.averageResponseTime, 0) / usageMetrics.length)}ms
             </div>
-            <div className="text-xs text-gray-500 mt-1">Excellent performance</div>
+            <div className="text-xs text-slate-400 mt-1">Excellent performance</div>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="flex border-b border-white/10 dark:border-gray-700 overflow-x-auto">
             {[
               { id: 'status', label: 'API Status', icon: Server },
               { id: 'usage', label: 'Usage & Costs', icon: BarChart3 },
@@ -350,7 +350,7 @@ export function EquifaxAdminPanel() {
                 className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-[#13B5EA] text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-slate-300 dark:text-slate-400 hover:bg-white/5 dark:hover:bg-gray-700'
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
@@ -364,7 +364,7 @@ export function EquifaxAdminPanel() {
             {activeTab === 'status' && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Service Health Monitor</h3>
+                  <h3 className="text-lg font-bold text-white dark:text-white">Service Health Monitor</h3>
                   <Button size="sm" variant="outline" onClick={() => alert('Refreshing status...')}>
                     <RefreshCw className="w-4 h-4 mr-2" />
                     Refresh
@@ -372,11 +372,11 @@ export function EquifaxAdminPanel() {
                 </div>
 
                 {apiStatuses.map((service, index) => (
-                  <div key={index} className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                  <div key={index} className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
                         <div className={`w-3 h-3 rounded-full ${service.status === 'operational' ? 'bg-green-500' : service.status === 'degraded' ? 'bg-yellow-500' : 'bg-red-500'}`} />
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{service.service}</h4>
+                        <h4 className="font-semibold text-white dark:text-white">{service.service}</h4>
                       </div>
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${getStatusBg(service.status)} ${getStatusColor(service.status)}`}>
                         {service.status}
@@ -385,16 +385,16 @@ export function EquifaxAdminPanel() {
 
                     <div className="grid grid-cols-3 gap-4">
                       <div>
-                        <div className="text-xs text-gray-500 mb-1">Response Time</div>
-                        <div className="text-lg font-semibold text-gray-900 dark:text-white">{service.responseTime}ms</div>
+                        <div className="text-xs text-slate-400 mb-1">Response Time</div>
+                        <div className="text-lg font-semibold text-white dark:text-white">{service.responseTime}ms</div>
                       </div>
                       <div>
-                        <div className="text-xs text-gray-500 mb-1">Uptime</div>
-                        <div className="text-lg font-semibold text-gray-900 dark:text-white">{service.uptime}%</div>
+                        <div className="text-xs text-slate-400 mb-1">Uptime</div>
+                        <div className="text-lg font-semibold text-white dark:text-white">{service.uptime}%</div>
                       </div>
                       <div>
-                        <div className="text-xs text-gray-500 mb-1">Last Check</div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-white">{service.lastCheck.toLocaleTimeString()}</div>
+                        <div className="text-xs text-slate-400 mb-1">Last Check</div>
+                        <div className="text-sm font-semibold text-white dark:text-white">{service.lastCheck.toLocaleTimeString()}</div>
                       </div>
                     </div>
                   </div>
@@ -406,7 +406,7 @@ export function EquifaxAdminPanel() {
             {activeTab === 'usage' && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">API Usage & Cost Analysis</h3>
+                  <h3 className="text-lg font-bold text-white dark:text-white">API Usage & Cost Analysis</h3>
                   <Button size="sm" variant="outline" onClick={() => alert('Downloading report...')}>
                     <Download className="w-4 h-4 mr-2" />
                     Download Report
@@ -416,38 +416,38 @@ export function EquifaxAdminPanel() {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Module</th>
-                        <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Calls Today</th>
-                        <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Calls Month</th>
-                        <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Cost Today</th>
-                        <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Cost Month</th>
-                        <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Avg Response</th>
-                        <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Success Rate</th>
+                      <tr className="border-b border-white/10 dark:border-gray-700">
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Module</th>
+                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Calls Today</th>
+                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Calls Month</th>
+                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Cost Today</th>
+                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Cost Month</th>
+                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Avg Response</th>
+                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300 dark:text-gray-300">Success Rate</th>
                       </tr>
                     </thead>
                     <tbody>
                       {usageMetrics.map((metric, index) => (
-                        <tr key={index} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900">
-                          <td className="py-3 px-4 font-medium text-gray-900 dark:text-white">{metric.module}</td>
-                          <td className="py-3 px-4 text-right text-gray-700 dark:text-gray-300">{metric.callsToday}</td>
-                          <td className="py-3 px-4 text-right text-gray-700 dark:text-gray-300">{metric.callsThisMonth.toLocaleString()}</td>
-                          <td className="py-3 px-4 text-right text-gray-700 dark:text-gray-300">${metric.costToday.toFixed(2)}</td>
-                          <td className="py-3 px-4 text-right text-gray-700 dark:text-gray-300">${metric.costThisMonth.toFixed(2)}</td>
-                          <td className="py-3 px-4 text-right text-gray-700 dark:text-gray-300">{metric.averageResponseTime}ms</td>
+                        <tr key={index} className="border-b border-white/10 dark:border-gray-800 hover:bg-white/5 dark:hover:bg-gray-900">
+                          <td className="py-3 px-4 font-medium text-white dark:text-white">{metric.module}</td>
+                          <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">{metric.callsToday}</td>
+                          <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">{metric.callsThisMonth.toLocaleString()}</td>
+                          <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">${metric.costToday.toFixed(2)}</td>
+                          <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">${metric.costThisMonth.toFixed(2)}</td>
+                          <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">{metric.averageResponseTime}ms</td>
                           <td className="py-3 px-4 text-right">
                             <span className="text-green-600 font-semibold">{metric.successRate}%</span>
                           </td>
                         </tr>
                       ))}
-                      <tr className="bg-gray-100 dark:bg-gray-800 font-bold">
-                        <td className="py-3 px-4 text-gray-900 dark:text-white">Total</td>
-                        <td className="py-3 px-4 text-right text-gray-900 dark:text-white">{totalCallsToday}</td>
-                        <td className="py-3 px-4 text-right text-gray-900 dark:text-white">{totalCallsMonth.toLocaleString()}</td>
-                        <td className="py-3 px-4 text-right text-gray-900 dark:text-white">${totalCostToday.toFixed(2)}</td>
-                        <td className="py-3 px-4 text-right text-gray-900 dark:text-white">${totalCostMonth.toFixed(2)}</td>
-                        <td className="py-3 px-4 text-right text-gray-900 dark:text-white">-</td>
-                        <td className="py-3 px-4 text-right text-gray-900 dark:text-white">-</td>
+                      <tr className="bg-[#0a0e17] dark:bg-gray-800 font-bold">
+                        <td className="py-3 px-4 text-white dark:text-white">Total</td>
+                        <td className="py-3 px-4 text-right text-white dark:text-white">{totalCallsToday}</td>
+                        <td className="py-3 px-4 text-right text-white dark:text-white">{totalCallsMonth.toLocaleString()}</td>
+                        <td className="py-3 px-4 text-right text-white dark:text-white">${totalCostToday.toFixed(2)}</td>
+                        <td className="py-3 px-4 text-right text-white dark:text-white">${totalCostMonth.toFixed(2)}</td>
+                        <td className="py-3 px-4 text-right text-white dark:text-white">-</td>
+                        <td className="py-3 px-4 text-right text-white dark:text-white">-</td>
                       </tr>
                     </tbody>
                   </table>
@@ -459,8 +459,8 @@ export function EquifaxAdminPanel() {
             {activeTab === 'limits' && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Rate Limit Monitor</h3>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <h3 className="text-lg font-bold text-white dark:text-white">Rate Limit Monitor</h3>
+                  <div className="text-sm text-slate-300 dark:text-slate-400">
                     Limits reset in: {Math.ceil((rateLimits[0].resetTime.getTime() - Date.now()) / (1000 * 60 * 60))} hours
                   </div>
                 </div>
@@ -470,10 +470,10 @@ export function EquifaxAdminPanel() {
                   const isNearLimit = percentage > 80;
 
                   return (
-                    <div key={index} className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                    <div key={index} className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{limit.endpoint}</h4>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <h4 className="font-semibold text-white dark:text-white">{limit.endpoint}</h4>
+                        <div className="text-sm text-slate-300 dark:text-slate-400">
                           {limit.used.toLocaleString()} / {limit.limit.toLocaleString()} calls
                         </div>
                       </div>
@@ -491,7 +491,7 @@ export function EquifaxAdminPanel() {
                         <span className={isNearLimit ? 'text-red-600' : 'text-green-600'}>
                           {percentage.toFixed(1)}% used
                         </span>
-                        <span className="text-gray-500">
+                        <span className="text-slate-400">
                           Resets: {limit.resetTime.toLocaleTimeString()}
                         </span>
                       </div>
@@ -505,7 +505,7 @@ export function EquifaxAdminPanel() {
             {activeTab === 'errors' && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Error Logs</h3>
+                  <h3 className="text-lg font-bold text-white dark:text-white">Error Logs</h3>
                   <div className="flex gap-2">
                     <Button size="sm" variant="outline">
                       <Download className="w-4 h-4 mr-2" />
@@ -527,13 +527,13 @@ export function EquifaxAdminPanel() {
                 ) : (
                   <div className="space-y-3">
                     {errorLogs.map((error) => (
-                      <div key={error.id} className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                      <div key={error.id} className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-3">
                             <AlertTriangle className="w-5 h-5 text-red-600" />
                             <div>
-                              <h4 className="font-semibold text-gray-900 dark:text-white">{error.errorType}</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400">{error.module}</p>
+                              <h4 className="font-semibold text-white dark:text-white">{error.errorType}</h4>
+                              <p className="text-sm text-slate-300 dark:text-slate-400">{error.module}</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-2">
@@ -547,8 +547,8 @@ export function EquifaxAdminPanel() {
                             )}
                           </div>
                         </div>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">{error.message}</p>
-                        <div className="text-xs text-gray-500">
+                        <p className="text-sm text-slate-300 dark:text-gray-300 mb-2">{error.message}</p>
+                        <div className="text-xs text-slate-400">
                           {error.timestamp.toLocaleString()} • ID: {error.id}
                         </div>
                       </div>
@@ -562,23 +562,23 @@ export function EquifaxAdminPanel() {
             {activeTab === 'config' && (
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">API Configuration</h3>
+                  <h3 className="text-lg font-bold text-white dark:text-white mb-4">API Configuration</h3>
                   
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         API Endpoint
                       </label>
                       <input
                         type="text"
                         value="https://api.equifax.com.au/v2"
                         readOnly
-                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0a0e17] dark:bg-gray-800 text-white dark:text-white"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         API Key
                       </label>
                       <div className="flex gap-2">
@@ -586,7 +586,7 @@ export function EquifaxAdminPanel() {
                           type={showAPIKey ? 'text' : 'password'}
                           value="eq_live_xK7n9pL4mQ2vR8wT5yU1zA3bC6dE0fG"
                           readOnly
-                          className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white"
+                          className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0a0e17] dark:bg-gray-800 text-white dark:text-white"
                         />
                         <Button
                           variant="outline"
@@ -598,7 +598,7 @@ export function EquifaxAdminPanel() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         Connection Status
                       </label>
                       <div className="flex items-center gap-2 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
@@ -608,10 +608,10 @@ export function EquifaxAdminPanel() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         Environment
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                      <select className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0d121d] dark:bg-gray-800 text-white dark:text-white">
                         <option value="production">Production</option>
                         <option value="sandbox">Sandbox (Testing)</option>
                       </select>
@@ -630,16 +630,16 @@ export function EquifaxAdminPanel() {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Module Settings</h3>
+                <div className="pt-6 border-t border-white/10 dark:border-gray-700">
+                  <h3 className="text-lg font-bold text-white dark:text-white mb-4">Module Settings</h3>
                   
                   <div className="space-y-3">
                     {['Identity Verification', 'AML Screening', 'Credit Reports', 'Business Reports', 'Property Data', 'Monitoring Alerts'].map((module, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                        <span className="font-medium text-gray-900 dark:text-white">{module}</span>
+                      <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                        <span className="font-medium text-white dark:text-white">{module}</span>
                         <label className="relative inline-flex items-center cursor-pointer">
                           <input type="checkbox" className="sr-only peer" defaultChecked />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#13B5EA]/50 dark:peer-focus:ring-[#0E7C9E]/50 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#13B5EA]"></div>
+                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#13B5EA]/50 dark:peer-focus:ring-[#0E7C9E]/50 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#0d121d] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#13B5EA]"></div>
                         </label>
                       </div>
                     ))}

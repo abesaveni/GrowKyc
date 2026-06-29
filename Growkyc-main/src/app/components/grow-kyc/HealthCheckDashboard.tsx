@@ -175,7 +175,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
       case 'passed': return <CheckCircle className="w-5 h-5 text-[#3DD598]" />;
       case 'warning': return <AlertTriangle className="w-5 h-5 text-[#FFA300]" />;
       case 'failed': return <XCircle className="w-5 h-5 text-red-600" />;
-      default: return <Activity className="w-5 h-5 text-gray-400" />;
+      default: return <Activity className="w-5 h-5 text-slate-400" />;
     }
   };
 
@@ -204,13 +204,13 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
             </Button>
           )}
           <div className="flex-1">
-            <h1 className="text-3xl font-bold text-gray-900">System Health Check</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-3xl font-bold text-white">System Health Check</h1>
+            <p className="text-slate-300 mt-1">
               Comprehensive validation of all Grow KYC module components and systems
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="text-right text-sm text-gray-600">
+            <div className="text-right text-sm text-slate-300">
               <div>Last checked:</div>
               <div className="font-semibold">{lastChecked.toLocaleString()}</div>
             </div>
@@ -269,14 +269,14 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {healthCategories.map((category, index) => (
           <Card key={index} className="hover:shadow-xl transition-shadow">
-            <CardHeader className="border-b bg-gray-50">
+            <CardHeader className="border-b bg-[#0a0e17]">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3">
                   {getStatusIcon(category.status)}
                   <span>{category.name}</span>
                 </CardTitle>
                 <div className="flex items-center gap-3">
-                  <div className="text-2xl font-bold text-gray-900">{category.score}%</div>
+                  <div className="text-2xl font-bold text-white">{category.score}%</div>
                   {getStatusBadge(category.status)}
                 </div>
               </div>
@@ -286,11 +286,11 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
                 {category.items.map((item, itemIndex) => (
                   <div 
                     key={itemIndex}
-                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                    className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg"
                   >
                     <div className="flex items-center gap-3">
                       {getStatusIcon(item.status)}
-                      <span className="text-sm font-medium text-gray-900">{item.name}</span>
+                      <span className="text-sm font-medium text-white">{item.name}</span>
                     </div>
                     {item.status === 'passed' && (
                       <span className="text-xs text-[#3DD598] font-semibold">✓ OK</span>
@@ -314,7 +314,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-[#3DD598]" />
                 Pre-Launch (Complete)
               </h4>
@@ -329,7 +329,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
                   'Error handling comprehensive',
                   'Security measures in place'
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-gray-700">
+                  <li key={i} className="flex items-center gap-2 text-slate-300">
                     <CheckCircle className="w-4 h-4 text-[#3DD598] flex-shrink-0" />
                     {item}
                   </li>
@@ -338,7 +338,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
             </div>
 
             <div>
-              <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                 <Target className="w-5 h-5 text-[#13B5EA]" />
                 Post-Launch Actions
               </h4>
@@ -353,7 +353,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
                   'Training materials ready',
                   'Monitoring enabled'
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-gray-700">
+                  <li key={i} className="flex items-center gap-2 text-slate-300">
                     <CheckCircle className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
                     {item}
                   </li>
@@ -365,8 +365,8 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
           <div className="mt-6 pt-6 border-t">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="font-bold text-gray-900 mb-1">System Status</h4>
-                <p className="text-sm text-gray-600">All systems operational and ready for production deployment</p>
+                <h4 className="font-bold text-white mb-1">System Status</h4>
+                <p className="text-sm text-slate-300">All systems operational and ready for production deployment</p>
               </div>
               <Button className="bg-[#3DD598] hover:bg-[#2fc589] text-white">
                 <Download className="w-4 h-4 mr-2" />
@@ -379,13 +379,13 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
 
       {/* Footer */}
       <div className="mt-8 text-center">
-        <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-full shadow-lg">
+        <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#0d121d] rounded-full shadow-lg">
           <Award className="w-6 h-6 text-[#3DD598]" />
-          <span className="font-bold text-gray-900">Production Ready</span>
-          <span className="text-gray-400">•</span>
-          <span className="text-gray-600">Version 1.0.0</span>
-          <span className="text-gray-400">•</span>
-          <span className="text-gray-600">March 22, 2026</span>
+          <span className="font-bold text-white">Production Ready</span>
+          <span className="text-slate-400">•</span>
+          <span className="text-slate-300">Version 1.0.0</span>
+          <span className="text-slate-400">•</span>
+          <span className="text-slate-300">March 22, 2026</span>
         </div>
       </div>
     </div>

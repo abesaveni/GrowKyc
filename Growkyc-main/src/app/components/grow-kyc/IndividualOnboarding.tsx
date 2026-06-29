@@ -638,7 +638,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         {/* Name Fields */}
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               First Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -650,7 +650,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Middle Name
             </label>
             <input
@@ -662,7 +662,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Last Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -677,7 +677,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* Date of Birth */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-300 mb-2">
             <Calendar className="w-4 h-4 inline mr-1" />
             Date of Birth <span className="text-red-500">*</span>
           </label>
@@ -692,7 +692,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         {/* Contact Details */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               <Mail className="w-4 h-4 inline mr-1" />
               Email Address <span className="text-red-500">*</span>
             </label>
@@ -705,7 +705,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               <Phone className="w-4 h-4 inline mr-1" />
               Phone Number <span className="text-red-500">*</span>
             </label>
@@ -721,7 +721,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* Address */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-300 mb-2">
             <MapPin className="w-4 h-4 inline mr-1" />
             Street Address <span className="text-red-500">*</span>
           </label>
@@ -736,7 +736,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-2">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               City <span className="text-red-500">*</span>
             </label>
             <input
@@ -748,7 +748,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               State <span className="text-red-500">*</span>
             </label>
             <select
@@ -768,7 +768,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Postcode <span className="text-red-500">*</span>
             </label>
             <input
@@ -783,10 +783,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* ID Details */}
         <div className="border-t pt-6">
-          <h3 className="font-bold text-gray-900 mb-4">Identity Document</h3>
+          <h3 className="font-bold text-white mb-4">Identity Document</h3>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">
                 Document Type <span className="text-red-500">*</span>
               </label>
               <select
@@ -800,7 +800,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">
                 Document Number <span className="text-red-500">*</span>
               </label>
               <input
@@ -813,7 +813,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             </div>
             {personalData.idType === 'drivers_licence' && (
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Licence State <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -860,10 +860,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               <Shield className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold text-gray-900 mb-1">
+              <h2 className="text-2xl font-bold text-white mb-1">
                 🏦 Bank-Grade 100-Point ID Verification
               </h2>
-              <p className="text-gray-700">
+              <p className="text-slate-300">
                 Select multiple documents to reach 100 points. At least one Category A document + DOB verification required.
               </p>
             </div>
@@ -932,7 +932,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         </Card>
 
         {/* Consent Checkboxes */}
-        <div className="space-y-4 border-2 border-gray-200 rounded-lg p-6">
+        <div className="space-y-4 border-2 border-white/10 rounded-lg p-6">
           <div className="flex items-start gap-3">
             <input
               type="checkbox"
@@ -941,8 +941,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               className="w-5 h-5 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               id="consent-verify"
             />
-            <label htmlFor="consent-verify" className="text-sm text-gray-700 cursor-pointer">
-              <span className="font-semibold text-gray-900">I consent to identity verification checks</span>
+            <label htmlFor="consent-verify" className="text-sm text-slate-300 cursor-pointer">
+              <span className="font-semibold text-white">I consent to identity verification checks</span>
               <br />
               I authorize Grow to conduct identity verification checks including but not limited to:
               <ul className="list-disc ml-5 mt-2 space-y-1">
@@ -965,8 +965,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               className="w-5 h-5 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               id="consent-terms"
             />
-            <label htmlFor="consent-terms" className="text-sm text-gray-700 cursor-pointer">
-              <span className="font-semibold text-gray-900">I accept the Terms & Conditions</span>
+            <label htmlFor="consent-terms" className="text-sm text-slate-300 cursor-pointer">
+              <span className="font-semibold text-white">I accept the Terms & Conditions</span>
               <br />
               I have read and accept the{' '}
               <a href="#" className="text-blue-600 underline">Terms of Service</a>,{' '}
@@ -985,13 +985,13 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         </div>
 
         {/* Declaration */}
-        <Card className="bg-gray-50 border-gray-200">
+        <Card className="bg-[#0a0e17] border-white/10">
           <CardContent className="p-4">
-            <h4 className="font-semibold text-gray-900 mb-2">Declaration</h4>
-            <p className="text-sm text-gray-700">
+            <h4 className="font-semibold text-white mb-2">Declaration</h4>
+            <p className="text-sm text-slate-300">
               By clicking "Accept & Continue", I declare that:
             </p>
-            <ul className="list-disc ml-5 mt-2 text-sm text-gray-700 space-y-1">
+            <ul className="list-disc ml-5 mt-2 text-sm text-slate-300 space-y-1">
               <li>All information provided is true, accurate, and complete</li>
               <li>I am authorized to provide this information</li>
               <li>I understand the purpose of these checks</li>
@@ -1039,10 +1039,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <h4 className="font-semibold text-gray-900">{searchPricing.individual.name}</h4>
+                  <h4 className="font-semibold text-white">{searchPricing.individual.name}</h4>
                   <Badge className="bg-green-600">Included</Badge>
                 </div>
-                <p className="text-sm text-gray-700 mb-2">{searchPricing.individual.description}</p>
+                <p className="text-sm text-slate-300 mb-2">{searchPricing.individual.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {searchPricing.individual.searches.map((search, idx) => (
                     <Badge key={idx} variant="outline" className="text-xs">{search}</Badge>
@@ -1050,10 +1050,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-2xl font-bold text-white">
                   ${searchPricing.individual.price.toFixed(2)}
                 </div>
-                <div className="text-xs text-gray-600">AUD</div>
+                <div className="text-xs text-slate-300">AUD</div>
               </div>
             </div>
           </div>
@@ -1070,10 +1070,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                     <CheckCircle className="w-5 h-5 text-green-600 mt-1" />
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-gray-900">{search.name}</h4>
+                        <h4 className="font-semibold text-white">{search.name}</h4>
                         <Badge className="bg-green-600">Included</Badge>
                       </div>
-                      <p className="text-sm text-gray-700 mb-2">{search.description}</p>
+                      <p className="text-sm text-slate-300 mb-2">{search.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {search.searches.map((s: string, idx: number) => (
                           <Badge key={idx} variant="outline" className="text-xs">{s}</Badge>
@@ -1082,10 +1082,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                     </div>
                   </div>
                   <div className="text-right ml-4">
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-white">
                       ${search.price.toFixed(2)}
                     </div>
-                    <div className="text-xs text-gray-600">AUD</div>
+                    <div className="text-xs text-slate-300">AUD</div>
                   </div>
                 </div>
               </div>
@@ -1123,7 +1123,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
           {/* Payment Method */}
           <div className="border-t pt-4">
-            <label className="block text-sm font-semibold text-gray-700 mb-3">
+            <label className="block text-sm font-semibold text-slate-300 mb-3">
               Payment Method
             </label>
             <div className="space-y-2">
@@ -1152,7 +1152,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
           {paymentMethod === 'card' && (
             <div className="border-t pt-4 space-y-3">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Card Number
                 </label>
                 <input
@@ -1165,7 +1165,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     Expiry Date
                   </label>
                   <input
@@ -1177,7 +1177,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     CVV
                   </label>
                   <input
@@ -1225,33 +1225,33 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             </div>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-white mb-2">
               Running Identity Verification Checks
             </h2>
-            <p className="text-gray-600">
+            <p className="text-slate-300">
               Please wait while we verify your identity and search for associated entities...
             </p>
           </div>
           <div className="w-full max-w-md space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <CheckCircle className="w-5 h-5 text-green-600" />
-              <span className="text-gray-700">Verifying identity documents</span>
+              <span className="text-slate-300">Verifying identity documents</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
-              <span className="text-gray-700">Searching ASIC database</span>
+              <span className="text-slate-300">Searching ASIC database</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Clock className="w-5 h-5 text-gray-400" />
-              <span className="text-gray-500">Searching trust registers</span>
+              <Clock className="w-5 h-5 text-slate-400" />
+              <span className="text-slate-400">Searching trust registers</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Clock className="w-5 h-5 text-gray-400" />
-              <span className="text-gray-500">Compiling results</span>
+              <Clock className="w-5 h-5 text-slate-400" />
+              <span className="text-slate-400">Compiling results</span>
             </div>
           </div>
           <Progress value={60} className="w-full max-w-md" />
-          <p className="text-sm text-gray-500">This usually takes 30-60 seconds</p>
+          <p className="text-sm text-slate-400">This usually takes 30-60 seconds</p>
         </div>
       </CardContent>
     </Card>
@@ -1272,10 +1272,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <div className="flex-1">
-                <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                <h2 className="text-2xl font-bold text-white mb-1">
                   ✅ All Verifications Complete
                 </h2>
-                <p className="text-gray-700">
+                <p className="text-slate-300">
                   {personalData.firstName} {personalData.lastName} + {discoveredEntities.length} associated entities - All verified
                 </p>
               </div>
@@ -1296,25 +1296,25 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                   <CreditCard className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  <h3 className="text-lg font-bold text-white mb-1">
                     💳 Automatic Additional Charge Applied
                   </h3>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-slate-300">
                     We discovered {discoveredEntities.length} associated {discoveredEntities.length === 1 ? 'entity' : 'entities'} and automatically ran full KYC verification on {discoveredEntities.length === 1 ? 'it' : 'them'}.
                   </p>
                   <div className="mt-3 flex items-center gap-6">
                     <div>
-                      <p className="text-xs text-gray-600">Initial Payment</p>
-                      <p className="text-lg font-bold text-gray-900">${initialPayment.toFixed(2)} AUD</p>
+                      <p className="text-xs text-slate-300">Initial Payment</p>
+                      <p className="text-lg font-bold text-white">${initialPayment.toFixed(2)} AUD</p>
                     </div>
-                    <div className="text-gray-400">+</div>
+                    <div className="text-slate-400">+</div>
                     <div>
-                      <p className="text-xs text-gray-600">Additional Entities</p>
+                      <p className="text-xs text-slate-300">Additional Entities</p>
                       <p className="text-lg font-bold text-blue-600">${additionalCost.toFixed(2)} AUD</p>
                     </div>
-                    <div className="text-gray-400">=</div>
+                    <div className="text-slate-400">=</div>
                     <div>
-                      <p className="text-xs text-gray-600">Total Charged</p>
+                      <p className="text-xs text-slate-300">Total Charged</p>
                       <p className="text-2xl font-bold text-green-600">${totalPaid.toFixed(2)} AUD</p>
                     </div>
                   </div>
@@ -1345,8 +1345,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                             <Icon className="w-6 h-6 text-green-600" />
                           </div>
                           <div>
-                            <h4 className="font-bold text-gray-900">{entity.name}</h4>
-                            <p className="text-sm text-gray-600">ABN: {entity.abn}</p>
+                            <h4 className="font-bold text-white">{entity.name}</h4>
+                            <p className="text-sm text-slate-300">ABN: {entity.abn}</p>
                           </div>
                         </div>
                         <Badge className="bg-green-600">
@@ -1357,19 +1357,19 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                       
                       <div className="grid grid-cols-4 gap-4 mb-4">
                         <div>
-                          <p className="text-xs text-gray-600">Your Role</p>
+                          <p className="text-xs text-slate-300">Your Role</p>
                           <p className="font-semibold text-sm">{entity.role}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600">Entity Type</p>
+                          <p className="text-xs text-slate-300">Entity Type</p>
                           <p className="font-semibold text-sm capitalize">{entity.type}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600">Since</p>
+                          <p className="text-xs text-slate-300">Since</p>
                           <p className="font-semibold text-sm">{entity.since}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600">Charged</p>
+                          <p className="text-xs text-slate-300">Charged</p>
                           <p className="font-semibold text-sm text-blue-600">${entity.estimatedCost.toFixed(2)}</p>
                         </div>
                       </div>
@@ -1455,8 +1455,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-8 h-8 text-green-600" />
                 <div className="flex-1">
-                  <h4 className="font-bold text-gray-900">🎉 Onboarding Complete!</h4>
-                  <p className="text-sm text-gray-700 mt-1">
+                  <h4 className="font-bold text-white">🎉 Onboarding Complete!</h4>
+                  <p className="text-sm text-slate-300 mt-1">
                     All verifications passed. You're now fully onboarded and compliant with AML/CTF regulations.
                   </p>
                 </div>
@@ -1486,33 +1486,33 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-[#0a0e17] p-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Individual KYC Verification</h1>
-              <p className="text-gray-600 mt-1">
+              <h1 className="text-3xl font-bold text-white">Individual KYC Verification</h1>
+              <p className="text-slate-300 mt-1">
                 Complete your identity verification to discover associated entities
               </p>
             </div>
             <div className="flex items-center gap-3">
               {/* Developer Mode Toggle */}
-              <Card className={`border-2 transition-all ${devMode ? 'border-amber-500 bg-amber-50 shadow-lg' : 'border-gray-300 bg-white'}`}>
+              <Card className={`border-2 transition-all ${devMode ? 'border-amber-500 bg-amber-50 shadow-lg' : 'border-gray-300 bg-[#0d121d]'}`}>
                 <CardContent className="p-3">
                   <div className="flex items-center gap-3">
-                    <Bug className={`w-5 h-5 ${devMode ? 'text-amber-600' : 'text-gray-400'}`} />
+                    <Bug className={`w-5 h-5 ${devMode ? 'text-amber-600' : 'text-slate-400'}`} />
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="text-xs font-semibold text-gray-900">Developer Mode</p>
+                        <p className="text-xs font-semibold text-white">Developer Mode</p>
                         {devMode && (
                           <Badge className="bg-amber-600 text-white text-xs px-2 py-0">
                             ON
                           </Badge>
                         )}
                       </div>
-                      <p className="text-xs text-gray-600">Skip validation for testing</p>
+                      <p className="text-xs text-slate-300">Skip validation for testing</p>
                     </div>
                     <button
                       onClick={() => {
@@ -1525,7 +1525,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        className={`inline-block h-4 w-4 transform rounded-full bg-[#0d121d] transition-transform ${
                           devMode ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
@@ -1565,7 +1565,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                         <Icon className="w-6 h-6 text-white" />
                       )}
                     </div>
-                    <span className={`text-sm mt-2 ${isActive ? 'font-bold text-blue-600' : 'text-gray-600'}`}>
+                    <span className={`text-sm mt-2 ${isActive ? 'font-bold text-blue-600' : 'text-slate-300'}`}>
                       {step.label}
                     </span>
                   </div>

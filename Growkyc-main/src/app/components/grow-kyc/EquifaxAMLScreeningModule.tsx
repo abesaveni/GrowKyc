@@ -185,7 +185,7 @@ export function EquifaxAMLScreeningModule() {
       case 'potential-match': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'confirmed-match': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
       case 'under-review': return 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300';
-      default: return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -195,7 +195,7 @@ export function EquifaxAMLScreeningModule() {
       case 'medium': return 'text-yellow-600';
       case 'high': return 'text-orange-600';
       case 'critical': return 'text-red-600';
-      default: return 'text-gray-600';
+      default: return 'text-slate-300';
     }
   };
 
@@ -241,21 +241,21 @@ export function EquifaxAMLScreeningModule() {
 
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Summary Dashboard */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-[#13B5EA]">
+        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-[#13B5EA]">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <User className="w-5 h-5 text-gray-500" />
-                <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Client</span>
+                <User className="w-5 h-5 text-slate-400" />
+                <span className="text-sm font-semibold text-slate-300 dark:text-slate-400">Client</span>
               </div>
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{screeningResult.clientName}</div>
-              <div className="text-xs text-gray-500">{screeningResult.clientId}</div>
+              <div className="text-xl font-bold text-white dark:text-white">{screeningResult.clientName}</div>
+              <div className="text-xs text-slate-400">{screeningResult.clientId}</div>
             </div>
 
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-5 h-5 text-gray-500" />
-                <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Overall Status</span>
+                <Shield className="w-5 h-5 text-slate-400" />
+                <span className="text-sm font-semibold text-slate-300 dark:text-slate-400">Overall Status</span>
               </div>
               <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(screeningResult.overallStatus)}`}>
                 {screeningResult.overallStatus === 'clear' && <CheckCircle className="w-4 h-4" />}
@@ -266,8 +266,8 @@ export function EquifaxAMLScreeningModule() {
 
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="w-5 h-5 text-gray-500" />
-                <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Risk Level</span>
+                <AlertTriangle className="w-5 h-5 text-slate-400" />
+                <span className="text-sm font-semibold text-slate-300 dark:text-slate-400">Risk Level</span>
               </div>
               <div className={`text-2xl font-bold capitalize ${getRiskColor(screeningResult.riskLevel)}`}>
                 {screeningResult.riskLevel}
@@ -276,27 +276,27 @@ export function EquifaxAMLScreeningModule() {
 
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <TrendingUp className="w-5 h-5 text-gray-500" />
-                <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Match Confidence</span>
+                <TrendingUp className="w-5 h-5 text-slate-400" />
+                <span className="text-sm font-semibold text-slate-300 dark:text-slate-400">Match Confidence</span>
               </div>
-              <div className="text-2xl font-bold text-gray-900 dark:text-white">
+              <div className="text-2xl font-bold text-white dark:text-white">
                 {screeningResult.highestMatchConfidence}%
               </div>
             </div>
 
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-gray-500" />
-                <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Next Review</span>
+                <Clock className="w-5 h-5 text-slate-400" />
+                <span className="text-sm font-semibold text-slate-300 dark:text-slate-400">Next Review</span>
               </div>
-              <div className="text-lg font-semibold text-gray-900 dark:text-white">
+              <div className="text-lg font-semibold text-white dark:text-white">
                 {Math.ceil((screeningResult.nextScreeningDue.getTime() - Date.now()) / (1000 * 60 * 60 * 24))} days
               </div>
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
-            <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+          <div className="mt-4 pt-4 border-t border-white/10 dark:border-gray-700 flex items-center justify-between">
+            <div className="flex items-center gap-4 text-xs text-slate-300 dark:text-slate-400">
               <div className="flex items-center gap-1">
                 <Database className="w-4 h-4" />
                 <span>Source: {screeningResult.source}</span>
@@ -321,74 +321,74 @@ export function EquifaxAMLScreeningModule() {
 
         {/* Screening Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Users className="w-6 h-6 text-purple-600" />
-                <h3 className="font-bold text-gray-900 dark:text-white">PEP</h3>
+                <h3 className="font-bold text-white dark:text-white">PEP</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.pepStatus)}`}>
                 {screeningResult.pepStatus.toUpperCase()}
               </span>
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {screeningResult.pepMatches.length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Matches Found</div>
+            <div className="text-xs text-slate-400 mt-1">Matches Found</div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-red-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-red-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Ban className="w-6 h-6 text-red-600" />
-                <h3 className="font-bold text-gray-900 dark:text-white">Sanctions</h3>
+                <h3 className="font-bold text-white dark:text-white">Sanctions</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.sanctionsStatus)}`}>
                 {screeningResult.sanctionsStatus.toUpperCase()}
               </span>
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {screeningResult.sanctionsMatches.length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Matches Found</div>
+            <div className="text-xs text-slate-400 mt-1">Matches Found</div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Flag className="w-6 h-6 text-orange-600" />
-                <h3 className="font-bold text-gray-900 dark:text-white">Watchlists</h3>
+                <h3 className="font-bold text-white dark:text-white">Watchlists</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.watchlistStatus)}`}>
                 {screeningResult.watchlistStatus.toUpperCase()}
               </span>
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {screeningResult.watchlistHits.length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Hits Found</div>
+            <div className="text-xs text-slate-400 mt-1">Hits Found</div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
+          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <FileText className="w-6 h-6 text-yellow-600" />
-                <h3 className="font-bold text-gray-900 dark:text-white">Adverse Media</h3>
+                <h3 className="font-bold text-white dark:text-white">Adverse Media</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.adverseMediaStatus)}`}>
                 {screeningResult.adverseMediaStatus.toUpperCase()}
               </span>
             </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-white dark:text-white">
               {screeningResult.adverseMediaCount}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Articles Found</div>
+            <div className="text-xs text-slate-400 mt-1">Articles Found</div>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="flex border-b border-white/10 dark:border-gray-700 overflow-x-auto">
             {tabs.map(tab => (
               <button
                 key={tab.id}
@@ -396,7 +396,7 @@ export function EquifaxAMLScreeningModule() {
                 className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-[#13B5EA] text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-slate-300 dark:text-slate-400 hover:bg-white/5 dark:hover:bg-gray-700'
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
@@ -433,36 +433,36 @@ export function EquifaxAMLScreeningModule() {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-4">Screening Coverage</h3>
+                <div className="bg-[#0a0e17] dark:bg-gray-900 rounded-lg p-6">
+                  <h3 className="font-bold text-white dark:text-white mb-4">Screening Coverage</h3>
                   <div className="space-y-3">
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">International Sanctions Lists</span>
+                        <span className="text-sm text-slate-300 dark:text-slate-400">International Sanctions Lists</span>
                         <span className="text-sm font-semibold text-green-600">✓ Screened</span>
                       </div>
-                      <div className="text-xs text-gray-500">OFAC, UN, EU, DFAT, HMT</div>
+                      <div className="text-xs text-slate-400">OFAC, UN, EU, DFAT, HMT</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">PEP Databases</span>
+                        <span className="text-sm text-slate-300 dark:text-slate-400">PEP Databases</span>
                         <span className="text-sm font-semibold text-green-600">✓ Screened</span>
                       </div>
-                      <div className="text-xs text-gray-500">Global PEP registry, Domestic & International</div>
+                      <div className="text-xs text-slate-400">Global PEP registry, Domestic & International</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Law Enforcement Watchlists</span>
+                        <span className="text-sm text-slate-300 dark:text-slate-400">Law Enforcement Watchlists</span>
                         <span className="text-sm font-semibold text-green-600">✓ Screened</span>
                       </div>
-                      <div className="text-xs text-gray-500">INTERPOL, EUROPOL, National Databases</div>
+                      <div className="text-xs text-slate-400">INTERPOL, EUROPOL, National Databases</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Adverse Media</span>
+                        <span className="text-sm text-slate-300 dark:text-slate-400">Adverse Media</span>
                         <span className="text-sm font-semibold text-green-600">✓ Screened</span>
                       </div>
-                      <div className="text-xs text-gray-500">Global news sources, financial crime databases</div>
+                      <div className="text-xs text-slate-400">Global news sources, financial crime databases</div>
                     </div>
                   </div>
                 </div>
@@ -530,7 +530,7 @@ export function EquifaxAMLScreeningModule() {
             {activeTab === 'timeline' && (
               <div className="space-y-4">
                 {screeningHistory.map((record, index) => (
-                  <div key={index} className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                  <div key={index} className="flex gap-4 p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
                     <div className="flex-shrink-0">
                       <div className="w-10 h-10 rounded-full bg-[#13B5EA] flex items-center justify-center text-white font-bold">
                         {index + 1}
@@ -538,17 +538,17 @@ export function EquifaxAMLScreeningModule() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-gray-900 dark:text-white capitalize">{record.type} Screening</span>
-                        <span className="text-xs text-gray-500">{record.date.toLocaleString()}</span>
+                        <span className="font-semibold text-white dark:text-white capitalize">{record.type} Screening</span>
+                        <span className="text-xs text-slate-400">{record.date.toLocaleString()}</span>
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      <div className="text-sm text-slate-300 dark:text-slate-400 mb-2">
                         Result: {record.result}
                       </div>
-                      <div className="text-xs text-gray-500 mb-2">
+                      <div className="text-xs text-slate-400 mb-2">
                         By: {record.user}
                       </div>
                       {record.changes.length > 0 && (
-                        <div className="mt-2 text-xs text-gray-500">
+                        <div className="mt-2 text-xs text-slate-400">
                           {record.changes.map((change, i) => (
                             <div key={i}>• {change}</div>
                           ))}
@@ -572,8 +572,8 @@ export function EquifaxAMLScreeningModule() {
         </div>
 
         {/* Actions */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Actions</h3>
+        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          <h3 className="text-lg font-bold text-white dark:text-white mb-4">Actions</h3>
           <div className="flex gap-3">
             <Button onClick={() => alert('Re-screening...')}>
               <RefreshCw className="w-4 h-4 mr-2" />

@@ -152,12 +152,12 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
       case 'growth': return 'text-orange-600 bg-orange-100 border-orange-300';
       case 'balanced': return 'text-blue-600 bg-blue-100 border-blue-300';
       case 'conservative': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-gray-600 bg-gray-100 border-gray-300';
+      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0d121d]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 text-white px-8 py-12">
         <Button
@@ -294,7 +294,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
 
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-gray-900">{client.name}</h3>
+                            <h3 className="text-2xl font-bold text-white">{client.name}</h3>
                             <Badge variant="outline" className="capitalize">{client.type}</Badge>
                             <Badge className={getClassificationColor(client.classification)}>
                               {client.classification}
@@ -306,23 +306,23 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
 
                           <div className="grid grid-cols-4 gap-6 mb-4">
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Investment Value</div>
-                              <div className="text-xl font-bold text-gray-900">
+                              <div className="text-sm text-slate-300 mb-1">Investment Value</div>
+                              <div className="text-xl font-bold text-white">
                                 ${(client.investmentValue / 1000000).toFixed(2)}M
                               </div>
                             </div>
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Risk Profile</div>
+                              <div className="text-sm text-slate-300 mb-1">Risk Profile</div>
                               <Badge className={getRiskProfileColor(client.riskProfile)}>
                                 {client.riskProfile}
                               </Badge>
                             </div>
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Adviser</div>
-                              <div className="text-sm font-semibold text-gray-900">{client.adviser}</div>
+                              <div className="text-sm text-slate-300 mb-1">Adviser</div>
+                              <div className="text-sm font-semibold text-white">{client.adviser}</div>
                             </div>
                             <div>
-                              <div className="text-sm text-gray-600 mb-1">Fee Consent</div>
+                              <div className="text-sm text-slate-300 mb-1">Fee Consent</div>
                               <Badge className={client.feeConsentStatus === 'signed' ? 'bg-green-600 text-white' : 'bg-amber-600 text-white'}>
                                 {client.feeConsentStatus}
                               </Badge>
@@ -330,13 +330,13 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                           </div>
 
                           <div className="grid grid-cols-2 gap-4">
-                            <div className="p-3 bg-gray-50 rounded-lg">
-                              <div className="text-xs text-gray-600 mb-1">Last Review</div>
-                              <div className="font-semibold text-gray-900">{client.lastReview}</div>
+                            <div className="p-3 bg-[#0a0e17] rounded-lg">
+                              <div className="text-xs text-slate-300 mb-1">Last Review</div>
+                              <div className="font-semibold text-white">{client.lastReview}</div>
                             </div>
-                            <div className="p-3 bg-gray-50 rounded-lg">
-                              <div className="text-xs text-gray-600 mb-1">Next Review</div>
-                              <div className="font-semibold text-gray-900">{client.nextReview}</div>
+                            <div className="p-3 bg-[#0a0e17] rounded-lg">
+                              <div className="text-xs text-slate-300 mb-1">Next Review</div>
+                              <div className="font-semibold text-white">{client.nextReview}</div>
                             </div>
                           </div>
                         </div>
@@ -385,17 +385,17 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-3 gap-6">
-                  <div className="p-6 bg-white rounded-xl border-2 border-purple-200">
+                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-purple-200">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                         <User className="w-6 h-6 text-purple-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900">Retail Investor</h4>
-                        <p className="text-sm text-gray-600">{stats.retailClients} clients</p>
+                        <h4 className="font-bold text-white">Retail Investor</h4>
+                        <p className="text-sm text-slate-300">{stats.retailClients} clients</p>
                       </div>
                     </div>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-3 h-3 text-green-600" />
                         Standard protections apply
@@ -415,17 +415,17 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                     </ul>
                   </div>
 
-                  <div className="p-6 bg-white rounded-xl border-2 border-indigo-200">
+                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-indigo-200">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
                         <Award className="w-6 h-6 text-indigo-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900">Wholesale Investor</h4>
-                        <p className="text-sm text-gray-600">{stats.wholesaleClients} clients</p>
+                        <h4 className="font-bold text-white">Wholesale Investor</h4>
+                        <p className="text-sm text-slate-300">{stats.wholesaleClients} clients</p>
                       </div>
                     </div>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-3 h-3 text-green-600" />
                         $2.5M+ net assets OR
@@ -445,17 +445,17 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                     </ul>
                   </div>
 
-                  <div className="p-6 bg-white rounded-xl border-2 border-blue-200">
+                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-blue-200">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                         <TrendingUp className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900">Sophisticated</h4>
-                        <p className="text-sm text-gray-600">1 client</p>
+                        <h4 className="font-bold text-white">Sophisticated</h4>
+                        <p className="text-sm text-slate-300">1 client</p>
                       </div>
                     </div>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-3 h-3 text-green-600" />
                         Professional investor
@@ -486,8 +486,8 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Wholesale Investor Evidence</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Wholesale Investor Evidence</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <FileCheck className="w-4 h-4 text-blue-600" />
                         Accountant's certificate (s761G)
@@ -508,8 +508,8 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Sophisticated Investor Evidence</h4>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <h4 className="font-bold text-white mb-3">Sophisticated Investor Evidence</h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
                         <FileCheck className="w-4 h-4 text-blue-600" />
                         Professional qualifications
@@ -548,14 +548,14 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {clients.filter(c => c.feeConsentStatus !== 'signed').map((client) => (
-                    <div key={client.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-amber-200">
+                    <div key={client.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-amber-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
                           <AlertCircle className="w-6 h-6 text-amber-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{client.name}</div>
-                          <div className="text-sm text-gray-600">Advised by: {client.adviser}</div>
+                          <div className="font-bold text-white">{client.name}</div>
+                          <div className="text-sm text-slate-300">Advised by: {client.adviser}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -582,20 +582,20 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {clients.map((client) => (
-                    <div key={client.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div key={client.id} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border border-white/10">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                           <Clock className="w-6 h-6 text-blue-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{client.name}</div>
-                          <div className="text-sm text-gray-600">Last review: {client.lastReview}</div>
+                          <div className="font-bold text-white">{client.name}</div>
+                          <div className="text-sm text-slate-300">Last review: {client.lastReview}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="text-right">
-                          <div className="text-sm text-gray-600">Next Review</div>
-                          <div className="font-bold text-gray-900">{client.nextReview}</div>
+                          <div className="text-sm text-slate-300">Next Review</div>
+                          <div className="font-bold text-white">{client.nextReview}</div>
                         </div>
                         <Button variant="outline" size="sm">
                           <Target className="w-4 h-4 mr-2" />
@@ -621,9 +621,9 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                     { name: 'Netwealth', status: 'Disconnected', clients: 0 },
                     { name: 'Praemium', status: 'Disconnected', clients: 0 }
                   ].map((platform, idx) => (
-                    <div key={idx} className="p-4 bg-white rounded-lg border border-indigo-200">
-                      <div className="font-bold text-gray-900 mb-2">{platform.name}</div>
-                      <div className="text-sm text-gray-600 mb-3">
+                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-indigo-200">
+                      <div className="font-bold text-white mb-2">{platform.name}</div>
+                      <div className="text-sm text-slate-300 mb-3">
                         {platform.status === 'Connected' ? `${platform.clients} clients synced` : 'Not connected'}
                       </div>
                       <Button

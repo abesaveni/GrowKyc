@@ -158,7 +158,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
       case 'due_today': return 'text-[#FFA300] bg-orange-50 border-orange-200';
       case 'due_soon': return 'text-yellow-700 bg-yellow-50 border-yellow-200';
       case 'scheduled': return 'text-blue-600 bg-blue-50 border-blue-200';
-      default: return 'text-gray-600 bg-gray-50 border-gray-200';
+      default: return 'text-slate-300 bg-[#0a0e17] border-white/10';
     }
   };
 
@@ -225,13 +225,13 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
   });
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-6 bg-[#0a0e17] min-h-screen">
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Action Items Center</h1>
-            <p className="text-gray-600 mt-1">All pending actions requiring attention</p>
+            <h1 className="text-3xl font-bold text-white">Action Items Center</h1>
+            <p className="text-slate-300 mt-1">All pending actions requiring attention</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm">
@@ -251,10 +251,10 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 mb-1">Total Actions</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+                  <p className="text-xs text-slate-300 mb-1">Total Actions</p>
+                  <p className="text-2xl font-bold text-white">{stats.total}</p>
                 </div>
-                <Bell className="w-8 h-8 text-gray-400" />
+                <Bell className="w-8 h-8 text-slate-400" />
               </div>
             </CardContent>
           </Card>
@@ -263,7 +263,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 mb-1">Overdue</p>
+                  <p className="text-xs text-slate-300 mb-1">Overdue</p>
                   <p className="text-2xl font-bold text-red-600">{stats.overdue}</p>
                 </div>
                 <AlertCircle className="w-8 h-8 text-red-600" />
@@ -275,7 +275,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 mb-1">Due Today</p>
+                  <p className="text-xs text-slate-300 mb-1">Due Today</p>
                   <p className="text-2xl font-bold text-[#FFA300]">{stats.dueToday}</p>
                 </div>
                 <Clock className="w-8 h-8 text-[#FFA300]" />
@@ -287,7 +287,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 mb-1">Due Soon</p>
+                  <p className="text-xs text-slate-300 mb-1">Due Soon</p>
                   <p className="text-2xl font-bold text-yellow-600">{stats.dueSoon}</p>
                 </div>
                 <Calendar className="w-8 h-8 text-yellow-600" />
@@ -299,7 +299,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 mb-1">Critical Priority</p>
+                  <p className="text-xs text-slate-300 mb-1">Critical Priority</p>
                   <p className="text-2xl font-bold text-red-700">{stats.critical}</p>
                 </div>
                 <AlertTriangle className="w-8 h-8 text-red-700" />
@@ -311,7 +311,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 mb-1">High Priority</p>
+                  <p className="text-xs text-slate-300 mb-1">High Priority</p>
                   <p className="text-2xl font-bold text-[#FFA300]">{stats.high}</p>
                 </div>
                 <Flag className="w-8 h-8 text-[#FFA300]" />
@@ -326,7 +326,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search action items, clients, or descriptions..."
@@ -349,7 +349,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
           {showFilters && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 pt-4 border-t">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Priority</label>
                 <select
                   value={filterPriority}
                   onChange={(e) => setFilterPriority(e.target.value)}
@@ -364,7 +364,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Status</label>
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
@@ -379,7 +379,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Category</label>
                 <select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
@@ -406,7 +406,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
       <div className="space-y-3">
         {loading ? (
           <div className="text-center py-8">
-            <p className="text-gray-600">Loading action items...</p>
+            <p className="text-slate-300">Loading action items...</p>
           </div>
         ) : error ? (
           <div className="text-center py-8">
@@ -438,18 +438,18 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                          <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                           <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${getPriorityColor(item.priority)}`}>
                             {item.priority.toUpperCase()}
                           </span>
                         </div>
-                        <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+                        <p className="text-sm text-slate-300 mb-2">{item.description}</p>
                         
                         {/* Client Info */}
-                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-4 text-sm text-slate-400">
                           <div className="flex items-center gap-1">
                             {getTypeIcon(item.clientType)}
-                            <span className="font-medium text-gray-700">{item.clientName}</span>
+                            <span className="font-medium text-slate-300">{item.clientName}</span>
                           </div>
                           <div className="flex items-center gap-1">
                             {getCategoryIcon(item.category)}
@@ -474,7 +474,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                           {getStatusIcon(item.status)}
                           <span>{formatDueDate(item.daysUntilDue)}</span>
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-slate-400">
                           Due: {new Date(item.dueDate).toLocaleDateString('en-AU', { 
                             day: 'numeric', 
                             month: 'short', 
@@ -520,8 +520,8 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
           <CardContent className="p-12">
             <div className="text-center">
               <CheckCircle className="w-16 h-16 text-[#3DD598] mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No Action Items Found</h3>
-              <p className="text-gray-500">
+              <h3 className="text-xl font-semibold text-white mb-2">No Action Items Found</h3>
+              <p className="text-slate-400">
                 {searchQuery || filterPriority !== 'all' || filterStatus !== 'all' || filterCategory !== 'all'
                   ? 'Try adjusting your search or filters'
                   : 'All actions are up to date!'}

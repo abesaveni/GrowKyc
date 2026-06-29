@@ -280,7 +280,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-green-600 to-blue-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -297,7 +297,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <p className="text-sm text-white/90">Real-Time AML Surveillance & Pattern Detection</p>
               </div>
             </div>
-            <Badge className="bg-white text-green-600 text-sm px-3 py-1">
+            <Badge className="bg-[#0d121d] text-green-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               {liveRefresh ? 'Live Monitoring Active' : 'Live Monitoring Paused'}
             </Badge>
@@ -321,7 +321,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
             <Card>
               <CardContent className="p-4 grid grid-cols-1 lg:grid-cols-5 gap-3">
                 <div className="lg:col-span-2 relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <Input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -364,14 +364,14 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
               </CardContent>
             </Card>
 
-            <div className="flex items-center justify-between text-sm text-gray-600">
+            <div className="flex items-center justify-between text-sm text-slate-300">
               <span>{sortedFilteredAlerts.length} alert(s)</span>
               <Button variant="outline" size="sm" onClick={() => setLiveRefresh((v) => !v)}>
                 {liveRefresh ? 'Pause refresh' : 'Resume refresh'}
               </Button>
             </div>
 
-            {isLoading && <div className="p-6 bg-white rounded border">Loading alerts...</div>}
+            {isLoading && <div className="p-6 bg-[#0d121d] rounded border">Loading alerts...</div>}
             {error && (
               <div className="p-4 bg-red-50 border border-red-200 rounded text-red-700 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" /> {error}
@@ -379,7 +379,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
             )}
 
             {!isLoading && visibleAlerts.length === 0 && (
-              <div className="p-10 bg-white rounded border text-center text-gray-600">
+              <div className="p-10 bg-[#0d121d] rounded border text-center text-slate-300">
                 No alerts match current filters.
               </div>
             )}
@@ -404,36 +404,36 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                             'text-blue-600'
                           }`} />
                           <div>
-                            <h3 className="text-lg font-semibold text-gray-900">{alert.client}</h3>
-                            <div className="text-sm text-gray-600">{alert.pattern}</div>
-                            <div className="text-xs text-gray-500 mt-1">Customer {alert.clientId} · Txn {alert.transactionId}</div>
+                            <h3 className="text-lg font-semibold text-white">{alert.client}</h3>
+                            <div className="text-sm text-slate-300">{alert.pattern}</div>
+                            <div className="text-xs text-slate-400 mt-1">Customer {alert.clientId} · Txn {alert.transactionId}</div>
                           </div>
                           <Badge className={severityBadgeClass(alert.severity)}>
                             {alert.severity.toUpperCase()} · {alert.riskScore}/100
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-gray-800 mb-4 p-3 bg-white rounded border">
+                        <p className="text-sm text-white mb-4 p-3 bg-[#0d121d] rounded border">
                           {alert.details}
                         </p>
 
                         <div className="grid grid-cols-4 gap-4 mb-4">
                           <div>
-                            <div className="text-sm text-gray-600">Transactions</div>
+                            <div className="text-sm text-slate-300">Transactions</div>
                             <div className="font-semibold">{alert.transactions}</div>
                           </div>
                           <div>
-                            <div className="text-sm text-gray-600">Total Amount</div>
+                            <div className="text-sm text-slate-300">Total Amount</div>
                             <div className="font-semibold text-green-600">
                               ${alert.totalAmount.toLocaleString()}
                             </div>
                           </div>
                           <div>
-                            <div className="text-sm text-gray-600">Timeframe</div>
+                            <div className="text-sm text-slate-300">Timeframe</div>
                             <div className="font-semibold">{alert.timeframe}</div>
                           </div>
                           <div>
-                            <div className="text-sm text-gray-600">Status</div>
+                            <div className="text-sm text-slate-300">Status</div>
                             <Badge variant="outline">{alert.status}</Badge>
                           </div>
                         </div>
@@ -447,7 +447,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                           </div>
                         )}
 
-                        <div className="text-xs text-gray-500 mt-3">
+                        <div className="text-xs text-slate-400 mt-3">
                           Flagged: {new Date(alert.flaggedAt).toLocaleString('en-AU')}
                         </div>
                       </div>
@@ -492,7 +492,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
               <Button variant="outline" size="sm" disabled={currentPage <= 1} onClick={() => setCurrentPage((p) => p - 1)}>
                 Previous
               </Button>
-              <span className="text-sm text-gray-600">Page {currentPage} of {totalPages}</span>
+              <span className="text-sm text-slate-300">Page {currentPage} of {totalPages}</span>
               <Button variant="outline" size="sm" disabled={currentPage >= totalPages} onClick={() => setCurrentPage((p) => p + 1)}>
                 Next
               </Button>
@@ -512,7 +512,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <div className="space-y-4">
                   {heatmapData.map((day, idx) => (
                     <div key={idx} className="flex items-center gap-4">
-                      <div className="w-24 text-sm font-medium text-gray-700">
+                      <div className="w-24 text-sm font-medium text-slate-300">
                         {new Date(day.date).toLocaleDateString('en-AU', {
                           month: 'short',
                           day: 'numeric'

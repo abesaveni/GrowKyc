@@ -21,7 +21,7 @@ const AVAILABILITY_STYLES: Record<AvailabilityStatus, string> = {
   available: 'bg-green-100 text-green-800',
   busy: 'bg-amber-100 text-amber-900',
   away: 'bg-blue-100 text-blue-800',
-  offline: 'bg-gray-100 text-gray-600'
+  offline: 'bg-[#0a0e17] text-slate-300'
 };
 
 const ASSIGNMENT_STYLES: Record<AssignmentStatus, string> = {
@@ -88,11 +88,11 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
       label: 'Capacity',
       render: (row) => (
         <div className="min-w-[100px]">
-          <div className="flex justify-between text-xs text-gray-600 mb-1">
+          <div className="flex justify-between text-xs text-slate-300 mb-1">
             <span>{row.activeCases}</span>
             <span>{row.capacity}</span>
           </div>
-          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div className="h-2 bg-[#0a0e17] rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full ${
                 row.activeCases > row.capacity ? 'bg-red-500' : row.activeCases >= row.capacity * 0.85 ? 'bg-amber-500' : 'bg-green-500'
@@ -133,8 +133,8 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+    <div className="min-h-screen bg-[#0a0e17]">
+      <div className="bg-[#0d121d] border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -146,8 +146,8 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
             </div>
             <div>
               <Badge className="bg-green-600 text-white mb-1">RESOURCE MGMT</Badge>
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Resource & Case Assignment</h1>
-              <p className="text-sm text-gray-600">Team capacity, availability, and case load management</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">Resource & Case Assignment</h1>
+              <p className="text-sm text-slate-300">Team capacity, availability, and case load management</p>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
 
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="search"
               placeholder="Search team members..."
@@ -187,9 +187,9 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
             { label: 'At capacity', value: members.filter((m) => m.assignmentStatus === 'at-capacity').length },
             { label: 'Overloaded', value: members.filter((m) => m.assignmentStatus === 'overloaded').length }
           ].map((s) => (
-            <div key={s.label} className="bg-white border border-gray-200 rounded-lg p-4">
-              <p className="text-xs text-gray-500">{s.label}</p>
-              <p className="text-2xl font-bold text-gray-900">{loading ? '—' : s.value}</p>
+            <div key={s.label} className="bg-[#0d121d] border border-white/10 rounded-lg p-4">
+              <p className="text-xs text-slate-400">{s.label}</p>
+              <p className="text-2xl font-bold text-white">{loading ? '—' : s.value}</p>
             </div>
           ))}
         </div>
@@ -209,17 +209,17 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
         <div className="md:hidden grid gap-4">
           {!loading &&
             members.map((m) => (
-              <div key={m.id} className="bg-white border border-gray-200 rounded-lg p-4">
+              <div key={m.id} className="bg-[#0d121d] border border-white/10 rounded-lg p-4">
                 <div className="flex justify-between items-start mb-2">
                   <div>
-                    <p className="font-semibold text-gray-900">{m.name}</p>
-                    <p className="text-sm text-gray-600">{m.role}</p>
+                    <p className="font-semibold text-white">{m.name}</p>
+                    <p className="text-sm text-slate-300">{m.role}</p>
                   </div>
                   <span className={`px-2 py-0.5 rounded-full text-xs ${AVAILABILITY_STYLES[m.availability]}`}>
                     {m.availability}
                   </span>
                 </div>
-                <p className="text-sm text-gray-700 mb-3">
+                <p className="text-sm text-slate-300 mb-3">
                   {m.activeCases} / {m.capacity} cases
                 </p>
                 <Button 
@@ -245,14 +245,14 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
           onClick={() => !assigning && setAssignTarget(null)}
         >
           <div
-            className="bg-white rounded-xl max-w-md w-full p-6 shadow-xl my-auto"
+            className="bg-[#0d121d] rounded-xl max-w-md w-full p-6 shadow-xl my-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-semibold text-gray-900">Assign cases</h3>
-            <p className="text-sm text-gray-600 mt-1">
+            <h3 className="text-lg font-semibold text-white">Assign cases</h3>
+            <p className="text-sm text-slate-300 mt-1">
               {assignTarget.name} — {assignTarget.activeCases} active / {assignTarget.capacity} capacity
             </p>
-            <label className="block mt-4 text-sm font-medium text-gray-700">Number of cases to assign</label>
+            <label className="block mt-4 text-sm font-medium text-slate-300">Number of cases to assign</label>
             <input
               type="number"
               min={1}

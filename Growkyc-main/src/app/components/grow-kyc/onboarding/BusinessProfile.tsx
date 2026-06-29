@@ -58,7 +58,7 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
                 riskScore < 60 ? 'text-amber-600' :
                 'text-red-600'
               }`} />
-              <div className="text-xs text-gray-600">Risk Score</div>
+              <div className="text-xs text-slate-300">Risk Score</div>
               <div className={`text-lg font-bold ${
                 riskScore < 30 ? 'text-green-600' :
                 riskScore < 60 ? 'text-amber-600' :
@@ -109,7 +109,7 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <Label className="text-base font-semibold">Cash Handling</Label>
-                <p className="text-sm text-gray-600">Do you handle significant cash transactions?</p>
+                <p className="text-sm text-slate-300">Do you handle significant cash transactions?</p>
               </div>
               <Switch
                 checked={formData.cashHandling}
@@ -127,7 +127,7 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <Label className="text-base font-semibold">Cryptocurrency Exposure</Label>
-                <p className="text-sm text-gray-600">Do you deal with cryptocurrency?</p>
+                <p className="text-sm text-slate-300">Do you deal with cryptocurrency?</p>
               </div>
               <Switch
                 checked={formData.cryptoExposure}
@@ -145,7 +145,7 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <Label className="text-base font-semibold">Cross-Border Transactions</Label>
-                <p className="text-sm text-gray-600">Do you conduct international business?</p>
+                <p className="text-sm text-slate-300">Do you conduct international business?</p>
               </div>
               <Switch
                 checked={formData.crossBorder}

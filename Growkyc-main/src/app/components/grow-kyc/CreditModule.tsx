@@ -116,9 +116,9 @@ export function CreditModule({ onBack }: CreditModuleProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
-      <div className="bg-white border-b sticky top-0 z-10">
+      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -129,8 +129,8 @@ export function CreditModule({ onBack }: CreditModuleProps) {
               <div className="h-6 w-px bg-gray-300" />
               <DollarSign className="w-6 h-6 text-green-600" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Credit & Responsible Lending</h1>
-                <p className="text-sm text-gray-600">NCCP Compliance & Serviceability Assessment</p>
+                <h1 className="text-2xl font-bold text-white">Credit & Responsible Lending</h1>
+                <p className="text-sm text-slate-300">NCCP Compliance & Serviceability Assessment</p>
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
               <CardContent className="space-y-8">
                 {/* Income */}
                 <div>
-                  <h3 className="font-semibold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-green-600" />
                     Income
                   </h3>
@@ -169,7 +169,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Gross Annual Income</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -181,7 +181,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Net Annual Income (after tax)</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -195,7 +195,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
 
                 {/* Expenses */}
                 <div>
-                  <h3 className="font-semibold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
                     <TrendingDown className="w-5 h-5 text-red-600" />
                     Monthly Expenses
                   </h3>
@@ -203,7 +203,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Rent / Mortgage</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -215,7 +215,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Utilities</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -227,7 +227,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Groceries</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -239,7 +239,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Transport</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -251,7 +251,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Other Expenses</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -263,7 +263,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <div className="space-y-2">
                       <Label>Existing Loan Payments</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                         <Input 
                           type="number" 
                           className="pl-7"
@@ -277,7 +277,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
 
                 {/* Assets & Liabilities */}
                 <div>
-                  <h3 className="font-semibold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
                     <Shield className="w-5 h-5 text-blue-600" />
                     Assets & Liabilities
                   </h3>
@@ -286,7 +286,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="space-y-2">
                         <Label>Property Value</Label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                           <Input 
                             type="number" 
                             className="pl-7"
@@ -298,7 +298,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="space-y-2">
                         <Label>Savings</Label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                           <Input 
                             type="number" 
                             className="pl-7"
@@ -310,7 +310,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="space-y-2">
                         <Label>Superannuation</Label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                           <Input 
                             type="number" 
                             className="pl-7"
@@ -324,7 +324,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="space-y-2">
                         <Label>Existing Loans</Label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                           <Input 
                             type="number" 
                             className="pl-7"
@@ -373,7 +373,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   <div className="space-y-2">
                     <Label>Loan Amount</Label>
                     <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                       <Input 
                         type="number" 
                         className="pl-7"
@@ -442,41 +442,41 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                 <CardContent className="space-y-6">
                   {/* Summary Cards */}
                   <div className="grid grid-cols-3 gap-4">
-                    <Card className="bg-white">
+                    <Card className="bg-[#0d121d]">
                       <CardContent className="p-4">
-                        <div className="text-sm text-gray-600">Monthly Payment</div>
-                        <div className="text-2xl font-bold text-gray-900">
+                        <div className="text-sm text-slate-300">Monthly Payment</div>
+                        <div className="text-2xl font-bold text-white">
                           ${serviceabilityResult.monthlyPayment.toLocaleString()}
                         </div>
-                        <div className="text-xs text-gray-600 mt-1">
+                        <div className="text-xs text-slate-300 mt-1">
                           At {serviceability.assessmentRate}% assessment rate
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-white">
+                    <Card className="bg-[#0d121d]">
                       <CardContent className="p-4">
-                        <div className="text-sm text-gray-600">Monthly Surplus</div>
+                        <div className="text-sm text-slate-300">Monthly Surplus</div>
                         <div className={`text-2xl font-bold ${
                           serviceabilityResult.surplus > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
                           ${serviceabilityResult.surplus.toLocaleString()}
                         </div>
-                        <div className="text-xs text-gray-600 mt-1">
+                        <div className="text-xs text-slate-300 mt-1">
                           After all commitments
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-white">
+                    <Card className="bg-[#0d121d]">
                       <CardContent className="p-4">
-                        <div className="text-sm text-gray-600">Debt Service Ratio</div>
+                        <div className="text-sm text-slate-300">Debt Service Ratio</div>
                         <div className={`text-2xl font-bold ${
                           serviceabilityResult.ratio < 40 ? 'text-green-600' : 'text-red-600'
                         }`}>
                           {serviceabilityResult.ratio}%
                         </div>
-                        <div className="text-xs text-gray-600 mt-1">
+                        <div className="text-xs text-slate-300 mt-1">
                           Target: &lt;40%
                         </div>
                       </CardContent>
@@ -484,31 +484,31 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   </div>
 
                   {/* Breakdown */}
-                  <Card className="bg-white">
+                  <Card className="bg-[#0d121d]">
                     <CardHeader>
                       <CardTitle className="text-base">Monthly Breakdown</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="flex items-center justify-between pb-2 border-b">
-                        <span className="text-sm text-gray-700">Net Monthly Income</span>
+                        <span className="text-sm text-slate-300">Net Monthly Income</span>
                         <span className="font-semibold text-green-600">
                           ${serviceabilityResult.monthlyIncome.toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pb-2 border-b">
-                        <span className="text-sm text-gray-700">Monthly Expenses</span>
+                        <span className="text-sm text-slate-300">Monthly Expenses</span>
                         <span className="font-semibold text-red-600">
                           -${serviceabilityResult.monthlyExpenses.toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pb-2 border-b">
-                        <span className="text-sm text-gray-700">Proposed Loan Payment</span>
+                        <span className="text-sm text-slate-300">Proposed Loan Payment</span>
                         <span className="font-semibold text-red-600">
                           -${serviceabilityResult.monthlyPayment.toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pt-2">
-                        <span className="font-semibold text-gray-900">Surplus / (Deficit)</span>
+                        <span className="font-semibold text-white">Surplus / (Deficit)</span>
                         <span className={`text-xl font-bold ${
                           serviceabilityResult.surplus > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
@@ -580,10 +580,10 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="flex items-start gap-4">
                         <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                         <div className="flex-1">
-                          <div className="font-semibold text-gray-900 mb-2">
+                          <div className="font-semibold text-white mb-2">
                             1. Objectives & Requirements Met?
                           </div>
-                          <p className="text-sm text-gray-700 mb-3">
+                          <p className="text-sm text-slate-300 mb-3">
                             Does the proposed credit contract meet the consumer's objectives and requirements?
                           </p>
                           <div className="flex gap-2">
@@ -606,10 +606,10 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="flex items-start gap-4">
                         <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                         <div className="flex-1">
-                          <div className="font-semibold text-gray-900 mb-2">
+                          <div className="font-semibold text-white mb-2">
                             2. Risk Tolerance Aligned?
                           </div>
-                          <p className="text-sm text-gray-700 mb-3">
+                          <p className="text-sm text-slate-300 mb-3">
                             Is the consumer comfortable with the risk profile of this credit product?
                           </p>
                           <div className="flex gap-2">
@@ -632,10 +632,10 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <div className="flex items-start gap-4">
                         <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                         <div className="flex-1">
-                          <div className="font-semibold text-gray-900 mb-2">
+                          <div className="font-semibold text-white mb-2">
                             3. Capacity Sufficient?
                           </div>
-                          <p className="text-sm text-gray-700 mb-3">
+                          <p className="text-sm text-slate-300 mb-3">
                             Can the consumer meet repayment obligations without substantial hardship?
                           </p>
                           <div className="flex gap-2">
@@ -707,7 +707,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-3">
-                              <span className="font-mono text-sm font-semibold text-gray-600">
+                              <span className="font-mono text-sm font-semibold text-slate-300">
                                 {decision.id}
                               </span>
                               <Badge className={
@@ -719,24 +719,24 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                               </Badge>
                               <Badge variant="outline">{decision.status}</Badge>
                             </div>
-                            <h3 className="font-semibold text-lg text-gray-900 mb-3">
+                            <h3 className="font-semibold text-lg text-white mb-3">
                               {decision.client} - {decision.purpose}
                             </h3>
                             <div className="grid grid-cols-4 gap-4 text-sm mb-4">
                               <div>
-                                <div className="text-gray-600">Decision Date</div>
+                                <div className="text-slate-300">Decision Date</div>
                                 <div className="font-medium">
                                   {new Date(decision.date).toLocaleDateString('en-AU')}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-gray-600">Requested Amount</div>
+                                <div className="text-slate-300">Requested Amount</div>
                                 <div className="font-medium">
                                   ${decision.loanAmount.toLocaleString()}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-gray-600">Approved Amount</div>
+                                <div className="text-slate-300">Approved Amount</div>
                                 <div className={`font-bold ${
                                   decision.approvedAmount > 0 ? 'text-green-600' : 'text-red-600'
                                 }`}>
@@ -744,16 +744,16 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                                 </div>
                               </div>
                               <div>
-                                <div className="text-gray-600">Responsible Officer</div>
+                                <div className="text-slate-300">Responsible Officer</div>
                                 <div className="font-medium">{decision.officer}</div>
                               </div>
                             </div>
                             {decision.conditions.length > 0 && (
-                              <div className="p-3 bg-white rounded border">
-                                <div className="text-sm font-semibold text-gray-900 mb-2">
+                              <div className="p-3 bg-[#0d121d] rounded border">
+                                <div className="text-sm font-semibold text-white mb-2">
                                   Conditions:
                                 </div>
-                                <ul className="text-sm text-gray-700 space-y-1">
+                                <ul className="text-sm text-slate-300 space-y-1">
                                   {decision.conditions.map((condition, idx) => (
                                     <li key={idx} className="flex items-start gap-2">
                                       <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />

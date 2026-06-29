@@ -23,7 +23,7 @@ export function KYCClientDetails({ onBack, clientId: propClientId }: KYCClientDe
 
   if (!clientId) {
     return (
-      <div className="p-8 text-center text-gray-500">
+      <div className="p-8 text-center text-slate-400">
         No client ID provided.
       </div>
     );

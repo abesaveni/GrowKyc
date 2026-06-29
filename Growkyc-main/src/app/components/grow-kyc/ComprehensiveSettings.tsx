@@ -227,10 +227,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
 
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <div className="min-h-screen bg-[#0a0e17] relative">
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-white dark:bg-gray-800 border-l-4 border-purple-600 shadow-2xl rounded-lg p-4 flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-0 scale-100">
+        <div className="fixed bottom-6 right-6 z-50 bg-[#0d121d] dark:bg-gray-800 border-l-4 border-purple-600 shadow-2xl rounded-lg p-4 flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-0 scale-100">
           <div className={`p-2 rounded-full ${
             toast.type === 'success' ? 'bg-green-100 text-green-600' :
             toast.type === 'info' ? 'bg-blue-100 text-blue-600' :
@@ -239,13 +239,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             {toast.type === 'success' ? <Check className="w-5 h-5" /> : toast.type === 'info' ? <Info className="w-5 h-5" /> : <AlertTriangle className="w-5 h-5" />}
           </div>
           <div>
-            <p className="text-sm font-bold text-gray-900 dark:text-white">{toast.type === 'success' ? 'Success' : toast.type === 'info' ? 'Info' : 'Error'}</p>
-            <p className="text-xs text-gray-600 dark:text-gray-400">{toast.message}</p>
+            <p className="text-sm font-bold text-white dark:text-white">{toast.type === 'success' ? 'Success' : toast.type === 'info' ? 'Info' : 'Error'}</p>
+            <p className="text-xs text-slate-300 dark:text-slate-400">{toast.message}</p>
           </div>
         </div>
       )}
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-4 md:px-6 py-4">
+      <div className="bg-[#0d121d] border-b border-white/10 px-4 md:px-6 py-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
           <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="flex-shrink-0">
@@ -255,8 +255,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             <div className="h-6 w-px bg-gray-300 hidden sm:block" />
             <Settings className="w-6 h-6 md:w-8 md:h-8 text-purple-600 flex-shrink-0" />
             <div className="min-w-0">
-              <h1 className="text-lg md:text-2xl font-bold text-gray-900 truncate">System Settings & Configuration</h1>
-              <p className="text-xs md:text-sm text-gray-600 truncate">Complete control center for your KYC platform</p>
+              <h1 className="text-lg md:text-2xl font-bold text-white truncate">System Settings & Configuration</h1>
+              <p className="text-xs md:text-sm text-slate-300 truncate">Complete control center for your KYC platform</p>
             </div>
           </div>
           <Badge variant="default" className={`${isReadOnly ? 'bg-amber-600' : 'bg-purple-600'} self-start sm:self-auto flex-shrink-0`}>
@@ -281,7 +281,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
       {/* Main Content */}
       <div className="p-4 md:p-6 max-w-7xl mx-auto">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex lg:grid lg:grid-cols-7 w-full overflow-x-auto mb-6 p-1 bg-gray-100 rounded-lg whitespace-nowrap overflow-y-hidden max-w-full gap-1 lg:gap-0 scrollbar-thin">
+          <TabsList className="flex lg:grid lg:grid-cols-7 w-full overflow-x-auto mb-6 p-1 bg-[#0a0e17] rounded-lg whitespace-nowrap overflow-y-hidden max-w-full gap-1 lg:gap-0 scrollbar-thin">
             <TabsTrigger value="kyc-config" className="flex items-center gap-2 flex-shrink-0 px-3 py-1.5 text-xs lg:text-sm">
               <Shield className="w-4 h-4" />
               KYC Config
@@ -343,13 +343,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         />
                         <span className="text-3xl font-bold text-cyan-600">%</span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">
+                      <p className="text-xs text-slate-300 mt-2">
                         Default: 24% (anyone with 24%+ ownership is automatically screened)
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-cyan-200">
-                      <p className="text-xs font-semibold text-gray-700 mb-2">Auto-screening triggers:</p>
-                      <ul className="text-xs text-gray-600 space-y-1">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-cyan-200">
+                      <p className="text-xs font-semibold text-slate-300 mb-2">Auto-screening triggers:</p>
+                      <ul className="text-xs text-slate-300 space-y-1">
                         <li>• Directors (always screened)</li>
                         <li>• Shareholders ≥ threshold %</li>
                         <li>• Beneficial owners ≥ threshold %</li>
@@ -371,11 +371,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={controlThreshold}
                         onChange={e => setControlThreshold(Number(e.target.value))}
-                        className="border-2 border-purple-200 bg-white"
+                        className="border-2 border-purple-200 bg-[#0d121d]"
                       />
                       <span className="font-semibold text-purple-600">%</span>
                     </div>
-                    <p className="text-xs text-gray-600 mt-2">Flagged as controlling interest</p>
+                    <p className="text-xs text-slate-300 mt-2">Flagged as controlling interest</p>
                   </div>
 
                   <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
@@ -388,11 +388,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={highRiskThreshold}
                         onChange={e => setHighRiskThreshold(Number(e.target.value))}
-                        className="border-2 border-amber-200 bg-white"
+                        className="border-2 border-amber-200 bg-[#0d121d]"
                       />
                       <span className="font-semibold text-amber-600">%</span>
                     </div>
-                    <p className="text-xs text-gray-600 mt-2">Trigger enhanced due diligence</p>
+                    <p className="text-xs text-slate-300 mt-2">Trigger enhanced due diligence</p>
                   </div>
                 </div>
               </CardContent>
@@ -413,38 +413,38 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Auto-discover entities</p>
-                      <p className="text-xs text-gray-600">Automatically find linked companies</p>
+                      <p className="font-semibold text-white">Auto-discover entities</p>
+                      <p className="text-xs text-slate-300">Automatically find linked companies</p>
                     </div>
                     <Switch checked={autoDiscover} onCheckedChange={setAutoDiscover} />
                   </div>
 
                   <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Recursive expansion</p>
-                      <p className="text-xs text-gray-600">Expand through entity chains</p>
+                      <p className="font-semibold text-white">Recursive expansion</p>
+                      <p className="text-xs text-slate-300">Expand through entity chains</p>
                     </div>
                     <Switch checked={recursiveExpansion} onCheckedChange={setRecursiveExpansion} />
                   </div>
 
                   <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Auto-screen directors</p>
-                      <p className="text-xs text-gray-600">Always run AML on directors</p>
+                      <p className="font-semibold text-white">Auto-screen directors</p>
+                      <p className="text-xs text-slate-300">Always run AML on directors</p>
                     </div>
                     <Switch checked={autoScreenDirectors} onCheckedChange={setAutoScreenDirectors} />
                   </div>
 
                   <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Auto-screen shareholders</p>
-                      <p className="text-xs text-gray-600">Based on threshold %</p>
+                      <p className="font-semibold text-white">Auto-screen shareholders</p>
+                      <p className="text-xs text-slate-300">Based on threshold %</p>
                     </div>
                     <Switch checked={autoScreenShareholders} onCheckedChange={setAutoScreenShareholders} />
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-4 border-2 border-indigo-300">
+                <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-indigo-300">
                   <Label className="text-sm font-semibold mb-3 block">Maximum Expansion Depth</Label>
                   <div className="flex items-center gap-4">
                     <Input
@@ -453,7 +453,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onChange={e => setMaxExpansionDepth(Number(e.target.value))}
                       className="w-24 border-2"
                     />
-                    <span className="text-sm text-gray-600">levels deep (prevents infinite loops)</span>
+                    <span className="text-sm text-slate-300">levels deep (prevents infinite loops)</span>
                   </div>
                 </div>
               </CardContent>
@@ -489,7 +489,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div key={idx} className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <div className="flex items-center gap-2">
                         <Bot className="w-4 h-4 text-purple-600" />
-                        <span className="text-sm font-semibold text-gray-900">{bot.name}</span>
+                        <span className="text-sm font-semibold text-white">{bot.name}</span>
                       </div>
                       <Switch
                         checked={botSettings[bot.name as keyof typeof botSettings] ?? bot.enabled}
@@ -538,11 +538,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionIdDocs}
                         onChange={e => setRetentionIdDocs(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">years</span>
+                      <span className="text-sm text-slate-300">years</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2">AUSTRAC compliance: minimum 7 years</p>
+                    <p className="text-xs text-slate-400 mt-2">AUSTRAC compliance: minimum 7 years</p>
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
@@ -552,11 +552,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionScreening}
                         onChange={e => setRetentionScreening(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">years</span>
+                      <span className="text-sm text-slate-300">years</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2">AML/CTF audit trail</p>
+                    <p className="text-xs text-slate-400 mt-2">AML/CTF audit trail</p>
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
@@ -566,11 +566,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionCase}
                         onChange={e => setRetentionCase(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">years</span>
+                      <span className="text-sm text-slate-300">years</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2">Compliance investigation history</p>
+                    <p className="text-xs text-slate-400 mt-2">Compliance investigation history</p>
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
@@ -580,17 +580,17 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionAudit}
                         onChange={e => setRetentionAudit(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">years</span>
+                      <span className="text-sm text-slate-300">years</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2">System activity records</p>
+                    <p className="text-xs text-slate-400 mt-2">System activity records</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <div className="flex justify-end pt-4 border-t border-gray-200 mt-6">
+            <div className="flex justify-end pt-4 border-t border-white/10 mt-6">
               <Button
                 disabled={isReadOnly}
                 onClick={() => saveTabSettings('KYC Configuration', {
@@ -651,8 +651,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div className="flex items-center gap-3">
                       <Shield className="w-8 h-8 text-blue-600" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900">Equifax</h3>
-                        <p className="text-xs text-gray-600">Identity verification & credit checks</p>
+                        <h3 className="font-bold text-lg text-white">Equifax</h3>
+                        <p className="text-xs text-slate-300">Identity verification & credit checks</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600">Connected</Badge>
@@ -677,7 +677,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <Label className="text-xs font-semibold mb-2 block">Rate Limit</Label>
                       <div className="flex items-center gap-2">
                         <Input type="number" defaultValue="100" className="border-2" />
-                        <span className="text-xs text-gray-600">req/min</span>
+                        <span className="text-xs text-slate-300">req/min</span>
                       </div>
                     </div>
                   </div>
@@ -689,8 +689,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div className="flex items-center gap-3">
                       <Building2 className="w-8 h-8 text-purple-600" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900">Illion</h3>
-                        <p className="text-xs text-gray-600">Business credit & insolvency</p>
+                        <h3 className="font-bold text-lg text-white">Illion</h3>
+                        <p className="text-xs text-slate-300">Business credit & insolvency</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600">Connected</Badge>
@@ -713,8 +713,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div className="flex items-center gap-3">
                       <AlertTriangle className="w-8 h-8 text-red-600" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900">ComplyAdvantage</h3>
-                        <p className="text-xs text-gray-600">AML screening - Sanctions, PEP, Adverse Media</p>
+                        <h3 className="font-bold text-lg text-white">ComplyAdvantage</h3>
+                        <p className="text-xs text-slate-300">AML screening - Sanctions, PEP, Adverse Media</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600">Connected</Badge>
@@ -737,8 +737,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div className="flex items-center gap-3">
                       <FileText className="w-8 h-8 text-cyan-600" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900">ASIC Connect</h3>
-                        <p className="text-xs text-gray-600">Company extracts & entity records</p>
+                        <h3 className="font-bold text-lg text-white">ASIC Connect</h3>
+                        <p className="text-xs text-slate-300">Company extracts & entity records</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600">Connected</Badge>
@@ -761,8 +761,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div className="flex items-center gap-3">
                       <Eye className="w-8 h-8 text-green-600" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900">InfoTrack</h3>
-                        <p className="text-xs text-gray-600">ID verification & KYC checks</p>
+                        <h3 className="font-bold text-lg text-white">InfoTrack</h3>
+                        <p className="text-xs text-slate-300">ID verification & KYC checks</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600">Connected</Badge>
@@ -783,10 +783,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <div className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-lg p-6 border-2 border-gray-300">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Database className="w-8 h-8 text-gray-600" />
+                      <Database className="w-8 h-8 text-slate-300" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900">LexisNexis</h3>
-                        <p className="text-xs text-gray-600">Legal research & court records (optional)</p>
+                        <h3 className="font-bold text-lg text-white">LexisNexis</h3>
+                        <p className="text-xs text-slate-300">Legal research & court records (optional)</p>
                       </div>
                     </div>
                     <Badge className="bg-gray-400">Not Configured</Badge>
@@ -817,14 +817,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <span className="text-sm font-semibold">ComplyAdvantage Monitoring Alerts</span>
                     <Badge className="bg-green-600">Active</Badge>
                   </div>
-                  <p className="text-xs text-gray-600 font-mono">https://api.grow.com/webhooks/ca-monitoring</p>
+                  <p className="text-xs text-slate-300 font-mono">https://api.grow.com/webhooks/ca-monitoring</p>
                 </div>
                 <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-semibold">Illion Credit Updates</span>
                     <Badge className="bg-green-600">Active</Badge>
                   </div>
-                  <p className="text-xs text-gray-600 font-mono">https://api.grow.com/webhooks/illion-updates</p>
+                  <p className="text-xs text-slate-300 font-mono">https://api.grow.com/webhooks/illion-updates</p>
                 </div>
               </CardContent>
             </Card>
@@ -857,7 +857,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       { name: 'Credit Issues', weight: 20, color: 'blue' }
                     ].map((factor, idx) => (
                       <div key={idx} className="flex items-center gap-4">
-                        <span className="text-sm font-semibold text-gray-900 w-48">{factor.name}</span>
+                        <span className="text-sm font-semibold text-white w-48">{factor.name}</span>
                         <Input
                           type="number"
                           value={riskWeights[factor.name as keyof typeof riskWeights] ?? factor.weight}
@@ -868,7 +868,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                               [factor.name]: newWeight
                             }));
                           }}
-                          className="w-24 border-2 bg-white"
+                          className="w-24 border-2 bg-[#0d121d]"
                         />
                         <div className="flex-1 bg-gray-200 rounded-full h-2">
                           <div
@@ -889,14 +889,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={riskLowMin}
                         onChange={e => setRiskLowMin(Number(e.target.value))}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                       <span className="text-sm">-</span>
                       <Input
                         type="number"
                         value={riskLowMax}
                         onChange={e => setRiskLowMax(Number(e.target.value))}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                     </div>
                   </div>
@@ -907,14 +907,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={riskMedMin}
                         onChange={e => setRiskMedMin(Number(e.target.value))}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                       <span className="text-sm">-</span>
                       <Input
                         type="number"
                         value={riskMedMax}
                         onChange={e => setRiskMedMax(Number(e.target.value))}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                     </div>
                   </div>
@@ -925,14 +925,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={riskHighMin}
                         onChange={e => setRiskHighMin(Number(e.target.value))}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                       <span className="text-sm">-</span>
                       <Input
                         type="number"
                         value={riskHighMax}
                         onChange={e => setRiskHighMax(Number(e.target.value))}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                     </div>
                   </div>
@@ -962,8 +962,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         }}
                       />
                       <div>
-                        <p className="font-semibold text-gray-900">{rule.trigger}</p>
-                        <p className="text-xs text-gray-600">Auto-create case for manual review</p>
+                        <p className="font-semibold text-white">{rule.trigger}</p>
+                        <p className="text-xs text-slate-300">Auto-create case for manual review</p>
                       </div>
                     </div>
                     <Badge className={
@@ -999,9 +999,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={standardReviewMonths}
                         onChange={e => setStandardReviewMonths(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">months</span>
+                      <span className="text-sm text-slate-300">months</span>
                     </div>
                   </div>
                   <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
@@ -1011,9 +1011,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={mediumReviewMonths}
                         onChange={e => setMediumReviewMonths(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">months</span>
+                      <span className="text-sm text-slate-300">months</span>
                     </div>
                   </div>
                   <div className="bg-red-50 rounded-lg p-4 border border-red-200">
@@ -1023,9 +1023,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={highReviewMonths}
                         onChange={e => setHighReviewMonths(Number(e.target.value))}
-                        className="w-24 border-2 bg-white"
+                        className="w-24 border-2 bg-[#0d121d]"
                       />
-                      <span className="text-sm text-gray-600">months</span>
+                      <span className="text-sm text-slate-300">months</span>
                     </div>
                   </div>
                 </div>
@@ -1033,8 +1033,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Real-time sanctions monitoring</p>
-                      <p className="text-xs text-gray-600">Continuous screening via ComplyAdvantage</p>
+                      <p className="font-semibold text-white">Real-time sanctions monitoring</p>
+                      <p className="text-xs text-slate-300">Continuous screening via ComplyAdvantage</p>
                     </div>
                     <Switch
                       checked={monitoringAlerts['Real-time sanctions monitoring']}
@@ -1043,8 +1043,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                   <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
                     <div>
-                      <p className="font-semibold text-gray-900">PEP status monitoring</p>
-                      <p className="text-xs text-gray-600">Daily PEP list updates</p>
+                      <p className="font-semibold text-white">PEP status monitoring</p>
+                      <p className="text-xs text-slate-300">Daily PEP list updates</p>
                     </div>
                     <Switch
                       checked={monitoringAlerts['PEP status monitoring']}
@@ -1053,8 +1053,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                   <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Adverse media monitoring</p>
-                      <p className="text-xs text-gray-600">Weekly media scans</p>
+                      <p className="font-semibold text-white">Adverse media monitoring</p>
+                      <p className="text-xs text-slate-300">Weekly media scans</p>
                     </div>
                     <Switch
                       checked={monitoringAlerts['Adverse media monitoring']}
@@ -1063,8 +1063,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                   <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Credit monitoring alerts</p>
-                      <p className="text-xs text-gray-600">Credit score changes</p>
+                      <p className="font-semibold text-white">Credit monitoring alerts</p>
+                      <p className="text-xs text-slate-300">Credit score changes</p>
                     </div>
                     <Switch
                       checked={monitoringAlerts['Credit monitoring alerts']}
@@ -1075,7 +1075,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardContent>
             </Card>
 
-            <div className="flex justify-end pt-4 border-t border-gray-200 mt-6">
+            <div className="flex justify-end pt-4 border-t border-white/10 mt-6">
               <Button
                 disabled={isReadOnly}
                 onClick={() => saveTabSettings('Risk & Rules', {
@@ -1130,11 +1130,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               <CardContent className="space-y-6">
                 {/* One-Time Verification Fee */}
                 <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-cyan-600" />
                     One-Time Verification Fee
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     Client-facing fee for initial KYC verification (includes all base checks)
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -1143,19 +1143,19 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Verification Fee Amount
                       </Label>
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-gray-600">$</span>
+                        <span className="text-2xl font-bold text-slate-300">$</span>
                         <Input
                           id="verification-fee"
                           type="number"
                           value={verificationFee}
                           onChange={e => setVerificationFee(Number(e.target.value))}
-                          className="text-lg font-semibold border-2 border-cyan-300 focus:border-cyan-500 bg-white"
+                          className="text-lg font-semibold border-2 border-cyan-300 focus:border-cyan-500 bg-[#0d121d]"
                         />
                       </div>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-cyan-200">
-                      <p className="text-xs text-gray-600 mb-2">This fee includes:</p>
-                      <ul className="text-xs text-gray-700 space-y-1">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-cyan-200">
+                      <p className="text-xs text-slate-300 mb-2">This fee includes:</p>
+                      <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
                           <Check className="w-3 h-3 text-green-600" />
                           Identity verification (Equifax)
@@ -1179,136 +1179,136 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                 {/* Individual Search Costs */}
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <Search className="w-5 h-5 text-purple-600" />
                     Individual Search Costs
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     Internal costs for each external integration check (for tracking purposes)
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Equifax */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">Equifax Identity Check</p>
-                          <p className="text-xs text-gray-600">Identity, fraud, credit signals</p>
+                          <p className="font-semibold text-white">Equifax Identity Check</p>
+                          <p className="text-xs text-slate-300">Identity, fraud, credit signals</p>
                         </div>
                         <Shield className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           value={individualSearchCosts['Equifax Identity Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'Equifax Identity Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-white"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
                         />
                       </div>
                     </div>
 
                     {/* Illion */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">Illion Business Check</p>
-                          <p className="text-xs text-gray-600">Credit, insolvency, court data</p>
+                          <p className="font-semibold text-white">Illion Business Check</p>
+                          <p className="text-xs text-slate-300">Credit, insolvency, court data</p>
                         </div>
                         <Building2 className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           value={individualSearchCosts['Illion Business Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'Illion Business Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-white"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
                         />
                       </div>
                     </div>
 
                     {/* ComplyAdvantage */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">ComplyAdvantage AML</p>
-                          <p className="text-xs text-gray-600">Sanctions, PEP, adverse media</p>
+                          <p className="font-semibold text-white">ComplyAdvantage AML</p>
+                          <p className="text-xs text-slate-300">Sanctions, PEP, adverse media</p>
                         </div>
                         <AlertTriangle className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           value={individualSearchCosts['ComplyAdvantage AML']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'ComplyAdvantage AML': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-white"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
                         />
                       </div>
                     </div>
 
                     {/* ASIC */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">ASIC Company Extract</p>
-                          <p className="text-xs text-gray-600">Entity records, directors, shares</p>
+                          <p className="font-semibold text-white">ASIC Company Extract</p>
+                          <p className="text-xs text-slate-300">Entity records, directors, shares</p>
                         </div>
                         <FileText className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           value={individualSearchCosts['ASIC Company Extract']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'ASIC Company Extract': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-white"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
                         />
                       </div>
                     </div>
 
                     {/* InfoTrack KYC */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">InfoTrack ID Verification</p>
-                          <p className="text-xs text-gray-600">Document verification</p>
+                          <p className="font-semibold text-white">InfoTrack ID Verification</p>
+                          <p className="text-xs text-slate-300">Document verification</p>
                         </div>
                         <Eye className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           value={individualSearchCosts['InfoTrack ID Verification']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'InfoTrack ID Verification': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-white"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
                         />
                       </div>
                     </div>
 
                     {/* LexisNexis (Optional) */}
-                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <p className="font-semibold text-gray-900">LexisNexis Legal Check</p>
-                          <p className="text-xs text-gray-600">Court records, litigation</p>
+                          <p className="font-semibold text-white">LexisNexis Legal Check</p>
+                          <p className="text-xs text-slate-300">Court records, litigation</p>
                         </div>
                         <Database className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-semibold text-gray-600">$</span>
+                        <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           value={individualSearchCosts['LexisNexis Legal Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'LexisNexis Legal Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-white"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 bg-white rounded-lg p-4 border border-purple-300">
+                  <div className="mt-4 bg-[#0d121d] rounded-lg p-4 border border-purple-300">
                     <div className="flex items-start gap-2">
                       <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                       <div>
@@ -1323,11 +1323,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                 {/* Ongoing Monitoring Fee */}
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <Activity className="w-5 h-5 text-green-600" />
                     Ongoing Monitoring Subscription
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     Monthly fee for continuous AML monitoring of client and associated parties
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -1336,23 +1336,23 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Monthly Monitoring Fee
                       </Label>
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-gray-600">$</span>
+                        <span className="text-2xl font-bold text-slate-300">$</span>
                         <Input
                           id="monitoring-fee"
                           type="number"
                           value={monitoringFee}
                           onChange={e => setMonitoringFee(Number(e.target.value))}
-                          className="text-lg font-semibold border-2 border-green-300 focus:border-green-500 bg-white"
+                          className="text-lg font-semibold border-2 border-green-300 focus:border-green-500 bg-[#0d121d]"
                         />
-                        <span className="text-sm text-gray-600 whitespace-nowrap">/ month</span>
+                        <span className="text-sm text-slate-300 whitespace-nowrap">/ month</span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">
+                      <p className="text-xs text-slate-300 mt-2">
                         Billed monthly per client entity
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-green-200">
-                      <p className="text-xs text-gray-600 mb-2">Monthly monitoring includes:</p>
-                      <ul className="text-xs text-gray-700 space-y-1">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border border-green-200">
+                      <p className="text-xs text-slate-300 mb-2">Monthly monitoring includes:</p>
+                      <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
                           <Check className="w-3 h-3 text-green-600" />
                           Real-time sanctions screening
@@ -1383,30 +1383,30 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                   {/* Monitoring Tiers */}
                   <div className="mt-4 grid md:grid-cols-3 gap-3">
-                    <div className="bg-white rounded-lg p-4 border-2 border-green-300">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-green-300">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-blue-600">Standard</Badge>
                         <span className="font-bold text-lg">$15</span>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Monthly checks, standard alerts
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border-2 border-amber-400">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-amber-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-amber-600">Enhanced</Badge>
                         <span className="font-bold text-lg">$35</span>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Weekly checks, priority alerts
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border-2 border-purple-400">
+                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-purple-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-purple-600">Premium</Badge>
                         <span className="font-bold text-lg">$75</span>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Real-time monitoring, instant alerts
                       </p>
                     </div>
@@ -1415,20 +1415,20 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                 {/* Pricing Summary */}
                 <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-200">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
                     <BarChart3 className="w-5 h-5 text-indigo-600" />
                     Pricing Summary
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-3">Revenue Model</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-3">Revenue Model</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Initial Verification</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Initial Verification</span>
                           <span className="font-bold text-indigo-600">$49.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Monthly Monitoring (Standard)</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Monthly Monitoring (Standard)</span>
                           <span className="font-bold text-indigo-600">$15.00</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-indigo-100 rounded-lg border-2 border-indigo-300">
@@ -1438,15 +1438,15 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       </div>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-3">Cost Structure</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-3">Cost Structure</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Total External Checks</span>
-                          <span className="font-bold text-gray-900">~$46.50</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Total External Checks</span>
+                          <span className="font-bold text-white">~$46.50</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-indigo-200">
-                          <span className="text-sm text-gray-700">Monitoring Cost (est.)</span>
-                          <span className="font-bold text-gray-900">~$5.00/mo</span>
+                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                          <span className="text-sm text-slate-300">Monitoring Cost (est.)</span>
+                          <span className="font-bold text-white">~$5.00/mo</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-green-100 rounded-lg border-2 border-green-300">
                           <span className="text-sm font-semibold text-green-900">12-Month Margin</span>
@@ -1494,7 +1494,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.name}
                       onChange={e => setOrgProfile(prev => ({ ...prev, name: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                   <div>
@@ -1502,7 +1502,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.tradingName}
                       onChange={e => setOrgProfile(prev => ({ ...prev, tradingName: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                   <div>
@@ -1510,7 +1510,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.abn}
                       onChange={e => setOrgProfile(prev => ({ ...prev, abn: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                   <div>
@@ -1518,7 +1518,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.acn}
                       onChange={e => setOrgProfile(prev => ({ ...prev, acn: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -1526,7 +1526,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.address}
                       onChange={e => setOrgProfile(prev => ({ ...prev, address: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                   <div>
@@ -1535,7 +1535,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       type="email"
                       value={orgProfile.email}
                       onChange={e => setOrgProfile(prev => ({ ...prev, email: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                   <div>
@@ -1544,7 +1544,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       type="tel"
                       value={orgProfile.phone}
                       onChange={e => setOrgProfile(prev => ({ ...prev, phone: e.target.value }))}
-                      className="border-2 bg-white"
+                      className="border-2 bg-[#0d121d]"
                     />
                   </div>
                 </div>
@@ -1566,9 +1566,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
                     <Label className="text-sm font-semibold mb-3 block">Logo Upload</Label>
-                    <div className="border-2 border-dashed border-purple-300 rounded-lg p-6 text-center bg-white">
+                    <div className="border-2 border-dashed border-purple-300 rounded-lg p-6 text-center bg-[#0d121d]">
                       <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                      <p className="text-sm text-gray-600 mb-2">Upload your organization logo</p>
+                      <p className="text-sm text-slate-300 mb-2">Upload your organization logo</p>
                       <Button size="sm" variant="outline" onClick={() => showToast('Logo upload is locked in demo mode.', 'info')}>Choose File</Button>
                     </div>
                   </div>
@@ -1580,15 +1580,15 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="color"
                         value={brandColor}
                         onChange={e => setBrandColor(e.target.value)}
-                        className="w-20 h-12 border-2 bg-white cursor-pointer"
+                        className="w-20 h-12 border-2 bg-[#0d121d] cursor-pointer"
                       />
                       <Input
                         value={brandColor}
                         onChange={e => setBrandColor(e.target.value)}
-                        className="border-2 bg-white"
+                        className="border-2 bg-[#0d121d]"
                       />
                     </div>
-                    <p className="text-xs text-gray-600 mt-2">Used for buttons, links, and accents</p>
+                    <p className="text-xs text-slate-300 mt-2">Used for buttons, links, and accents</p>
                   </div>
                 </div>
 
@@ -1637,8 +1637,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           {user.name.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-900">{user.name}</p>
-                          <p className="text-xs text-gray-600">{user.email}</p>
+                          <p className="font-semibold text-white">{user.name}</p>
+                          <p className="text-xs text-slate-300">{user.email}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -1690,7 +1690,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   <select
                     value={primaryRegion}
                     onChange={e => setPrimaryRegion(e.target.value)}
-                    className="w-full px-4 py-2 border-2 rounded-lg bg-white"
+                    className="w-full px-4 py-2 border-2 rounded-lg bg-[#0d121d]"
                   >
                     <option>Australia (Sydney)</option>
                     <option>New Zealand (Auckland)</option>
@@ -1702,15 +1702,15 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <option>Hong Kong</option>
                     <option>European Union (Frankfurt)</option>
                   </select>
-                  <p className="text-xs text-gray-600 mt-2">All client data will be stored in this region</p>
+                  <p className="text-xs text-slate-300 mt-2">All client data will be stored in this region</p>
                 </div>
 
-                <div className="bg-white rounded-lg p-4 border-2 border-indigo-300">
-                  <h3 className="font-bold text-sm text-gray-900 mb-3 flex items-center gap-2">
+                <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-indigo-300">
+                  <h3 className="font-bold text-sm text-white mb-3 flex items-center gap-2">
                     <Shield className="w-4 h-4 text-indigo-600" />
                     Multi-Jurisdictional Compliance Modes
                   </h3>
-                  <p className="text-xs text-gray-600 mb-4">
+                  <p className="text-xs text-slate-300 mb-4">
                     Enable compliance frameworks for the jurisdictions where you operate
                   </p>
 
@@ -1720,10 +1720,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇦🇺</span>
-                          <p className="font-semibold text-gray-900">Australia</p>
+                          <p className="font-semibold text-white">Australia</p>
                         </div>
-                        <p className="text-xs text-gray-600">Privacy Act 1988 (APPs)</p>
-                        <p className="text-xs text-gray-500 mt-1">13 Australian Privacy Principles</p>
+                        <p className="text-xs text-slate-300">Privacy Act 1988 (APPs)</p>
+                        <p className="text-xs text-slate-400 mt-1">13 Australian Privacy Principles</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.Australia}
@@ -1736,10 +1736,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇪🇺</span>
-                          <p className="font-semibold text-gray-900">European Union</p>
+                          <p className="font-semibold text-white">European Union</p>
                         </div>
-                        <p className="text-xs text-gray-600">GDPR (General Data Protection Regulation)</p>
-                        <p className="text-xs text-gray-500 mt-1">EU data protection rules</p>
+                        <p className="text-xs text-slate-300">GDPR (General Data Protection Regulation)</p>
+                        <p className="text-xs text-slate-400 mt-1">EU data protection rules</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.EU}
@@ -1752,10 +1752,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇺🇸</span>
-                          <p className="font-semibold text-gray-900">United States (California)</p>
+                          <p className="font-semibold text-white">United States (California)</p>
                         </div>
-                        <p className="text-xs text-gray-600">CCPA (California Consumer Privacy Act)</p>
-                        <p className="text-xs text-gray-500 mt-1">California privacy rules</p>
+                        <p className="text-xs text-slate-300">CCPA (California Consumer Privacy Act)</p>
+                        <p className="text-xs text-slate-400 mt-1">California privacy rules</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.US}
@@ -1768,10 +1768,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇬🇧</span>
-                          <p className="font-semibold text-gray-900">United Kingdom</p>
+                          <p className="font-semibold text-white">United Kingdom</p>
                         </div>
-                        <p className="text-xs text-gray-600">UK GDPR & Data Protection Act 2018</p>
-                        <p className="text-xs text-gray-500 mt-1">Post-Brexit UK data protection</p>
+                        <p className="text-xs text-slate-300">UK GDPR & Data Protection Act 2018</p>
+                        <p className="text-xs text-slate-400 mt-1">Post-Brexit UK data protection</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.UK}
@@ -1784,10 +1784,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇨🇦</span>
-                          <p className="font-semibold text-gray-900">Canada</p>
+                          <p className="font-semibold text-white">Canada</p>
                         </div>
-                        <p className="text-xs text-gray-600">PIPEDA</p>
-                        <p className="text-xs text-gray-500 mt-1">Personal Information Protection Act</p>
+                        <p className="text-xs text-slate-300">PIPEDA</p>
+                        <p className="text-xs text-slate-400 mt-1">Personal Information Protection Act</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.Canada}
@@ -1800,10 +1800,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇸🇬</span>
-                          <p className="font-semibold text-gray-900">Singapore</p>
+                          <p className="font-semibold text-white">Singapore</p>
                         </div>
-                        <p className="text-xs text-gray-600">PDPA (Personal Data Protection Act)</p>
-                        <p className="text-xs text-gray-500 mt-1">Singapore data protection rules</p>
+                        <p className="text-xs text-slate-300">PDPA (Personal Data Protection Act)</p>
+                        <p className="text-xs text-slate-400 mt-1">Singapore data protection rules</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.Singapore}
@@ -1816,10 +1816,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇳🇿</span>
-                          <p className="font-semibold text-gray-900">New Zealand</p>
+                          <p className="font-semibold text-white">New Zealand</p>
                         </div>
-                        <p className="text-xs text-gray-600">Privacy Act 2020</p>
-                        <p className="text-xs text-gray-500 mt-1">13 NZ Privacy Principles</p>
+                        <p className="text-xs text-slate-300">Privacy Act 2020</p>
+                        <p className="text-xs text-slate-400 mt-1">13 NZ Privacy Principles</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.NZ}
@@ -1832,10 +1832,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇭🇰</span>
-                          <p className="font-semibold text-gray-900">Hong Kong</p>
+                          <p className="font-semibold text-white">Hong Kong</p>
                         </div>
-                        <p className="text-xs text-gray-600">PDPO (Personal Data Privacy Ordinance)</p>
-                        <p className="text-xs text-gray-500 mt-1">Hong Kong privacy protection</p>
+                        <p className="text-xs text-slate-300">PDPO (Personal Data Privacy Ordinance)</p>
+                        <p className="text-xs text-slate-400 mt-1">Hong Kong privacy protection</p>
                       </div>
                       <Switch
                         checked={jurisdictionSwitches.HK}
@@ -1877,8 +1877,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Require MFA for all users</p>
-                      <p className="text-xs text-gray-600">Multi-factor authentication</p>
+                      <p className="font-semibold text-white">Require MFA for all users</p>
+                      <p className="text-xs text-slate-300">Multi-factor authentication</p>
                     </div>
                     <Switch
                       checked={requireMfa}
@@ -1887,8 +1887,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                   <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
                     <div>
-                      <p className="font-semibold text-gray-900">SSO / SAML Integration</p>
-                      <p className="text-xs text-gray-600">Single sign-on</p>
+                      <p className="font-semibold text-white">SSO / SAML Integration</p>
+                      <p className="text-xs text-slate-300">Single sign-on</p>
                     </div>
                     <Switch
                       checked={ssoIntegration}
@@ -1897,8 +1897,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                   <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
                     <div>
-                      <p className="font-semibold text-gray-900">IP Whitelisting</p>
-                      <p className="text-xs text-gray-600">Restrict access by IP</p>
+                      <p className="font-semibold text-white">IP Whitelisting</p>
+                      <p className="text-xs text-slate-300">Restrict access by IP</p>
                     </div>
                     <Switch
                       checked={ipWhitelisting}
@@ -1907,15 +1907,15 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                   <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
                     <div>
-                      <p className="font-semibold text-gray-900">Session timeout</p>
-                      <p className="text-xs text-gray-600">Auto-logout after inactivity</p>
+                      <p className="font-semibold text-white">Session timeout</p>
+                      <p className="text-xs text-slate-300">Auto-logout after inactivity</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Input
                         type="number"
                         value={sessionTimeout}
                         onChange={e => setSessionTimeout(Number(e.target.value))}
-                        className="w-20 border-2 bg-white"
+                        className="w-20 border-2 bg-[#0d121d]"
                       />
                       <span className="text-xs">min</span>
                     </div>

@@ -154,7 +154,7 @@ export function CustomerRiskScoringEngine({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -185,22 +185,22 @@ export function CustomerRiskScoringEngine({
       </div>
 
       {/* Client Info Bar */}
-      <div className="bg-white border-b border-gray-200 px-6 py-3">
+      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div>
-              <div className="text-xs text-gray-600">Client ID</div>
-              <div className="font-semibold text-gray-900">{clientId}</div>
+              <div className="text-xs text-slate-300">Client ID</div>
+              <div className="font-semibold text-white">{clientId}</div>
             </div>
             <div className="h-8 w-px bg-gray-300" />
             <div>
-              <div className="text-xs text-gray-600">Client Name</div>
-              <div className="font-semibold text-gray-900">{clientName}</div>
+              <div className="text-xs text-slate-300">Client Name</div>
+              <div className="font-semibold text-white">{clientName}</div>
             </div>
             <div className="h-8 w-px bg-gray-300" />
             <div>
-              <div className="text-xs text-gray-600">Last Scored</div>
-              <div className="font-semibold text-gray-900">2024-03-15</div>
+              <div className="text-xs text-slate-300">Last Scored</div>
+              <div className="font-semibold text-white">2024-03-15</div>
             </div>
           </div>
         </div>
@@ -221,14 +221,14 @@ export function CustomerRiskScoringEngine({
               {/* Weighted Score */}
               <div className="text-center">
                 <div className="text-6xl font-bold text-cyan-600 mb-2">{weightedScore}</div>
-                <div className="text-sm text-gray-600 mb-4">Weighted Risk Score (out of 10)</div>
+                <div className="text-sm text-slate-300 mb-4">Weighted Risk Score (out of 10)</div>
                 <Progress value={weightedScore * 10} className="h-3" />
               </div>
 
               {/* Risk Band */}
               <div className="text-center">
                 <div className={`text-4xl font-bold ${riskBand.textColor} mb-2`}>{riskBand.label}</div>
-                <div className="text-sm text-gray-600 mb-4">Risk Band Classification</div>
+                <div className="text-sm text-slate-300 mb-4">Risk Band Classification</div>
                 <Badge className={`${riskBand.color} text-white text-lg px-6 py-2`}>
                   {riskBand.label} RISK CLIENT
                 </Badge>
@@ -280,22 +280,22 @@ export function CustomerRiskScoringEngine({
                 const factorRiskBand = getRiskBand(factor.score);
 
                 return (
-                  <Card key={key} className="border-2 border-gray-200">
+                  <Card key={key} className="border-2 border-white/10">
                     <CardContent className="p-6">
                       <div className="grid md:grid-cols-12 gap-6 items-center">
                         {/* Icon & Label */}
                         <div className="md:col-span-3 flex items-center gap-3">
                           <Icon className="w-8 h-8 text-cyan-600" />
                           <div>
-                            <div className="font-bold text-gray-900">{label}</div>
-                            <div className="text-xs text-gray-600">Weight: {factor.weight}%</div>
+                            <div className="font-bold text-white">{label}</div>
+                            <div className="text-xs text-slate-300">Weight: {factor.weight}%</div>
                           </div>
                         </div>
 
                         {/* Score Slider */}
                         <div className="md:col-span-5">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm text-gray-600">Risk Level</span>
+                            <span className="text-sm text-slate-300">Risk Level</span>
                             <span className={`text-2xl font-bold ${factorRiskBand.textColor}`}>
                               {factor.score}/10
                             </span>
@@ -317,7 +317,7 @@ export function CustomerRiskScoringEngine({
                           ) : (
                             <Progress value={factor.score * 10} className="h-3" />
                           )}
-                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <div className="flex justify-between text-xs text-slate-400 mt-1">
                             <span>Low</span>
                             <span>Medium</span>
                             <span>High</span>
@@ -334,16 +334,16 @@ export function CustomerRiskScoringEngine({
 
                         {/* Weighted Contribution */}
                         <div className="md:col-span-2 text-right">
-                          <div className="text-xs text-gray-600 mb-1">Contribution</div>
-                          <div className="text-2xl font-bold text-gray-900">
+                          <div className="text-xs text-slate-300 mb-1">Contribution</div>
+                          <div className="text-2xl font-bold text-white">
                             {((factor.score * factor.weight) / 100).toFixed(1)}
                           </div>
                         </div>
                       </div>
 
                       {/* Rationale */}
-                      <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <div className="text-xs font-semibold text-gray-700 mb-1">Rationale:</div>
+                      <div className="mt-4 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                        <div className="text-xs font-semibold text-slate-300 mb-1">Rationale:</div>
                         {isEditMode ? (
                           <Textarea
                             value={factor.rationale}
@@ -357,7 +357,7 @@ export function CustomerRiskScoringEngine({
                             rows={2}
                           />
                         ) : (
-                          <p className="text-sm text-gray-700">{factor.rationale}</p>
+                          <p className="text-sm text-slate-300">{factor.rationale}</p>
                         )}
                       </div>
                     </CardContent>
@@ -375,9 +375,9 @@ export function CustomerRiskScoringEngine({
               <CardContent className="p-6">
                 <div className="space-y-2 text-sm">
                   {Object.entries(riskFactors).map(([key, factor]) => (
-                    <div key={key} className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                      <span className="text-gray-700">{factorLabels[key as keyof typeof factorLabels]}</span>
-                      <span className="font-mono text-gray-900">
+                    <div key={key} className="flex items-center justify-between p-2 bg-[#0a0e17] rounded">
+                      <span className="text-slate-300">{factorLabels[key as keyof typeof factorLabels]}</span>
+                      <span className="font-mono text-white">
                         {factor.score} × {factor.weight}% = {((factor.score * factor.weight) / 100).toFixed(2)}
                       </span>
                     </div>
@@ -408,7 +408,7 @@ export function CustomerRiskScoringEngine({
                       className={`p-4 rounded-lg border-2 ${
                         trigger.triggered
                           ? 'bg-red-50 border-red-300'
-                          : 'bg-gray-50 border-gray-200'
+                          : 'bg-[#0a0e17] border-white/10'
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -417,11 +417,11 @@ export function CustomerRiskScoringEngine({
                             {trigger.triggered ? (
                               <AlertTriangle className="w-5 h-5 text-red-600" />
                             ) : (
-                              <CheckCircle className="w-5 h-5 text-gray-400" />
+                              <CheckCircle className="w-5 h-5 text-slate-400" />
                             )}
-                            <span className="font-bold text-gray-900">{trigger.condition}</span>
+                            <span className="font-bold text-white">{trigger.condition}</span>
                           </div>
-                          <p className="text-sm text-gray-700 ml-7">{trigger.action}</p>
+                          <p className="text-sm text-slate-300 ml-7">{trigger.action}</p>
                         </div>
                         <Badge className={trigger.triggered ? 'bg-red-600' : 'bg-gray-400'}>
                           {trigger.triggered ? 'TRIGGERED' : 'Not Triggered'}
@@ -446,7 +446,7 @@ export function CustomerRiskScoringEngine({
                   {riskHistory.map((entry, idx) => {
                     const entryBand = getRiskBand(entry.score);
                     return (
-                      <div key={idx} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                      <div key={idx} className="flex items-start gap-4 p-4 bg-[#0a0e17] rounded-lg border border-white/10">
                         <div className={`w-3 h-3 rounded-full mt-1.5 ${
                           entry.type === 'increase' ? 'bg-red-600' :
                           entry.type === 'override' ? 'bg-amber-600' :
@@ -456,13 +456,13 @@ export function CustomerRiskScoringEngine({
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-3">
-                              <span className="text-2xl font-bold text-gray-900">{entry.score}</span>
+                              <span className="text-2xl font-bold text-white">{entry.score}</span>
                               <Badge className={entryBand.color}>{entry.band}</Badge>
                             </div>
-                            <span className="text-sm text-gray-600">{entry.date}</span>
+                            <span className="text-sm text-slate-300">{entry.date}</span>
                           </div>
-                          <p className="text-sm text-gray-700 mb-1">{entry.reason}</p>
-                          <div className="text-xs text-gray-600">Changed by: {entry.changedBy}</div>
+                          <p className="text-sm text-slate-300 mb-1">{entry.reason}</p>
+                          <div className="text-xs text-slate-300">Changed by: {entry.changedBy}</div>
                         </div>
                       </div>
                     );
@@ -552,18 +552,18 @@ export function CustomerRiskScoringEngine({
                 </div>
 
                 {/* Previous Overrides */}
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <h3 className="font-bold text-gray-900 mb-4">Previous Overrides</h3>
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <h3 className="font-bold text-white mb-4">Previous Overrides</h3>
                   <div className="space-y-2">
-                    <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <div className="p-3 bg-[#0a0e17] rounded-lg border border-white/10">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-gray-900">Override: 6.2 → 5.8</span>
+                        <span className="font-semibold text-white">Override: 6.2 → 5.8</span>
                         <Badge className="bg-green-600">Approved</Badge>
                       </div>
-                      <p className="text-sm text-gray-700 mb-1">
+                      <p className="text-sm text-slate-300 mb-1">
                         Enhanced due diligence completed. No adverse findings. Client relationship &gt; 3 years with no incidents.
                       </p>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-slate-300">
                         Approved by: Michael Roberts | Date: 2024-01-20
                       </div>
                     </div>
