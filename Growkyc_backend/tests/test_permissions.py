@@ -94,3 +94,58 @@ class TestPermissionsEndpoint:
 
     def test_permissions_requires_auth(self, client):
         assert client.get("/api/v1/auth/permissions").status_code == 401
+
+
+class TestAdminUserManagement:
+    def test_list_assignable_roles(self, client, admin_token):
+        resp = client.get(
+            "/api/v1/admin/roles",
+            headers={"Authorization": f"Bearer {admin_token}"},
+        )
+        assert resp.status_code == 200
+        roles = resp.json()
+        assert len(roles) == 7
+        assert {"value": "Head_of_Compliance", "label": "Head of Compliance"} in roles
+
+    def test_admin_creates_user_with_role(self, client, admin_token):
+        resp = client.post(
+            "/api/v1/admin/users",
+            headers={"Authorization": f"Bearer {admin_token}"},
+            json={
+                "name": "New Officer",
+                "email": "officer@example.com",
+                "password": "SecurePass@123",
+                "role": "Compliance_Officer",
+            },
+        )
+        assert resp.status_code == 201, resp.text
+        data = resp.json()
+        assert data["role"] == "Compliance_Officer"
+        assert data["role_label"] == "Compliance Officer"
+        assert data["is_active"] is True
+
+    def test_create_user_rejects_invalid_role(self, client, admin_token):
+        resp = client.post(
+            "/api/v1/admin/users",
+            headers={"Authorization": f"Bearer {admin_token}"},
+            json={
+                "name": "Bad Role",
+                "email": "bad@example.com",
+                "password": "SecurePass@123",
+                "role": "Wizard",
+            },
+        )
+        assert resp.status_code == 400
+
+    def test_non_admin_cannot_create_user(self, client, user_token):
+        resp = client.post(
+            "/api/v1/admin/users",
+            headers={"Authorization": f"Bearer {user_token}"},
+            json={
+                "name": "X",
+                "email": "x@example.com",
+                "password": "SecurePass@123",
+                "role": "Client",
+            },
+        )
+        assert resp.status_code == 403

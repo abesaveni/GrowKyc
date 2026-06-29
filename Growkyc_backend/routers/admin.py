@@ -14,19 +14,29 @@ from pydantic import BaseModel
 
 from core.constants import MAX_BULK_APPROVE_SIZE
 from core.enums import KYCStatus, UserRole
-from core.exceptions import DatabaseError, ResourceNotFoundError
+from core.exceptions import (DatabaseError, DuplicateResourceError,
+                             ResourceNotFoundError, ValidationError)
 from core.limiter import limiter
+from core.permissions import ASSIGNABLE_ROLES, label_for
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_admin_user
 from models import KYC, Document, User
 from schemas import (BulkApproveRequest, BulkApproveResponse,
                      KYCAuditLogResponse, KYCResponse, PaginatedResponse,
                      UserResponse)
+from services.auth_service import AuthService
 from services.kyc_service import KYCService
 from services.user_service import UserService
 
 
 class RoleUpdate(BaseModel):
+    role: str
+
+
+class CreateUserRequest(BaseModel):
+    name: str
+    email: str
+    password: str
     role: str
 
 logger = logging.getLogger(__name__)
@@ -464,3 +474,51 @@ async def delete_user(
     db.commit()
     logger.info(f"User {user_id} deleted by admin {admin.id}")
     return {"message": f"User {user_id} permanently deleted"}
+
+
+@router.get("/roles")
+async def list_assignable_roles(
+    admin: User = Depends(get_admin_user),
+) -> list[dict]:
+    """Return the roles an admin may assign (value + human label).
+
+    Drives the role dropdown in the admin User Management UI.
+    """
+    return [{"value": r, "label": label_for(r)} for r in ASSIGNABLE_ROLES]
+
+
+@router.post("/users", status_code=status.HTTP_201_CREATED)
+async def create_user(
+    body: CreateUserRequest,
+    db: Session = Depends(get_db),
+    admin: User = Depends(get_admin_user),
+) -> dict:
+    """Create a new user with an assigned role (Admin only)."""
+    if body.role not in ASSIGNABLE_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid role: {body.role}",
+        )
+    try:
+        service = AuthService(db)
+        user = service.register_user(
+            body.name, body.email, body.password, role=body.role
+        )
+    except (ValidationError, DuplicateResourceError) as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except DatabaseError:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to create user",
+        )
+    logger.info(
+        "Admin %s created user %s with role %s", admin.id, user.id, body.role
+    )
+    return {
+        "id": user.id,
+        "name": user.name,
+        "email": user.email,
+        "role": user.role.value if hasattr(user.role, "value") else user.role,
+        "role_label": label_for(user.role),
+        "is_active": user.is_active,
+    }
