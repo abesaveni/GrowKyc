@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
+import { downloadCsv, csvDate } from '../../lib/exportCsv';
 import {
   Eye,
   CheckCircle,
@@ -266,6 +268,24 @@ export function PendingReviews() {
     return matchesStatus && matchesPriority;
   });
 
+  const handleExport = () => {
+    if (filteredReviews.length === 0) {
+      toast.error('No reviews to export');
+      return;
+    }
+    const n = downloadCsv(
+      `pending_reviews_${csvDate(new Date())}.csv`,
+      ['Case ID', 'Client', 'Client ID', 'Review Type', 'Status', 'Priority', 'Risk Tier', 'Assigned To', 'Submitted', 'Due', 'Progress %', 'Red Flags', 'Senior Approval', 'EDD'],
+      filteredReviews.map((r) => [
+        r.id, r.clientName, r.clientId, r.reviewType, r.status, r.priority,
+        r.riskTier, r.assignedTo, csvDate(r.submittedDate), csvDate(r.dueDate),
+        r.completionProgress, r.hasRedFlags ? 'Yes' : 'No',
+        r.requiresSeniorApproval ? 'Yes' : 'No', r.eddRequired ? 'Yes' : 'No',
+      ]),
+    );
+    toast.success(`Exported ${n} review(s) to CSV`);
+  };
+
   const stats = {
     total: reviews.length,
     pending: reviews.filter(r => r.status === 'pending').length,
@@ -293,7 +313,7 @@ export function PendingReviews() {
               <RefreshCw className="w-5 h-5 mr-2" />
               Refresh Queue
             </Button>
-            <Button className="bg-white text-purple-600 hover:bg-purple-50">
+            <Button className="bg-white text-purple-600 hover:bg-purple-50" onClick={handleExport}>
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>

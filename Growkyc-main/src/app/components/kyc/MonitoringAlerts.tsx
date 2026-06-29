@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
+import { downloadCsv, csvDate } from '../../lib/exportCsv';
 import {
   Bell,
   AlertTriangle,
@@ -118,6 +120,22 @@ export function MonitoringAlerts() {
     }
   ]);
 
+  const handleExport = () => {
+    if (alerts.length === 0) {
+      toast.error('No alerts to export');
+      return;
+    }
+    const n = downloadCsv(
+      `monitoring_alerts_${csvDate(new Date())}.csv`,
+      ['Alert ID', 'Type', 'Severity', 'Status', 'Client', 'Client ID', 'Title', 'Description', 'Detected', 'Assigned To', 'Risk Score'],
+      alerts.map((a) => [
+        a.id, a.type, a.severity, a.status, a.clientName, a.clientId,
+        a.title, a.description, csvDate(a.detectedDate), a.assignedTo ?? '', a.riskScore,
+      ]),
+    );
+    toast.success(`Exported ${n} alert(s) to CSV`);
+  };
+
   const getSeverityColor = (severity: AlertSeverity) => {
     switch (severity) {
       case 'critical': return 'red';
@@ -171,7 +189,7 @@ export function MonitoringAlerts() {
               <Zap className="w-5 h-5 mr-2" />
               New Rule
             </Button>
-            <Button className="bg-white text-blue-600 hover:bg-blue-50">
+            <Button className="bg-white text-blue-600 hover:bg-blue-50" onClick={handleExport}>
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>

@@ -24,6 +24,11 @@ import {
 import { InfoTrackIntegration } from '../integrations/InfoTrackIntegration';
 import { ClientsDB } from './ClientsDatabase';
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 interface BeneficialOwner {
   id: string;
   name: string;
@@ -67,7 +72,55 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
   const [approvalRequired, setApprovalRequired] = useState(false);
   const [showInfoTrack, setShowInfoTrack] = useState(false);
 
+  // Create the real Client record in the backend, routing to the individual or
+  // entity endpoint by client type. Failures are surfaced but never block the
+  // local onboarding UX (e.g. running without a live API).
+  const persistClientToBackend = async () => {
+    const isIndividual = clientType === 'individual';
+    const url = isIndividual ? '/api/v1/clients/individual' : '/api/v1/clients/entity';
+    const payload: Record<string, unknown> = isIndividual
+      ? {
+          first_name: (basicDetails.name || '').split(' ')[0] || basicDetails.name || null,
+          last_name: (basicDetails.name || '').split(' ').slice(1).join(' ') || null,
+          dob: basicDetails.dateOfBirth || null,
+          nationality: basicDetails.countryOfResidence || null,
+          residential_address: basicDetails.address || null,
+          mobile_phone: basicDetails.phone || null,
+          email: basicDetails.email || null,
+        }
+      : {
+          legal_name: basicDetails.name || 'Unnamed Entity',
+          entity_type: clientType,
+          abn: basicDetails.abn || null,
+          acn: basicDetails.acn || null,
+          incorporation_country: basicDetails.countryOfResidence || null,
+          registered_address: basicDetails.address || null,
+          contact_email: basicDetails.email || null,
+          contact_phone: basicDetails.phone || null,
+        };
+
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const detail = await res.text();
+        console.error('Create client failed', res.status, detail);
+        toast.error(`Saved locally, but backend record failed (${res.status})`);
+        return;
+      }
+      const client = await res.json();
+      toast.success(`Backend client record created (ID ${client.id ?? '—'})`);
+    } catch (err) {
+      console.error('Create client request error', err);
+      toast.error('Network error saving client to backend');
+    }
+  };
+
   const handleComplete = () => {
+    void persistClientToBackend();
     const nextId = (ClientsDB.getClients().length + 1).toString();
     const currentDate = new Date().toISOString().split('T')[0];
     const reviewDays = riskRating === 'high' ? 30 : riskRating === 'medium' ? 180 : 365;
@@ -171,6 +224,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
   };
 
   const handleSendForApproval = () => {
+    void persistClientToBackend();
     const nextId = (ClientsDB.getClients().length + 1).toString();
     const currentDate = new Date().toISOString().split('T')[0];
     const reviewDays = 30; // High risk review cycle is 30 days
