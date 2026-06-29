@@ -35,6 +35,11 @@ import { toast } from '../../lib/toast';
 import { IdVerification100Point } from '../kyc/IdVerification100Point';
 import { ClientsDB } from '../kyc/ClientsDatabase';
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 interface IndividualOnboardingProps {
   onBack: () => void;
 }
@@ -318,6 +323,49 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
     setCurrentStep('payment');
   };
 
+  const createBackendClient = async () => {
+    const fullAddress = [
+      personalData.address,
+      personalData.city,
+      personalData.state,
+      personalData.postcode,
+      personalData.country,
+    ]
+      .filter(Boolean)
+      .join(', ');
+
+    const payload = {
+      first_name: personalData.firstName || null,
+      middle_name: personalData.middleName || null,
+      last_name: personalData.lastName || null,
+      dob: personalData.dateOfBirth || null,
+      nationality: personalData.country || null,
+      national_id_number: personalData.idNumber || null,
+      residential_address: fullAddress || null,
+      mobile_phone: personalData.phone || null,
+      email: personalData.email || null,
+    };
+
+    try {
+      const res = await fetch('/api/v1/clients/individual', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const detail = await res.text();
+        console.error('Create client failed', res.status, detail);
+        toast.error(`Could not save client record (${res.status})`);
+        return;
+      }
+      const client = await res.json();
+      toast.success(`Client record created (ID ${client.id ?? '—'})`);
+    } catch (err) {
+      console.error('Create client request error', err);
+      toast.error('Network error saving client record');
+    }
+  };
+
   const handlePaymentSubmit = () => {
     if (!devMode && paymentMethod === 'card') {
       if (!cardNumber.trim()) {
@@ -336,6 +384,11 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
     setCurrentStep('processing');
     setProcessing(true);
+
+    // Create the real Client + IndividualProfile record in the backend.
+    // Runs alongside the verification simulation; failures are surfaced but
+    // never block the onboarding UX (e.g. when running without a live API).
+    void createBackendClient();
 
     const registerOnboardedClients = (verifiedEntitiesList: any[]) => {
       const currentDate = new Date().toISOString().split('T')[0];

@@ -14,8 +14,10 @@ import {
   Clock,
   Plus,
   Home,
-  ChevronRight
+  ChevronRight,
+  Download
 } from 'lucide-react';
+import { toast } from '../../lib/toast';
 import { Breadcrumbs } from './Breadcrumbs';
 
 interface ClientRegistryProps {
@@ -205,6 +207,33 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
     return matchesSearch && matchesType && matchesRisk;
   });
 
+  const exportRegistryCsv = () => {
+    if (filteredClients.length === 0) {
+      toast.error('No clients to export');
+      return;
+    }
+    const columns = [
+      'Client ID', 'Name', 'Type', 'ABN', 'DOB', 'Risk Tier',
+      'KYC Status', 'Last Review', 'Engagement Status',
+    ];
+    const esc = (c: unknown) => `"${String(c ?? '').replace(/"/g, '""')}"`;
+    const rows = filteredClients.map((c: any) => [
+      c.id, c.name, c.type, c.abn ?? '', c.dob ?? '', c.riskTier,
+      c.kycStatus, c.lastReview, c.engagementStatus,
+    ]);
+    const csv = [columns, ...rows].map((r) => r.map(esc).join(',')).join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'client_registry.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${filteredClients.length} client(s) to CSV`);
+  };
+
   const stats = {
     total: clients.length,
     critical: clients.filter((c) => c.riskTier === 'critical').length,
@@ -257,10 +286,16 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
             <h1 className="text-3xl font-bold text-gray-900">Client Registry</h1>
             <p className="text-gray-600 mt-1">Complete client database with KYC and risk status</p>
           </div>
-          <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => setShowAddClientModal(true)}>
-            <Plus className="w-4 h-4 mr-2" />
-            Add New Client
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" onClick={exportRegistryCsv}>
+              <Download className="w-4 h-4 mr-2" />
+              Export CSV
+            </Button>
+            <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => setShowAddClientModal(true)}>
+              <Plus className="w-4 h-4 mr-2" />
+              Add New Client
+            </Button>
+          </div>
         </div>
       </div>
 

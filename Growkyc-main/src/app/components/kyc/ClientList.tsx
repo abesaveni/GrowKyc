@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
 import {
   Users,
   Shield,
@@ -465,6 +466,44 @@ export function ClientList() {
     return matchesSearch && matchesStatus && matchesRisk && matchesType;
   });
 
+  const fmtDate = (d: Date) => {
+    try {
+      return new Date(d).toISOString().split('T')[0];
+    } catch {
+      return '';
+    }
+  };
+
+  const exportClientsCsv = () => {
+    if (filteredClients.length === 0) {
+      toast.error('No clients to export');
+      return;
+    }
+    const columns = [
+      'Client ID', 'Name', 'Type', 'Status', 'Risk Tier', 'Email', 'Phone',
+      'ABN', 'ACN', 'Assigned Manager', 'KYC Complete', 'Screening',
+      'Compliance Score', 'Onboarded', 'Next Review Due', 'Engagement Value',
+    ];
+    const esc = (c: unknown) => `"${String(c ?? '').replace(/"/g, '""')}"`;
+    const rows = filteredClients.map((c) => [
+      c.id, c.name, c.clientType, c.status, c.riskTier, c.email, c.phone ?? '',
+      c.abn ?? '', c.acn ?? '', c.assignedManager, c.kycComplete ? 'Yes' : 'No',
+      c.screeningStatus, c.complianceScore, fmtDate(c.onboardedDate),
+      fmtDate(c.nextReviewDue), c.engagementValue,
+    ]);
+    const csv = [columns, ...rows].map((r) => r.map(esc).join(',')).join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `client_list_${fmtDate(new Date())}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${filteredClients.length} client(s) to CSV`);
+  };
+
   const stats = {
     total: clients.length,
     active: clients.filter(c => c.status === 'active').length,
@@ -493,7 +532,7 @@ export function ClientList() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
+            <Button className="bg-white text-indigo-600 hover:bg-indigo-50" onClick={exportClientsCsv}>
               <Download className="w-5 h-5 mr-2" />
               Export List
             </Button>
