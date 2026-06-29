@@ -51,11 +51,16 @@ jobs:
           cache-dependency-path: Growkyc_backend/requirements.txt
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run verified test suites
-        # Auth + Didit are the suites validated during the hardening/integration
-        # work. The equifax_* suites hit live endpoints and are excluded from CI.
-        # TODO: expand to the full suite after the pre-existing-failure triage.
-        run: pytest tests/test_auth.py tests/test_didit.py -q --disable-warnings
+      - name: Run test suite
+        # Full suite (238 passing) minus the 4 equifax_* files, which call live
+        # Equifax endpoints and need real sandbox credentials. pytest-timeout
+        # (configured in pytest.ini) bounds any network/IO test so CI can't hang.
+        run: >-
+          pytest -q
+          --ignore=tests/test_equifax_digital.py
+          --ignore=tests/test_equifax_entity.py
+          --ignore=tests/test_equifax_identity.py
+          --ignore=tests/test_equifax_oauth.py
 
   frontend:
     name: Frontend (build)
