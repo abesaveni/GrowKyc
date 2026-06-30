@@ -65,6 +65,7 @@ import { CasesLive } from '../cases/CasesLive';
 import { AustracSARRegister } from '../austrac/AustracSARRegister';
 import { AlertsLive } from '../kyc/AlertsLive';
 import { EDDWorkflows } from '../kyc/EDDWorkflows';
+import { RegulatoryReports } from '../kyc/RegulatoryReports';
 import { LiveStatsBar } from './LiveStatsBar';
 import { HealthCheckDashboard } from './HealthCheckDashboard';
 import { EnterpriseUpgradeHub } from './EnterpriseUpgradeHub';
@@ -98,6 +99,7 @@ type View =
   | 'austrac_sar'
   | 'alerts_live'
   | 'edd_live'
+  | 'reports_live'
   | 'system_settings'
   | 'integration_hub'
   | 'health_check'
@@ -150,6 +152,7 @@ const getRoleSearchItems = (role: ViewRole): SearchSuggestionItem[] => {
       { label: 'AUSTRAC SAR Register', type: 'page', icon: Shield, view: 'austrac_sar' },
       { label: 'Monitoring Alerts', type: 'page', icon: AlertCircle, view: 'alerts_live' },
       { label: 'Enhanced Due Diligence', type: 'page', icon: Shield, view: 'edd_live' },
+      { label: 'Regulatory Reports', type: 'page', icon: FileText, view: 'reports_live' },
       { label: 'Alpha Holdings Pty Ltd', type: 'client', icon: Users, view: 'client_detail', id: 'C001' },
       { label: 'John Smith', type: 'client', icon: Users, view: 'client_detail', id: 'C002' },
       { label: 'EDD Investigation - Alpha Holdings', type: 'case', icon: FileText, view: 'case_detail', id: 'CASE-001' },
@@ -318,6 +321,7 @@ const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   austrac_sar: '/austrac-sar',
   alerts_live: '/monitoring-alerts',
   edd_live: '/edd',
+  reports_live: '/regulatory-reports',
   system_settings: '/settings',
   integration_hub: '/integrations',
   health_check: '/health',
@@ -351,6 +355,7 @@ const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
   '/austrac-sar': 'austrac_sar',
   '/monitoring-alerts': 'alerts_live',
   '/edd': 'edd_live',
+  '/regulatory-reports': 'reports_live',
   '/settings': 'system_settings',
   '/integrations': 'integration_hub',
   '/health': 'health_check',
@@ -1361,6 +1366,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                           </button>
                         )}
 
+                        {/* 1i. Regulatory Reports (live API) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/regulatory-reports`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <FileText className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Regulatory Reports</span>
+                          </button>
+                        )}
+
                         {/* 2. Action Items */}
                         <button
                           onClick={() => {
@@ -1896,6 +1916,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           <div className="p-6">
             <AdminKYCReview onNavigate={(_page, id) => { if (id) { setSelectedClientId(id); } }} />
           </div>
+        )}
+        {currentView === 'reports_live' && (
+          <RegulatoryReports onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
         )}
         {currentView === 'edd_live' && (
           <EDDWorkflows onBack={() => {
