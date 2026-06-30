@@ -347,8 +347,38 @@ async def compat_audit_log_detail(log_id: str):
 
 
 @router.get("/audit-events")
-async def compat_audit_events():
-    return {"events": [], "total": 0, "compatibility": True}
+async def compat_audit_events(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Real audit trail from the audit_logs table (written by AuditService)."""
+    from models import AuditLog
+
+    query = db.query(AuditLog).order_by(AuditLog.timestamp.desc())
+    total = query.count()
+    rows = query.offset(skip).limit(min(limit, 500)).all()
+
+    # Resolve actor ids -> emails in one query.
+    actor_ids = {r.actor_id for r in rows if r.actor_id}
+    actors = {}
+    if actor_ids:
+        for u in db.query(User).filter(User.id.in_(actor_ids)).all():
+            actors[u.id] = u.email or u.name or f"User {u.id}"
+
+    events = [
+        {
+            "id": r.id,
+            "actor": actors.get(r.actor_id, f"User {r.actor_id}" if r.actor_id else "system"),
+            "action": r.action,
+            "entity_type": r.entity_type,
+            "entity_id": r.entity_id,
+            "timestamp": r.timestamp.isoformat() if r.timestamp else None,
+        }
+        for r in rows
+    ]
+    return {"events": events, "total": total}
 
 
 @router.post("/audit-events")

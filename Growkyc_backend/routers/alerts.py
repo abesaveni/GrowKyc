@@ -221,6 +221,12 @@ async def escalate_alert_to_case(
     try:
         case_id = _open_case_for_alert(db, alert, current_user)
         db.commit()
+        try:
+            from services.audit_service import AuditService
+            AuditService(db).log_event(actor_id=current_user.id, action="alert_escalated",
+                                       entity_type="alert", entity_id=alert.id)
+        except Exception:  # noqa: BLE001
+            pass
         _notify(db, current_user, "Alert escalated to case",
                 f"Alert #{alert.id} ({alert.alert_type}) opened investigation case #{case_id}.")
         return {"alert_id": alert.id, "case_id": case_id, "status": alert.status}

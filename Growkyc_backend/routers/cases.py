@@ -19,6 +19,16 @@ from models import User
 from services.case_workflow_service import CaseWorkflowService
 
 
+def _audit(db, actor_id: int, action: str, entity_type: str, entity_id: int) -> None:
+    """Best-effort compliance audit entry; never blocks the primary op."""
+    try:
+        from services.audit_service import AuditService
+        AuditService(db).log_event(actor_id=actor_id, action=action,
+                                   entity_type=entity_type, entity_id=entity_id)
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def _bind_tenant(current_user: User) -> None:
     """Bind the request's tenant context from the authenticated user.
 
@@ -118,6 +128,7 @@ async def update_case_status(
     except ValueError:
         raise HTTPException(status_code=400, detail=f"Invalid status: {body.status}")
     db.commit()
+    _audit(db, current_user.id, f"case_status_{case.status.value}", "case", case_id)
     return {"case_id": case_id, "status": case.status.value}
 
 
@@ -155,6 +166,7 @@ async def create_enterprise_case(
             queue_name=body.queue_name,
             creator_id=current_user.id,
         )
+        _audit(db, current_user.id, "case_created", "case", case.id)
         return {"case_id": case.id, "status": case.status.value, "title": case.title}
     except Exception as e:
         logger.error(f"Failed to create case: {e}")
