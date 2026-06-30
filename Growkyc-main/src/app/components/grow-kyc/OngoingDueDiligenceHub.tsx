@@ -217,7 +217,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">

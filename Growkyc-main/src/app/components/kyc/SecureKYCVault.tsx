@@ -293,7 +293,7 @@ export function SecureKYCVault() {
   return (
     <div className="space-y-6">
       {/* Secure Header */}
-      <div className="bg-gradient-to-r from-red-700 to-red-900 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
@@ -498,7 +498,7 @@ export function SecureKYCVault() {
             {selectedRecord?.id === record.id && (
               <div className="mt-4 pt-4 border-t border-gray-200 space-y-4">
                 {/* Personal Details */}
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('personal')}
                     className="flex items-center justify-between w-full"
@@ -535,7 +535,7 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Entity Details */}
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('entity')}
                     className="flex items-center justify-between w-full"
@@ -568,7 +568,7 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Risk Indicators & Screening */}
-                <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('risk')}
                     className="flex items-center justify-between w-full"
@@ -629,7 +629,7 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Source of Wealth */}
-                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('wealth')}
                     className="flex items-center justify-between w-full"
@@ -662,7 +662,7 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Beneficial Ownership */}
-                <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('ownership')}
                     className="flex items-center justify-between w-full"

@@ -151,7 +151,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
@@ -350,7 +350,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
           {/* INVESTIGATION TAB */}
           <TabsContent value="investigation">
             <Card className="border-2 border-red-200">
-              <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Incident Investigation: SEC-2024-002</CardTitle>
                 <CardDescription>
                   Data Breach - Critical Severity - Under Investigation
@@ -465,7 +465,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
             <div className="grid gap-6">
               {/* Regulator Notification */}
               <Card className="border-2 border-purple-200">
-                <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
+                <CardHeader className="bg-gray-50">
                   <CardTitle className="flex items-center gap-2">
                     <Bell className="w-5 h-5 text-purple-600" />
                     Regulator Notification Requirements
@@ -527,7 +527,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
 
               {/* Customer Notification */}
               <Card className="border-2 border-orange-200">
-                <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50">
+                <CardHeader className="bg-gray-50">
                   <CardTitle className="flex items-center gap-2">
                     <Bell className="w-5 h-5 text-orange-600" />
                     Customer Notification
@@ -641,7 +641,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
           {/* METRICS TAB */}
           <TabsContent value="metrics">
             <Card className="border-2 border-indigo-200">
-              <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Security Metrics & Trends</CardTitle>
                 <CardDescription>
                   Incident analytics for ISO 27001 compliance

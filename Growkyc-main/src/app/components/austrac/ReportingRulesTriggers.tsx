@@ -2,6 +2,23 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '../ui/dialog';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { ConfirmDialog } from '../ui/confirm-dialog';
 import { toast } from 'sonner';
 import {
   Settings,
@@ -45,6 +62,87 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
   const [rulesData, setRulesData] = useState<RuleBase[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Add/Edit rule modal state
+  const emptyForm = {
+    name: '',
+    group: 'aml',
+    triggerCondition: '',
+    action: '',
+    severity: 'medium' as Rule['severity'],
+  };
+  const [ruleModalOpen, setRuleModalOpen] = useState(false);
+  const [ruleModalMode, setRuleModalMode] = useState<'add' | 'edit'>('add');
+  const [ruleForm, setRuleForm] = useState(emptyForm);
+  const [editingRuleId, setEditingRuleId] = useState<string | null>(null);
+
+  // Delete confirmation state
+  const [ruleToDelete, setRuleToDelete] = useState<RuleBase | null>(null);
+
+  const openAddRuleModal = () => {
+    setRuleModalMode('add');
+    setEditingRuleId(null);
+    setRuleForm(emptyForm);
+    setRuleModalOpen(true);
+  };
+
+  const openEditRuleModal = (rule: Rule) => {
+    setRuleModalMode('edit');
+    setEditingRuleId(rule.id);
+    setRuleForm({
+      name: rule.name,
+      group: rule.group,
+      triggerCondition: rule.triggerCondition,
+      action: rule.action,
+      severity: rule.severity,
+    });
+    setRuleModalOpen(true);
+  };
+
+  const handleSubmitRule = () => {
+    if (!ruleForm.name.trim()) {
+      toast.error('Rule name is required');
+      return;
+    }
+    if (ruleModalMode === 'add') {
+      const newRule: RuleBase = {
+        id: `R${Math.floor(100 + Math.random() * 900)}`,
+        name: ruleForm.name.trim(),
+        group: ruleForm.group,
+        triggerCondition: ruleForm.triggerCondition.trim(),
+        action: ruleForm.action.trim(),
+        severity: ruleForm.severity,
+        autoCreate: true,
+        managerReview: false,
+        serviceHold: false,
+        enabled: true,
+      };
+      setRulesData(prev => [...prev, newRule]);
+      toast.success(`Rule "${newRule.name}" created successfully!`);
+    } else if (editingRuleId) {
+      setRulesData(prev => prev.map(r =>
+        r.id === editingRuleId
+          ? {
+              ...r,
+              name: ruleForm.name.trim(),
+              group: ruleForm.group,
+              triggerCondition: ruleForm.triggerCondition.trim(),
+              action: ruleForm.action.trim(),
+              severity: ruleForm.severity,
+            }
+          : r
+      ));
+      toast.success(`Rule "${ruleForm.name.trim()}" updated successfully!`);
+    }
+    setRuleModalOpen(false);
+  };
+
+  const handleConfirmDelete = () => {
+    if (!ruleToDelete) return;
+    setRulesData(prev => prev.filter(r => r.id !== ruleToDelete.id));
+    toast.success(`Rule "${ruleToDelete.name}" deleted successfully!`);
+    setRuleToDelete(null);
+  };
 
   const getGroupIcon = useCallback((
     group: RuleBase['group']
@@ -227,7 +325,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Offline Fallback Banner if API error occurred */}
         {error && (
-          <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4 text-amber-800 flex items-center justify-between shadow-sm animate-in fade-in">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 text-amber-800 flex items-center justify-between shadow-sm animate-in fade-in">
             <div className="flex items-center gap-3">
               <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0" />
               <div>
@@ -241,7 +339,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
           </div>
         )}
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -254,38 +352,12 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center">
+                <Button onClick={onBack} className="bg-white text-slate-800 hover:bg-slate-100 flex-1 sm:flex-initial justify-center">
                   Return to Control Centre
                 </Button>
               )}
-              <Button 
-                onClick={() => {
-                  const name = prompt('Enter Rule Name:');
-                  if (!name) return;
-                  const group = prompt('Enter Group (aml, transaction, document, legal, ownership, monitoring):', 'aml');
-                  if (!group) return;
-                  const triggerCondition = prompt('Enter Trigger Condition:');
-                  if (!triggerCondition) return;
-                  const action = prompt('Enter Action:');
-                  if (!action) return;
-                  const severityInput = prompt('Enter Severity (low, medium, high, critical):', 'medium');
-                  const severity = ['low', 'medium', 'high', 'critical'].includes(severityInput || '') ? (severityInput as any) : 'medium';
-                  
-                  const newRule: RuleBase = {
-                    id: `R${Math.floor(100 + Math.random() * 900)}`,
-                    name,
-                    group,
-                    triggerCondition,
-                    action,
-                    severity,
-                    autoCreate: true,
-                    managerReview: false,
-                    serviceHold: false,
-                    enabled: true
-                  };
-                  setRulesData(prev => [...prev, newRule]);
-                  toast.success(`Rule "${name}" created successfully!`);
-                }}
+              <Button
+                onClick={openAddRuleModal}
                 className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 flex-1 sm:flex-initial justify-center"
               >
                 <Plus className="w-5 h-5 mr-2" />
@@ -456,21 +528,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => {
-                              const name = prompt('Edit Rule Name:', rule.name);
-                              if (name === null) return;
-                              const triggerCondition = prompt('Edit Trigger Condition:', rule.triggerCondition);
-                              if (triggerCondition === null) return;
-                              const action = prompt('Edit Action:', rule.action);
-                              if (action === null) return;
-
-                              setRulesData(prev => prev.map(r => 
-                                r.id === rule.id 
-                                  ? { ...r, name, triggerCondition, action } 
-                                  : r
-                              ));
-                              toast.success(`Rule "${name}" updated successfully!`);
-                            }}
+                            onClick={() => openEditRuleModal(rule)}
                             disabled={!rule.enabled}
                           >
                             <Edit className="w-4 h-4" />
@@ -479,12 +537,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                             variant="outline"
                             size="sm"
                             className="text-red-600 hover:bg-red-50"
-                            onClick={() => {
-                              if (confirm(`Are you sure you want to delete the rule "${rule.name}"?`)) {
-                                setRulesData(prev => prev.filter(r => r.id !== rule.id));
-                                toast.success(`Rule "${rule.name}" deleted successfully!`);
-                              }
-                            }}
+                            onClick={() => setRuleToDelete(rule)}
                             disabled={!rule.enabled}
                           >
                             <Trash2 className="w-4 h-4" />
@@ -500,7 +553,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
         </Card>
 
         {/* Info Banner */}
-        <Card className="border-2 border-amber-300 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
@@ -515,6 +568,98 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
           </CardContent>
         </Card>
       </div>
+
+      {/* Add / Edit Rule Modal */}
+      <Dialog open={ruleModalOpen} onOpenChange={setRuleModalOpen}>
+        <DialogContent className="sm:max-w-lg bg-white">
+          <DialogHeader>
+            <DialogTitle>{ruleModalMode === 'add' ? 'Create New Rule' : 'Edit Rule'}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <div className="space-y-2">
+              <Label htmlFor="rule-name">Rule Name</Label>
+              <Input
+                id="rule-name"
+                value={ruleForm.name}
+                onChange={(e) => setRuleForm(f => ({ ...f, name: e.target.value }))}
+                placeholder="e.g. Confirmed Sanctions Hit"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="rule-group">Group</Label>
+              <Select
+                value={ruleForm.group}
+                onValueChange={(value) => setRuleForm(f => ({ ...f, group: value }))}
+              >
+                <SelectTrigger id="rule-group">
+                  <SelectValue placeholder="Select group" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="aml">AML Trigger Rules</SelectItem>
+                  <SelectItem value="transaction">Transaction/Funding Rules</SelectItem>
+                  <SelectItem value="document">Document Fraud Rules</SelectItem>
+                  <SelectItem value="legal">Legal Risk Triggers</SelectItem>
+                  <SelectItem value="ownership">Ownership Inconsistency</SelectItem>
+                  <SelectItem value="monitoring">Monitoring Escalation</SelectItem>
+                  <SelectItem value="manual">Manual Referral Rules</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="rule-trigger">Trigger Condition</Label>
+              <Input
+                id="rule-trigger"
+                value={ruleForm.triggerCondition}
+                onChange={(e) => setRuleForm(f => ({ ...f, triggerCondition: e.target.value }))}
+                placeholder="e.g. Match confidence >85%"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="rule-action">Action</Label>
+              <Input
+                id="rule-action"
+                value={ruleForm.action}
+                onChange={(e) => setRuleForm(f => ({ ...f, action: e.target.value }))}
+                placeholder="e.g. Immediate escalation and hold"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="rule-severity">Severity</Label>
+              <Select
+                value={ruleForm.severity}
+                onValueChange={(value) => setRuleForm(f => ({ ...f, severity: value as Rule['severity'] }))}
+              >
+                <SelectTrigger id="rule-severity">
+                  <SelectValue placeholder="Select severity" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="low">Low</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="critical">Critical</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setRuleModalOpen(false)}>Cancel</Button>
+            <Button onClick={handleSubmitRule} className="bg-blue-600 hover:bg-blue-700 text-white">
+              {ruleModalMode === 'add' ? 'Create Rule' : 'Save Changes'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Rule Confirmation */}
+      <ConfirmDialog
+        isOpen={ruleToDelete !== null}
+        onClose={() => setRuleToDelete(null)}
+        onConfirm={handleConfirmDelete}
+        title="Delete Rule"
+        description={ruleToDelete ? `Are you sure you want to delete the rule "${ruleToDelete.name}"? This action cannot be undone.` : ''}
+        confirmLabel="Delete"
+        variant="danger"
+      />
     </div>
   );
 }

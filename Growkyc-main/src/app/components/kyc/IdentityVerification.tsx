@@ -17,6 +17,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { IdVerification100Point } from './IdVerification100Point';
+import { DiditVerification } from './DiditVerification';
 import { toast } from '../../lib/toast';
 
 interface ProgressStepperProps {
@@ -116,7 +117,7 @@ ${idVerificationData.selectedDocuments.map((doc: any) => `• ${doc.name} (${doc
 Your verification is now pending review.
     `;
     
-    alert(summary);
+    toast.info(summary);
     toast.success('Verification submitted for review!');
   };
 
@@ -129,7 +130,7 @@ Your verification is now pending review.
   return (
     <div className="max-w-7xl mx-auto space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 text-white shadow-xl">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="bg-white/20 p-4 rounded-full">
@@ -154,6 +155,9 @@ Your verification is now pending review.
           )}
         </div>
       </div>
+
+      {/* Automated KYC + AML via Didit (recommended) */}
+      <DiditVerification kind="individual" />
 
       {/* Progress Stepper */}
       <ProgressStepper currentStep={currentStep} steps={steps} />
@@ -265,7 +269,7 @@ Your verification is now pending review.
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+            <div className="mt-6 p-4 bg-white border border-gray-200 rounded-lg">
               <div className="flex gap-3">
                 <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <div>

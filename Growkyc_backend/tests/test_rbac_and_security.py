@@ -1,4 +1,5 @@
 import io
+import uuid
 
 from fastapi.testclient import TestClient
 
@@ -16,7 +17,9 @@ def test_admin_endpoint_requires_auth():
 
 def test_upload_invalid_extension_rejected():
     # Register and login
-    email = "rbac_test@example.com"
+    # NOTE: unique email avoids 409 duplicate-user / duplicate-KYC collisions
+    # across runs (this module uses a module-level client/default DB).
+    email = f"rbac_test_{uuid.uuid4().hex[:8]}@example.com"
     client.post(
         f"{BASE}/auth/register",
         json={"name": "RBAC Test", "email": email, "password": "TestPass123!"},
@@ -32,7 +35,8 @@ def test_upload_invalid_extension_rejected():
     resp = client.post(
         f"{BASE}/kyc/submit", json={"aadhaar": "222222222222"}, headers=headers
     )
-    assert resp.status_code == 200
+    # NOTE: submit returns 201 Created.
+    assert resp.status_code == 201
     kyc_id = resp.json()["id"]
 
     # Try upload with unsupported extension

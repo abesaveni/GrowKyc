@@ -290,12 +290,12 @@ export function HeadOfComplianceDashboard({
 
   return (
     <div className="space-y-6 md:space-y-8 bg-white min-h-screen px-4 md:px-8 pb-8">
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-6 md:p-12 text-white shadow-lg mt-4 md:mt-8">
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 text-center sm:text-left">
-          <div className="text-5xl md:text-6xl">{userAvatar}</div>
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-5 md:p-6 text-white shadow-lg mt-4">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-4 text-center sm:text-left">
+          <div className="text-4xl md:text-5xl">{userAvatar}</div>
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold mb-2">Welcome back, {userName.split(' ')[0]}!</h1>
-            <p className="text-white/90 text-sm md:text-xl">
+            <h1 className="text-xl md:text-2xl font-bold mb-1">Welcome back, {userName.split(' ')[0]}!</h1>
+            <p className="text-white/90 text-sm md:text-base">
               {userTitle} •{' '}
               {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
             </p>
@@ -304,40 +304,40 @@ export function HeadOfComplianceDashboard({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-6 md:mt-8">
           <div
             onClick={navCase}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.pendingReviews}</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">{stats.pendingReviews}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">Pending Reviews</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Click to view</div>
           </div>
           <div
             onClick={onNavigateToMonitoring}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.highRiskAlerts}</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">{stats.highRiskAlerts}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">High Risk Alerts</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Click to view</div>
           </div>
           <div
             onClick={onNavigateToClients}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.totalClients}</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">{stats.totalClients}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">Total Clients</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">{stats.activeClients} active</div>
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.complianceRate}</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">{stats.complianceRate}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">Compliance Rate</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Click to view</div>
@@ -406,7 +406,7 @@ export function HeadOfComplianceDashboard({
           className="lg:col-span-2 border-2 border-red-300 shadow-lg cursor-pointer hover:shadow-xl transition-all hover:border-red-400"
           onClick={onNavigateToAUSTRAC}
         >
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b border-red-200">
+          <CardHeader className="bg-gray-50 border-b border-red-200">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <CardTitle className="flex items-center gap-2 text-red-900">
@@ -564,7 +564,7 @@ export function HeadOfComplianceDashboard({
         </Card>
       </div>
 
-      <Card className="border-2 border-red-200 bg-red-50">
+      <Card className="border border-gray-200 bg-white">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>

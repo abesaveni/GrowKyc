@@ -1,5 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { Card, CardContent } from '../ui/card';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import { 
   Download, 
@@ -49,7 +50,7 @@ export function InvestmentMemorandum() {
   };
 
   const handleDownloadPDF = () => {
-    alert('PDF generation would be triggered here');
+    toast.info('PDF generation would be triggered here');
   };
 
   const handlePrint = () => {

@@ -1,5 +1,6 @@
 import io
 import os
+import uuid
 
 from fastapi.testclient import TestClient
 
@@ -12,7 +13,9 @@ BASE = "/api/v1"
 
 def test_register_login_submit_upload_flow():
     # Register user
-    email = "test_integration@example.com"
+    # NOTE: use a unique email to avoid 409 duplicate-email collisions
+    # across test runs / other tests.
+    email = f"test_integration_{uuid.uuid4().hex[:8]}@example.com"
     resp = client.post(
         f"{BASE}/auth/register",
         json={
@@ -39,15 +42,17 @@ def test_register_login_submit_upload_flow():
         json={"aadhaar": "111111111111", "pan": "AAAAA1111A"},
         headers=headers,
     )
-    assert resp.status_code == 200
+    # NOTE: submit returns 201 Created.
+    assert resp.status_code == 201
     kyc = resp.json()
     kyc_id = kyc["id"]
 
     # Upload a small test file via multipart
+    # NOTE: DocumentType enum is Australian; "Passport" is a valid value.
     file_content = b"%PDF-1.4\n%Mock PDF content\n"
     files = {
         "kyc_id": (None, str(kyc_id)),
-        "document_type": (None, "Aadhaar"),
+        "document_type": (None, "Passport"),
         "file": ("test.pdf", io.BytesIO(file_content), "application/pdf"),
     }
     resp = client.post(f"{BASE}/kyc/upload-file", files=files, headers=headers)

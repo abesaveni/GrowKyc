@@ -11,6 +11,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from core.tenant_context import get_tenant_id, set_tenant_id
 from database import get_db
 from dependencies import get_admin_or_agent_user
 from models import User
@@ -19,6 +20,12 @@ from services.regulatory_service import RegulatoryService
 
 logger = logging.getLogger(__name__)
 router = APIRouter(tags=["reporting"])
+
+
+def _bind_tenant(current_user: User) -> None:
+    """Bind tenant context from the user (regulatory_reports.tenant_id is NOT NULL)."""
+    if get_tenant_id() is None and current_user.tenant_id is not None:
+        set_tenant_id(current_user.tenant_id)
 
 
 class GenerateReportRequest(BaseModel):
@@ -39,6 +46,7 @@ async def generate_regulatory_report(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Generate an immutable structured payload for a regulatory report."""
+    _bind_tenant(current_user)
     try:
         service = RegulatoryService(db)
         report = service.generate_report(
@@ -77,6 +85,38 @@ async def submit_regulatory_report(
         raise HTTPException(status_code=400, detail=str(e))
 
 
+@router.get("/reports")
+async def list_reports(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_or_agent_user),
+):
+    """List generated regulatory reports."""
+    _bind_tenant(current_user)
+    from models import RegulatoryReport
+
+    query = db.query(RegulatoryReport).order_by(RegulatoryReport.id.desc())
+    total = query.count()
+    rows = query.offset(skip).limit(limit).all()
+    return {
+        "total": total,
+        "items": [
+            {
+                "report_id": r.id,
+                "client_id": r.client_id,
+                "case_id": getattr(r, "case_id", None),
+                "type": r.report_type,
+                "status": r.submission_status,
+                "reference": getattr(r, "regulator_reference", None),
+                "hash": getattr(r, "immutable_hash", None),
+                "created_at": r.created_at.isoformat() if getattr(r, "created_at", None) else None,
+            }
+            for r in rows
+        ],
+    }
+
+
 @router.get("/reports/{report_id}")
 async def get_report_status(
     report_id: int,
@@ -106,6 +146,7 @@ async def generate_evidence_pack(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Trigger async generation of a deterministic evidence zip bundle."""
+    _bind_tenant(current_user)
     try:
         service = EvidencePackService(db)
         pack = service.trigger_pack_generation(

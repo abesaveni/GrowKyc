@@ -1,9 +1,10 @@
 import React from 'react';
+import { toast } from '../../lib/toast';
 import { IdVerification100Point } from './IdVerification100Point';
 
 export function IdVerificationDemo() {
   const handleComplete = (data: any) => {
-    alert('ID Verification complete! Check console for data.');
+    toast.success('ID Verification complete! Check console for data.');
   };
 
   return (

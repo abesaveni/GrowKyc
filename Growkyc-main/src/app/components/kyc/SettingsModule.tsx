@@ -391,7 +391,7 @@ export function SettingsModule() {
             <h3 className="text-xl font-bold text-gray-900 mb-4">Security Settings</h3>
             
             <div className="space-y-6">
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-bold text-green-900 mb-1">Two-Factor Authentication</h4>
@@ -572,7 +572,7 @@ export function SettingsModule() {
                 </div>
               </div>
 
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-blue-900 mb-3">Data Retention Policy</h4>
                 <div>
                   <label className="block text-sm font-semibold text-blue-900 mb-2">

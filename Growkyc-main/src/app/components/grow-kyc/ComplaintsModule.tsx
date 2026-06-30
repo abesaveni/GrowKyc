@@ -219,7 +219,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
@@ -459,7 +459,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
           {/* DETAIL VIEW TAB */}
           <TabsContent value="detail">
             <Card className="border-2 border-cyan-200">
-              <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Complaint Detail: COMP-2024-002</CardTitle>
                 <CardDescription>
                   Responsible Lending complaint - High Priority
@@ -592,7 +592,7 @@ Client states they were not asked about existing commitments and expenses were u
             <div className="grid gap-6">
               {/* SLA Requirements */}
               <Card className="border-2 border-amber-200">
-                <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50">
+                <CardHeader className="bg-gray-50">
                   <CardTitle>ASIC RG271 SLA Requirements</CardTitle>
                   <CardDescription>
                     Internal Dispute Resolution timeframes and compliance
@@ -674,7 +674,7 @@ Client states they were not asked about existing commitments and expenses were u
 
               {/* Overdue Alerts */}
               <Card className="border-2 border-red-200">
-                <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50">
+                <CardHeader className="bg-gray-50">
                   <CardTitle className="flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-red-600" />
                     Overdue Complaints
@@ -746,7 +746,7 @@ Client states they were not asked about existing commitments and expenses were u
           {/* REPORTING TAB */}
           <TabsContent value="reporting">
             <Card className="border-2 border-indigo-200">
-              <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Management Reporting Dashboard</CardTitle>
                 <CardDescription>
                   Complaints analytics and trends

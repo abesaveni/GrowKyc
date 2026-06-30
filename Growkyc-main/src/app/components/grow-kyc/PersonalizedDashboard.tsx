@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from '../../lib/toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -199,18 +200,18 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderComplianceOfficerDashboard = () => (
     <div className="space-y-8 bg-white min-h-screen px-8 pb-8">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-12 text-white shadow-lg mt-8">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
           <div className="text-6xl">{userAvatar}</div>
           <div>
-            <h1 className="text-4xl font-bold mb-2">Welcome back, {userName.split(' ')[0]}!</h1>
+            <h1 className="text-2xl font-bold mb-1">Welcome back, {userName.split(' ')[0]}!</h1>
             <p className="text-white/90 text-xl">{userTitle} • {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
           </div>
         </div>
         <div className="grid grid-cols-4 gap-6 mt-8">
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">23</div>
@@ -220,7 +221,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">8</div>
@@ -230,7 +231,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">156</div>
@@ -240,7 +241,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">94%</div>
@@ -383,7 +384,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
       </div>
 
       {/* Clients to Watch */}
-      <Card className="border-2 border-red-200 bg-red-50">
+      <Card className="border border-gray-200 bg-white">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
@@ -593,7 +594,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderPartnerDashboard = () => (
     <div className="space-y-6">
       {/* Executive Welcome */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="text-5xl">{userAvatar}</div>
@@ -820,7 +821,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderAnalystDashboard = () => (
     <div className="space-y-8 bg-white min-h-screen px-8 pb-8">
       {/* Analyst Welcome */}
-      <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-12 text-white shadow-lg mt-8">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
           <div className="text-6xl">{userAvatar}</div>
           <div>
@@ -829,19 +830,19 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
         </div>
         <div className="grid grid-cols-4 gap-6 mt-8">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">14</div>
             <div className="text-sm text-cyan-100 font-medium">Cases Assigned</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">6</div>
             <div className="text-sm text-cyan-100 font-medium">High Priority</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">23</div>
             <div className="text-sm text-cyan-100 font-medium">Alerts Today</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">87%</div>
             <div className="text-sm text-cyan-100 font-medium">Resolution Rate</div>
           </div>
@@ -952,7 +953,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderAuditorDashboard = () => (
     <div className="space-y-6">
       {/* Auditor Welcome */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-8 text-white">
         <div className="flex items-center gap-4 mb-4">
           <div className="text-5xl">{userAvatar}</div>
           <div>
@@ -1187,7 +1188,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 </p>
               </div>
 
-              <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
@@ -1216,7 +1217,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 <Button
                   variant="destructive"
                   onClick={() => {
-                    alert(`Declined: ${selectedApproval.item}\n\nComment: ${approvalComment || '(No comment provided)'}\n\nThis action has been logged in the audit trail.`);
+                    toast.info(`Declined: ${selectedApproval.item}\n\nComment: ${approvalComment || '(No comment provided)'}\n\nThis action has been logged in the audit trail.`);
                     setApprovalModalOpen(false);
                     setApprovalComment('');
                   }}
@@ -1229,7 +1230,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                   variant="default"
                   className="bg-green-600 hover:bg-green-700"
                   onClick={() => {
-                    alert(`✅ APPROVED: ${selectedApproval.item}\n\nApproved by: ${userName}\nComment: ${approvalComment}\n\nStatus: Awaiting 2nd approval\nAudit Log: Recorded\n\nThis approval has been logged in the compliance audit trail.`);
+                    toast.success(`✅ APPROVED: ${selectedApproval.item}\n\nApproved by: ${userName}\nComment: ${approvalComment}\n\nStatus: Awaiting 2nd approval\nAudit Log: Recorded\n\nThis approval has been logged in the compliance audit trail.`);
                     setApprovalModalOpen(false);
                     setApprovalComment('');
                   }}

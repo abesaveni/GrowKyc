@@ -347,8 +347,38 @@ async def compat_audit_log_detail(log_id: str):
 
 
 @router.get("/audit-events")
-async def compat_audit_events():
-    return {"events": [], "total": 0, "compatibility": True}
+async def compat_audit_events(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Real audit trail from the audit_logs table (written by AuditService)."""
+    from models import AuditLog
+
+    query = db.query(AuditLog).order_by(AuditLog.timestamp.desc())
+    total = query.count()
+    rows = query.offset(skip).limit(min(limit, 500)).all()
+
+    # Resolve actor ids -> emails in one query.
+    actor_ids = {r.actor_id for r in rows if r.actor_id}
+    actors = {}
+    if actor_ids:
+        for u in db.query(User).filter(User.id.in_(actor_ids)).all():
+            actors[u.id] = u.email or u.name or f"User {u.id}"
+
+    events = [
+        {
+            "id": r.id,
+            "actor": actors.get(r.actor_id, f"User {r.actor_id}" if r.actor_id else "system"),
+            "action": r.action,
+            "entity_type": r.entity_type,
+            "entity_id": r.entity_id,
+            "timestamp": r.timestamp.isoformat() if r.timestamp else None,
+        }
+        for r in rows
+    ]
+    return {"events": events, "total": total}
 
 
 @router.post("/audit-events")
@@ -626,9 +656,9 @@ async def compat_auth_session(current_user: User = Depends(get_current_user)):
         return {"user": None}
 
 
-@router.post("/auth/logout")
-async def compat_auth_logout():
-    return accepted("/auth/logout")
+# NOTE: /auth/logout is now handled for real by routers/auth.py (token revocation).
+# The previous no-op compatibility stub here shadowed it because compatibility
+# routes are registered first, so it has been removed.
 
 
 @router.post("/auth/oauth")
@@ -911,16 +941,8 @@ async def compat_list_findings(
     }
 
 
-@router.post("/alerts", status_code=status.HTTP_201_CREATED)
-async def compat_create_alert(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/alerts", alertId=f"alert-{uuid4().hex[:8]}", payload=payload)
-
-
-@router.post("/alerts/{alert_id}/resolve")
-async def compat_resolve_alert(
-    alert_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
-):
-    return accepted(f"/alerts/{alert_id}/resolve", alertId=alert_id, payload=payload)
+# NOTE: the /alerts and /alerts/{id}/resolve stubs were removed — the real
+# monitoring alerts API is now served by routers/alerts.py.
 
 
 @router.post("/periodic-reviews", status_code=status.HTTP_201_CREATED)

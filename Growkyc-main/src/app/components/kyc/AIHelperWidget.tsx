@@ -177,7 +177,7 @@ export function AIHelperWidget() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center z-50 group"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-slate-800 to-slate-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center z-50 group"
       >
         <Brain className="w-8 h-8 group-hover:scale-110 transition-transform" />
         <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-xs font-bold">
@@ -190,7 +190,7 @@ export function AIHelperWidget() {
   return (
     <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-t-lg">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white p-4 rounded-t-lg">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <Brain className="w-6 h-6" />
@@ -252,7 +252,7 @@ export function AIHelperWidget() {
         {/* Help Tab */}
         {activeTab === 'help' && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-4">
+            <div className="bg-gray-50 border border-purple-200 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Lightbulb className="w-5 h-5 text-purple-600" />
                 <h4 className="font-bold text-purple-900">What I Can Help With</h4>
@@ -320,7 +320,7 @@ export function AIHelperWidget() {
         {/* Actions Tab */}
         {activeTab === 'actions' && (
           <div className="space-y-3">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            <div className="bg-white border border-gray-200 rounded-lg p-3">
               <p className="text-sm text-blue-900">
                 <strong>Quick Actions:</strong> One-click AI-powered workflows to speed up your compliance work.
               </p>
@@ -346,7 +346,7 @@ export function AIHelperWidget() {
               );
             })}
 
-            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="p-3 bg-white border border-gray-200 rounded-lg">
               <p className="text-xs text-yellow-900">
                 <strong>Note:</strong> All AI actions generate drafts for your review. You maintain final approval.
               </p>

@@ -324,7 +324,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
 
         {/* Recent Alerts Feed */}
         <Card className="border-2 mb-8">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <Bell className="w-5 h-5 text-red-600" />
               Recent Alerts & Critical Events
@@ -332,7 +332,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-4 bg-red-50 border-2 border-red-300 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-lg">
                 <AlertOctagon className="w-5 h-5 text-red-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-red-900 text-sm">SEVERE: Court Judgment - Fraud Conviction</p>
@@ -348,7 +348,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                 <Badge className="bg-red-600 text-white">NEW</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-orange-50 border border-orange-200 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-lg">
                 <TrendingDown className="w-5 h-5 text-orange-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-orange-900 text-sm">NEW: Insolvency Notice</p>
@@ -364,7 +364,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                 <Badge className="bg-orange-600 text-white">2h ago</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-lg">
                 <Scale className="w-5 h-5 text-amber-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-amber-900 text-sm">Regulatory Action Notice</p>
@@ -379,7 +379,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                 <Badge className="bg-amber-600 text-white">5h ago</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-blue-900 text-sm">Monthly Screening Complete</p>
@@ -745,7 +745,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <label className="flex items-start gap-3 p-4 border-2 border-red-400 bg-red-50 rounded-lg">
+                <label className="flex items-start gap-3 p-4 border border-gray-200 bg-white rounded-lg">
                   <input
                     type="radio"
                     name="searchType"
@@ -875,7 +875,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>Review the automated adverse media search strategy</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <p className="font-semibold text-red-900 mb-2">Search Target</p>
                 <p className="text-sm text-red-800">
                   <strong>{formData.fullName || formData.entityName}</strong> • {formData.subjectType === 'person' ? formData.nationality : 'Entity'} • {formData.roleInMatter}
@@ -922,7 +922,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <div>
                 <p className="font-semibold text-gray-900 mb-3">Keyword Families by Risk Category</p>
                 <div className="space-y-2">
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <p className="text-xs font-semibold text-red-900 mb-2">Financial Crime</p>
                     <div className="flex flex-wrap gap-1">
                       {['fraud', 'money laundering', 'bribery', 'corruption', 'tax evasion', 'sanctions evasion'].map((term, idx) => (
@@ -930,7 +930,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       ))}
                     </div>
                   </div>
-                  <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <p className="text-xs font-semibold text-orange-900 mb-2">Legal & Court</p>
                     <div className="flex flex-wrap gap-1">
                       {['judgment', 'litigation', 'court action', 'criminal charges', 'civil penalty'].map((term, idx) => (
@@ -938,7 +938,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       ))}
                     </div>
                   </div>
-                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <p className="text-xs font-semibold text-amber-900 mb-2">Insolvency</p>
                     <div className="flex flex-wrap gap-1">
                       {['bankruptcy', 'insolvency', 'liquidation', 'administration', 'phoenix activity'].map((term, idx) => (
@@ -946,7 +946,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       ))}
                     </div>
                   </div>
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <p className="text-xs font-semibold text-blue-900 mb-2">Regulatory</p>
                     <div className="flex flex-wrap gap-1">
                       {['ASIC action', 'enforcement', 'licence cancellation', 'director ban', 'disqualification'].map((term, idx) => (
@@ -957,7 +957,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-2">
                   <Info className="w-5 h-5 text-amber-600 mt-0.5" />
                   <div>
@@ -1005,19 +1005,19 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>AI-powered adverse media classification results</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
-              <div className="p-6 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div className="p-6 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-green-900">No Relevant Adverse Media Found</p>
-                      <p className="text-sm text-green-700">Medium-high confidence - 78% match certainty</p>
+                      <p className="text-2xl font-bold text-gray-900">No Relevant Adverse Media Found</p>
+                      <p className="text-sm text-gray-600">Medium-high confidence - 78% match certainty</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-green-600">0</p>
+                    <p className="text-4xl font-bold text-gray-500">0</p>
                     <p className="text-xs text-green-700">Matches</p>
                   </div>
                 </div>
@@ -1098,7 +1098,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>Review and confirm the adverse media classification</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <p className="font-semibold text-blue-900 mb-2">AI Recommendation</p>
                 <p className="text-sm text-blue-800">
                   Based on the search results, the AI bot recommends classifying <strong>{formData.fullName || formData.entityName}</strong> as <strong>NO ADVERSE MEDIA</strong> with medium-high confidence.
@@ -1206,7 +1206,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg text-left">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg text-left">
                   <div className="flex items-start gap-2">
                     <Calendar className="w-5 h-5 text-purple-600 mt-0.5" />
                     <div>

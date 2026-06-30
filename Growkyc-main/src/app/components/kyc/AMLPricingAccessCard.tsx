@@ -27,7 +27,7 @@ export function AMLPricingAccessCard({ onNavigate, variant = 'card' }: AMLPricin
     return (
       <button
         onClick={onNavigate}
-        className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg p-4 text-white text-left transition-all shadow-lg hover:shadow-xl"
+        className="w-full bg-gradient-to-r from-slate-800 to-slate-700 hover:from-purple-700 hover:to-pink-700 rounded-lg p-4 text-white text-left transition-all shadow-lg hover:shadow-xl"
       >
         <div className="flex items-center justify-between">
           <div>
@@ -43,7 +43,7 @@ export function AMLPricingAccessCard({ onNavigate, variant = 'card' }: AMLPricin
   // Full card variant - detailed card
   return (
     <Card className="border-2 border-purple-300 hover:border-purple-500 transition-all cursor-pointer" onClick={onNavigate}>
-      <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
+      <CardHeader className="bg-gray-50">
         <CardTitle className="flex items-center gap-2 text-purple-900">
           <DollarSign className="w-6 h-6" />
           AML/CTF Enhanced Checks & Pricing

@@ -60,7 +60,7 @@ export function SentinelAMLNavigation({ onBack }: SentinelAMLNavigationProps) {
   // Navigation View - Main Hub
   if (currentView === 'navigation') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 p-8">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 to-slate-700 p-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">

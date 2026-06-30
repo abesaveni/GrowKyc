@@ -567,7 +567,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
         </Card>
 
         {/* What Tier 5 Achieves */}
-        <Card className="mt-8 bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-300">
+        <Card className="mt-8 bg-gray-50 border-2 border-purple-300">
           <CardContent className="p-6">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Tier 5 = Full Enterprise Operating System</h3>
             <p className="text-center text-gray-700 mb-6 max-w-3xl mx-auto">

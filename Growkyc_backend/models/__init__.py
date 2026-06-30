@@ -43,6 +43,7 @@ from models.case_evidence import CaseEvidence  # noqa: F401
 from models.case_sla import CaseSLA  # noqa: F401
 from models.case_snapshots import CaseSnapshot  # noqa: F401
 from models.client import Client  # noqa: F401
+from models.didit_session import DiditSession  # noqa: F401
 from models.document import Document  # noqa: F401
 from models.document_intelligence import (DocumentExtraction,  # noqa: F401
                                           DocumentFace, DocumentFraudCheck,
@@ -124,4 +125,5 @@ __all__ = [
     "Payment",
     "PaymentStatus",
     "SAR",
+    "DiditSession",
 ]

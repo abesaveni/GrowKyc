@@ -312,7 +312,7 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         </div>
 
         {/* Admin Actions */}
-        <div className="mb-8 p-6 bg-gradient-to-r from-purple-50 to-indigo-50 border-2 border-purple-300 rounded-xl">
+        <div className="mb-8 p-6 bg-gray-50 border-2 border-purple-300 rounded-xl">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">SaaS Admin Controls</h3>
@@ -410,7 +410,7 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         </div>
 
         {/* Integration Benefits */}
-        <Card className="mt-12 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-green-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-600" />
@@ -503,7 +503,7 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         </Card>
 
         {/* Sync Schedule */}
-        <Card className="mt-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+        <Card className="mt-8 bg-gray-50 border-2 border-blue-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-blue-600" />

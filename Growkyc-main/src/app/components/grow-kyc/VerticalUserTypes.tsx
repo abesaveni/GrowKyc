@@ -40,7 +40,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'accountants',
       name: 'Accountants',
       icon: Building2,
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Built',
       marketSize: '40,000+ firms in Australia, 150,000+ APAC',
       mainUseCase: 'Client onboarding, annual re-engagement, tax and advisory compliance, Tranche 2 readiness',
@@ -77,7 +77,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'credit',
       name: 'Credit Providers',
       icon: Landmark,
-      color: 'from-green-600 to-emerald-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Planned',
       marketSize: '15,000+ non-bank lenders, brokers, fintechs in APAC',
       mainUseCase: 'Borrower onboarding, guarantor verification, director and UBO checks, pre-settlement compliance clearance',
@@ -114,7 +114,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'afsl',
       name: 'AFSL Holders',
       icon: Briefcase,
-      color: 'from-purple-600 to-pink-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Planned',
       marketSize: '3,000+ AFSL holders, 25,000+ advisers in Australia',
       mainUseCase: 'Client onboarding, advice engagement, investor classification, AML and suitability controls',
@@ -151,7 +151,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'fund',
       name: 'Fund Managers',
       icon: TrendingUp,
-      color: 'from-indigo-600 to-blue-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Planned',
       marketSize: '1,500+ fund managers in APAC (PE, VC, hedge funds)',
       mainUseCase: 'Investor onboarding, AML, KYB, UBO mapping, subscription approval, ongoing monitoring',
@@ -188,7 +188,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'trustee',
       name: 'Trustees',
       icon: Scale,
-      color: 'from-amber-600 to-orange-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Planned',
       marketSize: '5,000+ trustee entities in APAC',
       mainUseCase: 'Verify parties acting in fiduciary roles, prove control, authority, and trust relationships',
@@ -224,7 +224,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'legal',
       name: 'Legal Firms',
       icon: Gavel,
-      color: 'from-red-600 to-rose-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Planned',
       marketSize: '20,000+ law firms in APAC',
       mainUseCase: 'Matter opening, client due diligence, beneficial ownership, matter risk scoring',
@@ -260,7 +260,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
       id: 'realestate',
       name: 'Real Estate',
       icon: Home,
-      color: 'from-teal-600 to-green-600',
+      color: 'from-slate-800 to-slate-700',
       status: 'Planned',
       marketSize: '30,000+ real estate agencies in APAC',
       mainUseCase: 'Vendor, purchaser, landlord, tenant onboarding with AML and transaction-specific checks',
@@ -331,7 +331,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
         <div className="p-8 max-w-7xl mx-auto">
           {/* Market Overview */}
           <div className="grid grid-cols-3 gap-6 mb-8">
-            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+            <Card className="bg-gray-50 border-2 border-blue-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="w-5 h-5 text-blue-600" />
@@ -343,7 +343,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+            <Card className="bg-gray-50 border-2 border-green-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Target className="w-5 h-5 text-green-600" />
@@ -355,7 +355,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+            <Card className="bg-gray-50 border-2 border-purple-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-purple-600" />
@@ -369,7 +369,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
           </div>
 
           {/* Pricing */}
-          <Card className="mb-8 border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50">
+          <Card className="mb-8 border-2 border-amber-200 bg-gray-50">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-amber-600" />
@@ -403,7 +403,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
           </Card>
 
           {/* Integrations */}
-          <Card className="mb-8 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+          <Card className="mb-8 bg-gray-50 border-2 border-indigo-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Network className="w-5 h-5 text-indigo-600" />
@@ -423,7 +423,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
           </Card>
 
           {/* Winning Features */}
-          <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300">
+          <Card className="bg-gray-50 border-2 border-green-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Star className="w-6 h-6 text-green-600" />
@@ -522,7 +522,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
 
       <div className="p-8 max-w-7xl mx-auto">
         {/* Status Legend */}
-        <div className="flex items-center gap-6 mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl">
+        <div className="flex items-center gap-6 mb-8 p-6 bg-gray-50 border-2 border-blue-200 rounded-xl">
           <div className="flex items-center gap-2">
             <Badge className="bg-green-600 text-white">Built</Badge>
             <span className="text-sm text-gray-700">= Currently operational (1 vertical)</span>
@@ -596,7 +596,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
         </div>
 
         {/* Summary Card */}
-        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-indigo-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Rocket className="w-6 h-6 text-indigo-600" />
@@ -625,7 +625,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
               </div>
             </div>
 
-            <div className="mt-6 p-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl">
+            <div className="mt-6 p-6 bg-gradient-to-r from-slate-800 to-slate-700 text-white rounded-xl">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="text-xl font-bold mb-2">Strategic Advantage</h4>
@@ -641,7 +641,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
         </Card>
 
         {/* Architecture Overview */}
-        <Card className="mt-12 border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <Card className="mt-12 border-2 border-blue-200 bg-gray-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Shield className="w-6 h-6 text-blue-600" />

@@ -1218,7 +1218,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
           {/* LEFT SIDEBAR - Navigation */}
           <div className="col-span-12 lg:col-span-2">
             <Card className="lg:sticky lg:top-[200px] border-2 border-cyan-300 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50 border-b p-4">
+              <CardHeader className="bg-gray-50 border-b p-4">
                 <CardTitle className="text-lg">Navigation</CardTitle>
               </CardHeader>
               <CardContent className="p-2">
@@ -1250,7 +1250,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
             {activeTab === 'overview' && (
               <div className="space-y-6">
                 <Card className="border-2 border-blue-300 shadow-lg">
-                  <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+                  <CardHeader className="bg-gray-50 border-b">
                     <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
                       <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                       KYC Overview - {client.name}
@@ -1727,7 +1727,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
             {/* AML TAB */}
             {activeTab === 'aml' && (
               <Card className="border-2 border-blue-300 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+                <CardHeader className="bg-gray-50 border-b">
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="w-6 h-6 text-blue-600" />
                     AML/CTF Screening

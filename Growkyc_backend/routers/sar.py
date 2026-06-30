@@ -27,6 +27,7 @@ _COMPLIANCE_ROLES = ["Admin", "Compliance_Officer", "MLRO"]
 class SARCreate(BaseModel):
     client_id: int
     kyc_id: Optional[int] = None
+    case_id: Optional[int] = None
     reason_for_suspicion: str
     transaction_details: Optional[str] = None
     narrative: Optional[str] = None
@@ -60,10 +61,21 @@ async def create_sar(
             raised_by=current_user.id,
             reason_for_suspicion=data.reason_for_suspicion,
             kyc_id=data.kyc_id,
+            case_id=data.case_id,
             tenant_id=getattr(current_user, "tenant_id", None),
             transaction_details=data.transaction_details,
             narrative=data.narrative,
         )
+        try:
+            from core.enums import NotificationType
+            from services.notification_service import NotificationService
+            NotificationService(db).create_notification(
+                user_id=current_user.id, title="SAR raised",
+                message=f"SAR #{sar.id} raised for client {data.client_id}.",
+                notif_type=NotificationType.SYSTEM_ALERT,
+            )
+        except Exception:  # noqa: BLE001
+            pass
         return {"id": sar.id, "status": sar.status, "raised_at": sar.raised_at}
     except DatabaseError as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
@@ -148,6 +160,7 @@ async def list_sars(
             {
                 "id": s.id,
                 "client_id": s.client_id,
+                "case_id": s.case_id,
                 "status": s.status,
                 "raised_at": s.raised_at,
                 "filed_at": s.filed_at,

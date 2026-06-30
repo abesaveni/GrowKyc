@@ -331,7 +331,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
     <div className="min-h-screen bg-gray-50 p-4 sm:p-8">
       <div className="max-w-[2000px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 md:p-8 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 md:p-8 text-white shadow-xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -344,7 +344,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             </div>
             <div className="flex flex-wrap gap-2 md:gap-3 w-full lg:w-auto">
               {!isReadOnly && (
-                <Button className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center text-xs md:text-sm whitespace-nowrap" onClick={() => setIsModalOpen(true)}>
+                <Button className="bg-white text-slate-800 hover:bg-slate-100 flex-1 sm:flex-initial justify-center text-xs md:text-sm whitespace-nowrap" onClick={() => setIsModalOpen(true)}>
                   <Plus className="w-4 h-4 mr-1.5 md:mr-2" />
                   Create Manual Case
                 </Button>
@@ -455,7 +455,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
 
         {/* CASE TABLE */}
         <Card className="border-2 border-blue-300 shadow-xl">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b p-4 md:p-6">
+          <CardHeader className="bg-gray-50 border-b p-4 md:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
                 <Shield className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />

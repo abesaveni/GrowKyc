@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -7,88 +7,58 @@ import { toast } from '../../lib/toast';
 import { ConfirmDialog } from '../ui/confirm-dialog';
 import { EmptyState } from '../ui/empty-state';
 import { Breadcrumbs } from '../ui/breadcrumbs';
-import { 
-  Users, 
-  Search, 
-  Plus,
+import {
+  Users,
+  Search,
   Eye,
-  Edit,
   Trash2,
   UserCheck,
   UserX,
   Shield,
   Mail,
   Download,
-  RefreshCw
+  RefreshCw,
+  Loader2
 } from 'lucide-react';
 import { format } from 'date-fns';
+
+interface RoleOption {
+  value: string;
+  label: string;
+}
 
 interface User {
   id: string;
   name: string;
   email: string;
-  role: 'borrower' | 'lender' | 'investor' | 'admin';
-  status: 'active' | 'suspended' | 'pending';
-  kycStatus: 'approved' | 'pending' | 'rejected';
+  role: string;        // canonical backend role value, e.g. "Compliance_Officer"
+  roleLabel: string;   // human label, e.g. "Compliance Officer"
+  status: 'active' | 'suspended';
+  kycStatus: 'approved' | 'pending';
   joinedDate: Date;
-  lastActive: Date;
 }
 
-const mockUsers: User[] = [
-  {
-    id: '1',
-    name: 'Michael Chen',
-    email: 'michael.chen@example.com',
-    role: 'investor',
-    status: 'active',
-    kycStatus: 'approved',
-    joinedDate: new Date('2024-01-15'),
-    lastActive: new Date()
-  },
-  {
-    id: '2',
-    name: 'Sarah Mitchell',
-    email: 'sarah.mitchell@example.com',
-    role: 'borrower',
-    status: 'active',
-    kycStatus: 'approved',
-    joinedDate: new Date('2024-02-01'),
-    lastActive: new Date(Date.now() - 2 * 60 * 60 * 1000)
-  },
-  {
-    id: '3',
-    name: 'David Wilson',
-    email: 'david.wilson@example.com',
-    role: 'lender',
-    status: 'active',
-    kycStatus: 'pending',
-    joinedDate: new Date('2024-02-10'),
-    lastActive: new Date(Date.now() - 24 * 60 * 60 * 1000)
-  },
-  {
-    id: '4',
-    name: 'Emma Thompson',
-    email: 'emma.thompson@example.com',
-    role: 'investor',
-    status: 'suspended',
-    kycStatus: 'rejected',
-    joinedDate: new Date('2024-01-20'),
-    lastActive: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-  },
-  {
-    id: '5',
-    name: 'James Anderson',
-    email: 'james.anderson@example.com',
-    role: 'admin',
-    status: 'active',
-    kycStatus: 'approved',
-    joinedDate: new Date('2023-12-01'),
-    lastActive: new Date(Date.now() - 30 * 60 * 1000)
-  }
-];
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+function mapBackendUser(u: any): User {
+  return {
+    id: String(u.id),
+    name: u.name || u.email,
+    email: u.email,
+    role: u.role || 'User',
+    roleLabel: u.role_label || u.role || 'User',
+    status: u.is_active ? 'active' : 'suspended',
+    kycStatus: u.verified ? 'approved' : 'pending',
+    joinedDate: new Date(u.created_at),
+  };
+}
 
 export function AdminUserManagement() {
-  const [users, setUsers] = useState<User[]>(mockUsers);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -98,109 +68,200 @@ export function AdminUserManagement() {
     user: User | null;
   }>({ open: false, type: null, user: null });
 
-  // Filter users
+  const [roles, setRoles] = useState<RoleOption[]>([]);
+  const [showCreate, setShowCreate] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [createForm, setCreateForm] = useState({ name: '', email: '', password: '', role: '' });
+
+  const roleLabelFor = useCallback(
+    (value: string) => roles.find(r => r.value === value)?.label || value,
+    [roles]
+  );
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch('/api/v1/admin/roles', {
+          headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        });
+        if (res.ok) setRoles(await res.json());
+      } catch { /* roles are best-effort; dropdown falls back to raw values */ }
+    })();
+  }, []);
+
+  const handleCreateUser = async () => {
+    const { name, email, password, role } = createForm;
+    if (!name || !email || !password || !role) {
+      toast.error('All fields are required');
+      return;
+    }
+    setCreating(true);
+    try {
+      const res = await fetch('/api/v1/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify({ name, email, password, role }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(typeof err?.detail === 'string' ? err.detail : `Create failed (${res.status})`);
+      }
+      toast.success(`${name} created as ${roleLabelFor(role)}`);
+      setShowCreate(false);
+      setCreateForm({ name: '', email: '', password: '', role: '' });
+      fetchUsers();
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to create user');
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  const fetchUsers = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/v1/admin/users?limit=100', {
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(typeof err?.detail === 'string' ? err.detail : `Failed to load users (${res.status})`);
+      }
+      const data = await res.json();
+      setUsers((data.items || []).map(mapBackendUser));
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to load users');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchUsers(); }, [fetchUsers]);
+
   const filteredUsers = users.filter(user => {
-    const searchMatch = searchQuery === '' || 
+    const searchMatch = searchQuery === '' ||
       user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.email.toLowerCase().includes(searchQuery.toLowerCase());
-    
     const roleMatch = roleFilter === 'all' || user.role === roleFilter;
     const statusMatch = statusFilter === 'all' || user.status === statusFilter;
-    
     return searchMatch && roleMatch && statusMatch;
   });
 
-  // Calculate stats
   const activeUsers = users.filter(u => u.status === 'active').length;
   const pendingKYC = users.filter(u => u.kycStatus === 'pending').length;
   const suspendedUsers = users.filter(u => u.status === 'suspended').length;
 
-  const handleSuspendUser = (user: User) => {
-    setConfirmAction({ open: true, type: 'suspend', user });
-  };
-
-  const handleActivateUser = (user: User) => {
-    setConfirmAction({ open: true, type: 'activate', user });
-  };
-
-  const handleDeleteUser = (user: User) => {
-    setConfirmAction({ open: true, type: 'delete', user });
-  };
+  const handleSuspendUser = (user: User) => setConfirmAction({ open: true, type: 'suspend', user });
+  const handleActivateUser = (user: User) => setConfirmAction({ open: true, type: 'activate', user });
+  const handleDeleteUser = (user: User) => setConfirmAction({ open: true, type: 'delete', user });
 
   const handleConfirmAction = async () => {
     if (!confirmAction.user) return;
-
     const { type, user } = confirmAction;
     setConfirmAction({ open: false, type: null, user: null });
 
-    toast.loading(`Processing...`);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    if (type === 'delete') {
-      setUsers(users.filter(u => u.id !== user.id));
-      toast.success(`User deleted - ${user.name} removed from platform`);
-    } else if (type === 'suspend') {
-      setUsers(users.map(u => 
-        u.id === user.id ? { ...u, status: 'suspended' as const } : u
-      ));
-      toast.success(`User suspended - ${user.name} account suspended`);
-    } else if (type === 'activate') {
-      setUsers(users.map(u => 
-        u.id === user.id ? { ...u, status: 'active' as const } : u
-      ));
-      toast.success(`User activated - ${user.name} account activated`);
+    try {
+      if (type === 'delete') {
+        const res = await fetch(`/api/v1/admin/users/${user.id}`, {
+          method: 'DELETE',
+          headers: getAuthHeader(),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(typeof err?.detail === 'string' ? err.detail : `Delete failed (${res.status})`);
+        }
+        setUsers(prev => prev.filter(u => u.id !== user.id));
+        toast.success(`${user.name} permanently deleted`);
+      } else {
+        const res = await fetch(`/api/v1/admin/users/${user.id}/toggle-active`, {
+          method: 'POST',
+          headers: getAuthHeader(),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(typeof err?.detail === 'string' ? err.detail : `Action failed (${res.status})`);
+        }
+        const data = await res.json();
+        const newStatus: User['status'] = data.is_active ? 'active' : 'suspended';
+        setUsers(prev => prev.map(u => u.id === user.id ? { ...u, status: newStatus } : u));
+        toast.success(`${user.name} ${newStatus === 'active' ? 'activated' : 'suspended'}`);
+      }
+    } catch (err: any) {
+      toast.error(err?.message || 'Action failed');
     }
   };
 
-  const handleRoleChange = (userId: string, newRole: string) => {
+  const handleRoleChange = async (userId: string, newRole: string) => {
     const user = users.find(u => u.id === userId);
-    setUsers(users.map(u =>
-      u.id === userId ? { ...u, role: newRole as any } : u
-    ));
-    toast.success(`Role updated - ${user?.name} is now ${newRole}`);
+    try {
+      const res = await fetch(`/api/v1/admin/users/${userId}/role`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify({ role: newRole }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(typeof err?.detail === 'string' ? err.detail : `Role update failed (${res.status})`);
+      }
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole as User['role'] } : u));
+      toast.success(`${user?.name} role updated to ${newRole}`);
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to update role');
+    }
   };
 
   const handleExport = () => {
-    toast.info('Preparing export...');
-    setTimeout(() => {
-      toast.success(`Users exported - ${filteredUsers.length} users exported to CSV`);
-    }, 1000);
+    const rows = [
+      ['ID', 'Name', 'Email', 'Role', 'Status', 'KYC', 'Joined'],
+      ...filteredUsers.map(u => [
+        u.id, `"${u.name}"`, u.email, u.role, u.status, u.kycStatus,
+        format(u.joinedDate, 'dd/MM/yyyy'),
+      ]),
+    ];
+    const csv = rows.map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `users_${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success(`${filteredUsers.length} users exported to CSV`);
   };
 
   const handleClearFilters = () => {
     setSearchQuery('');
     setRoleFilter('all');
     setStatusFilter('all');
-    toast.info('Filters cleared');
   };
 
   const breadcrumbItems = [
     { label: 'Dashboard', href: '#' },
     { label: 'Admin', href: '#' },
-    { label: 'User Management' }
+    { label: 'User Management' },
   ];
 
   const getStatusBadge = (status: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       active: 'bg-green-100 text-green-800',
       suspended: 'bg-red-100 text-red-800',
-      pending: 'bg-amber-100 text-amber-800'
+      pending: 'bg-amber-100 text-amber-800',
     };
     return (
-      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-800'}`}>
+      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[status] || 'bg-gray-100 text-gray-800'}`}>
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
     );
   };
 
   const getKYCBadge = (kycStatus: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       approved: 'bg-green-100 text-green-800',
       pending: 'bg-amber-100 text-amber-800',
-      rejected: 'bg-red-100 text-red-800'
+      rejected: 'bg-red-100 text-red-800',
     };
     return (
-      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[kycStatus as keyof typeof colors] || 'bg-gray-100 text-gray-800'}`}>
+      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[kycStatus] || 'bg-gray-100 text-gray-800'}`}>
         {kycStatus.charAt(0).toUpperCase() + kycStatus.slice(1)}
       </span>
     );
@@ -208,8 +269,60 @@ export function AdminUserManagement() {
 
   return (
     <div className="space-y-6">
-      {/* Breadcrumbs */}
       <Breadcrumbs items={breadcrumbItems} />
+
+      {/* Header + Create User */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-900">User Management</h1>
+          <p className="text-sm text-gray-500">Create users and assign compliance roles.</p>
+        </div>
+        <Button onClick={() => setShowCreate(true)}>
+          <UserCheck className="w-4 h-4 mr-2" />
+          Create User
+        </Button>
+      </div>
+
+      {/* Create User modal */}
+      {showCreate && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={() => !creating && setShowCreate(false)}>
+          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 space-y-4" onClick={e => e.stopPropagation()}>
+            <h2 className="text-lg font-semibold text-gray-900">Create User</h2>
+            <div className="space-y-3">
+              <div>
+                <label className="text-sm text-gray-700">Full name</label>
+                <Input value={createForm.name} onChange={e => setCreateForm(f => ({ ...f, name: e.target.value }))} placeholder="Jane Smith" />
+              </div>
+              <div>
+                <label className="text-sm text-gray-700">Email</label>
+                <Input type="email" value={createForm.email} onChange={e => setCreateForm(f => ({ ...f, email: e.target.value }))} placeholder="jane@firm.com" />
+              </div>
+              <div>
+                <label className="text-sm text-gray-700">Temporary password</label>
+                <Input type="password" value={createForm.password} onChange={e => setCreateForm(f => ({ ...f, password: e.target.value }))} placeholder="Min 12 chars, 1 special" />
+              </div>
+              <div>
+                <label className="text-sm text-gray-700">Role</label>
+                <select
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                  value={createForm.role}
+                  onChange={e => setCreateForm(f => ({ ...f, role: e.target.value }))}
+                >
+                  <option value="">Select a role…</option>
+                  {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
+                </select>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 pt-2">
+              <Button variant="outline" onClick={() => setShowCreate(false)} disabled={creating}>Cancel</Button>
+              <Button onClick={handleCreateUser} disabled={creating}>
+                {creating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                Create
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -279,8 +392,7 @@ export function AdminUserManagement() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle>All Users ({filteredUsers.length})</CardTitle>
-            <div className="flex items-center gap-3">
-              {/* Search */}
+            <div className="flex items-center gap-3 flex-wrap">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
@@ -292,20 +404,15 @@ export function AdminUserManagement() {
                 />
               </div>
 
-              {/* Role Filter */}
               <select
                 value={roleFilter}
                 onChange={(e) => setRoleFilter(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Roles</option>
-                <option value="borrower">Borrower</option>
-                <option value="lender">Lender</option>
-                <option value="investor">Investor</option>
-                <option value="admin">Admin</option>
+                {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
               </select>
 
-              {/* Status Filter */}
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -314,15 +421,18 @@ export function AdminUserManagement() {
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
                 <option value="suspended">Suspended</option>
-                <option value="pending">Pending</option>
               </select>
 
-              {/* Actions */}
               <Button variant="outline" size="sm" onClick={handleClearFilters}>
                 Clear
               </Button>
-              
-              <Button variant="outline" size="sm" onClick={handleExport}>
+
+              <Button variant="outline" size="sm" onClick={fetchUsers} disabled={loading}>
+                <RefreshCw className={`w-4 h-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
+                Refresh
+              </Button>
+
+              <Button variant="outline" size="sm" onClick={handleExport} disabled={filteredUsers.length === 0}>
                 <Download className="w-4 h-4 mr-1" />
                 Export
               </Button>
@@ -330,19 +440,21 @@ export function AdminUserManagement() {
           </div>
         </CardHeader>
         <CardContent>
-          {filteredUsers.length === 0 ? (
+          {loading ? (
+            <div className="flex items-center justify-center py-16">
+              <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+              <span className="ml-3 text-gray-500">Loading users...</span>
+            </div>
+          ) : filteredUsers.length === 0 ? (
             <EmptyState
               icon={Users}
               title="No users found"
               description={
                 searchQuery || roleFilter !== 'all' || statusFilter !== 'all'
-                  ? "No users match your filters"
-                  : "No users have been registered yet"
+                  ? 'No users match your filters'
+                  : 'No users have been registered yet'
               }
-              action={{
-                label: 'Clear Filters',
-                onClick: handleClearFilters
-              }}
+              action={{ label: 'Clear Filters', onClick: handleClearFilters }}
             />
           ) : (
             <div className="overflow-x-auto">
@@ -355,20 +467,16 @@ export function AdminUserManagement() {
                     <TableHead>Status</TableHead>
                     <TableHead>KYC</TableHead>
                     <TableHead>Joined</TableHead>
-                    <TableHead>Last Active</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {filteredUsers.map((user) => (
-                    <TableRow 
-                      key={user.id} 
-                      className="hover:bg-gray-50"
-                    >
+                    <TableRow key={user.id} className="hover:bg-gray-50">
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold">
-                            {user.name.split(' ').map(n => n[0]).join('')}
+                            {user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
                           </div>
                           <div>
                             <p className="font-medium text-gray-900">{user.name}</p>
@@ -386,42 +494,33 @@ export function AdminUserManagement() {
                         <select
                           value={user.role}
                           onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                          className="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary capitalize"
+                          className="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <option value="borrower">Borrower</option>
-                          <option value="lender">Lender</option>
-                          <option value="investor">Investor</option>
-                          <option value="admin">Admin</option>
+                          {/* Ensure the user's current role is selectable even if
+                              not in the assignable list (e.g. legacy roles). */}
+                          {!roles.some(r => r.value === user.role) && (
+                            <option value={user.role}>{user.roleLabel}</option>
+                          )}
+                          {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
                         </select>
                       </TableCell>
-                      <TableCell>
-                        {getStatusBadge(user.status)}
-                      </TableCell>
-                      <TableCell>
-                        {getKYCBadge(user.kycStatus)}
-                      </TableCell>
+                      <TableCell>{getStatusBadge(user.status)}</TableCell>
+                      <TableCell>{getKYCBadge(user.kycStatus)}</TableCell>
                       <TableCell className="text-sm text-gray-600">
                         {format(user.joinedDate, 'dd MMM yyyy')}
                       </TableCell>
-                      <TableCell className="text-sm text-gray-600">
-                        {format(user.lastActive, 'dd MMM, HH:mm')}
-                      </TableCell>
                       <TableCell className="text-right">
                         <div className="flex gap-2 justify-end">
-                          <Button 
-                            variant="outline" 
+                          <Button
+                            variant="outline"
                             size="sm"
-                            onClick={() => {
-                              // In production, navigate to user detail page
-                              // For now, show basic info
-                              alert(`User: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${user.status}`);
-                            }}
+                            onClick={() => toast.info(`User: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${user.status}`)}
                             title="View User"
                           >
                             <Eye className="w-4 h-4" />
                           </Button>
-                          
+
                           {user.status === 'active' ? (
                             <Button
                               variant="outline"
@@ -464,7 +563,6 @@ export function AdminUserManagement() {
         </CardContent>
       </Card>
 
-      {/* Confirm Action Dialog */}
       <ConfirmDialog
         open={confirmAction.open}
         onOpenChange={(open) => setConfirmAction({ ...confirmAction, open })}
@@ -474,10 +572,10 @@ export function AdminUserManagement() {
           'Activate User?'
         }
         description={
-          confirmAction.type === 'delete' 
-            ? `Are you sure you want to permanently delete ${confirmAction.user?.name}? This will remove all their data and cannot be undone.`
+          confirmAction.type === 'delete'
+            ? `Are you sure you want to permanently delete ${confirmAction.user?.name}? This cannot be undone.`
             : confirmAction.type === 'suspend'
-            ? `Are you sure you want to suspend ${confirmAction.user?.name}? They will lose access to the platform immediately.`
+            ? `Are you sure you want to suspend ${confirmAction.user?.name}? They will lose access immediately.`
             : `Are you sure you want to activate ${confirmAction.user?.name}? They will regain access to the platform.`
         }
         confirmLabel={

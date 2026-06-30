@@ -504,10 +504,10 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-amber-50 border-amber-200">
+          <Card className={client.status === 'Active' ? 'bg-green-50 border-green-200' : client.status === 'Suspended' ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'}>
             <CardContent className="p-4">
-              <p className="text-sm text-amber-700 font-semibold mb-1">Status</p>
-              <p className="text-3xl font-bold text-amber-700">{getStatusText()}</p>
+              <p className={`text-sm font-semibold mb-1 ${client.status === 'Active' ? 'text-green-700' : client.status === 'Suspended' ? 'text-red-700' : 'text-amber-700'}`}>Status</p>
+              <p className={`text-3xl font-bold ${client.status === 'Active' ? 'text-green-700' : client.status === 'Suspended' ? 'text-red-700' : 'text-amber-700'}`}>{getStatusText()}</p>
             </CardContent>
           </Card>
           <Card className="bg-blue-50 border-blue-200">
@@ -583,42 +583,75 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
             </div>
           </div>
 
-          <div className="flex gap-4">
-            <Button 
-              className="flex-1 bg-green-600 hover:bg-green-700"
-              onClick={handleApprove}
-              disabled={loadingAction !== null}
-            >
-              {loadingAction === 'approve' ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Approving...</>
-              ) : (
-                'Approve Client'
-              )}
-            </Button>
-            <Button 
-              className="flex-1 bg-red-600 hover:bg-red-700"
-              onClick={handleFlag}
-              disabled={loadingAction !== null}
-            >
-              {loadingAction === 'flag' ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Flagging...</>
-              ) : (
-                'Flag for Investigation'
-              )}
-            </Button>
-            <Button 
-              variant="outline" 
-              className="flex-1"
-              onClick={() => setShowInfoModal(true)}
-              disabled={loadingAction !== null}
-            >
-              {loadingAction === 'info' ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Requesting...</>
-              ) : (
-                'Request More Info'
-              )}
-            </Button>
-          </div>
+          {client.status === 'Active' ? (
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <div>
+                  <p className="font-bold text-green-800">Client Approved</p>
+                  <p className="text-sm text-green-700">This client has been approved. No further action required.</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Button
+                  className="flex-1 bg-red-600 hover:bg-red-700"
+                  onClick={handleFlag}
+                  disabled={loadingAction !== null}
+                >
+                  {loadingAction === 'flag' ? (
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Flagging...</>
+                  ) : (
+                    'Flag for Investigation'
+                  )}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => setShowInfoModal(true)}
+                  disabled={loadingAction !== null}
+                >
+                  Request More Info
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex gap-4">
+              <Button
+                className="flex-1 bg-green-600 hover:bg-green-700"
+                onClick={handleApprove}
+                disabled={loadingAction !== null}
+              >
+                {loadingAction === 'approve' ? (
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Approving...</>
+                ) : (
+                  'Approve Client'
+                )}
+              </Button>
+              <Button
+                className="flex-1 bg-red-600 hover:bg-red-700"
+                onClick={handleFlag}
+                disabled={loadingAction !== null}
+              >
+                {loadingAction === 'flag' ? (
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Flagging...</>
+                ) : (
+                  'Flag for Investigation'
+                )}
+              </Button>
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => setShowInfoModal(true)}
+                disabled={loadingAction !== null}
+              >
+                {loadingAction === 'info' ? (
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Requesting...</>
+                ) : (
+                  'Request More Info'
+                )}
+              </Button>
+            </div>
+          )}
 
           {!getApprovalPermission().allowed && (
             <div className="p-3 bg-red-50 text-red-800 rounded-lg border border-red-200 text-xs font-semibold flex items-center gap-2">

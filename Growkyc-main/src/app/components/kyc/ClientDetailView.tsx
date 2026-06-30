@@ -341,10 +341,10 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
     <div className="space-y-6">
       {/* Status Banner */}
       <Card className={`border-4 shadow-xl ${
-        client.complianceScore >= 90 ? 'border-green-400 bg-gradient-to-r from-green-50 to-emerald-50' :
-        client.complianceScore >= 70 ? 'border-blue-400 bg-gradient-to-r from-blue-50 to-cyan-50' :
-        client.complianceScore >= 50 ? 'border-amber-400 bg-gradient-to-r from-amber-50 to-yellow-50' :
-        'border-red-400 bg-gradient-to-r from-red-50 to-pink-50'
+        client.complianceScore >= 90 ? 'border-green-400 bg-gray-50' :
+        client.complianceScore >= 70 ? 'border-blue-400 bg-gray-50' :
+        client.complianceScore >= 50 ? 'border-amber-400 bg-gray-50' :
+        'border-red-400 bg-gray-50'
       }`}>
         <CardContent className="p-8">
           <div className="flex items-center justify-between">
@@ -400,77 +400,77 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
 
       {/* Quick Stats */}
       <div className="grid md:grid-cols-4 gap-6">
-        <Card className="border-2 border-blue-300 bg-blue-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
                 <FileText className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-blue-900">{documents.length}</p>
-                <p className="text-sm text-blue-700">Documents</p>
+                <p className="text-3xl font-bold text-gray-900">{documents.length}</p>
+                <p className="text-sm text-gray-600">Documents</p>
               </div>
             </div>
             <Progress value={(documents.filter(d => d.status === 'verified').length / documents.length) * 100} className="h-2" />
-            <p className="text-xs text-blue-600 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               {documents.filter(d => d.status === 'verified').length} verified, {documents.filter(d => d.status === 'pending').length} pending
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-green-300 bg-green-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
                 <CheckCircle className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-green-900">{complianceChecks.filter(c => c.status === 'passed').length}/{complianceChecks.length}</p>
-                <p className="text-sm text-green-700">Checks Passed</p>
+                <p className="text-3xl font-bold text-gray-900">{complianceChecks.filter(c => c.status === 'passed').length}/{complianceChecks.length}</p>
+                <p className="text-sm text-gray-600">Checks Passed</p>
               </div>
             </div>
             <Progress value={(complianceChecks.filter(c => c.status === 'passed').length / complianceChecks.length) * 100} className="h-2 bg-green-200" />
-            <p className="text-xs text-green-600 mt-2">All tiers monitored</p>
+            <p className="text-xs text-gray-500 mt-2">All tiers monitored</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-300 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-amber-600 rounded-xl flex items-center justify-center">
                 <DollarSign className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-amber-900">{transactions.length}</p>
-                <p className="text-sm text-amber-700">Transactions</p>
+                <p className="text-3xl font-bold text-gray-900">{transactions.length}</p>
+                <p className="text-sm text-gray-600">Transactions</p>
               </div>
             </div>
             <Progress value={75} className="h-2 bg-amber-200" />
-            <p className="text-xs text-amber-600 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               {transactions.filter(t => t.status === 'flagged').length} flagged for review
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-purple-300 bg-purple-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
                 <Database className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-purple-900">6</p>
-                <p className="text-sm text-purple-700">Data Sources</p>
+                <p className="text-3xl font-bold text-gray-900">6</p>
+                <p className="text-sm text-gray-600">Data Sources</p>
               </div>
             </div>
-            <p className="text-xs text-purple-600 mt-2">ASIC, Equifax, Illion, ComplyAdvantage +2</p>
+            <p className="text-xs text-gray-500 mt-2">ASIC, Equifax, Illion, ComplyAdvantage +2</p>
           </CardContent>
         </Card>
       </div>
 
       {/* AI-Powered Verification Journey */}
       <Card className="border-2 border-purple-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-blue-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2 text-2xl">
             <Brain className="w-7 h-7 text-purple-600" />
             AI-Powered Verification Journey
@@ -658,7 +658,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
 
       {/* Data Sources Used */}
       <Card className="border-2 border-blue-300">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50">
+        <CardHeader className="bg-gray-50">
           <CardTitle className="flex items-center gap-2">
             <Globe className="w-6 h-6 text-blue-600" />
             Data Sources & Evidence
@@ -689,7 +689,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
   const renderDocuments = () => (
     <div className="space-y-6">
       <Card>
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl">Document Library</CardTitle>
@@ -774,7 +774,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
   const renderTransactions = () => (
     <div className="space-y-6">
       <Card>
-        <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl">Transaction Monitoring</CardTitle>
@@ -878,7 +878,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
   const renderCompliance = () => (
     <div className="space-y-6">
       <Card>
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="text-2xl">5-Tier Compliance System</CardTitle>
           <CardDescription className="text-base">
             {complianceChecks.length} checks across 6 data sources
@@ -957,7 +957,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-7xl w-full max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900 text-white px-8 py-6 flex items-center justify-between border-b">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-8 py-6 flex items-center justify-between border-b">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
               <Building className="w-8 h-8 text-white" />
@@ -980,7 +980,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-800 px-8 py-3 flex items-center gap-2 border-b border-white/10">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 px-8 py-3 flex items-center gap-2 border-b border-white/10">
           {[
             { id: 'overview', label: 'Overview', icon: Eye },
             { id: 'documents', label: 'Documents', icon: FileText },

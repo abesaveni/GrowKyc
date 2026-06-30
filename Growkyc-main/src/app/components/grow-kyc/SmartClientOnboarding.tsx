@@ -377,7 +377,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
           Back
         </Button>
 
-        <Card className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white border-0 shadow-xl">
+        <Card className="bg-gradient-to-r from-slate-800 to-slate-700 text-white border-0 shadow-xl">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div>
@@ -460,7 +460,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         Est. {type.estimatedTime}
                       </div>
 
-                      <Button className="w-full mt-4 bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white">
+                      <Button className="w-full mt-4 bg-gradient-to-r from-slate-800 to-slate-700 text-white">
                         Select {type.name}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
@@ -619,7 +619,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     Previous
                   </Button>
                   <Button
-                    className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white"
+                    className="bg-gradient-to-r from-slate-800 to-slate-700 text-white"
                     onClick={handleNext}
                   >
                     Continue
@@ -664,7 +664,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     className="hidden"
                   />
                   
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-slate-800 to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Upload className="w-10 h-10 text-white" />
                   </div>
 
@@ -749,7 +749,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     Previous
                   </Button>
                   <Button
-                    className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white"
+                    className="bg-gradient-to-r from-slate-800 to-slate-700 text-white"
                     onClick={handleNext}
                     disabled={uploadedFiles.length === 0}
                   >
@@ -903,7 +903,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   </Button>
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white"
+                    className="bg-gradient-to-r from-slate-800 to-slate-700 text-white"
                     onClick={onBack}
                   >
                     Back to Dashboard

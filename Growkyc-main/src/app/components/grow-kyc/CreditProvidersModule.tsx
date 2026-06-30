@@ -562,7 +562,7 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
         {selectedTab === 'compliance' && (
           <div className="space-y-6">
             {/* Pre-Settlement Compliance Gate */}
-            <Card className="border-2 border-red-300 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-300 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Lock className="w-5 h-5 text-red-600" />
@@ -706,7 +706,7 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
             </Card>
 
             {/* LOS Integration */}
-            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+            <Card className="bg-gray-50 border-2 border-blue-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Building2 className="w-5 h-5 text-blue-600" />

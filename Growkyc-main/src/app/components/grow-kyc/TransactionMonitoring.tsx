@@ -282,7 +282,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-green-600 to-blue-600 border-b sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -373,7 +373,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
 
             {isLoading && <div className="p-6 bg-white rounded border">Loading alerts...</div>}
             {error && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded text-red-700 flex items-center gap-2">
+              <div className="p-4 bg-white border border-gray-200 rounded text-red-700 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" /> {error}
               </div>
             )}

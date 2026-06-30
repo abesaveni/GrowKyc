@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
 import {
   Users,
   Shield,
@@ -77,7 +78,11 @@ export function ClientList() {
   const [filterType, setFilterType] = useState<ClientType | 'all'>('all');
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
-  const [clients] = useState<Client[]>([
+  const [loading, setLoading] = useState(false);
+  const [isLive, setIsLive] = useState(false);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const [clients, setClients] = useState<Client[]>([
     {
       id: 'C-2024-001',
       name: 'TechCorp Pty Ltd',
@@ -373,6 +378,91 @@ export function ClientList() {
     }
   ]);
 
+  const fetchClients = useCallback(async () => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    setLoading(true);
+    try {
+      const res = await fetch('/api/v1/clients?limit=100', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      // Map the backend ClientResponse (id, name, risk_score, is_pep,
+      // is_sanctioned, is_locked, approved_at, individual/entity_profile) to the
+      // display model. Status and risk tier are derived from real fields.
+      const riskTierFrom = (score: number): RiskTier =>
+        score >= 70 ? 'critical' : score >= 40 ? 'high' : score >= 20 ? 'medium' : 'low';
+      const statusFrom = (c: any): ClientStatus =>
+        c.is_locked ? 'restricted' : c.approved_at ? 'active' : 'inactive';
+      const mapped: Client[] = (data.items || []).map((c: any) => {
+        const approved = !!c.approved_at && !c.is_locked;
+        return {
+          id: String(c.id),
+          name: c.name,
+          clientType: (c.entity_profile ? 'company' : 'individual') as ClientType,
+          status: statusFrom(c),
+          riskTier: riskTierFrom(c.risk_score || 0),
+          onboardedDate: new Date(c.created_at),
+          lastReviewDate: c.approved_at ? new Date(c.approved_at) : new Date(c.created_at),
+          nextReviewDue: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+          email: c.individual_profile?.email || c.entity_profile?.contact_email || '',
+          phone: c.individual_profile?.mobile_phone || c.entity_profile?.contact_phone,
+          address: c.individual_profile?.residential_address || c.entity_profile?.registered_address || c.geography || '',
+          assignedManager: '—',
+          abn: c.entity_profile?.abn,
+          acn: c.entity_profile?.acn,
+          kycComplete: approved,
+          documentsUpToDate: !c.is_locked,
+          screeningStatus: c.is_sanctioned ? 'failed' : c.is_pep ? 'match-review' : 'clear',
+          engagementValue: (c.income_level || 0) * 1000,
+          complianceScore: Math.max(0, 100 - (c.risk_score || 0)),
+          tier1Status: (approved ? 'passed' : 'pending') as ComplianceStatus,
+          tier2Status: 'pending' as ComplianceStatus,
+          tier3Status: 'pending' as ComplianceStatus,
+          tier4Status: 'pending' as ComplianceStatus,
+          tier5Status: 'pending' as ComplianceStatus,
+          lastSanctionsCheck: new Date(c.created_at),
+          transactionMonitoring: 'inactive' as const,
+          identityWallet: false,
+          botsActive: 0,
+        };
+      });
+      // Reflect the API as the source of truth (including an empty list),
+      // rather than silently falling back to seed/mock rows.
+      setClients(mapped);
+      setIsLive(true);
+    } catch {
+      // network/parse failure — leave existing rows, surface nothing destructive
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchClients(); }, [fetchClients]);
+
+  // Persist a client status change through the real API (approve / flag).
+  const updateClientStatus = async (clientId: string, status: 'approved' | 'flagged') => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    setBusyId(clientId);
+    try {
+      const res = await fetch(`/api/v1/clients/${clientId}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ status }),
+      });
+      if (res.status === 403) { toast.error('You do not have permission to change client status'); return; }
+      if (!res.ok) { toast.error(`Update failed (${res.status})`); return; }
+      toast.success(status === 'approved' ? 'Client approved' : 'Client flagged for review');
+      await fetchClients();
+    } catch {
+      toast.error('Network error updating client');
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   const getStatusColor = (status: ClientStatus) => {
     switch (status) {
       case 'active': return 'green';
@@ -413,6 +503,44 @@ export function ClientList() {
     return matchesSearch && matchesStatus && matchesRisk && matchesType;
   });
 
+  const fmtDate = (d: Date) => {
+    try {
+      return new Date(d).toISOString().split('T')[0];
+    } catch {
+      return '';
+    }
+  };
+
+  const exportClientsCsv = () => {
+    if (filteredClients.length === 0) {
+      toast.error('No clients to export');
+      return;
+    }
+    const columns = [
+      'Client ID', 'Name', 'Type', 'Status', 'Risk Tier', 'Email', 'Phone',
+      'ABN', 'ACN', 'Assigned Manager', 'KYC Complete', 'Screening',
+      'Compliance Score', 'Onboarded', 'Next Review Due', 'Engagement Value',
+    ];
+    const esc = (c: unknown) => `"${String(c ?? '').replace(/"/g, '""')}"`;
+    const rows = filteredClients.map((c) => [
+      c.id, c.name, c.clientType, c.status, c.riskTier, c.email, c.phone ?? '',
+      c.abn ?? '', c.acn ?? '', c.assignedManager, c.kycComplete ? 'Yes' : 'No',
+      c.screeningStatus, c.complianceScore, fmtDate(c.onboardedDate),
+      fmtDate(c.nextReviewDue), c.engagementValue,
+    ]);
+    const csv = [columns, ...rows].map((r) => r.map(esc).join(',')).join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `client_list_${fmtDate(new Date())}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${filteredClients.length} client(s) to CSV`);
+  };
+
   const stats = {
     total: clients.length,
     active: clients.filter(c => c.status === 'active').length,
@@ -431,22 +559,29 @@ export function ClientList() {
       )}
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Users className="w-16 h-16" />
             <div>
               <h1 className="text-4xl font-bold mb-2">Client List</h1>
-              <p className="text-xl text-indigo-100">Manage Your Client Portfolio</p>
+              <p className="text-xl text-indigo-100">
+                Manage Your Client Portfolio
+                {isLive && (
+                  <span className="ml-3 inline-flex items-center gap-1 text-sm font-semibold bg-green-500/20 text-green-100 px-2 py-0.5 rounded-full align-middle">
+                    <span className="w-2 h-2 rounded-full bg-green-300" /> Live · API
+                  </span>
+                )}
+              </p>
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
+            <Button className="bg-white text-indigo-600 hover:bg-indigo-50" onClick={exportClientsCsv}>
               <Download className="w-5 h-5 mr-2" />
               Export List
             </Button>
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
-              <RefreshCw className="w-5 h-5 mr-2" />
+            <Button className="bg-white text-indigo-600 hover:bg-indigo-50" onClick={fetchClients} disabled={loading}>
+              <RefreshCw className={`w-5 h-5 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Sync Updates
             </Button>
           </div>
@@ -738,7 +873,7 @@ export function ClientList() {
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-lg border border-blue-200 bg-blue-50">
+                  <div className="p-2 rounded-lg border border-gray-200 bg-white">
                     <p className="text-xs font-semibold text-gray-700 mb-1">Last Review</p>
                     <p className="text-xs text-blue-700">{client.lastReviewDate.toLocaleDateString()}</p>
                   </div>
@@ -773,17 +908,25 @@ export function ClientList() {
                 </div>
               </div>
 
-              <div className="flex gap-2 ml-6">
+              <div className="flex flex-col gap-2 ml-6">
                 <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setSelectedClient(client)}>
                   <Eye className="w-4 h-4 mr-2" />
                   View Profile
                 </Button>
-                <Button size="sm" variant="outline">
-                  <Edit className="w-4 h-4" />
-                </Button>
-                <Button size="sm" variant="outline">
-                  <Download className="w-4 h-4" />
-                </Button>
+                {client.status !== 'active' && (
+                  <Button size="sm" variant="outline" className="text-green-700 border-green-200"
+                    disabled={busyId === client.id}
+                    onClick={() => updateClientStatus(client.id, 'approved')}>
+                    <CheckCircle className="w-4 h-4 mr-2" />Approve
+                  </Button>
+                )}
+                {client.status !== 'restricted' && (
+                  <Button size="sm" variant="outline" className="text-red-700 border-red-200"
+                    disabled={busyId === client.id}
+                    onClick={() => updateClientStatus(client.id, 'flagged')}>
+                    <AlertTriangle className="w-4 h-4 mr-2" />Flag
+                  </Button>
+                )}
               </div>
             </div>
           </div>

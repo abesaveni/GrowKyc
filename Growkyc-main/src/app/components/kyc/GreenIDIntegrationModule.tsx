@@ -107,7 +107,7 @@ export function GreenIDIntegrationModule() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Shield className="w-16 h-16" />
@@ -183,15 +183,15 @@ export function GreenIDIntegrationModule() {
             </p>
             <div className="grid grid-cols-3 gap-4">
               <div className="p-3 bg-white border border-green-200 rounded-lg">
-                <p className="text-xs text-green-700 font-semibold mb-1">API Status</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">API Status</p>
                 <p className="font-bold text-green-900">✓ Connected</p>
               </div>
               <div className="p-3 bg-white border border-green-200 rounded-lg">
-                <p className="text-xs text-green-700 font-semibold mb-1">Data Sources</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Data Sources</p>
                 <p className="font-bold text-green-900">12 Active</p>
               </div>
               <div className="p-3 bg-white border border-green-200 rounded-lg">
-                <p className="text-xs text-green-700 font-semibold mb-1">Last Sync</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Last Sync</p>
                 <p className="font-bold text-green-900">Just now</p>
               </div>
             </div>

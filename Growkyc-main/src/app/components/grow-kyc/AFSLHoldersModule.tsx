@@ -375,7 +375,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
         {selectedTab === 'classification' && (
           <div className="space-y-6">
             {/* Classification Engine */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-purple-600" />
@@ -537,7 +537,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
         {selectedTab === 'compliance' && (
           <div className="space-y-6">
             {/* Fee Consent Tracking */}
-            <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50">
+            <Card className="border-2 border-amber-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-amber-600" />
@@ -609,7 +609,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
             </Card>
 
             {/* Platform Integrations */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+            <Card className="bg-gray-50 border-2 border-indigo-200">
               <CardHeader>
                 <CardTitle>Portfolio Platform Integration</CardTitle>
                 <CardDescription>Connect with HUB24, Netwealth, Praemium</CardDescription>

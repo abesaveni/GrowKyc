@@ -41,6 +41,13 @@ class SAR(Base):
         nullable=True,
         index=True,
     )
+    case_id = Column(
+        Integer,
+        ForeignKey("cases.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+        comment="Investigation case this SAR was raised from, if any",
+    )
     tenant_id = Column(
         Integer,
         ForeignKey("tenants.id", ondelete="SET NULL"),

@@ -69,7 +69,7 @@ export function HighRiskTransactionsDisplay({ transactions, sourceOfFundsProof }
       {/* HIGH RISK TRANSACTIONS SECTION */}
       {transactions.length > 0 && (
         <Card className="border-2 border-red-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b-2 border-red-200">
+          <CardHeader className="bg-gray-50 border-b-2 border-red-200">
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="w-6 h-6 text-red-600" />
               High Risk Transactions Detected ({transactions.length})
@@ -143,7 +143,7 @@ export function HighRiskTransactionsDisplay({ transactions, sourceOfFundsProof }
                     {isExpanded && (
                       <div className="border-t-2 border-gray-300 p-4 space-y-4 bg-white bg-opacity-50">
                         {/* Risk Flags */}
-                        <div className="bg-red-100 border-2 border-red-400 rounded-lg p-4">
+                        <div className="bg-white border border-gray-200 rounded-lg p-4">
                           <div className="flex items-center gap-2 mb-3">
                             <AlertTriangle className="w-5 h-5 text-red-600" />
                             <h5 className="font-bold text-red-900">Risk Flags</h5>
@@ -159,7 +159,7 @@ export function HighRiskTransactionsDisplay({ transactions, sourceOfFundsProof }
                         </div>
 
                         {/* AML Concerns */}
-                        <div className="bg-orange-100 border-2 border-orange-400 rounded-lg p-4">
+                        <div className="bg-white border border-gray-200 rounded-lg p-4">
                           <div className="flex items-center gap-2 mb-3">
                             <Shield className="w-5 h-5 text-orange-600" />
                             <h5 className="font-bold text-orange-900">AML/CTF Concerns</h5>
@@ -176,7 +176,7 @@ export function HighRiskTransactionsDisplay({ transactions, sourceOfFundsProof }
 
                         {/* Investigation Notes */}
                         {tx.investigationNotes && (
-                          <div className="bg-blue-100 border-2 border-blue-400 rounded-lg p-4">
+                          <div className="bg-white border border-gray-200 rounded-lg p-4">
                             <div className="flex items-center gap-2 mb-2">
                               <FileText className="w-5 h-5 text-blue-600" />
                               <h5 className="font-bold text-blue-900">Investigation Notes</h5>
@@ -208,7 +208,7 @@ export function HighRiskTransactionsDisplay({ transactions, sourceOfFundsProof }
 
       {/* SOURCE OF FUNDS PROOF SECTION */}
       <Card className="border-2 border-blue-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <LinkIcon className="w-6 h-6 text-blue-600" />
             Source of Funds - Verification & Proof
@@ -309,7 +309,7 @@ export function HighRiskTransactionsDisplay({ transactions, sourceOfFundsProof }
 
       {/* Summary Alert */}
       {transactions.length > 0 && (
-        <Card className="border-2 border-red-400 bg-red-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />

@@ -1520,7 +1520,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
         </Card>
 
         {/* Current Estimated Entities */}
-        <Card className="border-2 border-blue-300 bg-blue-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Users className="w-5 h-5 text-blue-600" />

@@ -7,7 +7,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center gap-4">
           <div className="bg-white/20 p-4 rounded-full">
             <Shield className="w-12 h-12" />
@@ -23,7 +23,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-4 gap-4">
-        <Card className="border-2 border-red-300 bg-red-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <Lock className="w-6 h-6 text-red-600" />
@@ -34,7 +34,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-300 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <Shield className="w-6 h-6 text-amber-600" />
@@ -45,7 +45,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-blue-300 bg-blue-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <DollarSign className="w-6 h-6 text-blue-600" />
@@ -56,7 +56,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-green-300 bg-green-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <DollarSign className="w-6 h-6 text-green-600" />
@@ -74,7 +74,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
           <CardTitle className="text-red-900">Mandatory Checks (Must Pay)</CardTitle>
         </CardHeader>
         <CardContent className="p-6 space-y-4">
-          <div className="border-2 border-red-300 bg-red-50 rounded-lg p-6">
+          <div className="border border-gray-200 bg-white rounded-lg p-6">
             <h3 className="text-lg font-bold text-red-900 mb-2">Individual Identity Verification - $12.50</h3>
             <p className="text-gray-700 mb-2">
               Enhanced AML/CTF individual verification via GreenID/InfoTrack - DVS certified
@@ -84,7 +84,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
             </p>
           </div>
 
-          <div className="border-2 border-red-300 bg-red-50 rounded-lg p-6">
+          <div className="border border-gray-200 bg-white rounded-lg p-6">
             <h3 className="text-lg font-bold text-red-900 mb-2">Director/Officer Search - $15.00</h3>
             <p className="text-gray-700 mb-2">
               ASIC director and officer history check including disqualifications
@@ -147,7 +147,7 @@ export function AMLCTFEnhancedChecksPricingSimple() {
       </Card>
 
       {/* Summary */}
-      <Card className="border-2 border-green-300 bg-green-50">
+      <Card className="border border-gray-200 bg-white">
         <CardHeader>
           <CardTitle className="text-green-900">Pricing Summary</CardTitle>
         </CardHeader>

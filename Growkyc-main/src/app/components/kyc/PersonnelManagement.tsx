@@ -450,7 +450,7 @@ export function PersonnelManagement() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Users className="w-16 h-16" />
@@ -519,7 +519,7 @@ export function PersonnelManagement() {
 
       {/* Alerts Banner */}
       {(stats.criminalChecksExpiring > 0 || stats.trainingOverdue > 0) && (
-        <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-6">
           <div className="flex items-start gap-3">
             <Bell className="w-6 h-6 text-orange-600 mt-0.5" />
             <div className="flex-1">
@@ -570,7 +570,7 @@ export function PersonnelManagement() {
       {/* Role Definitions Tab */}
       {activeTab === 'overview' && (
         <div className="space-y-4">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
             <h3 className="font-bold text-blue-900 mb-2">AUSTRAC Personnel Requirements</h3>
             <p className="text-sm text-blue-800">
               Under the AML/CTF Act, reporting entities must conduct Personnel Due Diligence (PDD) on specific roles. 
@@ -879,7 +879,7 @@ export function PersonnelManagement() {
       {/* PDD Tab */}
       {activeTab === 'pdd' && (
         <div className="space-y-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <h3 className="font-bold text-blue-900 mb-3">Personnel Due Diligence (PDD) Requirements</h3>
             <p className="text-sm text-blue-800 mb-4">
               Under the AML/CTF Act, reporting entities must conduct PDD on certain personnel before appointment 
@@ -1059,7 +1059,7 @@ export function PersonnelManagement() {
       {/* Monitoring Tab */}
       {activeTab === 'monitoring' && (
         <div className="space-y-6">
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <h3 className="font-bold text-yellow-900 mb-3">Ongoing Monitoring Requirements</h3>
             <p className="text-sm text-yellow-800">
               Personnel must be continuously monitored for compliance with PDD requirements. 
@@ -1142,7 +1142,7 @@ export function PersonnelManagement() {
                   .map((staff) => {
                     const daysOverdue = Math.floor((new Date().getTime() - staff.nextRefresherDue!.getTime()) / (1000 * 60 * 60 * 24));
                     return (
-                      <div key={staff.id} className="p-4 rounded-lg border-2 border-red-200 bg-red-50">
+                      <div key={staff.id} className="p-4 rounded-lg border border-gray-200 bg-white">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="font-semibold text-gray-900">{staff.name}</p>

@@ -418,7 +418,7 @@ export function MonitoringModule() {
               )}
 
               {/* Risk Recalculation Preview */}
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-bold text-yellow-900 mb-3">Risk Recalculation Preview</h4>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
@@ -440,7 +440,7 @@ export function MonitoringModule() {
               </div>
 
               {/* Recommended Action */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-bold text-blue-900 mb-2">Recommended Action</h4>
                 <p className="text-sm text-blue-700">
                   {selectedAlert.severity === 'critical' && 

@@ -433,7 +433,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
         {selectedTab === 'subscriptions' && (
           <div className="space-y-6">
             {/* Subscription Workflow */}
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-cyan-50">
+            <Card className="border-2 border-blue-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="w-5 h-5 text-blue-600" />
@@ -474,7 +474,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
             </Card>
 
             {/* Subscription Gate */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-red-600" />
@@ -515,7 +515,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
         {selectedTab === 'compliance' && (
           <div className="space-y-6">
             {/* Ongoing Monitoring */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <RefreshCw className="w-5 h-5 text-purple-600" />
@@ -601,7 +601,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
             </Card>
 
             {/* Fund Registry Integration */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gray-50 border-2 border-indigo-200">
               <CardHeader>
                 <CardTitle>Fund Registry Integration</CardTitle>
                 <CardDescription>Sync with Mainstream, Link, Apex</CardDescription>

@@ -8,20 +8,31 @@ import { toast } from '../../lib/toast';
 import { ConfirmDialog } from '../ui/confirm-dialog';
 import { EmptyState } from '../ui/empty-state';
 import { Breadcrumbs } from '../ui/breadcrumbs';
-import { 
-  Plus, 
-  Search, 
-  Filter,
+import {
+  Plus,
+  Search,
   Eye,
-  Edit,
   Trash2,
   FileText,
   Download,
-  RefreshCw,
-  MoreVertical
+  RefreshCw
 } from 'lucide-react';
 import { mockCases } from '../../data/mockData';
 import { format } from 'date-fns';
+
+const STORAGE_KEY = 'growkyc_cases';
+
+function loadCases() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return JSON.parse(stored, (key, val) => key === 'createdAt' || key === 'updatedAt' ? new Date(val) : val);
+  } catch {}
+  return mockCases;
+}
+
+function saveCases(cases: any[]) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cases)); } catch {}
+}
 
 interface CaseManagementProps {
   onViewCase?: (caseId: string) => void;
@@ -30,7 +41,7 @@ interface CaseManagementProps {
 }
 
 export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }: CaseManagementProps) {
-  const [cases, setCases] = useState(mockCases);
+  const [cases, setCases] = useState(() => loadCases());
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
@@ -84,11 +95,11 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
   ];
 
   const handleStatusChange = (caseId: string, newStatus: string) => {
-    const caseItem = cases.find(c => c.id === caseId);
-    setCases(cases.map(c => 
-      c.id === caseId ? { ...c, status: newStatus } : c
-    ));
-    toast.success(`Status updated - ${caseItem?.caseNumber} set to ${newStatus}`);
+    const caseItem = cases.find((c: any) => c.id === caseId);
+    const updated = cases.map((c: any) => c.id === caseId ? { ...c, status: newStatus } : c);
+    setCases(updated);
+    saveCases(updated);
+    toast.success(`Status updated — ${caseItem?.caseNumber} set to ${newStatus}`);
   };
 
   const handleDeleteClick = (caseItem: any, e: React.MouseEvent) => {
@@ -97,29 +108,43 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
     setConfirmDeleteOpen(true);
   };
 
-  const handleDeleteCase = async () => {
+  const handleDeleteCase = () => {
     if (!caseToDelete) return;
-
     setConfirmDeleteOpen(false);
-    toast.loading('Deleting case...');
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setCases(cases.filter(c => c.id !== caseToDelete.id));
-    
-    toast.success(`Case deleted - ${caseToDelete.caseNumber}`);
-    
+    const updated = cases.filter((c: any) => c.id !== caseToDelete.id);
+    setCases(updated);
+    saveCases(updated);
+    toast.success(`Case deleted — ${caseToDelete.caseNumber}`);
     setCaseToDelete(null);
   };
 
   const handleExportCases = () => {
-    toast.info('Preparing export...');
-    setTimeout(() => {
-      toast.success(`Cases exported - ${filteredCases.length} cases exported to CSV`);
-    }, 1000);
+    const rows = [
+      ['Case Number', 'Borrower', 'Address', 'Debt', 'Valuation', 'Status', 'Risk', 'Created'],
+      ...filteredCases.map((c: any) => [
+        c.caseNumber,
+        `"${c.borrowerName}"`,
+        `"${c.property?.address || ''}"`,
+        c.outstandingDebt,
+        c.valuation?.amount || '',
+        c.status,
+        c.riskLevel,
+        format(c.createdAt, 'dd/MM/yyyy'),
+      ]),
+    ];
+    const csv = rows.map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `cases_${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success(`${filteredCases.length} cases exported to CSV`);
   };
 
   const handleRefresh = () => {
+    setCases(loadCases());
     toast.success('Cases refreshed');
   };
 

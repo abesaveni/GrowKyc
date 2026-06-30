@@ -558,7 +558,7 @@ function ClientProfitabilityBot({ onBack }: { onBack: () => void }) {
         </Card>
 
         {/* Core Rules */}
-        <Card className="border-2 border-green-400 bg-green-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-green-900">
               <Zap className="w-6 h-6" />
@@ -611,7 +611,7 @@ function PricingIntelligenceBot({ onBack }: { onBack: () => void }) {
       </div>
 
       <div className="max-w-7xl mx-auto px-8 py-8">
-        <Card className="border-2 border-blue-400 bg-blue-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-blue-900">
               <Zap className="w-6 h-6" />
@@ -688,7 +688,7 @@ function PortfolioRiskDashboard({ onBack }: { onBack: () => void }) {
           })}
         </div>
 
-        <Card className="border-2 border-purple-400 bg-purple-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-purple-900">
               <AlertTriangle className="w-6 h-6" />
@@ -771,7 +771,7 @@ function RevenueLeakageBot({ onBack }: { onBack: () => void }) {
           })}
         </div>
 
-        <Card className="border-2 border-amber-400 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-amber-900">
               <AlertCircle className="w-6 h-6" />

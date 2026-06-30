@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { toast } from 'sonner';
+import { downloadRecordPdf } from '../../lib/exportPdf';
 import {
   Send,
   CheckCircle,
@@ -118,88 +119,73 @@ const mockSubmissions: Submission[] = [
   }
 ];
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+const SAR_STATUS_MAP: Record<string, SubmissionStatus> = {
+  draft: 'draft',
+  under_review: 'approved',
+  filed: 'acknowledged',
+  declined: 'closed',
+};
+
+function mapSarToSubmission(s: any): Submission {
+  return {
+    caseId: `SAR-${s.id}`,
+    reportType: 'smr',
+    subject: `Client #${s.client_id}`,
+    decisionDate: s.raised_at ? s.raised_at.split('T')[0] : '',
+    submissionMethod: 'online',
+    status: SAR_STATUS_MAP[s.status] || 'draft',
+    submittedBy: `User #${s.raised_by || '—'}`,
+    acknowledgementStatus: s.regulator_reference || (s.filed_at ? 'Filed' : 'Pending'),
+    lastUpdated: s.filed_at || s.raised_at || '',
+    submissionRef: s.regulator_reference || undefined,
+  };
+}
+
+const STORAGE_KEY = 'austrac_submissions';
+
+function loadStoredSubmissions(): Submission[] {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {}
+  return mockSubmissions;
+}
+
 export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
   const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [submissionsList, setSubmissionsList] = useState<Submission[]>([]);
+  const [submissionsList, setSubmissionsList] = useState<Submission[]>(() => loadStoredSubmissions());
   const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchSubmissions = async (isFirstLoad = false) => {
+    const fetchSubmissions = async () => {
+      setIsLoading(true);
       try {
-        if (isFirstLoad) setIsLoading(true);
-        const response = await fetch('/api/v1/submissions');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const response = await fetch('/api/v1/sars?limit=50', {
+          headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        setSubmissionsList(data);
-        setFetchError(null);
-      } catch (err) {
-        console.error('Error fetching submissions:', err);
-        setFetchError(err instanceof Error ? err.message : String(err));
-        // Fallback to localStorage
-        try {
-          const stored = localStorage.getItem('austrac_submissions');
-          if (stored) {
-            setSubmissionsList(JSON.parse(stored));
-          } else {
-            setSubmissionsList(mockSubmissions);
-            localStorage.setItem('austrac_submissions', JSON.stringify(mockSubmissions));
-          }
-        } catch (e) {
-          setSubmissionsList(mockSubmissions);
+        const items: Submission[] = (data.items || []).map(mapSarToSubmission);
+        if (items.length > 0) {
+          setSubmissionsList(items);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
         }
+      } catch {
+        // keep stored/mock data on failure
       } finally {
-        if (isFirstLoad) setIsLoading(false);
+        setIsLoading(false);
       }
     };
 
-    fetchSubmissions(true);
-    const interval = setInterval(() => fetchSubmissions(false), 5000);
-
-    return () => clearInterval(interval);
+    fetchSubmissions();
   }, []);
 
-  useEffect(() => {
-    if (submissionsList && submissionsList.length > 0) {
-      try {
-        localStorage.setItem('austrac_submissions', JSON.stringify(submissionsList));
-        
-        // Also sync cases status to matching submissions
-        const storedCases = localStorage.getItem('austrac_cases');
-        if (storedCases) {
-          const parsedCases = JSON.parse(storedCases);
-          if (Array.isArray(parsedCases)) {
-            let updatedAny = false;
-            const updatedCases = parsedCases.map(c => {
-              const matchedSub = submissionsList.find(s => s.caseId === c.caseId);
-              if (matchedSub) {
-                let caseStatus = c.status;
-                if (matchedSub.status === 'acknowledged') caseStatus = 'acknowledged';
-                else if (matchedSub.status === 'submitted') caseStatus = 'submitted';
-                else if (matchedSub.status === 'failed') caseStatus = 'draft_in_progress';
-                else if (matchedSub.status === 'closed') caseStatus = 'closed';
-                else if (matchedSub.status === 'not_submitted') caseStatus = 'not_reportable';
-
-                if (caseStatus !== c.status) {
-                  updatedAny = true;
-                  return { ...c, status: caseStatus };
-                }
-              }
-              return c;
-            });
-            if (updatedAny) {
-              localStorage.setItem('austrac_cases', JSON.stringify(updatedCases));
-            }
-          }
-        }
-      } catch (e) {
-        console.error('Failed to sync submissionsList to localStorage', e);
-      }
-    }
-  }, [submissionsList]);
 
   const getStatusBadge = (status: SubmissionStatus) => {
     const configs = {
@@ -231,7 +217,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -244,7 +230,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center">
+                <Button onClick={onBack} className="bg-white text-slate-800 hover:bg-slate-100 flex-1 sm:flex-initial justify-center">
                   Return to Control Centre
                 </Button>
               )}
@@ -386,15 +372,19 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                             size="sm"
                             onClick={(e) => {
                               e.stopPropagation();
-                              const text = `AUSTRAC Report: ${submission.reportType.toUpperCase()}\nSubject: ${submission.subject}\nCase ID: ${submission.caseId}\nStatus: ${submission.status}\nSubmitted By: ${submission.submittedBy}\nAck: ${submission.acknowledgementStatus}`;
-                              const file = new Blob([text], {type: 'text/plain'});
-                              const link = document.createElement("a");
-                              link.href = URL.createObjectURL(file);
-                              link.download = `austrac_report_${submission.caseId}.txt`;
-                              document.body.appendChild(link);
-                              link.click();
-                              document.body.removeChild(link);
-                              toast.success(`Report file for ${submission.caseId} successfully downloaded!`);
+                              downloadRecordPdf(
+                                `austrac_report_${submission.caseId}.pdf`,
+                                `AUSTRAC Report — ${submission.caseId}`,
+                                [
+                                  ['Report Type', submission.reportType.toUpperCase()],
+                                  ['Subject', submission.subject],
+                                  ['Case ID', submission.caseId],
+                                  ['Status', submission.status],
+                                  ['Submitted By', submission.submittedBy],
+                                  ['Acknowledgement', submission.acknowledgementStatus],
+                                ],
+                              );
+                              toast.success(`Report for ${submission.caseId} downloaded as PDF`);
                             }}
                           >
                             <Download className="w-4 h-4" />
@@ -413,7 +403,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
         {selectedSubmission && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-end justify-center z-50">
             <Card className="w-full max-w-4xl border-t-4 border-blue-500 shadow-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b sticky top-0 z-10">
+              <CardHeader className="bg-gray-50 border-b sticky top-0 z-10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-2xl">Submission Details</CardTitle>
                   <Button onClick={() => setSelectedSubmission(null)} variant="outline">
@@ -521,14 +511,21 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                         variant="outline" 
                         size="sm"
                         onClick={() => {
-                          const file = new Blob([`SMR Draft Report PDF Content for ${selectedSubmission.caseId}`], {type: 'text/plain'});
-                          const link = document.createElement("a");
-                          link.href = URL.createObjectURL(file);
-                          link.download = `smr_draft_report_${selectedSubmission.caseId}.pdf`;
-                          document.body.appendChild(link);
-                          link.click();
-                          document.body.removeChild(link);
-                          toast.success('SMR Draft Report downloaded successfully!');
+                          downloadRecordPdf(
+                            `smr_draft_report_${selectedSubmission.caseId}.pdf`,
+                            `SMR Draft Report — ${selectedSubmission.caseId}`,
+                            [
+                              ['Report Type', selectedSubmission.reportType?.toUpperCase() || 'SMR'],
+                              ['Subject', selectedSubmission.subject],
+                              ['Case ID', selectedSubmission.caseId],
+                              ['Status', selectedSubmission.status],
+                              ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                              ['Submission Method', selectedSubmission.submissionMethod || '—'],
+                              ['Submitted By', selectedSubmission.submittedBy],
+                            ],
+                            'Suspicious Matter Report (draft). Generated from the GrowKYC AUSTRAC module.',
+                          );
+                          toast.success('SMR Draft Report downloaded as PDF');
                         }}
                       >
                         <Download className="w-4 h-4 mr-1" />
@@ -538,20 +535,27 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                     <div className="flex items-center justify-between p-3 bg-white rounded border border-purple-200">
                       <div className="flex items-center gap-2">
                         <FileText className="w-5 h-5 text-purple-600" />
-                        <span className="font-semibold text-gray-900">Evidence Pack.zip</span>
+                        <span className="font-semibold text-gray-900">Evidence Pack.pdf</span>
                       </div>
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         size="sm"
                         onClick={() => {
-                          const file = new Blob([`Evidence Pack ZIP Content for ${selectedSubmission.caseId}`], {type: 'text/plain'});
-                          const link = document.createElement("a");
-                          link.href = URL.createObjectURL(file);
-                          link.download = `evidence_pack_${selectedSubmission.caseId}.zip`;
-                          document.body.appendChild(link);
-                          link.click();
-                          document.body.removeChild(link);
-                          toast.success('Evidence Pack downloaded successfully!');
+                          downloadRecordPdf(
+                            `evidence_pack_${selectedSubmission.caseId}.pdf`,
+                            `Evidence Pack — ${selectedSubmission.caseId}`,
+                            [
+                              ['Case ID', selectedSubmission.caseId],
+                              ['Subject', selectedSubmission.subject],
+                              ['Report Type', selectedSubmission.reportType?.toUpperCase() || '—'],
+                              ['Status', selectedSubmission.status],
+                              ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                              ['Acknowledgement', selectedSubmission.acknowledgementStatus],
+                              ['Last Updated', selectedSubmission.lastUpdated || '—'],
+                            ],
+                            'Regulator-ready evidence pack. Generated from the GrowKYC AUSTRAC module.',
+                          );
+                          toast.success('Evidence Pack downloaded as PDF');
                         }}
                       >
                         <Download className="w-4 h-4 mr-1" />
@@ -628,25 +632,47 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-6 border-t">
-                  <Button 
+                  <Button
                     onClick={() => {
-                      toast.success(`Loading active matter case: ${selectedSubmission.caseId}`);
+                      downloadRecordPdf(
+                        `full_case_${selectedSubmission.caseId}.pdf`,
+                        `Full Case Report — ${selectedSubmission.caseId}`,
+                        [
+                          ['Case ID', selectedSubmission.caseId],
+                          ['Subject', selectedSubmission.subject],
+                          ['Report Type', selectedSubmission.reportType?.toUpperCase() || '—'],
+                          ['Status', selectedSubmission.status],
+                          ['Submission Method', selectedSubmission.submissionMethod || '—'],
+                          ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                          ['Submitted By', selectedSubmission.submittedBy],
+                          ['Acknowledgement', selectedSubmission.acknowledgementStatus],
+                          ['Retry Count', String(selectedSubmission.retryCount ?? 0)],
+                          ['Last Updated', selectedSubmission.lastUpdated || '—'],
+                        ],
+                        'Complete case report generated from the GrowKYC AUSTRAC module.',
+                      );
+                      toast.success(`Full case report for ${selectedSubmission.caseId} downloaded as PDF`);
                     }}
                     className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                   >
                     <Eye className="w-5 h-5 mr-2" />
-                    View Full Case
+                    Full Case Report (PDF)
                   </Button>
-                  <Button 
+                  <Button
                     onClick={() => {
-                      const file = new Blob([`SMR Documents Package for ${selectedSubmission.caseId}`], {type: 'text/plain'});
-                      const link = document.createElement("a");
-                      link.href = URL.createObjectURL(file);
-                      link.download = `smr_documents_all_${selectedSubmission.caseId}.txt`;
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
-                      toast.success(`All files for ${selectedSubmission.caseId} downloaded as a package!`);
+                      downloadRecordPdf(
+                        `smr_documents_all_${selectedSubmission.caseId}.pdf`,
+                        `SMR Documents Package — ${selectedSubmission.caseId}`,
+                        [
+                          ['Case ID', selectedSubmission.caseId],
+                          ['Subject', selectedSubmission.subject],
+                          ['Included', 'SMR Draft Report; Evidence Pack; AUSTRAC Acknowledgement'],
+                          ['Status', selectedSubmission.status],
+                          ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                        ],
+                        'Consolidated SMR document package. Generated from the GrowKYC AUSTRAC module.',
+                      );
+                      toast.success(`Document package for ${selectedSubmission.caseId} downloaded as PDF`);
                     }}
                     className="flex-1 bg-purple-600 hover:bg-purple-700 text-white"
                   >

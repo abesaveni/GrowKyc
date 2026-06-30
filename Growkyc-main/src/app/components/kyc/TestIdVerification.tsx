@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from '../../lib/toast';
 import { IdVerification100Point } from './IdVerification100Point';
 import { Button } from '../ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -16,7 +17,7 @@ Documents:
 ${data.selectedDocuments.map((doc: any) => `• ${doc.name} (${doc.points} points)`).join('\n')}
     `;
     
-    alert(summary);
+    toast.info(summary);
   };
 
   return (
@@ -36,7 +37,7 @@ ${data.selectedDocuments.map((doc: any) => `• ${doc.name} (${doc.points} point
           </Button>
         </div>
         
-        <div className="mb-6 p-4 bg-blue-50 border-2 border-blue-300 rounded-lg">
+        <div className="mb-6 p-4 bg-white border border-gray-200 rounded-lg">
           <h2 className="font-bold text-blue-900 mb-2">🧪 Test Instructions:</h2>
           <ul className="text-sm text-blue-800 space-y-1">
             <li>✅ Official 14-document AML/CTF matrix displayed at top</li>

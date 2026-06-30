@@ -167,7 +167,7 @@ export function InfoTrackIntegrationModule() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Building className="w-16 h-16" />
@@ -251,19 +251,19 @@ export function InfoTrackIntegrationModule() {
             </p>
             <div className="grid grid-cols-4 gap-4">
               <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">API Status</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">API Status</p>
                 <p className="font-bold text-blue-900">✓ Connected</p>
               </div>
               <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Avg Response</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Avg Response</p>
                 <p className="font-bold text-blue-900">2.3 seconds</p>
               </div>
               <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Success Rate</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Success Rate</p>
                 <p className="font-bold text-blue-900">99.2%</p>
               </div>
               <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Last Sync</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Last Sync</p>
                 <p className="font-bold text-blue-900">Just now</p>
               </div>
             </div>
@@ -419,7 +419,7 @@ export function InfoTrackIntegrationModule() {
               </div>
 
               {search.findings && search.findings.length > 0 && (
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg mt-4">
                   <p className="font-bold text-blue-900 mb-2">Key Findings:</p>
                   <ul className="space-y-1">
                     {search.findings.map((finding, index) => (

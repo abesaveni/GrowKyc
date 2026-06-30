@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./app/App";
 import { ErrorBoundary } from "./app/components/ui/error-boundary";
 import { AuthProvider } from "./context/AuthContext";
+import { PermissionsProvider } from "./lib/rbac/PermissionsContext";
 // @ts-ignore: CSS module import without type declarations
 import "./styles/index.css";
 
@@ -36,7 +37,9 @@ createRoot(rootElement).render(
     <ErrorBoundary>
       <BrowserRouter>
         <AuthProvider>
-          <App />
+          <PermissionsProvider>
+            <App />
+          </PermissionsProvider>
         </AuthProvider>
       </BrowserRouter>
     </ErrorBoundary>

@@ -485,7 +485,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                     </div>
 
                     {/* Action Required */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                    <div className="bg-white border border-gray-200 rounded-lg p-3 mt-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-start gap-2">
                           <CheckSquare className="w-4 h-4 text-blue-600 mt-0.5" />

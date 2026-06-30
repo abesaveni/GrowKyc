@@ -1,5 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
 import {
   TradingView,
   WorkflowView,
@@ -308,7 +309,7 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
   };
 
   const handleActionClick = (matter: string, action: string) => {
-    alert(`Taking action: ${action} for ${matter}`);
+    toast.info(`Taking action: ${action} for ${matter}`);
   };
 
   return (
@@ -463,7 +464,7 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
           onClose={() => setShowNewAppointmentModal(false)}
           onSave={(data) => {
             setShowNewAppointmentModal(false);
-            alert(`Appointment for "${data.companyName}" created successfully!`);
+            toast.success(`Appointment for "${data.companyName}" created successfully!`);
           }}
         />
       )}
@@ -628,7 +629,7 @@ function MattersView({ onSelectMatter, role }: any) {
           onClose={() => setShowNewMatterModal(false)}
           onSave={(data) => {
             setShowNewMatterModal(false);
-            alert(`Matter "${data.matterName}" created successfully!`);
+            toast.success(`Matter "${data.matterName}" created successfully!`);
           }}
         />
       )}
@@ -999,7 +1000,7 @@ function SecurityDebtView({ role }: any) {
     setCalculating(true);
     setTimeout(() => {
       setCalculating(false);
-      alert('Waterfall calculation complete! All distributions updated.');
+      toast.success('Waterfall calculation complete! All distributions updated.');
     }, 1500);
   };
 
@@ -1159,7 +1160,7 @@ function TrustAccountingView({ role }: any) {
     setReconciling(true);
     setTimeout(() => {
       setReconciling(false);
-      alert('Trust account reconciliation complete!');
+      toast.success('Trust account reconciliation complete!');
     }, 2000);
   };
 
@@ -1267,7 +1268,7 @@ function RestructuringView({ role }: any) {
     setGenerating(true);
     setTimeout(() => {
       setGenerating(false);
-      alert('Restructuring proposal generated! Ready for creditor review.');
+      toast.info('Restructuring proposal generated! Ready for creditor review.');
     }, 2000);
   };
 
@@ -1545,7 +1546,7 @@ function RestructuringView({ role }: any) {
 // Reports View
 function ReportsView({ role }: any) {
   const handleGenerateReport = (reportName: string) => {
-    alert(`Generating ${reportName}... This will download as PDF.`);
+    toast.info(`Generating ${reportName}... This will download as PDF.`);
   };
 
   return (

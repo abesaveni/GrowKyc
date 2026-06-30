@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   Shield,
@@ -601,19 +602,19 @@ export function EquifaxClientProfileHub() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Global Actions</h3>
           <div className="flex gap-3">
-            <Button onClick={() => alert('Refreshing all modules...')}>
+            <Button onClick={() => toast.info('Refreshing all modules...')}>
               <RefreshCw className="w-4 h-4 mr-2" />
               Refresh All Data
             </Button>
-            <Button variant="outline" onClick={() => alert('Downloading all reports...')}>
+            <Button variant="outline" onClick={() => toast.info('Downloading all reports...')}>
               <Download className="w-4 h-4 mr-2" />
               Download All Reports
             </Button>
-            <Button variant="outline" onClick={() => alert('Audit log...')}>
+            <Button variant="outline" onClick={() => toast.info('Audit log...')}>
               <FileText className="w-4 h-4 mr-2" />
               View Audit Log
             </Button>
-            <Button variant="outline" onClick={() => alert('Settings...')}>
+            <Button variant="outline" onClick={() => toast.info('Settings...')}>
               <Settings className="w-4 h-4 mr-2" />
               Integration Settings
             </Button>

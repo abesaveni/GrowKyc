@@ -207,7 +207,7 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
           </div>
 
           {/* SoD Enforcement Alert */}
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-3 shadow-sm">
             <ShieldAlert className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
             <div>
               <h4 className="font-bold text-orange-900 text-sm">Separation of Duties (SoD) Enforced</h4>

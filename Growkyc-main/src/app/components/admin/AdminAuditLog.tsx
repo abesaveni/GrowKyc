@@ -51,7 +51,10 @@ export function AdminAuditLog({ onNavigateToDashboard, onNavigateToSettings, onH
         if (startDate) params.append('startDate', startDate);
         if (endDate) params.append('endDate', endDate);
 
-        const response = await fetch(`/api/v1/audit-events?${params.toString()}`);
+        const _token = sessionStorage.getItem('growkyc_token');
+        const response = await fetch(`/api/v1/audit-events?${params.toString()}`, {
+          headers: _token ? { Authorization: `Bearer ${_token}` } : {},
+        });
         if (!response.ok) {
           throw new Error(`API returned ${response.status}`);
         }

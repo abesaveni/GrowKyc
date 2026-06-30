@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   ArrowLeft,
@@ -509,7 +510,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" onClick={() => alert('Application draft saved!')}>
+            <Button variant="outline" onClick={() => toast.success('Application draft saved!')}>
               <Save className="w-4 h-4 mr-2" />
               Save Draft
             </Button>
@@ -517,7 +518,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
               <Button 
                 className="bg-blue-600 hover:bg-blue-700"
                 onClick={() => {
-                  alert('Application submitted successfully!');
+                  toast.success('Application submitted successfully!');
                   onNavigate?.('broker-dashboard');
                 }}
               >

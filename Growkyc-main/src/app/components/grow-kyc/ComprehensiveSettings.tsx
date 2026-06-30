@@ -646,7 +646,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Equifax */}
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-blue-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <Shield className="w-8 h-8 text-blue-600" />
@@ -684,7 +684,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Illion */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-purple-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <Building2 className="w-8 h-8 text-purple-600" />
@@ -708,7 +708,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* ComplyAdvantage */}
-                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 border-2 border-red-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-red-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <AlertTriangle className="w-8 h-8 text-red-600" />
@@ -732,7 +732,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* ASIC */}
-                <div className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-cyan-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <FileText className="w-8 h-8 text-cyan-600" />
@@ -756,7 +756,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* InfoTrack */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-green-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <Eye className="w-8 h-8 text-green-600" />
@@ -1129,7 +1129,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* One-Time Verification Fee */}
-                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-cyan-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-cyan-600" />
                     One-Time Verification Fee
@@ -1178,7 +1178,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Individual Search Costs */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-purple-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <Search className="w-5 h-5 text-purple-600" />
                     Individual Search Costs
@@ -1322,7 +1322,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Ongoing Monitoring Fee */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-green-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <Activity className="w-5 h-5 text-green-600" />
                     Ongoing Monitoring Subscription
@@ -1414,7 +1414,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Pricing Summary */}
-                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-indigo-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <BarChart3 className="w-5 h-5 text-indigo-600" />
                     Pricing Summary
@@ -1956,7 +1956,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* SaaS Migration Notice */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-200 bg-gray-50">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
                   <Crown className="w-8 h-8 text-purple-600 flex-shrink-0" />

@@ -196,7 +196,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 border-b sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -232,32 +232,32 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
           <TabsContent value="graph" className="space-y-6">
             {/* Summary Cards */}
             <div className="grid grid-cols-4 gap-4">
-              <Card className="border-2 border-purple-300 bg-purple-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-purple-700">Total Entities</div>
-                  <div className="text-3xl font-bold text-purple-900">148</div>
-                  <div className="text-xs text-purple-600 mt-1">In network graph</div>
+                  <div className="text-sm text-gray-600">Total Entities</div>
+                  <div className="text-3xl font-bold text-gray-900">148</div>
+                  <div className="text-xs text-gray-500 mt-1">In network graph</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-red-300 bg-red-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-red-700">High Risk Nodes</div>
-                  <div className="text-3xl font-bold text-red-900">12</div>
-                  <div className="text-xs text-red-600 mt-1">Require review</div>
+                  <div className="text-sm text-gray-600">High Risk Nodes</div>
+                  <div className="text-3xl font-bold text-gray-900">12</div>
+                  <div className="text-xs text-gray-500 mt-1">Require review</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Circular Ownership</div>
-                  <div className="text-3xl font-bold text-amber-900">3</div>
-                  <div className="text-xs text-amber-600 mt-1">Detected patterns</div>
+                  <div className="text-sm text-gray-600">Circular Ownership</div>
+                  <div className="text-3xl font-bold text-gray-900">3</div>
+                  <div className="text-xs text-gray-500 mt-1">Detected patterns</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Shared Directors</div>
-                  <div className="text-3xl font-bold text-blue-900">24</div>
-                  <div className="text-xs text-blue-600 mt-1">Cross-entity links</div>
+                  <div className="text-sm text-gray-600">Shared Directors</div>
+                  <div className="text-3xl font-bold text-gray-900">24</div>
+                  <div className="text-xs text-gray-500 mt-1">Cross-entity links</div>
                 </CardContent>
               </Card>
             </div>
@@ -275,7 +275,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
               </CardHeader>
               <CardContent>
                 {/* Graph Visualization Area */}
-                <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg border-2 border-indigo-200 p-8 min-h-[600px] relative">
+                <div className="bg-gray-50 rounded-lg border-2 border-indigo-200 p-8 min-h-[600px] relative">
                   {/* Central Entity */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full shadow-2xl flex flex-col items-center justify-center border-4 border-red-700">
@@ -475,7 +475,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
               ))}
             </div>
 
-            <Card className="border-2 border-blue-300 bg-blue-50">
+            <Card className="border border-gray-200 bg-white">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <Network className="w-6 h-6 text-blue-600 flex-shrink-0" />
@@ -591,29 +591,29 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
             </Card>
 
             <div className="grid grid-cols-4 gap-4">
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Control Signals</div>
-                  <div className="text-3xl font-bold text-amber-900">4</div>
-                  <div className="text-xs text-amber-600 mt-1">Detected patterns</div>
+                  <div className="text-sm text-gray-600">Control Signals</div>
+                  <div className="text-3xl font-bold text-gray-900">4</div>
+                  <div className="text-xs text-gray-500 mt-1">Detected patterns</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-red-300 bg-red-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-red-700">High Risk</div>
-                  <div className="text-3xl font-bold text-red-900">1</div>
+                  <div className="text-sm text-gray-600">High Risk</div>
+                  <div className="text-3xl font-bold text-gray-900">1</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Medium Risk</div>
-                  <div className="text-3xl font-bold text-amber-900">2</div>
+                  <div className="text-sm text-gray-600">Medium Risk</div>
+                  <div className="text-3xl font-bold text-gray-900">2</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Low Risk</div>
-                  <div className="text-3xl font-bold text-blue-900">1</div>
+                  <div className="text-sm text-gray-600">Low Risk</div>
+                  <div className="text-3xl font-bold text-gray-900">1</div>
                 </CardContent>
               </Card>
             </div>

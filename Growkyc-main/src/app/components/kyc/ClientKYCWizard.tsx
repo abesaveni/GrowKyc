@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   ChevronRight,
@@ -131,7 +132,7 @@ export function ClientKYCWizard() {
     if (!canProceed()) return;
     
     // Create submission
-    alert('KYC Submission Complete! Your application is now under review. You will receive updates via email and in your portal.');
+    toast.success('KYC Submission Complete! Your application is now under review. You will receive updates via email and in your portal.');
   };
 
   const requiredDocuments = {
@@ -477,7 +478,7 @@ export function ClientKYCWizard() {
                 <p className="text-gray-600">Identify all individuals who own or control the entity</p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <p className="text-sm text-blue-900">
                   <strong>What we need:</strong> All individuals who own more than 25% OR exercise control through other means 
                   (voting rights, director appointments, etc.)
@@ -563,7 +564,7 @@ export function ClientKYCWizard() {
                 </>
               )}
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-2">
                   <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
                   <div>
@@ -604,7 +605,7 @@ export function ClientKYCWizard() {
               )}
 
               {greenIDStatus === 'success' && (
-                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
+                <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
                   <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-green-900 mb-2">Verification Complete!</h3>
                   <p className="text-green-800 mb-4">Your identity has been successfully verified.</p>
@@ -616,7 +617,7 @@ export function ClientKYCWizard() {
               )}
 
               {greenIDStatus === 'failed' && (
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-8">
+                <div className="bg-white border border-gray-200 rounded-lg p-8">
                   <XCircle className="w-16 h-16 text-red-600 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-red-900 mb-2 text-center">Verification Failed</h3>
                   <p className="text-red-800 mb-6 text-center">
@@ -643,7 +644,7 @@ export function ClientKYCWizard() {
                 <p className="text-gray-600">Upload all required documentation</p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h3 className="font-semibold text-blue-900 mb-3">Required Documents for {formData.entityType}</h3>
                 <ul className="space-y-1">
                   {requiredDocuments[formData.entityType || 'company'].map((doc, index) => (
@@ -681,7 +682,7 @@ export function ClientKYCWizard() {
                   <h3 className="font-semibold text-gray-900 mb-3">Uploaded Documents ({uploadedFiles.length})</h3>
                   <div className="space-y-2">
                     {uploadedFiles.map((file) => (
-                      <div key={file.id} className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <div key={file.id} className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg">
                         <div className="flex items-center gap-3">
                           <CheckCircle className="w-5 h-5 text-green-600" />
                           <div>
@@ -811,7 +812,7 @@ export function ClientKYCWizard() {
                 </div>
               </div>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-2">
                   <Lock className="w-5 h-5 text-red-600 mt-0.5" />
                   <div>

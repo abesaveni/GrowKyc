@@ -378,7 +378,7 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
         {entity.type === 'sole_trader' && renderSoleTraderFields()}
 
         {/* Progress Indicator */}
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+        <Card className="bg-gray-50 border-blue-200">
           <CardContent className="p-4 flex items-center gap-3">
             <Sparkles className="w-8 h-8 text-blue-600 flex-shrink-0" />
             <div className="flex-1">

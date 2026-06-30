@@ -215,7 +215,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
       {/* Executive Summary */}
       <Card className="border-2 border-purple-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <FileText className="w-6 h-6 text-purple-600" />
             Executive Summary
@@ -228,7 +228,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
       {/* Issues Identified and Resolutions */}
       <Card className="border-2 border-orange-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <AlertOctagon className="w-6 h-6 text-orange-600" />
             Issues Identified & Resolutions ({decision.issuesIdentified.length})
@@ -316,7 +316,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
       {/* Risk Assessments */}
       <Card className="border-2 border-cyan-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <BarChart3 className="w-6 h-6 text-cyan-600" />
             Risk Assessments ({decision.riskAssessments.length})
@@ -416,7 +416,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
       {/* Approval Reasoning (only if approved) */}
       {(decision.decision === 'Approved' || decision.decision === 'Approved with Conditions') && (
         <Card className="border-2 border-green-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <CheckCircle className="w-6 h-6 text-green-600" />
               Approval Reasoning
@@ -476,7 +476,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
       {/* Decision Comments */}
       <Card className="border-2 border-blue-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <MessageSquare className="w-6 h-6 text-blue-600" />
             Decision Comments
@@ -493,7 +493,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
       {/* Review History Timeline */}
       <Card className="border-2 border-purple-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <Clock className="w-6 h-6 text-purple-600" />
             Review History

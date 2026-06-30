@@ -81,7 +81,7 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900 text-white px-8 py-12">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-8 py-12">
         <Button
           variant="ghost"
           onClick={onBack}

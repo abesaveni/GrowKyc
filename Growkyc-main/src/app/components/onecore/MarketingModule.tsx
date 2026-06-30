@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   Mail,
@@ -1047,11 +1048,11 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
         {/* Footer */}
         <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
           <div className="flex gap-3">
-            <Button type="button" variant="outline" onClick={() => alert('Edit functionality')}>
+            <Button type="button" variant="outline" onClick={() => toast.info('Edit functionality')}>
               <Edit className="w-4 h-4 mr-2" />
               Edit Campaign
             </Button>
-            <Button type="button" variant="outline" onClick={() => alert('Duplicate functionality')}>
+            <Button type="button" variant="outline" onClick={() => toast.info('Duplicate functionality')}>
               <Copy className="w-4 h-4 mr-2" />
               Duplicate
             </Button>
@@ -1302,11 +1303,11 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
         {/* Footer */}
         <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
           <div className="flex gap-3">
-            <Button type="button" variant="outline" onClick={() => alert('Edit functionality')}>
+            <Button type="button" variant="outline" onClick={() => toast.info('Edit functionality')}>
               <Edit className="w-4 h-4 mr-2" />
               Edit Form
             </Button>
-            <Button type="button" variant="outline" onClick={() => alert('Duplicate functionality')}>
+            <Button type="button" variant="outline" onClick={() => toast.info('Duplicate functionality')}>
               <Copy className="w-4 h-4 mr-2" />
               Duplicate
             </Button>

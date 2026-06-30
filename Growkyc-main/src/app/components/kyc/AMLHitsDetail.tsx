@@ -83,7 +83,7 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
       {/* SANCTIONS MATCHES */}
       {hits.sanctions.length > 0 && (
         <Card className="border-2 border-red-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <Shield className="w-6 h-6 text-red-600" />
               Sanctions Screening Results ({hits.sanctions.length})
@@ -196,7 +196,7 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
       {/* PEP MATCHES */}
       {hits.pep.length > 0 && (
         <Card className="border-2 border-orange-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-orange-50 to-yellow-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="w-6 h-6 text-orange-600" />
               Politically Exposed Person (PEP) Matches ({hits.pep.length})

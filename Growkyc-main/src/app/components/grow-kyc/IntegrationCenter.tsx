@@ -77,7 +77,7 @@ export function IntegrationCenter({ onBack }: IntegrationCenterProps) {
         ))}
       </div>
 
-      <Card className="border-2 border-blue-300 bg-blue-50">
+      <Card className="border border-gray-200 bg-white">
         <CardContent className="p-6">
           <div className="flex items-start gap-3">
             <Shield className="w-6 h-6 text-blue-600 mt-1" />

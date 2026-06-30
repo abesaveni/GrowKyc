@@ -7,15 +7,26 @@ from enum import Enum
 
 
 class UserRole(str, Enum):
-    """User role enumeration."""
+    """User role enumeration.
+
+    The canonical compliance roles (per the client's RBAC matrix) are:
+        USER (= Client), ANALYST (= AML Analyst), COMPLIANCE_OFFICER,
+        SENIOR_COMPLIANCE_OFFICER, HEAD_OF_COMPLIANCE, PARTNER (= Managing
+        Partner), plus ADMIN (system administrator).
+
+    AGENT and MLRO are retained for backward compatibility (existing tokens/data
+    and legacy KYC-review checks); MLRO is treated as Head of Compliance.
+    """
 
     ADMIN = "Admin"
-    USER = "User"
-    AGENT = "Agent"
-    ANALYST = "Analyst"
+    USER = "User"  # Client
+    AGENT = "Agent"  # legacy reviewer (kept for compatibility)
+    ANALYST = "Analyst"  # AML Analyst
     COMPLIANCE_OFFICER = "Compliance_Officer"
-    MLRO = "MLRO"
-    PARTNER = "Partner"
+    SENIOR_COMPLIANCE_OFFICER = "Senior_Compliance_Officer"
+    HEAD_OF_COMPLIANCE = "Head_of_Compliance"
+    MLRO = "MLRO"  # legacy alias for Head of Compliance
+    PARTNER = "Partner"  # Managing Partner
 
 
 class KYCOnboardingStatus(str, Enum):

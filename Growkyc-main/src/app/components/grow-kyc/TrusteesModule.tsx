@@ -386,7 +386,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
         {selectedTab === 'authority' && (
           <div className="space-y-6">
             {/* Trust Deed Parsing */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="w-5 h-5 text-purple-600" />
@@ -489,7 +489,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
             </Card>
 
             {/* Trust Role Map */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gray-50 border-2 border-indigo-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Network className="w-5 h-5 text-indigo-600" />
@@ -503,19 +503,19 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                     Structured role fields ensure trust relationships are never stored as free text.
                   </p>
                   <div className="grid grid-cols-4 gap-4">
-                    <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+                    <div className="p-3 bg-white border border-gray-200 rounded-lg">
                       <div className="text-xs font-bold text-purple-600 mb-1">APPOINTOR</div>
                       <div className="text-sm text-gray-900">Can remove/appoint trustee</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="p-3 bg-white border border-gray-200 rounded-lg">
                       <div className="text-xs font-bold text-blue-600 mb-1">TRUSTEE</div>
                       <div className="text-sm text-gray-900">Legal owner, manages trust</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="p-3 bg-white border border-gray-200 rounded-lg">
                       <div className="text-xs font-bold text-green-600 mb-1">BENEFICIARIES</div>
                       <div className="text-sm text-gray-900">Receive distributions</div>
                     </div>
-                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                    <div className="p-3 bg-white border border-gray-200 rounded-lg">
                       <div className="text-xs font-bold text-amber-600 mb-1">GUARDIAN</div>
                       <div className="text-sm text-gray-900">Protects beneficiaries</div>
                     </div>
@@ -529,7 +529,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
         {selectedTab === 'monitoring' && (
           <div className="space-y-6">
             {/* Control Change Triggers */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-red-600" />

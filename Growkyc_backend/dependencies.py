@@ -177,13 +177,30 @@ async def get_admin_user(
     return current_user
 
 
+# Staff roles permitted to perform compliance operations (KYC review, case
+# management, etc.). Excludes plain clients (USER). Mirrors the compliance roles
+# defined in the RBAC matrix (core/permissions.py).
+STAFF_ROLES = (
+    UserRole.ADMIN,
+    UserRole.AGENT,
+    UserRole.ANALYST,
+    UserRole.COMPLIANCE_OFFICER,
+    UserRole.SENIOR_COMPLIANCE_OFFICER,
+    UserRole.HEAD_OF_COMPLIANCE,
+    UserRole.MLRO,
+    UserRole.PARTNER,
+)
+
+
 async def get_admin_or_agent_user(
     current_user: User = Depends(get_current_user),
 ) -> User:
     """
-    Role-based access control: Admin or Agent.
+    Role-based access control: compliance staff (not plain clients).
 
-    Use this dependency on endpoints requiring admin or agent privileges.
+    Permits Admin, Agent and all compliance roles (Analyst, Compliance Officer,
+    Senior Compliance Officer, Head of Compliance, MLRO, Managing Partner). Use
+    this on endpoints requiring staff/compliance privileges.
 
     Args:
         current_user: The authenticated user from get_current_user
@@ -203,14 +220,14 @@ async def get_admin_or_agent_user(
             # Only admin or agent can execute this
             pass
     """
-    if current_user.role not in (UserRole.ADMIN, UserRole.AGENT):
+    if current_user.role not in STAFF_ROLES:
         logger.warning(
-            f"Agent/Admin endpoint access attempt by "
+            f"Staff endpoint access attempt by "
             f"{current_user.role}: {current_user.id}"
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Admin or Agent privileges required",
+            detail="Compliance staff privileges required",
         )
 
     return current_user
@@ -254,6 +271,47 @@ def require_role(allowed_roles: list[str]):
         return current_user
 
     return role_checker
+
+
+def require_permission(permission: str):
+    """Permission-based access control dependency (RBAC matrix).
+
+    Prefer this over role lists: it checks the single source-of-truth matrix in
+    core/permissions.py, so endpoints declare the capability they need rather
+    than hard-coding which roles have it.
+
+    Example:
+        @router.post("/cases")
+        async def create_case(
+            user: User = Depends(require_permission("case:create"))
+        ):
+            ...
+    """
+
+    async def permission_checker(
+        current_user: User = Depends(get_current_user),
+    ) -> User:
+        from core.permissions import has_permission
+
+        if not has_permission(current_user.role, permission):
+            role_value = (
+                current_user.role.value
+                if hasattr(current_user.role, "value")
+                else current_user.role
+            )
+            logger.warning(
+                "Permission denied: user %s (role %s) lacks %s",
+                current_user.id,
+                role_value,
+                permission,
+            )
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Missing required permission: {permission}",
+            )
+        return current_user
+
+    return permission_checker
 
 
 async def get_active_user(

@@ -65,7 +65,7 @@ export function SOFSOWAssessmentComponent({ clientId }: SOFSOWAssessmentProps) {
 
   return (
     <Card className="border-2 border-indigo-200 shadow-xl overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-indigo-100 p-6">
+      <CardHeader className="bg-gray-50 border-b border-indigo-100 p-6">
         <div className="flex justify-between items-center">
           <CardTitle className="text-2xl font-bold text-indigo-900 flex items-center gap-3">
             <ShieldCheck className="w-8 h-8 text-indigo-600" />

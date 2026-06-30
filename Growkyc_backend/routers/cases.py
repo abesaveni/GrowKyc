@@ -6,15 +6,39 @@ Provides operational queues, assignment, and escalation workflows.
 """
 
 import logging
+from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from core.tenant_context import get_tenant_id, set_tenant_id
 from database import get_db
-from dependencies import get_admin_or_agent_user
+from dependencies import get_admin_or_agent_user, get_admin_user
 from models import User
 from services.case_workflow_service import CaseWorkflowService
+
+
+def _audit(db, actor_id: int, action: str, entity_type: str, entity_id: int) -> None:
+    """Best-effort compliance audit entry; never blocks the primary op."""
+    try:
+        from services.audit_service import AuditService
+        AuditService(db).log_event(actor_id=actor_id, action=action,
+                                   entity_type=entity_type, entity_id=entity_id)
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def _bind_tenant(current_user: User) -> None:
+    """Bind the request's tenant context from the authenticated user.
+
+    Starlette's BaseHTTPMiddleware does not reliably propagate the contextvar
+    set in TenantContextMiddleware into the endpoint execution context, so derive
+    it here from the trusted current_user (a user only ever acts within their own
+    tenant). Required for inserts into tenant-scoped tables (e.g. case_assignments).
+    """
+    if get_tenant_id() is None and current_user.tenant_id is not None:
+        set_tenant_id(current_user.tenant_id)
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/cases", tags=["cases"])
@@ -50,6 +74,80 @@ class CaseCloseRequest(BaseModel):
     resolution: str
 
 
+class CaseStatusUpdate(BaseModel):
+    status: str
+
+
+@router.get("")
+async def list_cases(
+    skip: int = 0,
+    limit: int = 50,
+    case_status: Optional[str] = Query(None, alias="status"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_or_agent_user),
+):
+    """List all enterprise cases with optional status filter."""
+    _bind_tenant(current_user)
+    from models import Case
+    query = db.query(Case)
+    if case_status:
+        query = query.filter(Case.status == case_status)
+    total = query.count()
+    cases = query.order_by(Case.created_at.desc()).offset(skip).limit(limit).all()
+    return {
+        "total": total,
+        "items": [
+            {
+                "case_id": c.id,
+                "client_id": c.client_id,
+                "title": c.title,
+                "status": c.status.value,
+                "created_at": c.created_at.isoformat() if c.created_at else None,
+            }
+            for c in cases
+        ],
+    }
+
+
+@router.patch("/{case_id}/status")
+async def update_case_status(
+    case_id: int,
+    body: CaseStatusUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_or_agent_user),
+):
+    """Update the status of an enterprise case."""
+    _bind_tenant(current_user)
+    from models import Case
+    from core.enums import CaseStatus
+    case = db.query(Case).filter(Case.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+    try:
+        case.status = CaseStatus(body.status)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"Invalid status: {body.status}")
+    db.commit()
+    _audit(db, current_user.id, f"case_status_{case.status.value}", "case", case_id)
+    return {"case_id": case_id, "status": case.status.value}
+
+
+@router.delete("/{case_id}")
+async def delete_case(
+    case_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_user),
+):
+    """Permanently delete an enterprise case (Admin only)."""
+    from models import Case
+    case = db.query(Case).filter(Case.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+    db.delete(case)
+    db.commit()
+    return {"message": f"Case {case_id} deleted"}
+
+
 @router.post("", status_code=status.HTTP_201_CREATED)
 async def create_enterprise_case(
     body: CaseCreateRequest,
@@ -57,6 +155,7 @@ async def create_enterprise_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Create a new enterprise investigation case."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         case = service.create_enterprise_case(
@@ -67,6 +166,7 @@ async def create_enterprise_case(
             queue_name=body.queue_name,
             creator_id=current_user.id,
         )
+        _audit(db, current_user.id, "case_created", "case", case.id)
         return {"case_id": case.id, "status": case.status.value, "title": case.title}
     except Exception as e:
         logger.error(f"Failed to create case: {e}")
@@ -101,6 +201,7 @@ async def assign_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Assign a case to an analyst or MLRO."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         assignment = service.assign_case(
@@ -125,6 +226,7 @@ async def escalate_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Escalate a case to the MLRO review queue."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         assignment = service.escalate_case(
@@ -145,6 +247,7 @@ async def link_evidence(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Link an external document, report, or screening to this case."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         evidence = service.link_evidence(
@@ -167,6 +270,7 @@ async def add_comment(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Add an analyst note to the case."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         comment = service.add_comment(
@@ -185,6 +289,7 @@ async def close_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Close the case and generate an immutable regulatory snapshot."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         case = service.close_with_snapshot(

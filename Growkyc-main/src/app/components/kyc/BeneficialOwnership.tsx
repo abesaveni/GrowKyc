@@ -115,7 +115,7 @@ export function BeneficialOwnership() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Users className="w-16 h-16" />
@@ -217,7 +217,7 @@ export function BeneficialOwnership() {
       </div>
 
       {/* UBO Identification Threshold */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-start gap-3">
           <Target className="w-6 h-6 text-blue-600 mt-0.5" />
           <div className="flex-1">
@@ -228,15 +228,15 @@ export function BeneficialOwnership() {
             </p>
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-white rounded-lg p-3 border border-blue-200">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Direct Ownership</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Direct Ownership</p>
                 <p className="text-sm text-gray-700">Individual owns ≥{ownershipThreshold}% shares directly</p>
               </div>
               <div className="bg-white rounded-lg p-3 border border-blue-200">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Indirect Ownership</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Indirect Ownership</p>
                 <p className="text-sm text-gray-700">Individual owns ≥{ownershipThreshold}% through entities</p>
               </div>
               <div className="bg-white rounded-lg p-3 border border-blue-200">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Control Person</p>
+                <p className="text-xs text-gray-600 font-semibold mb-1">Control Person</p>
                 <p className="text-sm text-gray-700">Senior managing official with control</p>
               </div>
             </div>
@@ -407,13 +407,13 @@ export function BeneficialOwnership() {
 
         {/* Verification Status */}
         <div className="mt-6 grid grid-cols-2 gap-4">
-          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+          <div className="p-4 bg-white border border-gray-200 rounded-lg">
             <p className="text-sm font-semibold text-green-900 mb-2">✓ Verification Complete</p>
             <p className="text-sm text-green-800">
               All beneficial owners identified and verified. Last verified: {sampleStructure.lastVerified.toLocaleDateString()}
             </p>
           </div>
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="p-4 bg-white border border-gray-200 rounded-lg">
             <p className="text-sm font-semibold text-blue-900 mb-2">→ Next Review Due</p>
             <p className="text-sm text-blue-800">
               Annual UBO review scheduled for {sampleStructure.nextReviewDue.toLocaleDateString()}

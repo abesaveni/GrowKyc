@@ -1,5 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
 import { TemplatesLibraryView } from './TemplatesLibraryView';
 import { TrashDocumentsView } from './TrashDocumentsView';
 import { SharedDocumentsView } from './SharedDocumentsView';
@@ -651,7 +652,7 @@ function UploadModal({ onClose }: { onClose: () => void }) {
     setUploading(true);
     setTimeout(() => {
       setUploading(false);
-      alert('Documents uploaded successfully! They are now in your inbox for filing.');
+      toast.success('Documents uploaded successfully! They are now in your inbox for filing.');
       onClose();
     }, 2000);
   };

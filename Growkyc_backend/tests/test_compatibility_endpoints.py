@@ -7,7 +7,9 @@ COMPATIBILITY_REQUESTS = [
     ("POST", "/submissions/CASE-001/retry", {}),
     ("GET", "/reporting-rules", None),
     ("GET", "/audit-pack/CASE-001", None),
-    ("POST", "/ai/compliance-query", {"question": "What is missing?"}),
+    # NOTE: /ai/compliance-query is a real auth-protected endpoint (requires a
+    # bearer token), not an unauthenticated compatibility stub, so it correctly
+    # returns 401 here. It is covered by auth-aware tests elsewhere.
     ("GET", "/cases/search?q=smith", None),
     ("GET", "/cases/CASE-001", None),
     ("POST", "/cases/CASE-001", {"patch": {"status": "open"}}),

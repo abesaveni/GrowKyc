@@ -8,6 +8,16 @@ from services.auth_service import AuthService
 
 class TestOnboardingGating:
 
+    @pytest.fixture(autouse=True)
+    def enable_payment_gating(self, monkeypatch):
+        """Enable the payment-gating feature flag for this test class.
+
+        NOTE: the onboarding payment gate is controlled by the PAYMENT_REQUIRED
+        env var (defaults to "false"). These tests exercise the gating behaviour,
+        so the flag must be turned on for them.
+        """
+        monkeypatch.setenv("PAYMENT_REQUIRED", "true")
+
     @pytest.fixture
     def test_tenant(self, db_session):
         """Create a test tenant."""

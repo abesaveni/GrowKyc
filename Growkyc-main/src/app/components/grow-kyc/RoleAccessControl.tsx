@@ -294,7 +294,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
       </div>
 
       {/* Control Principles Banner */}
-      <Card className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-blue-50">
+      <Card className="border-2 border-purple-200 bg-gray-50">
         <CardContent className="p-6">
           <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
             <Shield className="w-5 h-5 text-purple-600" />
@@ -660,7 +660,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
               </table>
             </div>
 
-            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+            <div className="mt-6 p-4 bg-white border border-gray-200 rounded-lg">
               <div className="flex items-start gap-3">
                 <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div className="text-sm text-amber-900">
@@ -675,7 +675,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
       {/* DUAL CONTROL VIEW */}
       {activeView === 'dual-control' && (
         <div className="space-y-6">
-          <Card className="border-2 border-amber-200 bg-amber-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
                 <CheckCheck className="w-6 h-6 text-amber-600 flex-shrink-0" />
@@ -853,7 +853,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="p-4 bg-green-50 border-2 border-green-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-600" />
@@ -864,7 +864,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   <div className="text-sm text-gray-600">Completed {governanceMetrics.lastAccessReview} • 100% roles reviewed</div>
                 </div>
 
-                <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <Clock className="w-5 h-5 text-blue-600" />
@@ -955,7 +955,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+              <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-start gap-3">
                   <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <div className="text-sm text-purple-900">

@@ -229,7 +229,7 @@ export function EnterpriseFeaturesSummary() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
       {/* Hero Section */}
       <div className="mb-8 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-full mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full mb-4">
           <Award className="w-5 h-5 text-white" />
           <span className="text-white font-semibold">Enterprise-Grade KYC Platform</span>
         </div>

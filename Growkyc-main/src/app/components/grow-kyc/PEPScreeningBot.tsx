@@ -294,7 +294,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
 
         {/* Alerts Panel */}
         <Card className="border-2">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <Bell className="w-5 h-5 text-red-600" />
               Recent Alerts & System Status
@@ -302,7 +302,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <div className="flex items-start gap-3 p-3 bg-white border border-gray-200 rounded-lg">
                 <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-red-900 text-sm">Foreign PEP Identified</p>
@@ -312,7 +312,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                 <Badge className="bg-red-600 text-white">NEW</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="flex items-start gap-3 p-3 bg-white border border-gray-200 rounded-lg">
                 <Info className="w-5 h-5 text-amber-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-amber-900 text-sm">Client Became PEP During Relationship</p>
@@ -322,7 +322,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                 <Badge className="bg-amber-600 text-white">3h ago</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-start gap-3 p-3 bg-white border border-gray-200 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" />
                 <div className="flex-1">
                   <p className="font-semibold text-blue-900 text-sm">Monthly Screening Complete</p>
@@ -588,7 +588,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <label className="flex items-start gap-3 p-4 border-2 border-blue-400 bg-blue-50 rounded-lg">
+                <label className="flex items-start gap-3 p-4 border border-gray-200 bg-white rounded-lg">
                   <input
                     type="radio"
                     name="searchType"
@@ -688,7 +688,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>Review the automated search strategy before execution</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <p className="font-semibold text-blue-900 mb-2">Search Target</p>
                 <p className="text-sm text-blue-800">
                   <strong>{formData.fullName}</strong> • {formData.nationality} • {formData.roleInMatter}
@@ -741,7 +741,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-2">
                   <Info className="w-5 h-5 text-amber-600 mt-0.5" />
                   <div>
@@ -788,19 +788,19 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>AI-powered PEP classification results</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
-              <div className="p-6 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div className="p-6 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-green-900">No PEP Indicators Found</p>
-                      <p className="text-sm text-green-700">High confidence - 85% match certainty</p>
+                      <p className="text-2xl font-bold text-gray-900">No PEP Indicators Found</p>
+                      <p className="text-sm text-gray-600">High confidence - 85% match certainty</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-green-600">0</p>
+                    <p className="text-4xl font-bold text-gray-500">0</p>
                     <p className="text-xs text-green-700">Matches</p>
                   </div>
                 </div>
@@ -862,7 +862,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>Review and confirm the PEP classification</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <p className="font-semibold text-blue-900 mb-2">AI Recommendation</p>
                 <p className="text-sm text-blue-800">
                   Based on the search results, the AI bot recommends classifying <strong>{formData.fullName}</strong> as <strong>NOT A PEP</strong> with high confidence.
@@ -962,7 +962,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg text-left">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg text-left">
                   <div className="flex items-start gap-2">
                     <Calendar className="w-5 h-5 text-purple-600 mt-0.5" />
                     <div>

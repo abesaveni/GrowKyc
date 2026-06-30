@@ -1,6 +1,5 @@
 # Secrets are loaded from a .env file (git-ignored) — NEVER hardcode credentials here.
 # Copy .env.example to .env and fill in real values before running.
-version: '3.8'
 
 services:
   # PostgreSQL Database
@@ -49,7 +48,11 @@ services:
     networks:
       - kyc_network
     restart: unless-stopped
-    command: gunicorn -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 main:app
+    # --preload imports the app ONCE in the master process and forks workers
+    # (copy-on-write), so each worker doesn't independently pay the ~30s
+    # FastAPI/pydantic route-model build cost. --timeout 120 gives the per-worker
+    # ASGI lifespan (DB init) headroom on cold start.
+    command: gunicorn -w 4 -k uvicorn.workers.UvicornWorker --preload --timeout 120 --graceful-timeout 30 --bind 0.0.0.0:8000 main:app
 
   # Redis Broker
   redis:
@@ -87,6 +90,14 @@ services:
       - kyc_network
     restart: unless-stopped
     command: celery -A core.celery_app.celery_app worker --loglevel=info
+    # Override the image's HTTP healthcheck (meant for the API) with a real
+    # broker-level liveness probe for the worker.
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A core.celery_app.celery_app inspect ping -d celery@$${HOSTNAME} || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Celery Beat (Scheduler)
   celery_beat:
@@ -109,6 +120,10 @@ services:
       - kyc_network
     restart: unless-stopped
     command: celery -A core.celery_app.celery_app beat --loglevel=info
+    # Beat has no inspectable liveness endpoint and runs no web server, so the
+    # image's HTTP healthcheck is not applicable — disable it.
+    healthcheck:
+      disable: true
 
 volumes:
   postgres_data:

@@ -55,14 +55,24 @@ import { ClientKYCDashboard } from '../kyc/ClientKYCDashboard';
 import { CaseControlCentre, CaseWorkbench } from '../cases';
 import { KYCDashboardOverview } from './KYCDashboardOverview';
 import { ActionItemsCenter } from './ActionItemsCenter';
+import { ActionItemsLive } from '../kyc/ActionItemsLive';
 import { ClientReview } from './ClientReview';
 import { ClientOnboarding } from '../kyc/ClientOnboarding';
 import { ClientOnboardingWizard } from '../kyc/ClientOnboardingWizard';
+import { AdminKYCReview } from '../admin/AdminKYCReview';
+import { SubmitKYC } from '../kyc/SubmitKYC';
+import { CasesLive } from '../cases/CasesLive';
+import { AustracSARRegister } from '../austrac/AustracSARRegister';
+import { AlertsLive } from '../kyc/AlertsLive';
+import { EDDWorkflows } from '../kyc/EDDWorkflows';
+import { RegulatoryReports } from '../kyc/RegulatoryReports';
+import { LiveStatsBar } from './LiveStatsBar';
 import { HealthCheckDashboard } from './HealthCheckDashboard';
 import { EnterpriseUpgradeHub } from './EnterpriseUpgradeHub';
 import { KYCClientDetails } from './KYCClientDetails';
 import { InvoicesPage } from '../grow/InvoicesPage';
 import { AdminAuditLog } from '../admin/AdminAuditLog';
+import { AdminUserManagement } from '../admin/AdminUserManagement';
 
 type ViewRole = 'compliance_officer' | 'partner' | 'auditor' | 'analyst';
 type View =
@@ -82,6 +92,14 @@ type View =
   | 'transaction_monitoring'
   | 'individual_onboarding'
   | 'client_onboarding'
+  | 'entity_onboarding'
+  | 'kyc_review'
+  | 'kyc_submit'
+  | 'cases_live'
+  | 'austrac_sar'
+  | 'alerts_live'
+  | 'edd_live'
+  | 'reports_live'
   | 'system_settings'
   | 'integration_hub'
   | 'health_check'
@@ -89,7 +107,8 @@ type View =
   | 'enterprise_upgrade_hub'
   | 'client_review'
   | 'invoices'
-  | 'admin_audit_log';
+  | 'admin_audit_log'
+  | 'user_management';
 
 const getPersonaConfig = (userId: string) => {
   const configs: Record<string, { name: string; title: string; role: string }> = {
@@ -126,6 +145,14 @@ const getRoleSearchItems = (role: ViewRole): SearchSuggestionItem[] => {
       { label: 'AUSTRAC Compliance', type: 'tab', icon: Shield, view: 'au' },
       { label: 'Audit Log', type: 'tab', icon: Activity, view: 'admin_audit_log' },
       { label: 'Client Onboarding', type: 'page', icon: Users, view: 'client_onboarding' },
+      { label: 'Entity Onboarding', type: 'page', icon: Briefcase, view: 'entity_onboarding' },
+      { label: 'KYC Review', type: 'page', icon: Eye, view: 'kyc_review' },
+      { label: 'Submit KYC', type: 'page', icon: Shield, view: 'kyc_submit' },
+      { label: 'Case Register (Live)', type: 'page', icon: Shield, view: 'cases_live' },
+      { label: 'AUSTRAC SAR Register', type: 'page', icon: Shield, view: 'austrac_sar' },
+      { label: 'Monitoring Alerts', type: 'page', icon: AlertCircle, view: 'alerts_live' },
+      { label: 'Enhanced Due Diligence', type: 'page', icon: Shield, view: 'edd_live' },
+      { label: 'Regulatory Reports', type: 'page', icon: FileText, view: 'reports_live' },
       { label: 'Alpha Holdings Pty Ltd', type: 'client', icon: Users, view: 'client_detail', id: 'C001' },
       { label: 'John Smith', type: 'client', icon: Users, view: 'client_detail', id: 'C002' },
       { label: 'EDD Investigation - Alpha Holdings', type: 'case', icon: FileText, view: 'case_detail', id: 'CASE-001' },
@@ -219,6 +246,57 @@ const GROW_KYC_TO_IMFO_ROLE: Record<ViewRole, string> = {
   analyst: 'investment-analyst',
 };
 
+// Map the authenticated user's canonical backend role to a compliance ViewRole,
+// so each role lands on its own dashboard instead of the persona picker.
+const CANONICAL_TO_VIEW_ROLE: Record<string, ViewRole> = {
+  Partner: 'partner',
+  Managing_Partner: 'partner',
+  Analyst: 'analyst',
+  AML_Analyst: 'analyst',
+  Agent: 'analyst',
+  Compliance_Officer: 'compliance_officer',
+  Senior_Compliance_Officer: 'compliance_officer',
+  Head_of_Compliance: 'compliance_officer',
+  MLRO: 'compliance_officer',
+  Admin: 'compliance_officer',
+  User: 'compliance_officer', // Client fallback (dedicated client portal is App-level)
+};
+
+function canonicalRoleToViewRole(role?: string | null): ViewRole {
+  if (!role) return 'compliance_officer';
+  return CANONICAL_TO_VIEW_ROLE[role] || 'compliance_officer';
+}
+
+const VIEW_ROLE_TO_DASHBOARD: Record<ViewRole, View> = {
+  compliance_officer: 'compliance_dashboard',
+  partner: 'partner_dashboard',
+  auditor: 'audit_dashboard',
+  analyst: 'compliance_dashboard',
+};
+
+// Title shown in the header + used to pick the correct dashboard variant
+// (e.g. "Head of Compliance" -> HeadOfComplianceDashboard).
+const CANONICAL_TO_TITLE: Record<string, string> = {
+  Head_of_Compliance: 'Head of Compliance',
+  MLRO: 'Head of Compliance',
+  Senior_Compliance_Officer: 'Senior Compliance Officer',
+  Compliance_Officer: 'Compliance Officer',
+  Partner: 'Managing Partner',
+  Managing_Partner: 'Managing Partner',
+  Analyst: 'AML Analyst',
+  AML_Analyst: 'AML Analyst',
+  Agent: 'AML Analyst',
+  Admin: 'System Administrator',
+  User: 'Client',
+};
+
+// The landing view for a user, given their canonical role. Admins land on the
+// User Management console; everyone else on their role dashboard.
+function defaultViewForRole(canonicalRole: string | undefined, viewRole: ViewRole): View {
+  if (canonicalRole === 'Admin') return 'user_management';
+  return VIEW_ROLE_TO_DASHBOARD[viewRole];
+}
+
 // Map each internal view to its URL suffix (WITHOUT role)
 const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   role_selection: '/',
@@ -236,6 +314,14 @@ const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   transaction_monitoring: '/transactions',
   individual_onboarding: '/onboarding',
   client_onboarding: '/client-onboarding',
+  entity_onboarding: '/entity-onboarding',
+  kyc_review: '/kyc-review',
+  kyc_submit: '/kyc-submit',
+  cases_live: '/case-register',
+  austrac_sar: '/austrac-sar',
+  alerts_live: '/monitoring-alerts',
+  edd_live: '/edd',
+  reports_live: '/regulatory-reports',
   system_settings: '/settings',
   integration_hub: '/integrations',
   health_check: '/health',
@@ -245,6 +331,7 @@ const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   client_kyc_dashboard: '/kyc',    // Note: dynamic clientId handled separately
   invoices: '/invoices',
   admin_audit_log: '/audit-log',
+  user_management: '/user-management',
 };
 
 // Reverse map: URL path suffix → default view
@@ -261,6 +348,14 @@ const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
   '/transactions': 'transaction_monitoring',
   '/onboarding': 'individual_onboarding',
   '/client-onboarding': 'client_onboarding',
+  '/entity-onboarding': 'entity_onboarding',
+  '/kyc-review': 'kyc_review',
+  '/kyc-submit': 'kyc_submit',
+  '/case-register': 'cases_live',
+  '/austrac-sar': 'austrac_sar',
+  '/monitoring-alerts': 'alerts_live',
+  '/edd': 'edd_live',
+  '/regulatory-reports': 'reports_live',
   '/settings': 'system_settings',
   '/integrations': 'integration_hub',
   '/health': 'health_check',
@@ -268,6 +363,7 @@ const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
   '/upgrades': 'enterprise_upgrade_hub',
   '/invoices': 'invoices',
   '/audit-log': 'admin_audit_log',
+  '/user-management': 'user_management',
 };
 
 interface GrowKYCProps {
@@ -279,7 +375,10 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const { role: urlRole, view: urlView } = useParams();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  // The authenticated user's role drives their landing (no persona picker).
+  const authRoleValue = (roleOverride ?? (user?.role as string | undefined)) || '';
+  const authViewRole = canonicalRoleToViewRole(authRoleValue);
 
   const [currentView, setCurrentView] = useState<View>(() => {
     if (urlRole && PATH_TO_ROLE[urlRole]) {
@@ -288,10 +387,12 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       if (internalRole === 'auditor') return 'audit_dashboard';
       return 'compliance_dashboard';
     }
-    return 'role_selection';
+    // No role in the URL: land on the authenticated role's default view
+    // (Admins -> User Management; everyone else -> their role dashboard).
+    return defaultViewForRole(authRoleValue, authViewRole);
   });
   const [selectedRole, setSelectedRole] = useState<ViewRole | null>(
-    urlRole ? PATH_TO_ROLE[urlRole] || null : null
+    urlRole ? PATH_TO_ROLE[urlRole] || null : authViewRole
   );
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
@@ -371,10 +472,32 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     }
   ];
 
-  const currentUser = users.find(u => u.id === selectedUser) || users[0];
+  // Derive the header/dashboard identity from the REAL authenticated user
+  // (no persona switching). Title drives which dashboard variant renders.
+  const currentUser = {
+    id: user?.id || 'me',
+    name: user?.name || user?.email || 'User',
+    role: authViewRole,
+    title: CANONICAL_TO_TITLE[authRoleValue] || 'Compliance Officer',
+    avatar: '👤',
+  };
 
   const [isNotificationPanelOpen, setIsNotificationPanelOpen] = useState(false);
-  const [notifications, setNotifications] = useState([
+
+  const NOTIF_READ_KEY = 'growkyc_read_notif_ids';
+  const getReadIds = (): string[] => {
+    try { return JSON.parse(localStorage.getItem(NOTIF_READ_KEY) || '[]'); } catch { return []; }
+  };
+  const persistReadId = (id: string) => {
+    try {
+      const ids = getReadIds();
+      if (!ids.includes(id)) localStorage.setItem(NOTIF_READ_KEY, JSON.stringify([...ids, id]));
+    } catch {}
+  };
+
+  const [notifications, setNotifications] = useState(() => {
+    const readIds = getReadIds();
+    return [
     {
       id: 'notif-1',
       title: 'PEP Screening Match Detected',
@@ -456,9 +579,36 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       actionId: 'Apex Holdings',
       read: false
     }
-  ]);
+  ].map(n => ({ ...n, read: readIds.includes(n.id) ? true : n.read }));
+  });
 
-  const filteredNotifications = notifications.filter(n => {
+  // Pull real, per-user notifications from the API and merge them in.
+  useEffect(() => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    fetch('/api/v1/notifications?limit=20', { headers: { Authorization: `Bearer ${token}` } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data?.items?.length) return;
+        const mapped = data.items.map((n: any) => ({
+          id: `api-${n.id}`,
+          realId: n.id,
+          real: true,
+          title: n.title,
+          desc: n.message,
+          type: n.type === 'kyc_rejected' ? 'error' : n.type === 'system_alert' ? 'critical' : 'action',
+          time: n.created_at ? new Date(n.created_at).toLocaleString() : '',
+          roleRestricted: currentUser.title,
+          read: n.status !== 'unread',
+        }));
+        setNotifications((prev: any[]) => [...mapped, ...prev.filter((p) => !p.real)]);
+      })
+      .catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const filteredNotifications = notifications.filter((n: any) => {
+    if (n.real) return true; // real API notifications already belong to this user
     if (currentUser.title === 'Head of Compliance') {
       return n.roleRestricted === 'Head of Compliance';
     } else {
@@ -468,9 +618,16 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
   const notificationsCount = filteredNotifications.filter(n => !n.read).length;
 
-  const handleNotificationAction = (notif: typeof notifications[0]) => {
+  const handleNotificationAction = (notif: any) => {
     setIsNotificationPanelOpen(false);
+    persistReadId(notif.id);
     setNotifications(prev => prev.map(n => n.id === notif.id ? { ...n, read: true } : n));
+    if (notif.real && notif.realId) {
+      const token = sessionStorage.getItem('growkyc_token');
+      fetch(`/api/v1/notifications/${notif.realId}/read`, {
+        method: 'POST', headers: token ? { Authorization: `Bearer ${token}` } : {},
+      }).catch(() => {});
+    }
 
     if (notif.actionView === 'client_review' && notif.actionId) {
       if (selectedRole) {
@@ -489,12 +646,17 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   };
 
   const handleMarkAllNotificationsRead = () => {
-    setNotifications(prev => prev.map(n => {
-      const isCurrentRole = currentUser.title === 'Head of Compliance'
+    setNotifications(prev => prev.map((n: any) => {
+      const isCurrentRole = n.real || (currentUser.title === 'Head of Compliance'
         ? n.roleRestricted === 'Head of Compliance'
-        : n.roleRestricted === 'Compliance Officer';
+        : n.roleRestricted === 'Compliance Officer');
+      if (isCurrentRole) persistReadId(n.id);
       return isCurrentRole ? { ...n, read: true } : n;
     }));
+    const token = sessionStorage.getItem('growkyc_token');
+    fetch('/api/v1/notifications/read-all', {
+      method: 'POST', headers: token ? { Authorization: `Bearer ${token}` } : {},
+    }).catch(() => {});
   };
 
   // ── URL ↔ View synchronisation ──────────────────────────────────────────
@@ -560,7 +722,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
     // Handle root and architecture
     if (pathname === '/') {
-      if (currentView !== 'role_selection') setCurrentView('role_selection');
+      // Admins land on the User Management console; others on their role dashboard.
+      if (authRoleValue === 'Admin') {
+        navigate('/compliance/user-management', { replace: true });
+        return;
+      }
+      const rolePath = ROLE_TO_PATH[authViewRole] || 'compliance';
+      navigate(`/${rolePath}/dashboard`, { replace: true });
       return;
     }
     if (pathname === '/architecture') {
@@ -755,7 +923,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navigation Bar */}
       {currentView !== 'client_kyc_dashboard' && (
-        <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-md">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 border-b border-[#0E7C9E]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-md">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-4 max-w-[70%] sm:max-w-none">
               <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
@@ -769,66 +937,44 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 </p>
               </div>
 
-              {/* User Switcher - Left Side */}
+              {/* Logged-in user — click for the Sign Out menu */}
               <div className="relative ml-1 sm:ml-4 flex-shrink-0">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-1 sm:gap-2 border border-white/30 sm:border-2 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 px-2 py-1 h-8 sm:h-9"
+                <button
+                  onClick={() => setIsUserMenuOpen((o) => !o)}
+                  className="flex items-center gap-2 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-md px-2 py-1 h-8 sm:h-9 transition-colors"
                 >
-                  <User className="w-3.5 h-3.5 hidden sm:block" />
                   <span className="text-base sm:text-lg">{currentUser.avatar}</span>
-                  <div className="text-left hidden md:block">
+                  <div className="text-left hidden md:block leading-tight">
                     <div className="text-xs font-semibold">{currentUser.name}</div>
+                    <div className="text-[10px] text-white/70">{currentUser.title}</div>
                   </div>
-                  <ChevronDown className={`w-3 h-3 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
-                </Button>
-
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                </button>
                 {isUserMenuOpen && (
                   <>
-                    {/* Backdrop */}
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setIsUserMenuOpen(false)}
-                    />
-
-                    {/* Dropdown Menu */}
-                    <Card className="absolute left-0 mt-2 w-80 z-50 shadow-2xl border-2 animate-in fade-in slide-in-from-top-2">
-                      <CardHeader className="pb-3 bg-gradient-to-r from-[#13B5EA]/10 to-[#0E7C9E]/10">
-                        <CardTitle className="text-sm font-semibold text-gray-900">
-                          Switch User Persona
-                        </CardTitle>
-                        <p className="text-xs text-gray-600 mt-1">
-                          Demo different user roles and access levels
-                        </p>
-                      </CardHeader>
-                      <CardContent className="p-2">
-                        {users.map((user) => (
-                          <button
-                            key={user.id}
-                            onClick={() => handleUserSwitch(user.id)}
-                            className={`w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors ${selectedUser === user.id ? 'bg-[#13B5EA]/10 border-2 border-[#13B5EA]' : ''
-                              }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <span className="text-2xl">{user.avatar}</span>
-                              <div className="flex-1">
-                                <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-gray-900">{user.name}</span>
-                                  {selectedUser === user.id && (
-                                    <CheckCircle className="w-4 h-4 text-[#13B5EA]" />
-                                  )}
-                                </div>
-                                <div className="text-xs text-gray-600">{user.title}</div>
-                                <div className="text-xs text-gray-500 mt-1">{user.description}</div>
-                              </div>
-                            </div>
-                          </button>
-                        ))}
-
-                      </CardContent>
-                    </Card>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsUserMenuOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-gray-100">
+                        <p className="text-sm font-semibold text-gray-900">{currentUser.name}</p>
+                        <p className="text-xs text-gray-500">{currentUser.title}</p>
+                      </div>
+                      <button
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          if (!selectedRole) return;
+                          navigate(`/${rolePath}/settings`);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2"
+                      >
+                        <Settings className="w-4 h-4 text-gray-500" />Settings
+                      </button>
+                      <button
+                        onClick={() => { setIsUserMenuOpen(false); logout(); }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 border-t border-gray-100"
+                      >
+                        <LogOut className="w-4 h-4" />Sign Out
+                      </button>
+                    </div>
                   </>
                 )}
               </div>
@@ -1010,6 +1156,18 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                   <span>Dashboard</span>
                 </Button>
 
+                {authRoleValue === 'Admin' && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => navigate(`/${rolePath}/user-management`)}
+                    className="font-semibold text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                  >
+                    <Users className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                    <span>User Management</span>
+                  </Button>
+                )}
+
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1046,7 +1204,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                     onClick={() => openAUSTRACCentre(navigate, rolePath)}
                     className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
                   >
-                    <Shield className="w-4 h-4 mr-1.5 text-amber-300 animate-pulse flex-shrink-0" />
+                    <Shield className="w-4 h-4 mr-1.5 flex-shrink-0" />
                     <span>AUSTRAC Compliance</span>
                   </Button>
                 )}
@@ -1102,6 +1260,124 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                           >
                             <Users className="w-4 h-4 text-gray-500 flex-shrink-0" />
                             <span className="flex-1">Client Onboarding</span>
+                          </button>
+                        )}
+
+                        {/* 1b. Entity Onboarding (company/trust/partnership) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/entity-onboarding`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Briefcase className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Entity Onboarding</span>
+                          </button>
+                        )}
+
+                        {/* 1c. KYC Review (live queue) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/kyc-review`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Eye className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">KYC Review</span>
+                          </button>
+                        )}
+
+                        {/* 1d. Submit KYC (client self-service, live API) */}
+                        <button
+                          onClick={() => {
+                            setIsMoreDropdownOpen(false);
+                            if (!selectedRole) return;
+                            navigate(`/${rolePath}/kyc-submit`);
+                          }}
+                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                        >
+                          <Shield className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                          <span className="flex-1">Submit KYC</span>
+                        </button>
+
+                        {/* 1e. Case Register (live API) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/case-register`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Shield className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Case Register (Live)</span>
+                          </button>
+                        )}
+
+                        {/* 1f. AUSTRAC SAR Register (live API) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/austrac-sar`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Shield className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">AUSTRAC SAR Register</span>
+                          </button>
+                        )}
+
+                        {/* 1g. Monitoring Alerts (live API) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/monitoring-alerts`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <AlertCircle className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Monitoring Alerts</span>
+                          </button>
+                        )}
+
+                        {/* 1h. Enhanced Due Diligence (live API) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/edd`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Shield className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Enhanced Due Diligence</span>
+                          </button>
+                        )}
+
+                        {/* 1i. Regulatory Reports (live API) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/regulatory-reports`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <FileText className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Regulatory Reports</span>
                           </button>
                         )}
 
@@ -1200,7 +1476,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Mobile Navigation Dropdown */}
       {currentView !== 'client_kyc_dashboard' && isMobileMenuOpen && (
-        <div className="2xl:hidden bg-gradient-to-b from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/30 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
+        <div className="2xl:hidden bg-gradient-to-b from-slate-800 to-slate-700 border-b border-[#0E7C9E]/30 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-2">
             {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (() => {
               const persona = getPersonaConfig(selectedUser);
@@ -1238,6 +1514,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               <Home className="w-5 h-5 mr-3" />
               Dashboard
             </Button>
+
+            {authRoleValue === 'Admin' && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  navigate(`/${rolePath}/user-management`);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
+              >
+                <Users className="w-5 h-5 mr-3" />
+                User Management
+              </Button>
+            )}
 
             <Button
               variant="ghost"
@@ -1415,7 +1706,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       {!isCopilotOpen && (
         <Button
           onClick={() => setIsCopilotOpen(true)}
-          className="fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center border-2 border-white/20 hover:scale-110 transition-transform active:scale-95 duration-200"
+          className="fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center border-2 border-white/20 hover:scale-110 transition-transform active:scale-95 duration-200"
           title="Compliance Copilot AI"
         >
           <Sparkles className="w-6 h-6 text-white animate-pulse" />
@@ -1424,6 +1715,11 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Content Area */}
       <div className="bg-white min-h-screen">
+        {(currentView === 'compliance_dashboard' || currentView === 'partner_dashboard' || currentView === 'audit_dashboard') && (
+          <div className="px-6 pt-6">
+            <LiveStatsBar />
+          </div>
+        )}
         {currentView === 'compliance_dashboard' && selectedRole === 'compliance_officer' && (
           currentUser.title === 'Head of Compliance' ? (
             <HeadOfComplianceDashboard
@@ -1542,11 +1838,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'action_items' && (
-          <ActionItemsCenter
-            onViewClient={(clientId) => {
-              setSelectedClientId(clientId);
-              setCurrentView('client_kyc_dashboard');
+          <ActionItemsLive
+            onBack={() => {
+              if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+              else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+              else setCurrentView('compliance_dashboard');
             }}
+            onNavigate={(view) => setCurrentView(view as typeof currentView)}
           />
         )}
         {currentView === 'case_management' && (
@@ -1611,6 +1909,64 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               if (selectedRole === 'partner') setCurrentView('partner_dashboard');
               if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
               if (selectedRole === 'analyst') setCurrentView('compliance_dashboard');
+            }}
+          />
+        )}
+        {currentView === 'kyc_review' && (
+          <div className="p-6">
+            <AdminKYCReview onNavigate={(_page, id) => { if (id) { setSelectedClientId(id); } }} />
+          </div>
+        )}
+        {currentView === 'reports_live' && (
+          <RegulatoryReports onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
+        )}
+        {currentView === 'edd_live' && (
+          <EDDWorkflows onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
+        )}
+        {currentView === 'alerts_live' && (
+          <AlertsLive onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
+        )}
+        {currentView === 'austrac_sar' && (
+          <AustracSARRegister onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
+        )}
+        {currentView === 'cases_live' && (
+          <CasesLive onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
+        )}
+        {currentView === 'kyc_submit' && (
+          <SubmitKYC onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
+        )}
+        {currentView === 'entity_onboarding' && (
+          <ClientOnboardingWizard
+            onClose={() => {
+              if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
+              else if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+              else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+              else if (selectedRole === 'analyst') setCurrentView('compliance_dashboard');
+              else setCurrentView('kyc_dashboard_overview');
             }}
           />
         )}
@@ -1694,6 +2050,12 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 else setCurrentView('compliance_dashboard');
               }}
             />
+          </div>
+        )}
+
+        {currentView === 'user_management' && (
+          <div className="p-6">
+            <AdminUserManagement />
           </div>
         )}
       </div>

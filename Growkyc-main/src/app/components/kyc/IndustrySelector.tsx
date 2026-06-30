@@ -43,7 +43,7 @@ const industryConfigs: IndustryConfig[] = [
     tagline: 'AUSTRAC AML/CTF & Responsible Lending',
     description: 'Complete compliance solution for banks, lenders, and financial institutions',
     color: 'blue',
-    gradient: 'from-blue-600 to-indigo-600',
+    gradient: 'from-slate-800 to-slate-700',
     regulations: [
       'AUSTRAC Tranche 2 AML/CTF',
       'NCCP Responsible Lending',
@@ -72,7 +72,7 @@ const industryConfigs: IndustryConfig[] = [
     tagline: 'Trust Accounting & Client Verification',
     description: 'Compliance system for law firms and legal practitioners',
     color: 'purple',
-    gradient: 'from-purple-600 to-pink-600',
+    gradient: 'from-slate-800 to-slate-700',
     regulations: [
       'Legal Profession Rules',
       'Trust Account Regulations',
@@ -102,7 +102,7 @@ const industryConfigs: IndustryConfig[] = [
     tagline: 'Tax Agent AML/CTF & Client Acceptance',
     description: 'AUSTRAC compliance for tax agents and accounting practices',
     color: 'green',
-    gradient: 'from-green-600 to-emerald-600',
+    gradient: 'from-slate-800 to-slate-700',
     regulations: [
       'AUSTRAC Designated Services',
       'Tax Practitioners Board',
@@ -132,7 +132,7 @@ const industryConfigs: IndustryConfig[] = [
     tagline: 'Property Settlement & Trust Account',
     description: 'Compliance platform for real estate agencies and property professionals',
     color: 'orange',
-    gradient: 'from-orange-600 to-red-600',
+    gradient: 'from-slate-800 to-slate-700',
     regulations: [
       'Real Estate Licensing',
       'Trust Account Requirements',

@@ -498,7 +498,7 @@ function ComplianceDecisionBot({ onBack }: { onBack: () => void }) {
         </Card>
 
         {/* Core Decision Rules */}
-        <Card className="border-2 border-red-400 bg-red-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-red-900">
               <Shield className="w-6 h-6" />
@@ -634,7 +634,7 @@ function MonitoringTriggerBot({ onBack }: { onBack: () => void }) {
         </Card>
 
         {/* Trigger Rules */}
-        <Card className="border-2 border-orange-400 bg-orange-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-orange-900">
               <Zap className="w-6 h-6" />
@@ -751,7 +751,7 @@ function ComplianceFileQABot({ onBack }: { onBack: () => void }) {
         </Card>
 
         {/* Core QA Rules */}
-        <Card className="border-2 border-amber-400 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-amber-900">
               <Shield className="w-6 h-6" />

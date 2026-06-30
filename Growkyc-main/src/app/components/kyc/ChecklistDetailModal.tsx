@@ -764,7 +764,7 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
               </h3>
               <div className="space-y-3">
                 {data.documents.map((doc, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg hover:shadow-md transition-shadow">
+                  <div key={idx} className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-3">
                       <FileText className="w-8 h-8 text-blue-600" />
                       <div>

@@ -81,7 +81,7 @@ export function AUSTRACProgramModule() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-700 to-indigo-700 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Shield className="w-16 h-16" />
@@ -91,11 +91,11 @@ export function AUSTRACProgramModule() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-blue-700 hover:bg-blue-50">
+            <Button className="bg-white text-slate-800 hover:bg-slate-100">
               <Download className="w-5 h-5 mr-2" />
               Download Program
             </Button>
-            <Button className="bg-white text-blue-700 hover:bg-blue-50">
+            <Button className="bg-white text-slate-800 hover:bg-slate-100">
               <Edit className="w-5 h-5 mr-2" />
               Edit Program
             </Button>
@@ -186,7 +186,7 @@ export function AUSTRACProgramModule() {
             </p>
 
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-bold text-blue-900 mb-2">Part A - Program Overview</h4>
                 <p className="text-sm text-blue-800 mb-3">
                   Sets out the ML/TF risks faced by the business and the controls implemented to mitigate these risks.
@@ -199,7 +199,7 @@ export function AUSTRACProgramModule() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-bold text-green-900 mb-2">Part B - Compliance Procedures</h4>
                 <p className="text-sm text-green-800 mb-3">
                   Details the specific procedures to comply with AML/CTF obligations.
@@ -237,7 +237,7 @@ export function AUSTRACProgramModule() {
             </div>
           </div>
 
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <div className="flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-600 mt-0.5" />
               <div>

@@ -107,7 +107,7 @@ export function SanctionsUploadModal({ isOpen, onClose, onUploadComplete }: Sanc
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <Card className="max-w-4xl w-full max-h-[90vh] overflow-y-auto border-4 border-purple-400 shadow-2xl">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-blue-50 border-b border-purple-200">
+        <CardHeader className="bg-gray-50 border-b border-purple-200">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-xl">
@@ -128,7 +128,7 @@ export function SanctionsUploadModal({ isOpen, onClose, onUploadComplete }: Sanc
 
         <CardContent className="p-8 space-y-6">
           {/* Upload Instructions */}
-          <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-6">
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
             <h3 className="font-bold text-blue-900 text-xl mb-3 flex items-center gap-2">
               <Shield className="w-6 h-6" />
               Upload Instructions
@@ -188,7 +188,7 @@ export function SanctionsUploadModal({ isOpen, onClose, onUploadComplete }: Sanc
 
           {/* Upload Progress */}
           {uploadStatus === 'uploading' && (
-            <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
                 <RefreshCw className="w-6 h-6 text-blue-600 animate-spin" />
                 <p className="font-semibold text-blue-900">Processing sanctions list...</p>
@@ -209,7 +209,7 @@ export function SanctionsUploadModal({ isOpen, onClose, onUploadComplete }: Sanc
 
           {/* Upload Success */}
           {uploadStatus === 'success' && uploadResults && (
-            <div className="bg-green-50 border-2 border-green-300 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-white" />
@@ -260,7 +260,7 @@ export function SanctionsUploadModal({ isOpen, onClose, onUploadComplete }: Sanc
 
           {/* Upload Error */}
           {uploadStatus === 'error' && (
-            <div className="bg-red-50 border-2 border-red-300 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
                 <AlertCircle className="w-8 h-8 text-red-600" />
                 <div>

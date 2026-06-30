@@ -154,7 +154,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             </Button>
             <Button
               variant="default"
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+              className="bg-gradient-to-r from-slate-800 to-slate-700 hover:from-indigo-700 hover:to-purple-700"
               onClick={() => setShowRoadmap(true)}
             >
               <GitBranch className="w-4 h-4 mr-2" />
@@ -534,7 +534,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             </Card>
 
             {/* Rules Configuration Guide */}
-            <Card className="border-2 border-blue-200 bg-blue-50">
+            <Card className="border border-gray-200 bg-white">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
@@ -1357,7 +1357,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* One-Time Verification Fee */}
-                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-cyan-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-cyan-600" />
                     One-Time Verification Fee
@@ -1405,7 +1405,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
 
                 {/* Individual Search Costs */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-purple-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <Search className="w-5 h-5 text-purple-600" />
                     Individual Search Costs
@@ -1543,7 +1543,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
 
                 {/* Ongoing Monitoring Fee */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-green-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <Activity className="w-5 h-5 text-green-600" />
                     Ongoing Monitoring Subscription
@@ -1634,7 +1634,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
 
                 {/* Pricing Summary */}
-                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-200">
+                <div className="bg-gray-50 rounded-lg p-6 border-2 border-indigo-200">
                   <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                     <BarChart3 className="w-5 h-5 text-indigo-600" />
                     Pricing Summary
@@ -1680,7 +1680,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             </Card>
 
             {/* Current Plan */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-200 bg-gray-50">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
@@ -1763,7 +1763,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white">
+                <div className="p-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg text-white">
                   <div className="flex items-center justify-between mb-4">
                     <CreditCard className="w-8 h-8" />
                     <Badge variant="default" className="bg-white/20">Primary</Badge>

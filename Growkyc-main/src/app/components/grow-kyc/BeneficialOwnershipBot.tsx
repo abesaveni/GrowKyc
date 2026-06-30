@@ -257,7 +257,7 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
         </div>
 
         {/* Tranche 2 Compliance Notice */}
-        <Card className="border-2 border-purple-400 bg-purple-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -416,7 +416,7 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
                 </Button>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-purple-900 mb-2">AUSTRAC Tranche 2 Requirements</h4>
                 <ul className="text-sm text-purple-800 space-y-1">
                   <li>• Identify all beneficial owners at or above 25% ownership</li>

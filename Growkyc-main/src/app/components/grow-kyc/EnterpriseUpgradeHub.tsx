@@ -230,17 +230,17 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-3">
-                <div className="p-3 rounded-lg bg-red-50 border border-red-200">
+                <div className="p-3 rounded-lg bg-white border border-gray-200">
                   <div className="text-sm text-red-800">High</div>
-                  <div className="text-2xl font-bold text-red-900">14%</div>
+                  <div className="text-2xl font-bold text-gray-900">14%</div>
                 </div>
-                <div className="p-3 rounded-lg bg-amber-50 border border-amber-200">
+                <div className="p-3 rounded-lg bg-white border border-gray-200">
                   <div className="text-sm text-amber-800">Medium</div>
-                  <div className="text-2xl font-bold text-amber-900">31%</div>
+                  <div className="text-2xl font-bold text-gray-900">31%</div>
                 </div>
-                <div className="p-3 rounded-lg bg-green-50 border border-green-200">
+                <div className="p-3 rounded-lg bg-white border border-gray-200">
                   <div className="text-sm text-green-800">Low</div>
-                  <div className="text-2xl font-bold text-green-900">55%</div>
+                  <div className="text-2xl font-bold text-gray-900">55%</div>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -310,7 +310,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
                 <Download className="w-4 h-4 mr-2" />
                 Export Audit File
               </Button>
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
+              <div className="p-3 bg-white border border-gray-200 rounded-lg text-sm text-blue-800">
                 92% of findings have owners and due dates.
               </div>
             </CardContent>
@@ -451,7 +451,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
                 <Download className="w-4 h-4 mr-2" />
                 Export KPI Snapshot
               </Button>
-              <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800">
+              <div className="p-3 bg-white border border-gray-200 rounded-lg text-sm text-green-800">
                 <div className="flex items-center gap-2 font-semibold">
                   <Lock className="w-4 h-4" />
                   Audit-safe dataset

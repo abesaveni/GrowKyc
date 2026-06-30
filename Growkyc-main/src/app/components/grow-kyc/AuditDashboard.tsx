@@ -20,11 +20,11 @@ export function AuditDashboard({ onViewClient }: AuditDashboardProps) {
     <div className="p-4 md:p-8 space-y-6">
       {/* Welcome Hero Section */}
       <div className="bg-gradient-to-r from-[#1e293b] to-[#4338ca] rounded-2xl p-6 md:p-12 text-white shadow-lg">
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 text-center sm:text-left">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-4 text-center sm:text-left">
           <div className="text-5xl md:text-6xl">🕵️‍♂️</div>
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold mb-2">Welcome back, David!</h1>
-            <p className="text-white/90 text-sm md:text-xl">
+            <h1 className="text-xl md:text-2xl font-bold mb-1">Welcome back, David!</h1>
+            <p className="text-white/90 text-sm md:text-base">
               Internal Auditor • {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
             </p>
           </div>
@@ -32,10 +32,10 @@ export function AuditDashboard({ onViewClient }: AuditDashboardProps) {
 
         {/* Embedded Glassmorphism KPI Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-6 md:mt-8">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-3xl md:text-4xl font-bold mb-1">45,892</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">45,892</div>
                 <div className="text-xs md:text-sm text-white/90 font-medium">Audit Events (30d)</div>
               </div>
               <Database className="w-8 h-8 text-white/80" />
@@ -43,10 +43,10 @@ export function AuditDashboard({ onViewClient }: AuditDashboardProps) {
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">System Log Track</div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-3xl md:text-4xl font-bold mb-1">1,247</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">1,247</div>
                 <div className="text-xs md:text-sm text-white/90 font-medium">Cases Logged</div>
               </div>
               <FileText className="w-8 h-8 text-white/80" />
@@ -54,10 +54,10 @@ export function AuditDashboard({ onViewClient }: AuditDashboardProps) {
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Matched Records</div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-3xl md:text-4xl font-bold mb-1">100%</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">100%</div>
                 <div className="text-xs md:text-sm text-white/90 font-medium">Retention Compliant</div>
               </div>
               <CheckCircle className="w-8 h-8 text-white/80" />
@@ -65,10 +65,10 @@ export function AuditDashboard({ onViewClient }: AuditDashboardProps) {
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Security Standard</div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 h-24 md:h-28 flex flex-col justify-between">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-3xl md:text-4xl font-bold mb-1">28,456</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">28,456</div>
                 <div className="text-xs md:text-sm text-white/90 font-medium">Evidence Items</div>
               </div>
               <Shield className="w-8 h-8 text-white/80" />

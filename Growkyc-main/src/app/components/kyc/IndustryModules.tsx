@@ -370,7 +370,7 @@ export function IndustryModules() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Building className="w-16 h-16" />
@@ -424,7 +424,7 @@ export function IndustryModules() {
       </div>
 
       {/* Industry Overview */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-start gap-3">
           <Target className="w-6 h-6 text-blue-600 mt-0.5" />
           <div>
@@ -503,7 +503,7 @@ export function IndustryModules() {
 
           <div className="grid grid-cols-3 gap-6">
             {/* Specific Requirements */}
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="p-4 bg-white border border-gray-200 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
                 <Shield className="w-5 h-5 text-blue-600" />
                 <h4 className="font-bold text-blue-900">Specific Requirements</h4>
@@ -519,7 +519,7 @@ export function IndustryModules() {
             </div>
 
             {/* Common Red Flags */}
-            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="p-4 bg-white border border-gray-200 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
                 <AlertTriangle className="w-5 h-5 text-red-600" />
                 <h4 className="font-bold text-red-900">Common Red Flags</h4>
@@ -535,7 +535,7 @@ export function IndustryModules() {
             </div>
 
             {/* Typical Transactions */}
-            <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div className="p-4 bg-white border border-gray-200 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
                 <DollarSign className="w-5 h-5 text-green-600" />
                 <h4 className="font-bold text-green-900">Typical Transactions</h4>

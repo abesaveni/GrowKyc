@@ -103,7 +103,7 @@ export function AIAdminDashboard({ onNavigate }: AIAdminDashboardProps) {
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg flex items-center justify-center">
               <Brain className="w-7 h-7 text-white" />
             </div>
             <div>
