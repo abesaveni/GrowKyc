@@ -29,6 +29,8 @@ logger = logging.getLogger("setup")
 # with ADD COLUMN IF NOT EXISTS so it is safe on databases that already have it.
 COLUMN_MIGRATIONS = [
     ("sars", "case_id", "INTEGER REFERENCES cases(id) ON DELETE SET NULL"),
+    ("didit_sessions", "client_id", "INTEGER REFERENCES clients(id) ON DELETE SET NULL"),
+    ("didit_sessions", "contact_email", "VARCHAR(255)"),
 ]
 
 

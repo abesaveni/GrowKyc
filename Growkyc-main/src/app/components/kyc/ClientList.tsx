@@ -441,6 +441,33 @@ export function ClientList() {
 
   useEffect(() => { fetchClients(); }, [fetchClients]);
 
+  // Send a Didit KYC invitation (creates a verification session + emails the client a link).
+  const inviteToKyc = async (clientId: string) => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    setBusyId(clientId);
+    try {
+      const res = await fetch('/api/v1/verifications/invite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ client_id: Number(clientId), kind: 'individual' }),
+      });
+      if (res.status === 503) { toast.error('Didit KYC is not enabled in this deployment'); return; }
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        toast.error(d.detail || `Invite failed (${res.status})`);
+        return;
+      }
+      const data = await res.json();
+      if (data.email_sent) toast.success(`KYC invite emailed to ${data.contact_email}`);
+      else toast.success('Verification link created', 'Email off (SMTP) — see KYC Verifications to copy the link');
+    } catch {
+      toast.error('Network error sending KYC invite');
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   // Persist a client status change through the real API (approve / flag).
   const updateClientStatus = async (clientId: string, status: 'approved' | 'flagged') => {
     const token = sessionStorage.getItem('growkyc_token');
@@ -912,6 +939,11 @@ export function ClientList() {
                 <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setSelectedClient(client)}>
                   <Eye className="w-4 h-4 mr-2" />
                   View Profile
+                </Button>
+                <Button size="sm" variant="outline" className="text-blue-700 border-blue-200"
+                  disabled={busyId === client.id}
+                  onClick={() => inviteToKyc(client.id)}>
+                  <Shield className="w-4 h-4 mr-2" />Invite KYC
                 </Button>
                 {client.status !== 'active' && (
                   <Button size="sm" variant="outline" className="text-green-700 border-green-200"

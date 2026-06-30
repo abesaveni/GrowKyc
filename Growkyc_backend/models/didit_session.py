@@ -40,6 +40,14 @@ class DiditSession(TenantMixin, TimestampMixin, Base):
         Integer, ForeignKey("kyc.id", ondelete="SET NULL"), nullable=True, index=True
     )
 
+    # Optional link to the Client this verification was raised for (invite flow).
+    client_id = Column(
+        Integer, ForeignKey("clients.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+
+    # Email the verification link was sent to (invite flow).
+    contact_email = Column(String(255), nullable=True)
+
     # Current Didit status string (e.g. Approved, Declined, In Review).
     status = Column(String(50), nullable=False, default="Not Started", index=True)
 

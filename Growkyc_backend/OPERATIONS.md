@@ -44,6 +44,19 @@ npm install
 npm run dev          # proxies /api -> http://localhost:18000
 ```
 
+## Email (KYC invitations)
+The "Invite to KYC" flow emails the client a welcome message with their Didit
+verification link. Configure SMTP in `.env` to enable real sending (otherwise the
+link is still generated and visible in **KYC Verifications**, but no email is sent):
+```
+SMTP_HOST=smtp.sendgrid.net
+SMTP_PORT=587
+SMTP_USERNAME=apikey
+SMTP_PASSWORD=...
+SMTP_FROM=GrowKYC <no-reply@yourdomain.com>
+SMTP_USE_TLS=true
+```
+
 ## Known follow-up
 - **Didit real-time webhook**: verification currently uses polling. To enable
   push updates, set `DIDIT_WEBHOOK_SECRET` (from the Didit dashboard) and expose
