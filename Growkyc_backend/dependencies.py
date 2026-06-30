@@ -189,6 +189,7 @@ STAFF_ROLES = (
     UserRole.HEAD_OF_COMPLIANCE,
     UserRole.MLRO,
     UserRole.PARTNER,
+    UserRole.AUDITOR,
 )
 
 

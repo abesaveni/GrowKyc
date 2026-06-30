@@ -27,6 +27,7 @@ class UserRole(str, Enum):
     HEAD_OF_COMPLIANCE = "Head_of_Compliance"
     MLRO = "MLRO"  # legacy alias for Head of Compliance
     PARTNER = "Partner"  # Managing Partner
+    AUDITOR = "Auditor"  # read-only oversight / external auditor
 
 
 class KYCOnboardingStatus(str, Enum):

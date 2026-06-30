@@ -38,6 +38,8 @@ async def list_edd(
 ):
     """List EDD workflows, optionally filtered by status."""
     _bind_tenant(current_user)
+    skip = max(0, skip)
+    limit = max(1, min(limit, 200))
     from models import EDDWorkflow
 
     query = db.query(EDDWorkflow)

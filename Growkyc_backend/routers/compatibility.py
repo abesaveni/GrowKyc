@@ -15,7 +15,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from database import get_db
-from dependencies import get_current_user
+from dependencies import get_admin_or_agent_user, get_current_user
 from models import User
 from schemas import PasswordChangeRequest, TokenResponse, UserResponse
 from services.auth_service import ACCESS_TOKEN_EXPIRE_MINUTES, AuthService
@@ -351,9 +351,12 @@ async def compat_audit_events(
     skip: int = 0,
     limit: int = 100,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
+    current_user: User = Depends(get_admin_or_agent_user),
 ):
-    """Real audit trail from the audit_logs table (written by AuditService)."""
+    """Real audit trail from the audit_logs table (written by AuditService).
+
+    Compliance-staff only — the audit trail must not be readable by clients.
+    """
     from models import AuditLog
 
     query = db.query(AuditLog).order_by(AuditLog.timestamp.desc())

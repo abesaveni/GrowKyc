@@ -25,9 +25,14 @@ async def get_dashboard_stats(
         require_role(
             [
                 UserRole.ADMIN.value,
+                UserRole.AGENT.value,
                 UserRole.ANALYST.value,
                 UserRole.COMPLIANCE_OFFICER.value,
+                UserRole.SENIOR_COMPLIANCE_OFFICER.value,
+                UserRole.HEAD_OF_COMPLIANCE.value,
                 UserRole.MLRO.value,
+                UserRole.PARTNER.value,
+                UserRole.AUDITOR.value,
             ]
         )
     ),
