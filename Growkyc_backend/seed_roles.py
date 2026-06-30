@@ -25,7 +25,9 @@ SEED = [
     ("officer@growkyc.com", "Compliance Officer",        UserRole.COMPLIANCE_OFFICER),
     ("senior@growkyc.com",  "Senior Compliance Officer", UserRole.SENIOR_COMPLIANCE_OFFICER),
     ("head@growkyc.com",    "Head of Compliance",        UserRole.HEAD_OF_COMPLIANCE),
+    ("mlro@growkyc.com",    "MLRO",                      UserRole.MLRO),
     ("partner@growkyc.com", "Managing Partner",          UserRole.PARTNER),
+    ("auditor@growkyc.com", "External Auditor",          UserRole.AUDITOR),
 ]
 
 

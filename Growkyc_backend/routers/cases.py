@@ -88,6 +88,8 @@ async def list_cases(
 ):
     """List all enterprise cases with optional status filter."""
     _bind_tenant(current_user)
+    skip = max(0, skip)
+    limit = max(1, min(limit, 100))
     from models import Case
     query = db.query(Case)
     if case_status:

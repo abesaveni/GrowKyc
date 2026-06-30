@@ -258,6 +258,7 @@ const CANONICAL_TO_VIEW_ROLE: Record<string, ViewRole> = {
   Senior_Compliance_Officer: 'compliance_officer',
   Head_of_Compliance: 'compliance_officer',
   MLRO: 'compliance_officer',
+  Auditor: 'auditor',
   Admin: 'compliance_officer',
   User: 'compliance_officer', // Client fallback (dedicated client portal is App-level)
 };

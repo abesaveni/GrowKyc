@@ -112,6 +112,8 @@ async def list_alerts(
 ):
     """List monitoring alerts, optionally filtered by status / severity / client."""
     _bind_tenant(current_user)
+    skip = max(0, skip)
+    limit = max(1, min(limit, 200))
     query = db.query(Alert)
     if alert_status:
         query = query.filter(Alert.status == alert_status)

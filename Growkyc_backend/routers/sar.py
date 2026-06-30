@@ -21,7 +21,21 @@ from services.sar_service import SARService
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/sars", tags=["sar"])
 
-_COMPLIANCE_ROLES = ["Admin", "Compliance_Officer", "MLRO"]
+# View / raise / submit a SAR: all compliance staff.
+_COMPLIANCE_ROLES = [
+    "Admin",
+    "Agent",
+    "Analyst",
+    "Compliance_Officer",
+    "Senior_Compliance_Officer",
+    "Head_of_Compliance",
+    "MLRO",
+    "Partner",
+]
+
+# File with the regulator / decline: reserved for the MLRO function.
+# Head_of_Compliance acts as the MLRO in this org structure.
+_SAR_DECISION_ROLES = ["Admin", "MLRO", "Head_of_Compliance"]
 
 
 class SARCreate(BaseModel):
@@ -103,7 +117,7 @@ async def file_sar(
     sar_id: int,
     regulator_reference: Optional[str] = None,
     db: Session = Depends(get_db),
-    current_user: User = Depends(require_role(["Admin", "MLRO"])),
+    current_user: User = Depends(require_role(_SAR_DECISION_ROLES)),
 ):
     """File a SAR with the regulator (AUSTRAC/FinCEN)."""
     try:
@@ -125,7 +139,7 @@ async def decline_sar(
     sar_id: int,
     data: SARDecline,
     db: Session = Depends(get_db),
-    current_user: User = Depends(require_role(["Admin", "MLRO"])),
+    current_user: User = Depends(require_role(_SAR_DECISION_ROLES)),
 ):
     """Decline a SAR — document the decision not to file."""
     try:
@@ -152,6 +166,8 @@ async def list_sars(
     current_user: User = Depends(require_role(_COMPLIANCE_ROLES)),
 ):
     """List SARs, optionally filtered by client or status."""
+    skip = max(0, skip)
+    limit = max(1, min(limit, 200))
     service = SARService(db)
     records, total = service.list_sars(client_id=client_id, status=status, skip=skip, limit=limit)
     return {

@@ -47,6 +47,12 @@ async def generate_regulatory_report(
 ):
     """Generate an immutable structured payload for a regulatory report."""
     _bind_tenant(current_user)
+    allowed_types = {"SMR", "TTR", "IFTI", "AML_REPORT", "CTR"}
+    if body.report_type not in allowed_types:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid report_type '{body.report_type}'. Allowed: {sorted(allowed_types)}",
+        )
     try:
         service = RegulatoryService(db)
         report = service.generate_report(
@@ -94,6 +100,8 @@ async def list_reports(
 ):
     """List generated regulatory reports."""
     _bind_tenant(current_user)
+    skip = max(0, skip)
+    limit = max(1, min(limit, 200))
     from models import RegulatoryReport
 
     query = db.query(RegulatoryReport).order_by(RegulatoryReport.id.desc())

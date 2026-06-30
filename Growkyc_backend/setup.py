@@ -32,6 +32,12 @@ COLUMN_MIGRATIONS = [
 ]
 
 
+# Enum value additions (Postgres native enums need ALTER TYPE ... ADD VALUE).
+ENUM_MIGRATIONS = [
+    ("userrole", "AUDITOR"),
+]
+
+
 def run_column_migrations() -> None:
     with engine.connect() as conn:
         for table, column, ddl in COLUMN_MIGRATIONS:
@@ -45,11 +51,29 @@ def run_column_migrations() -> None:
                 print(f"migration skip: {table}.{column} ({e})")
 
 
+def run_enum_migrations() -> None:
+    # ADD VALUE must run outside a transaction block -> AUTOCOMMIT.
+    conn = engine.connect().execution_options(isolation_level="AUTOCOMMIT")
+    try:
+        for enum_name, label in ENUM_MIGRATIONS:
+            try:
+                conn.execute(
+                    text(f"ALTER TYPE {enum_name} ADD VALUE IF NOT EXISTS '{label}'")
+                )
+                print(f"enum ok      : {enum_name} += {label}")
+            except Exception as e:  # noqa: BLE001
+                print(f"enum skip    : {enum_name} += {label} ({e})")
+    finally:
+        conn.close()
+
+
 def main() -> None:
     print("== creating tables ==")
     create_all_tables()
     print("== column migrations ==")
     run_column_migrations()
+    print("== enum migrations ==")
+    run_enum_migrations()
     print("== seeding tenant + role users ==")
     import seed_roles
 
