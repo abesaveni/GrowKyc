@@ -67,6 +67,19 @@ export default defineConfig(({ mode }) => {
         changeOrigin: true,
       }
     }
+  },
+  // Same proxy for `vite preview` (serving the built dist/ — low memory).
+  preview: {
+    proxy: {
+      '/api/v1': {
+        target: apiTarget,
+        changeOrigin: true,
+      },
+      '/api': {
+        target: apiTarget,
+        changeOrigin: true,
+      }
+    }
   }
   }
 })

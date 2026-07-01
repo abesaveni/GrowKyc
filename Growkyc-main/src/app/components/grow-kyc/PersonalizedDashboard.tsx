@@ -630,7 +630,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         </Card>
 
         <Card
-          className="relative overflow-hidden bg-gradient-to-br from-amber-600 to-orange-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+          className="relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
           onClick={() => {
             // Scroll to approvals section
             setTimeout(() => {
@@ -684,7 +684,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </CardContent>
         </Card>
 
-        <Card className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-violet-700 border-0 hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+        <Card className="relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700 border-0 hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
           <CardContent className="p-8 relative z-10">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
@@ -936,11 +936,11 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             </ResponsiveContainer>
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="p-3 bg-blue-50 rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">67</div>
+                <div className="text-2xl font-bold text-gray-900">67</div>
                 <div className="text-xs text-gray-600">Total Cases This Week</div>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
-                <div className="text-2xl font-bold text-green-600">99</div>
+                <div className="text-2xl font-bold text-gray-900">99</div>
                 <div className="text-xs text-gray-600">Total Reviews</div>
               </div>
             </div>
@@ -991,7 +991,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-red-600 mb-2">5</div>
+            <div className="text-4xl font-bold text-gray-900 mb-2">5</div>
             <Progress value={28} className="mb-2" />
             <p className="text-sm text-red-800">Require immediate action</p>
           </CardContent>
@@ -1005,7 +1005,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-amber-600 mb-2">13</div>
+            <div className="text-4xl font-bold text-gray-900 mb-2">13</div>
             <Progress value={45} className="mb-2" />
             <p className="text-sm text-amber-800">Review within 30 days</p>
           </CardContent>
@@ -1019,7 +1019,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-green-600 mb-2">47</div>
+            <div className="text-4xl font-bold text-gray-900 mb-2">47</div>
             <Progress value={85} className="mb-2" />
             <p className="text-sm text-green-800">Above target by 12%</p>
           </CardContent>

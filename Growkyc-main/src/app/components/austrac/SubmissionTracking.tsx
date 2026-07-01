@@ -283,7 +283,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                     className={
                       filterStatus === status
                         ? 'bg-blue-600 text-white'
-                        : 'bg-white text-gray-700 hover:bg-blue-50'
+                        : 'bg-white text-gray-700 hover:bg-gray-50'
                     }
                   >
                     {status === 'all' ? 'All' : status.replace('_', ' ').toUpperCase()}
@@ -320,7 +320,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                   {filteredSubmissions.map((submission) => (
                     <tr
                       key={submission.caseId}
-                      className="border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-pointer"
+                      className="border-b border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer"
                       onClick={() => setSelectedSubmission(submission)}
                     >
                       <td className="py-3 px-4">

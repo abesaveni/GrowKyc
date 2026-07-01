@@ -213,11 +213,62 @@ export function KYCVerifications({ onBack }: { onBack?: () => void } = {}) {
               </div>
               <Button variant="ghost" size="sm" onClick={() => setDecision(null)}><X className="w-4 h-4" /></Button>
             </div>
-            <div className="px-6 py-4">
-              <div className="mb-3">{statusBadge(decision.status)}</div>
-              <pre className="text-xs bg-gray-50 border border-gray-200 rounded-lg p-3 overflow-x-auto whitespace-pre-wrap">
-                {JSON.stringify(decision.decision, null, 2)}
-              </pre>
+            <div className="px-6 py-4 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-500">Overall</span>
+                {statusBadge(decision.status)}
+              </div>
+
+              {/* Per-check summary (extracted from the Didit decision object) */}
+              {(() => {
+                const d = decision.decision || {};
+                const LABELS: Record<string, string> = {
+                  id_verification: 'ID Verification',
+                  liveness: 'Liveness',
+                  face_match: 'Face Match',
+                  poa: 'Proof of Address',
+                  proof_of_address: 'Proof of Address',
+                  document_ai: 'Document AI',
+                  aml: 'AML / Sanctions',
+                  database_verification: 'Database Check',
+                  database_validation: 'Database Check',
+                  email_verification: 'Email Verification',
+                  ip_analysis: 'IP Analysis',
+                  phone_verification: 'Phone Verification',
+                };
+                const checks = Object.keys(LABELS)
+                  .filter((k) => d[k] && typeof d[k] === 'object' && 'status' in d[k])
+                  .map((k) => ({ label: LABELS[k], status: String(d[k].status) }));
+                const checkBadge = (s: string) => {
+                  const ok = /approved|passed|clear|verified|match/i.test(s);
+                  const bad = /declined|failed|no_match|expired/i.test(s);
+                  const cls = ok ? 'bg-green-50 text-green-700 border-green-200'
+                    : bad ? 'bg-red-50 text-red-700 border-red-200'
+                      : 'bg-amber-50 text-amber-700 border-amber-200';
+                  return <Badge className={cls}>{s}</Badge>;
+                };
+                if (checks.length === 0) {
+                  return <p className="text-sm text-gray-500">No detailed checks reported yet.</p>;
+                }
+                return (
+                  <div className="border border-gray-200 rounded-lg divide-y">
+                    {checks.map((c) => (
+                      <div key={c.label} className="flex items-center justify-between px-4 py-2.5">
+                        <span className="text-sm text-gray-700">{c.label}</span>
+                        {checkBadge(c.status)}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+
+              {/* Raw payload, collapsed by default */}
+              <details className="text-xs">
+                <summary className="cursor-pointer text-gray-500 hover:text-gray-700 select-none">Raw verification data</summary>
+                <pre className="mt-2 bg-gray-50 border border-gray-200 rounded-lg p-3 overflow-x-auto whitespace-pre-wrap">
+                  {JSON.stringify(decision.decision, null, 2)}
+                </pre>
+              </details>
             </div>
             <div className="flex justify-end gap-2 border-t px-6 py-4">
               <Button variant="outline" onClick={() => setDecision(null)}>Close</Button>

@@ -70,6 +70,52 @@ function getAuthHeader(): Record<string, string> {
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
+// Map a live backend client (ClientResponse) to the dashboard's TestClient shape.
+function apiClientToTestClient(c: any): TestClient {
+  const riskScore = c.risk_score || 0;
+  const riskRating: TestClient['amlData']['riskRating'] =
+    riskScore >= 70 ? 'Critical' : riskScore >= 40 ? 'High' : riskScore >= 20 ? 'Medium' : 'Low';
+  const verified = !!c.approved_at && !c.is_locked;
+  const created = (c.created_at || '').slice(0, 10);
+  return {
+    id: `api-${c.id}`,
+    name: c.name || `Client ${c.id}`,
+    entityType: c.entity_profile ? 'Company' : 'Individual',
+    status: c.is_locked ? 'Suspended' : verified ? 'Active' : 'Under Review',
+    abn: c.entity_profile?.abn,
+    acn: c.entity_profile?.acn,
+    country: 'Australia',
+    industry: 'Live client',
+    serviceType: '—',
+    clientGroup: 'Live (API)',
+    riskScores: { overall: riskScore, aml: riskScore, financial: 0, business: 0, ownership: 0 },
+    quickStatus: {
+      identity: verified ? 'Verified' : 'Pending',
+      aml: c.is_sanctioned ? 'SANCTIONS' : c.is_pep ? 'PEP Match' : 'Clear',
+      entity: c.entity_profile ? 'Active' : 'N/A',
+      monitoring: 'Active',
+    },
+    lastReview: created,
+    nextReview: '',
+    identityData: {
+      primaryID: { type: '', number: '', expiry: '', verified },
+      biometricStatus: 'Pending', livenessCheck: false, addressVerified: false, fraudFlags: [],
+    },
+    amlData: {
+      sanctionsMatches: c.is_sanctioned ? 1 : 0,
+      pepStatus: c.is_pep ? 'Domestic PEP' : 'Not PEP',
+      adverseMediaHits: 0, worldCheckStatus: 'Clear', transactionMonitoring: 'Active',
+      riskRating, lastScreeningDate: created,
+    },
+    entityData: {},
+    ownershipData: { ubos: [], ownershipStructureComplete: false, complexStructure: false },
+    financialData: { bankAccounts: 0, sourceOfFunds: '', sourceOfWealth: '', estimatedWealth: '', transactionVolume: '', highRiskTransactions: 0 },
+    legalData: { serviceAgreementSigned: false, termsAccepted: false, privacyConsentGiven: false, kycConsentDate: '' },
+    documentsData: { total: 0, verified: 0, pending: 0, rejected: 0 },
+    monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
+  } as TestClient;
+}
+
 // Create the real Client record in the backend, routing individual vs entity by
 // client type. Surfaces failures but never blocks the local onboarding UX.
 async function persistOnboardToBackend(opts: {
@@ -140,8 +186,24 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
   const [onboardDocs, setOnboardDocs] = useState<OnboardDocSlot[]>(emptyOnboardDocs);
   const [isSubmittingOnboard, setIsSubmittingOnboard] = useState(false);
 
+  const [liveClients, setLiveClients] = useState<TestClient[]>([]);
+
   useEffect(() => {
     return ClientsDB.subscribe(setClientsData);
+  }, []);
+
+  // Pull real clients from the backend and merge them with the 2 demo records.
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch('/api/v1/clients?limit=100', { headers: getAuthHeader() });
+        if (!res.ok) return;
+        const data = await res.json();
+        setLiveClients((data.items || []).map(apiClientToTestClient));
+      } catch {
+        /* non-fatal */
+      }
+    })();
   }, []);
 
   const uploadedDocCount = onboardDocs.filter((d) => d.file).length;
@@ -316,7 +378,7 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
     }
   };
 
-  const allClients: Client[] = clientsData.map(c => {
+  const allClients: Client[] = [...clientsData, ...liveClients].map(c => {
     let status: 'verified' | 'pending' | 'review_required' | 'expired' = 'pending';
     if (c.quickStatus.aml.includes('SANCTIONS') || c.quickStatus.aml.includes('PEP Match')) {
       status = 'review_required';
@@ -600,7 +662,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">Verified</p>
-                  <p className="text-2xl font-bold text-[#3DD598]">{stats.verified}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.verified}</p>
                 </div>
                 <CheckCircle className="w-8 h-8 text-[#3DD598]" />
               </div>
@@ -612,7 +674,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">Pending</p>
-                  <p className="text-2xl font-bold text-[#FFA300]">{stats.pending}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.pending}</p>
                 </div>
                 <Clock className="w-8 h-8 text-[#FFA300]" />
               </div>
@@ -624,7 +686,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">Review Req.</p>
-                  <p className="text-2xl font-bold text-yellow-600">{stats.reviewRequired}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.reviewRequired}</p>
                 </div>
                 <AlertTriangle className="w-8 h-8 text-yellow-600" />
               </div>
@@ -636,7 +698,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">Expired</p>
-                  <p className="text-2xl font-bold text-red-600">{stats.expired}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.expired}</p>
                 </div>
                 <XCircle className="w-8 h-8 text-red-600" />
               </div>
@@ -648,7 +710,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">Actions Due</p>
-                  <p className="text-2xl font-bold text-red-600">{stats.actionRequired}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.actionRequired}</p>
                 </div>
                 <AlertCircle className="w-8 h-8 text-red-600" />
               </div>
@@ -660,7 +722,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">High Risk</p>
-                  <p className="text-2xl font-bold text-red-500">{stats.criticalRisk + stats.highRisk}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.criticalRisk + stats.highRisk}</p>
                 </div>
                 <Shield className="w-8 h-8 text-red-500" />
               </div>
@@ -672,7 +734,7 @@ assignedOfficer: 'Compliance Officer'
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-600 mb-1">Avg. Score</p>
-                  <p className="text-2xl font-bold text-[#13B5EA]">{stats.averageScore}%</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.averageScore}%</p>
                 </div>
                 <TrendingUp className="w-8 h-8 text-[#13B5EA]" />
               </div>
