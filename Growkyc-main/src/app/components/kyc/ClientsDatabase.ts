@@ -1039,10 +1039,17 @@ export const TEST_CLIENTS: TestClient[] = [
   }
 ];
 
+// Only keep TWO illustrative demo records; everything else comes from the live
+// backend (merged in by the screens that read this store). Bumped storage key
+// forces old browsers (which cached all 13 demo clients) to reset to 2.
+const STORAGE_KEY = 'growkyc_clients_v2';
+const DEMO_CLIENTS: TestClient[] = TEST_CLIENTS.slice(0, 2);
+
 let listeners: Array<(clients: TestClient[]) => void> = [];
 let currentClients: TestClient[] = (() => {
   if (typeof window !== 'undefined') {
-    const saved = window.localStorage.getItem('growkyc_clients');
+    window.localStorage.removeItem('growkyc_clients'); // clear the old 13-client cache
+    const saved = window.localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -1054,7 +1061,7 @@ let currentClients: TestClient[] = (() => {
       }
     }
   }
-  return TEST_CLIENTS;
+  return DEMO_CLIENTS;
 })();
 
 export const ClientsDB = {
@@ -1062,14 +1069,14 @@ export const ClientsDB = {
   addClient: (client: TestClient) => {
     currentClients = [...currentClients, client];
     if (typeof window !== 'undefined') {
-      window.localStorage.setItem('growkyc_clients', JSON.stringify(currentClients));
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(currentClients));
     }
     listeners.forEach(l => l(currentClients));
   },
   updateClient: (id: string, updated: Partial<TestClient>) => {
     currentClients = currentClients.map(c => c.id === id ? { ...c, ...updated } : c);
     if (typeof window !== 'undefined') {
-      window.localStorage.setItem('growkyc_clients', JSON.stringify(currentClients));
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(currentClients));
     }
     listeners.forEach(l => l(currentClients));
   },

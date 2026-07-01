@@ -596,17 +596,26 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
         if (!data?.items?.length) return;
-        const mapped = data.items.map((n: any) => ({
-          id: `api-${n.id}`,
-          realId: n.id,
-          real: true,
-          title: n.title,
-          desc: n.message,
-          type: n.type === 'kyc_rejected' ? 'error' : n.type === 'system_alert' ? 'critical' : 'action',
-          time: n.created_at ? new Date(n.created_at).toLocaleString() : '',
-          roleRestricted: currentUser.title,
-          read: n.status !== 'unread',
-        }));
+        // Only surface UNREAD notifications so dismissing/mark-read makes them
+        // stay gone on the next load.
+        const typeFor = (t: string) =>
+          t === 'kyc_rejected' ? 'error'
+            : t === 'kyc_approved' || t === 'kyc_verified' ? 'success'
+              : 'info';
+        const mapped = (data.items || [])
+          .filter((n: any) => n.status === 'unread')
+          .map((n: any) => ({
+            id: `api-${n.id}`,
+            realId: n.id,
+            real: true,
+            title: n.title,
+            desc: n.message,
+            type: typeFor(n.type),
+            time: n.created_at ? new Date(n.created_at).toLocaleString() : '',
+            roleRestricted: currentUser.title,
+            read: false,
+            // no actionText -> no dead action button; dismiss handled below
+          }));
         setNotifications((prev: any[]) => [...mapped, ...prev.filter((p) => !p.real)]);
       })
       .catch(() => {});
@@ -651,13 +660,26 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     }
   };
 
+  const dismissNotification = (notif: any) => {
+    // Remove from the panel immediately and persist so it doesn't come back.
+    setNotifications((prev: any[]) => prev.filter((n) => n.id !== notif.id));
+    persistReadId(notif.id);
+    if (notif.real && notif.realId) {
+      const token = sessionStorage.getItem('growkyc_token');
+      fetch(`/api/v1/notifications/${notif.realId}/read`, {
+        method: 'POST', headers: token ? { Authorization: `Bearer ${token}` } : {},
+      }).catch(() => {});
+    }
+  };
+
   const handleMarkAllNotificationsRead = () => {
-    setNotifications(prev => prev.map((n: any) => {
+    // Clear everything visible for this role from the panel and persist it.
+    setNotifications(prev => prev.filter((n: any) => {
       const isCurrentRole = n.real || (currentUser.title === 'Head of Compliance'
         ? n.roleRestricted === 'Head of Compliance'
         : n.roleRestricted === 'Compliance Officer');
       if (isCurrentRole) persistReadId(n.id);
-      return isCurrentRole ? { ...n, read: true } : n;
+      return !isCurrentRole; // keep only the ones NOT for this role
     }));
     const token = sessionStorage.getItem('growkyc_token');
     fetch('/api/v1/notifications/read-all', {
@@ -1112,14 +1134,26 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                                         }`}>
                                         {notif.type}
                                       </span>
-                                      <Button
-                                        size="sm"
-                                        variant={notif.read ? "ghost" : "default"}
-                                        onClick={() => handleNotificationAction(notif)}
-                                        className="h-6 text-[10px] font-semibold px-2.5 py-0.5"
-                                      >
-                                        {notif.actionText}
-                                      </Button>
+                                      <div className="flex items-center gap-1.5">
+                                        {notif.actionText && (
+                                          <Button
+                                            size="sm"
+                                            variant={notif.read ? "ghost" : "default"}
+                                            onClick={() => handleNotificationAction(notif)}
+                                            className="h-6 text-[10px] font-semibold px-2.5 py-0.5"
+                                          >
+                                            {notif.actionText}
+                                          </Button>
+                                        )}
+                                        <Button
+                                          size="sm"
+                                          variant="ghost"
+                                          onClick={() => dismissNotification(notif)}
+                                          className="h-6 text-[10px] font-semibold px-2 py-0.5 text-gray-400 hover:text-gray-700"
+                                        >
+                                          Dismiss
+                                        </Button>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -1675,6 +1709,41 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 <TrendingUp className="w-5 h-5 mr-3" />
                 Upgrades
               </Button>
+            )}
+
+            {/* --- Compliance tools (live, API-backed) --- */}
+            {selectedRole !== 'auditor' && (
+              <>
+                <div className="pt-2 pb-1 text-[11px] uppercase tracking-wider text-white/50 font-semibold">Compliance Tools</div>
+                {[
+                  { label: 'KYC Verifications', path: 'kyc-verifications', icon: Shield },
+                  { label: 'Case Register', path: 'case-register', icon: Shield },
+                  { label: 'AUSTRAC SAR Register', path: 'austrac-sar', icon: Shield },
+                  { label: 'Monitoring Alerts', path: 'monitoring-alerts', icon: AlertCircle },
+                  { label: 'Enhanced Due Diligence', path: 'edd', icon: Shield },
+                  { label: 'Regulatory Reports', path: 'regulatory-reports', icon: FileText },
+                  { label: 'KYC Review', path: 'kyc-review', icon: Eye },
+                  { label: 'Entity Onboarding', path: 'entity-onboarding', icon: Briefcase },
+                ].map((it) => {
+                  const Icon = it.icon;
+                  return (
+                    <Button
+                      key={it.path}
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        if (!selectedRole) return;
+                        navigate(`/${rolePath}/${it.path}`);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
+                    >
+                      <Icon className="w-5 h-5 mr-3" />
+                      {it.label}
+                    </Button>
+                  );
+                })}
+              </>
             )}
 
             {/* Settings - Available for all roles */}

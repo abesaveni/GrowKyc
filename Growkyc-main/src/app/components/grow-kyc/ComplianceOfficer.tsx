@@ -429,22 +429,22 @@ export function ComplianceOfficer({
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card
-          className="lg:col-span-2 border-2 border-red-300 shadow-lg cursor-pointer hover:shadow-xl transition-all hover:border-red-400"
+          className="lg:col-span-2 border border-gray-200 shadow-sm cursor-pointer hover:shadow-md transition-all"
           onClick={onNavigateToAUSTRAC}
         >
-          <CardHeader className="bg-gray-50 border-b border-red-200">
+          <CardHeader className="bg-gray-50 border-b border-gray-200">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <CardTitle className="flex items-center gap-2 text-red-900">
-                  <Shield className="w-5 h-5" />
+                <CardTitle className="flex items-center gap-2 text-gray-900">
+                  <Shield className="w-5 h-5 text-red-600" />
                   AUSTRAC Reporting Control Centre
                 </CardTitle>
-                <CardDescription className="text-red-700 mt-1">
+                <CardDescription className="text-gray-600 mt-1">
                   SMR workflow, reportable matter triage, submission tracking, and regulatory evidence packs
                 </CardDescription>
               </div>
               <Button
-                className="bg-red-700 hover:bg-red-800 text-white shrink-0"
+                className="bg-slate-800 hover:bg-slate-700 text-white shrink-0"
                 onClick={(e) => {
                   e.stopPropagation();
                   onNavigateToAUSTRAC?.();
@@ -464,7 +464,7 @@ export function ComplianceOfficer({
                 { label: 'SLA At Risk', value: metrics.slaBreaches },
               ].map((item) => (
                 <div key={item.label} className="p-4 rounded-lg bg-white border border-red-100 text-center">
-                  <p className="text-2xl font-bold text-red-900">{item.value}</p>
+                  <p className="text-2xl font-bold text-gray-900">{item.value}</p>
                   <p className="text-xs font-semibold text-gray-600 mt-1">{item.label}</p>
                 </div>
               ))}

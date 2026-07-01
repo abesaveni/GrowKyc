@@ -573,15 +573,15 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
 
   const getStatusBadge = (status: CaseStatus) => {
     const config = {
-      new: { label: 'New', color: 'bg-blue-100 text-blue-700 border-blue-300', icon: AlertCircle },
-      in_triage: { label: 'In Triage', color: 'bg-purple-100 text-purple-700 border-purple-300', icon: Activity },
-      under_investigation: { label: 'Under Investigation', color: 'bg-amber-100 text-amber-700 border-amber-300', icon: Eye },
-      draft_in_progress: { label: 'Draft in Progress', color: 'bg-orange-100 text-orange-700 border-orange-300', icon: FileText },
-      awaiting_manager: { label: 'Awaiting Manager', color: 'bg-pink-100 text-pink-700 border-pink-300', icon: Clock },
-      approved: { label: 'Approved', color: 'bg-green-100 text-green-700 border-green-300', icon: CheckCircle },
-      submitted: { label: 'Submitted', color: 'bg-green-100 text-green-700 border-green-300', icon: CheckCircle },
-      acknowledged: { label: 'Acknowledged', color: 'bg-green-100 text-green-700 border-green-300', icon: CheckCircle },
-      monitoring_only: { label: 'Monitoring Only', color: 'bg-indigo-100 text-indigo-700 border-indigo-300', icon: Activity },
+      new: { label: 'New', color: 'bg-blue-50 text-blue-700 border-blue-200', icon: AlertCircle },
+      in_triage: { label: 'In Triage', color: 'bg-gray-100 text-gray-700 border-gray-300', icon: Activity },
+      under_investigation: { label: 'Under Investigation', color: 'bg-amber-50 text-amber-700 border-amber-200', icon: Eye },
+      draft_in_progress: { label: 'Draft in Progress', color: 'bg-amber-50 text-amber-700 border-amber-200', icon: FileText },
+      awaiting_manager: { label: 'Awaiting Manager', color: 'bg-amber-50 text-amber-700 border-amber-200', icon: Clock },
+      approved: { label: 'Approved', color: 'bg-green-50 text-green-700 border-green-200', icon: CheckCircle },
+      submitted: { label: 'Submitted', color: 'bg-green-50 text-green-700 border-green-200', icon: CheckCircle },
+      acknowledged: { label: 'Acknowledged', color: 'bg-green-50 text-green-700 border-green-200', icon: CheckCircle },
+      monitoring_only: { label: 'Monitoring Only', color: 'bg-gray-100 text-gray-700 border-gray-300', icon: Activity },
       not_reportable: { label: 'Not Reportable', color: 'bg-gray-100 text-gray-700 border-gray-300', icon: XCircle },
       closed: { label: 'Closed', color: 'bg-gray-100 text-gray-700 border-gray-300', icon: CheckCircle }
     };
@@ -892,7 +892,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                 </thead>
                 <tbody>
                   {filteredCases.map((matter) => (
-                    <tr key={matter.caseId} className="border-b border-gray-200 hover:bg-blue-50 transition-colors">
+                    <tr key={matter.caseId} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
                       <td className="py-3 px-4">
                         <span className="font-mono font-semibold text-blue-900">{matter.caseId}</span>
                       </td>
@@ -1002,7 +1002,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                 </thead>
                 <tbody>
                   {draftReports.map((draft) => (
-                    <tr key={draft.caseId} className="border-b border-gray-200 hover:bg-orange-50 transition-colors">
+                    <tr key={draft.caseId} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
                       <td className="py-3 px-4">
                         <span className="font-mono font-semibold text-orange-900">{draft.caseId}</span>
                       </td>
