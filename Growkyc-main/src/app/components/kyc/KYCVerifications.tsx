@@ -219,46 +219,87 @@ export function KYCVerifications({ onBack }: { onBack?: () => void } = {}) {
                 {statusBadge(decision.status)}
               </div>
 
-              {/* Per-check summary (extracted from the Didit decision object) */}
+              {/* Rich display parsed from the real Didit decision structure */}
               {(() => {
-                const d = decision.decision || {};
-                const LABELS: Record<string, string> = {
-                  id_verification: 'ID Verification',
-                  liveness: 'Liveness',
-                  face_match: 'Face Match',
-                  poa: 'Proof of Address',
-                  proof_of_address: 'Proof of Address',
-                  document_ai: 'Document AI',
-                  aml: 'AML / Sanctions',
-                  database_verification: 'Database Check',
-                  database_validation: 'Database Check',
-                  email_verification: 'Email Verification',
-                  ip_analysis: 'IP Analysis',
-                  phone_verification: 'Phone Verification',
-                };
-                const checks = Object.keys(LABELS)
-                  .filter((k) => d[k] && typeof d[k] === 'object' && 'status' in d[k])
-                  .map((k) => ({ label: LABELS[k], status: String(d[k].status) }));
+                const d: any = decision.decision || {};
+                const first = (v: any) => (Array.isArray(v) ? v[0] : v) || {};
+                const idv = first(d.id_verifications) || first(d.id_verification);
+                const fm = first(d.face_matches) || first(d.face_match);
+                const aml = first(d.aml_screenings) || first(d.aml);
+                const live = first(d.liveness) || first(d.liveness_checks) || d.liveness || {};
+
+                const fullName = idv.full_name || [idv.first_name, idv.last_name].filter(Boolean).join(' ') || '';
+
                 const checkBadge = (s: string) => {
-                  const ok = /approved|passed|clear|verified|match/i.test(s);
-                  const bad = /declined|failed|no_match|expired/i.test(s);
+                  const ok = /approved|passed|clear|verified|match|success/i.test(s);
+                  const bad = /declined|failed|no_match|expired|reject/i.test(s);
                   const cls = ok ? 'bg-green-50 text-green-700 border-green-200'
                     : bad ? 'bg-red-50 text-red-700 border-red-200'
                       : 'bg-amber-50 text-amber-700 border-amber-200';
                   return <Badge className={cls}>{s}</Badge>;
                 };
-                if (checks.length === 0) {
-                  return <p className="text-sm text-gray-500">No detailed checks reported yet.</p>;
+
+                const details: [string, any][] = [
+                  ['Full name', fullName],
+                  ['Date of birth', idv.date_of_birth],
+                  ['Age', idv.age],
+                  ['Nationality', idv.nationality || idv.issuing_country || idv.issuing_state],
+                  ['Document type', idv.document_type],
+                  ['Document number', idv.document_number],
+                  ['Issued', idv.date_of_issue],
+                  ['Expires', idv.expiration_date],
+                  ['Address', idv.address || idv.formatted_address],
+                ].filter(([, v]) => v != null && v !== '');
+
+                const checks: [string, string][] = [
+                  idv.status && ['ID Verification', String(idv.status)],
+                  live.status && ['Liveness', String(live.status)],
+                  fm.status && [`Face Match${fm.similarity_percentage != null ? ` (${fm.similarity_percentage}%)` : ''}`, String(fm.status)],
+                  aml.status && [`AML / Sanctions${typeof aml.total_hits === 'number' ? ` (${aml.total_hits} hit${aml.total_hits === 1 ? '' : 's'})` : ''}`, String(aml.status)],
+                ].filter(Boolean) as [string, string][];
+
+                if (details.length === 0 && checks.length === 0) {
+                  return <p className="text-sm text-gray-500">No detailed data yet — the verification hasn't completed or hasn't synced. It appears automatically once the client finishes.</p>;
                 }
+
                 return (
-                  <div className="border border-gray-200 rounded-lg divide-y">
-                    {checks.map((c) => (
-                      <div key={c.label} className="flex items-center justify-between px-4 py-2.5">
-                        <span className="text-sm text-gray-700">{c.label}</span>
-                        {checkBadge(c.status)}
+                  <>
+                    {details.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Identity details</p>
+                        <div className="border border-gray-200 rounded-lg divide-y">
+                          {details.map(([label, value]) => (
+                            <div key={label} className="flex justify-between gap-4 px-4 py-2.5">
+                              <span className="text-sm text-gray-500">{label}</span>
+                              <span className="text-sm text-gray-900 font-medium text-right break-words">{String(value)}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                    )}
+                    {checks.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Verification checks</p>
+                        <div className="border border-gray-200 rounded-lg divide-y">
+                          {checks.map(([label, st]) => (
+                            <div key={label} className="flex items-center justify-between px-4 py-2.5">
+                              <span className="text-sm text-gray-700">{label}</span>
+                              {checkBadge(st)}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {(idv.front_image || idv.back_image) && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Documents</p>
+                        <div className="flex gap-4">
+                          {idv.front_image && <a href={idv.front_image} target="_blank" rel="noreferrer" className="text-sm text-blue-600 underline">Front image ↗</a>}
+                          {idv.back_image && <a href={idv.back_image} target="_blank" rel="noreferrer" className="text-sm text-blue-600 underline">Back image ↗</a>}
+                        </div>
+                      </div>
+                    )}
+                  </>
                 );
               })()}
 
