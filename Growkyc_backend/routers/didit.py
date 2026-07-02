@@ -77,6 +77,42 @@ def _client_email(client: "Client") -> Optional[str]:
     return None
 
 
+def _capture_identity_to_profile(db: Session, client: "Client", decision) -> None:
+    """Extract verified identity fields from a Didit decision into the client's
+    IndividualProfile. Best-effort; only fills fields Didit actually returned."""
+    if not isinstance(decision, dict):
+        return
+    idvs = decision.get("id_verifications")
+    idv = (idvs[0] if isinstance(idvs, list) and idvs else decision.get("id_verification")) or {}
+    if not isinstance(idv, dict) or not idv:
+        return
+    prof = getattr(client, "individual_profile", None)
+    if prof is None:
+        return  # entity profiles are captured elsewhere
+
+    def setif(attr: str, val) -> None:
+        if val not in (None, "") and hasattr(prof, attr):
+            setattr(prof, attr, val)
+
+    setif("first_name", idv.get("first_name"))
+    setif("last_name", idv.get("last_name"))
+    setif("nationality", idv.get("nationality") or idv.get("issuing_country"))
+    setif("residential_address", idv.get("address") or idv.get("formatted_address"))
+    doc_type = (idv.get("document_type") or "").lower()
+    if "passport" in doc_type:
+        setif("passport_number", idv.get("document_number"))
+    else:
+        setif("national_id_number", idv.get("document_number"))
+    dob = idv.get("date_of_birth")
+    if dob and hasattr(prof, "dob"):
+        try:
+            from datetime import date
+            prof.dob = date.fromisoformat(str(dob)[:10])
+        except Exception:  # noqa: BLE001
+            pass
+    logger.info("Captured Didit identity into client %s profile", client.id)
+
+
 @router.post(
     "/verifications/start",
     response_model=StartVerificationResponse,
@@ -411,7 +447,8 @@ async def didit_webhook(request: Request, db: Session = Depends(get_db)) -> dict
                     "Didit %s -> KYC %s set to %s", session_id, record.kyc_id, mapped.value
                 )
 
-        # Propagate terminal outcomes to the linked Client (invite flow).
+        # Propagate terminal outcomes to the linked Client (invite flow) and
+        # capture the verified identity data into the client's profile.
         if record.client_id and new_status in ("Approved", "Declined"):
             from datetime import datetime, timezone
             client = db.query(Client).filter(Client.id == record.client_id).first()
@@ -422,6 +459,11 @@ async def didit_webhook(request: Request, db: Session = Depends(get_db)) -> dict
                 else:
                     client.is_locked = True
                 logger.info("Didit %s -> Client %s %s", session_id, record.client_id, new_status)
+                if new_status == "Approved":
+                    try:
+                        _capture_identity_to_profile(db, client, decision)
+                    except Exception as e:  # noqa: BLE001
+                        logger.warning("identity capture failed for client %s: %s", client.id, e)
 
         db.commit()
     finally:
