@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
+import { ClientVerificationPanel } from './ClientVerificationPanel';
 import {
   X,
   Shield,
@@ -339,6 +340,7 @@ export function ClientDetailView({ client, onClose }: ClientDetailViewProps) {
 
   const renderOverview = () => (
     <div className="space-y-6">
+      <ClientVerificationPanel clientId={client.id} />
       {/* Status Banner */}
       <Card className={`border-4 shadow-xl ${
         client.complianceScore >= 90 ? 'border-green-400 bg-gray-50' :
