@@ -8,6 +8,7 @@ import { AMLHitsDetail } from './AMLHitsDetail';
 import { RelatedEntitiesTab } from './RelatedEntitiesTab';
 import { IdentityTab } from '../grow-kyc/IdentityTab';
 import { ClientsDB, TestClient } from './ClientsDatabase';
+import { ClientVerificationPanel } from './ClientVerificationPanel';
 import {
   Shield,
   AlertTriangle,
@@ -1249,6 +1250,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
             {/* OVERVIEW TAB */}
             {activeTab === 'overview' && (
               <div className="space-y-6">
+                <ClientVerificationPanel clientId={selectedClientId} />
                 <Card className="border-2 border-blue-300 shadow-lg">
                   <CardHeader className="bg-gray-50 border-b">
                     <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
