@@ -335,6 +335,13 @@ async def didit_webhook(request: Request, db: Session = Depends(get_db)) -> dict
     signature = request.headers.get("x-signature")
     timestamp = request.headers.get("x-timestamp")
 
+    # Minimal, PII-free log (never log the decision body — it contains identity data).
+    logger.info(
+        "Didit webhook IN: type=%s has_sig=%s bytes=%d",
+        request.headers.get("x-webhook-type") or "?",
+        bool(signature), len(raw),
+    )
+
     try:
         service = DiditService()
     except DiditNotConfiguredError:
@@ -342,6 +349,7 @@ async def didit_webhook(request: Request, db: Session = Depends(get_db)) -> dict
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Didit disabled")
 
     if not service.verify_webhook(raw, signature, timestamp):
+        logger.warning("Didit webhook signature verify FAILED (check DIDIT_WEBHOOK_SECRET / header scheme)")
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid webhook signature")
 
     import json
@@ -351,10 +359,20 @@ async def didit_webhook(request: Request, db: Session = Depends(get_db)) -> dict
     except Exception:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid JSON")
 
-    session_id = payload.get("session_id")
-    new_status = payload.get("status")
-    event_id = payload.get("event_id")
-    decision = payload.get("decision")
+    # v3-robust extraction: fields may be top-level (v2) or nested under
+    # session/data (v3). Try all common locations.
+    def _dig(d, *keys):
+        for k in keys:
+            if isinstance(d, dict) and d.get(k) is not None:
+                return d[k]
+        return None
+
+    sess = payload.get("session") if isinstance(payload.get("session"), dict) else {}
+    data = payload.get("data") if isinstance(payload.get("data"), dict) else {}
+    session_id = _dig(payload, "session_id") or _dig(sess, "session_id") or _dig(data, "session_id")
+    new_status = _dig(payload, "status") or _dig(sess, "status") or _dig(data, "status")
+    event_id = _dig(payload, "event_id", "id", "webhook_id") or _dig(sess, "id")
+    decision = payload.get("decision") or (data or None)
     if not session_id:
         return {"status": "ignored", "reason": "no session_id"}
 
